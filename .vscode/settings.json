@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "ostream": "cpp"
+    },
+    "terminal.explorerKind": "external",
+    "terminal.sourceControlRepositoriesKind": "external"
+}
