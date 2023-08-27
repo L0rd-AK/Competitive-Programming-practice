@@ -3,7 +3,6 @@ using namespace std;
 int main()
 {
     freopen("input.txt", "r", stdin);
-    // freopen("output.txt","w",stdout);
     string s;
     int flag=0;
     while (getline(cin,s))
@@ -22,6 +21,6 @@ int main()
     }
     
 
-
+    freopen("output.txt","w",stdout);
     return 0;
 }
