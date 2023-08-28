@@ -1,5 +1,4 @@
 #include <bits/stdc++.h> 
-
 using namespace std; 
 #define ll long long
 
@@ -32,9 +31,7 @@ int main()
     while(t--){
         cin>>s;
         int n = s.length();
-
 		sort(s.begin(),s.end());
-		
         ll Nth;cin>>Nth; 
 	    cout<<permute(n,Nth+1)<<endl;
     } 
