@@ -4,7 +4,7 @@ using namespace std;
 
 int main() 
 {
-  //freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
   int n;
   cin>>n;
   cout<<(n*n)+2*(n-1);      
@@ -12,3 +12,5 @@ int main()
     
   return 0;
 }
+
+
