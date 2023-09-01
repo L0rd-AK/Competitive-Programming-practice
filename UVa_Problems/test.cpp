@@ -2,23 +2,25 @@
 using namespace std;
 int main()
 {
-    freopen("input.txt", "r", stdin);
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
     int t;
-    while (1)
+    cin>>t;
+    while (t--)
     {
-        cin>>t;
-        if(t==0) break;
-        int x,y;
-        cin>>x>>y;
-        while(t--){ int a,b;
-            cin>>a>>b;
-            if(a==x or a==y or b==x or b==y) cout<<"divisa"<<endl;
-            else if(a<x and b<y)cout<<"SO"<<endl;
-            else if(a>x and b>y) cout<<"NE"<<endl;
-            else if(a>x and b<y) cout<<"SE"<<endl;
-            else if(a<x and b>y) cout<<"NO"<<endl;
+        string s;
+        cin>>s;
+        int ok=0,c=0;
+        for(int i=0;i<s.length()-1;i++){
+            if(s[i]=='0' and s[i+1]=='1') ok++;
+            if(s[i]=='1' and s[i+1]=='0') ok++;
+            if(s[i]=='1') c++;
         }
-        
+        if(s[s.length()-1]=='1') c++;
+        if(c==s.length()) cout<<"YES"<<endl;
+        else{
+            if(ok<2) cout<<"YES"<<endl;
+            else cout<<"NO"<<endl;
+        }
     }
     
     return 0;
