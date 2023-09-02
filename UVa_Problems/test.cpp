@@ -9,18 +9,22 @@ int main()
     {
         string s;
         cin>>s;
-        int ok=0,c=0;
-        for(int i=0;i<s.length()-1;i++){
-            if(s[i]=='0' and s[i+1]=='1') ok++;
-            if(s[i]=='1' and s[i+1]=='0') ok++;
-            if(s[i]=='1') c++;
+        int n=s.length();
+        int ok1=1,ok2=1,ok3=1;
+        for(int i=0;i<n;i++){
+            if(s[i]=='1'){
+                if(s[i]=='1' and ok1==1 and ok2==0){
+                    ok1=0;
+                    if(ok2==0) ok3=0;
+                }else{
+                    ok2=0;
+                    ok1=1;
+                }
+            }
         }
-        if(s[s.length()-1]=='1') c++;
-        if(c==s.length()) cout<<"YES"<<endl;
-        else{
-            if(ok<2) cout<<"YES"<<endl;
-            else cout<<"NO"<<endl;
-        }
+        cout<<ok1<<" "<<ok2<<" "<<ok3<<endl;
+        if(ok1==0 and ok2==0 and ok3==0) cout<<"NO"<<endl;
+        else cout<<"YES"<<endl;
     }
     
     return 0;
