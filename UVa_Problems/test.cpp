@@ -1,31 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main()
+#define ll long long int
+
+int main() 
 {
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
-    int t;
-    cin>>t;
-    while (t--)
-    {
-        string s;
-        cin>>s;
-        int n=s.length();
-        int ok1=1,ok2=1,ok3=1;
-        for(int i=0;i<n;i++){
-            if(s[i]=='1'){
-                if(s[i]=='1' and ok1==1 and ok2==0){
-                    ok1=0;
-                    if(ok2==0) ok3=0;
-                }else{
-                    ok2=0;
-                    ok1=1;
-                }
-            }
+  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+  int index=1;
+  while(1){
+    int n,m,c;
+    cin>>n>>m>>c;
+    if(n==0 and m==0 and c==0) break;
+    int a[n],b[m],ok[m];
+    for(int i=0;i<n;i++)cin>>a[i];
+    for(int i=0;i<m;i++)cin>>b[i];
+    for(int i=0;i<m;i++)ok[i]=1;
+    int sum=0,mx=-1,flag=1;
+    for(int i=0;i<m;i++){
+        if(ok[i]){
+            sum+=a[b[i]-1];
+            ok[i]=0;
+        }else{
+            sum-=a[b[i]-1];
+            ok[i]=1;
         }
-        cout<<ok1<<" "<<ok2<<" "<<ok3<<endl;
-        if(ok1==0 and ok2==0 and ok3==0) cout<<"NO"<<endl;
-        else cout<<"YES"<<endl;
+        mx=max(mx,sum);
+        if(sum>=c){
+            printf("Sequence %d\nFuse was blown.\n",index++);
+            flag=0;
+            break;
+        }
     }
-    
-    return 0;
+    if(flag)printf("Sequence %d\nFuse was not blown.\nMaximal power consumption was %d amperes.\n",index++,mx);
+
+  }
+  
+  
+ return 0;
 }
