@@ -3,44 +3,25 @@ using namespace std;
 #define ll long long int
 #define ff(i,x,n) for(int i=x;i<n;i++)
 #define fb(i,x,n) for(int i=n;i>=0;i--)
-int bfs[1000][1000],colr[1000];
-bool BFS(int s,int n){
-    for(int i=0;i<n;i++) colr[i]=-1;
-    queue <int> q;
-    q.push(s);
-    colr[s]=1;
-    while(!q.empty()){
 
-        int temp=q.front();
-        int currentColor=colr[temp];
-        q.pop();
-        for(int i=0;i<n;i++){
-            int v=bfs[temp][i];
-            if(v){
-                if(colr[i]==-1){
-                    colr[i]=!currentColor;
-                    q.push(i);
-                }else if(colr[i]==currentColor)return false;
-            }
-        }
-    }
-    return true;
-}
 int main(){
-    freopen("D:\\VS-Code\\C++\\Advance Camp\\input.txt","r",stdin);
-    int n;
-    cin>>n;
-    int v[n];
-    ff(i,0,n){
-        cin>>v[i];
-    }
-    int c=0;
-    ff(i,0,n){        
-        ff(j,0,n){
-            if(v[j]>v[j+1]){swap(v[j],v[j+1]);c++;}
-            cout<<endl;
-        }
-    }
-    cout<<c<<'\n';
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+    //freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
+    ll x,y;
+    cin>>x>>y;
+    ll n=y-x;
+    if(n/32) n=n%32;
+    if(n==2){cout<<"Yes\n";return 0;}
+    else if(n<2){cout<<"No\n";return 0;}
+    if(n/16) n=n%16;
+    if(n==2){cout<<"Yes\n";return 0;}
+    else if(n<2){cout<<"No\n";return 0;}
+    if(n/8) n=n%8;
+    if(n==2){cout<<"Yes\n";return 0;}
+    else if(n<2){cout<<"No\n";return 0;}
+    if(n/4) n=n%4;
+    if(n>=2){cout<<"Yes\n";return 0;}
+    else if(n<2){cout<<"No\n";return 0;}
+    
     return 0;
 }
