@@ -4,12 +4,12 @@ using namespace std;
 #define ff(i,x,n) for(int i=x;i<n;i++)
 #define fb(i,x,n) for(int i=n;i>=0;i--)
 long long h[100007]={0},dp[100007];
-ll knapSack(int step){
+ll jump(int step){
     if(step==0) return 0;
     if(dp[step]!=-1) return dp[step];
-    ll ans=knapSack(step-1)+abs(h[step]-h[step-1]);
+    ll ans=jump(step-1)+abs(h[step]-h[step-1]);
     if(step-2>=0)
-        ans=min(ans,knapSack(step-2)+abs(h[step]-h[step-2]));
+        ans=min(ans,jump(step-2)+abs(h[step]-h[step-2]));
 
     return dp[step]=ans;
 }
@@ -20,7 +20,7 @@ int main(){
     int n;
     cin>>n;
     ff(i,0,n)cin>>h[i];
-    cout<<knapSack(n-1)<<'\n';
+    cout<<jump(n-1)<<'\n';
     
     
     return 0;
