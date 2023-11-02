@@ -5,20 +5,17 @@ using namespace std;
 int main() 
 {
   freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
-  int n;
+  int n,temp;
   cin>>n;
-  string s;
-  while(n--){
-    int one=0,two=0,three=0;
-    cin>>s;
-    if(s[0]=='a') one++;
-    if(s[1]=='b') two++;
-    if(s[2]=='c') three++;
-
-    if(one+two+three>=1) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
+  while(n!=0){
+    temp=n%10;
+    n/=10;
+    if(9-temp<temp and n!=0)cout<<9-temp;
+    else cout<<temp;
+    
   }
-  
+  // if(9-temp<temp)cout<<9-temp<<endl;
+  // else cout<<temp<<endl;
     
   return 0;
 }
