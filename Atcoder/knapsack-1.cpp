@@ -22,7 +22,5 @@ int main(){
     cin>>n>>capacity;
     ff(i,0,n)cin>>w[i]>>v[i];
     cout<<knapSack(n,capacity)<<'\n';
-    
-    
     return 0;
 }
