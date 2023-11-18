@@ -1,61 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int
 
-void DFS(int s, int n,vector<bool>& vis,vector<vector<int>>& dfs,vector<vector<int>>& SSC) {
-  if(vis[s])return;
-  vector<int> Current_ssc;
-  stack<int> st;
-  st.push(s);
-  vis[s]=true;
-  
-  while (!st.empty()) {
-    int temp = st.top();
-    Current_ssc.push_back(temp);
-    st.pop();
+int countRepetitiveSubstrings(string str) {
+  vector<int> repetitions(26, 0);
 
-    if (vis[temp]){
-      for (int i = 0; i < n; i++) {
-        int x = dfs[temp][i];
-        if (x && !vis[i]){
-          
-          vis[i]=true;
-          st.push(i);
-        }
-      }
+  for (char c : str) {
+    repetitions[c - 'a']++;
+  }
+
+  int count = 0;
+  for (int i = 0; i < 26; i++) {
+    if (repetitions[i] > 0) {
+      count += repetitions[i] * (repetitions[i] + 1) / 2;
     }
   }
-  SSC.push_back(Current_ssc);
-  
+
+  return count;
 }
 
-int main(){
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
-    // freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
-    
-    	int V=15000, E;
-    	cin >>E;
-      vector<bool> vis(V,false);
-    	vector<vector<int>> dfs(V,vector<int>(V,0));
-    	vector<vector<int>> SSC;
+int main() {
+  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+  string str = "ssskkyskkkky";
 
-    	for(int i = 0; i < E; i++)
-    	{
-    		int u, v;
-    		cin >>u>>v;
-        dfs[u][v]=1;
-        dfs[v][u]=1;
-    	}
-    	
+  int count = countRepetitiveSubstrings(str);
 
-      for(int i=0;i<V;i++) 
-        DFS(i,V,vis,dfs,SSC);
+  cout << "The number of non-empty substrings that are repetitions of one character is: " << count << endl;
 
-      int mx=-69,mn=20000;
-      for(auto i:SSC){
-        if(mx<i.size())mx=i.size();
-        if(mn>i.size() and i.size()!=1)mx=i.size();
-      }
-      cout<<mn<<" "<<mx<<endl;
-    return 0;
+  return 0;
 }
