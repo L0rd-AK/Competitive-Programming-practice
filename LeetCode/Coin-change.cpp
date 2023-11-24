@@ -24,8 +24,6 @@ int coinChange(vector<int>& coins, int amount) {
     return ans;
 }
 int main(){
-    // freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
-    //freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
     vector<int> coins={1,2,5};int amount=11;
     cout<<coinChange(coins,amount);
     
