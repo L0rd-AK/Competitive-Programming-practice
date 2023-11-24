@@ -19,19 +19,22 @@ int knapSack(int idx,int left_capacity,vector<int>& v,vector<int>& w,vector<vect
 int main(){
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
     //freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
-    int n,capacity;
-    cin>>n>>capacity;
-    vector<vector<int>> dp(n,vector<int>(capacity+1,-1));
-    vector<int> v,w;
-    int x;
-    ff(i,0,n){
-        cin>>x;
-        v.push_back(x);
+    int n,t,capacity;
+    cin>>t;
+    while(t--){
+        cin>>n>>capacity;
+        vector<vector<int>> dp(n,vector<int>(capacity+1,-1));
+        vector<int> v,w;
+        int x;
+        ff(i,0,n){
+            cin>>x;
+            v.push_back(x);
+        }
+        ff(i,0,n){
+            cin>>x;
+            w.push_back(x);
+        }
+        cout<<knapSack(n-1,capacity,v,w,dp)<<'\n';
     }
-    ff(i,0,n){
-        cin>>x;
-        w.push_back(x);
-    }
-    cout<<knapSack(n-1,capacity,v,w,dp)<<'\n';
     return 0;
 }
