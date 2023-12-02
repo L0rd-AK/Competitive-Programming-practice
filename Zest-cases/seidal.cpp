@@ -2,10 +2,10 @@
 using namespace std; 
 const double precision=1e-3;
 int main() {
-    freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
+    //freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
     vector<vector<int>> jb;
     jb.push_back({28,4,-1,32});
-    jb.push_back({2,17,4,35});
+    jb.push_back({2,27,4,35});
     jb.push_back({1,3,10,24});
     double x=0,y=0,z=0;
     // abs(x-y)>precision and abs(y-z)>precision and abs(z-x)>precision

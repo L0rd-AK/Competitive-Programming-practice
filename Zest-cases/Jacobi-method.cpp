@@ -2,7 +2,7 @@
 using namespace std; 
 const double precision=1e-3;
 int main() {
-    freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
+    //freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
     vector<vector<int>> jb;
     jb.push_back({28,4,-1,32});
     jb.push_back({2,17,4,35});

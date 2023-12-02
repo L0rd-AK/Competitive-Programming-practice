@@ -1,18 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int
 
-int main() 
-{
-  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
-  int t,x,y;
-  cin>>t;
-  while(t--){
-    cin>>x>>y;
-    if(x-y>0)cout<<x-y<<'\n';
-    else cout<<0<<'\n';
-  }
+int main() {
+    #ifndef ONLINE_JUDGE
+		freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+	#endif
+    int t,idx=1;
+    cin>>t;
+    while(t--){
+      char a,b;
+      cin>>a>>b;
+      int diff=b-a;
+      int x=1,y=94;
+      while(y-x>=diff){
+        printf("Case %d:\n",idx++);
+        cout<<x<<" "<<y<<endl;
+        if()
+      }
 
-    
-  return 0;
+    }
+    return 0;
 }
