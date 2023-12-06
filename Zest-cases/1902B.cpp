@@ -10,39 +10,15 @@ int main() {
     while(t--){
        ll n,p,l,t;
        cin>>n>>p>>l>>t;
-       ll x;
-       if(n/7){
-        x=n/7;
-       }else x=1;
+       ll tks=(n+6)/7;
+        ll lo=0,hi=n;
+        while(hi-lo>1){
+            ll mid=(hi+lo)/2;
+            if((mid*l+min(tks,2*mid)*t)>=p) hi=mid;
+            else lo=mid;
 
-       ll temp=0,ans=0,day=0;
-       if(x%2==0){
-        day=x/2;
-        temp=l*day+day*2*t;
-       }
-       else{
-        if(x==1){temp=l*day+day*1*t;day=1;}
-        else{
-            day=x/2;
-            temp=l*day+day*2*t;
-            temp+=l+t;
-            day+=1;
+            // cout<<mid<<endl;
         }
-       }
-       
-       
-       ans=day;
-       
-       if(temp>=p){
-        cout<<n-ans<<endl;
-        continue;
-       }
-       else{
-            while(temp<=p){
-                temp+=l;
-                ans++;
-            }
-       }
-       cout<<n-ans<<endl;
+        cout<<n-hi<<endl;
     }
 }

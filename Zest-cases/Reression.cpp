@@ -4,8 +4,8 @@ using namespace std;
 
 int main(){
     // freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
-    double x[]={4,7,6,7,5,5,6,5,6};
-    double y[]={24,43,47,51,35,38,42,40,49};
+    double x[]={37,43,58,49,70,28,65,32};
+    double y[]={5.5,6.95,4.95,5.75,3.95,8.25,5.5,6.75};
     int sizeX=sizeof(x)/sizeof(x[0]);
     int sizeY=sizeof(y)/sizeof(x[0]);
     double meanX=0,meanY=0,sumX=0,sumY=0;

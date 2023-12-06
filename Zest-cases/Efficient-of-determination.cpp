@@ -4,8 +4,8 @@ using namespace std;
 
 int main(){
     // freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
-    double x[]={4,7,6,7,5,5,6,5,6};
-    double y[]={24,43,47,51,35,38,42,40,49};
+    double x[]={500,700,800,600};
+    double y[]={84,75,99,72};
     int sizeX=sizeof(x)/sizeof(x[0]);
     int sizeY=sizeof(y)/sizeof(x[0]);
     double meanX=0,meanY=0,sumX=0,sumY=0;
@@ -37,8 +37,8 @@ int main(){
         sum_of_Y2+=(y[i]-meanY)*(y[i]-meanY);
     }
     
-    cout<<"Beta1 "<<beta1<<endl;
-    cout<<"Beta-n0t "<<Beta_n0t<<endl;
+    cout<<"Beta1 :"<<beta1<<endl;
+    cout<<"Beta-n0t :"<<Beta_n0t<<endl;
     cout<<"Coefficient of Determination (R^2): "<<1-(sum_of_Y1/sum_of_Y2)<<endl;
 
 
