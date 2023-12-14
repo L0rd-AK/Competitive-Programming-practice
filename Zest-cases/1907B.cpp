@@ -10,27 +10,30 @@ int main() {
     while(t--){
        string s,ans="";
        cin>>s;
-       for(int i=0;i<s.length();i++){
+       int n=s.length();
+       stack<int> lower,upper;
+       for(int i=0;i<n;i++){
             if(s[i]=='b'){
-                for(int j=ans.length()-1;j>=0;j--){
-                    if(ans[j]>='A' and ans[j]<='Z') continue;
-                    else {
-                        if(j==0)ans.erase(j,1);
-                        else ans.erase(j,1);
-                        break;
-                    }
+                s[i]=' ';
+                if(!lower.empty()){
+                    int j=lower.top();
+                    s[j]=' ';
+                    lower.pop();
                 }
             }else if(s[i]=='B'){
-                for(int j=ans.length()-1;j>=0;j--){
-                    if(ans[j]>='a' and ans[j]<='z') continue;
-                    else {
-                       if(j==0)ans.erase(j,1);
-                        else ans.erase(j,1);
-                        break;
-                    }
+                s[i]=' ';
+                if(!upper.empty()){
+                    int j=upper.top();
+                    s[j]=' ';
+                    upper.pop();
                 }
-            }else ans+=s[i];
+            }else if(s[i]>='a' and s[i]<='z'){
+                lower.push(i);
+            }else if(s[i]>='A' and s[i]<='Z'){
+                upper.push(i);
+            }
        }
-       cout<<ans<<endl;
+       for(int i=0;i<n;i++)if(s[i]!=' ')cout<<s[i];
+       cout<<endl;
     }
 }
