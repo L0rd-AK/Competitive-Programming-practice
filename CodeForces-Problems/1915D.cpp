@@ -12,27 +12,18 @@ int main() {
 	int t;
 	cin>>t;
 	while(t--){
-	    int n;
-		cin>>n;cin.ignore();
-		string s,ans;
-		cin>>s;
-		for(int i=n-1;i>=0;){
-			if(isVowel(s[i])){
-				ans+=s[i];
-				ans+=s[i-1];
-				ans+='.';
-				i-=2;
-			}else{
-				ans+=s[i];
-				ans+=s[i-1];
-				ans+=s[i-2];
-				ans+='.';
-				i-=3;
-			}
-		}
-		reverse(ans.begin(),ans.end());
-		for(int i=1;i<ans.length();i++)cout<<ans[i];
-		cout<<'\n';
+	    long long int n,k,x=0,ans=1;
+		cin>>n>>k;
+        for(int i=0;i<n;i++){
+            cin>>x;
+            ans*=x;
+        }
+		if(2023%ans==0){
+            cout<<"YES\n";
+            cout<<2023/ans;
+            for(int i=1;i<k;i++)cout<<" 1";
+            cout<<endl;
+        }else cout<<"NO\n";
 	}
 	return 0;
 }
