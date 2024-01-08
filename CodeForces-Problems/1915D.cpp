@@ -2,7 +2,6 @@
 using namespace std;
 bool isVowel(char c){
 	if(c=='a' or c=='e' or c=='i' or c=='o' or c=='u') return true;
-
 	return false;
 }
 int main() {
