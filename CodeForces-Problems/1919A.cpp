@@ -11,15 +11,10 @@ int main()
 	cin >> t;
 	while (t--)
 	{
-		ll n,pos=0,neg=0;
-		cin>>n;cin.ignore();
-		string s;
-		cin>>s;
-		for(int i=0;i<n;i++){
-			if(s[i]=='+')pos++;
-			else neg++;
-		}
-		cout<<abs(pos-neg)<<'\n';
+		ll a,b;
+		cin>>a>>b;
+		if((a+b)%2==1)cout<<"Alice\n";
+		else cout<<"Bob\n";
 	}
 	return 0;
 }
