@@ -11,19 +11,17 @@ int main()
 	cin >> t;
 	while (t--)
 	{
-       int n;
-       cin>>n;cin.ignore();
-       string s,ss;
-       cin>>s>>ss;
-       if(s==ss){cout<<"0\n"; continue;}
-       int a1=0,a2=0,ans=0;
-       for(int i=0;i<n;i++){
-        if(s[i]=='1')a1++;
-        if(ss[i]=='1')a2++;
-        if(s[i]!=ss[i] and ss[i]=='1')ans++;
-       }
-       if(a1>a2)ans+=(a1-a2);
-       cout<<ans<<'\n';
+              int n,x,y,a=0,b=0,c=0,d=0;
+              cin>>n;
+              while(n--){
+                     cin>>x>>y;
+                     if(x<0)a=1;
+                     if(x>0)b=1;
+                     if(y>0)c=1;
+                     if(y<0)d=1;
+              }
+              if(a==1 && b==1 && c==1 && d==1)cout<<"NO\n";
+              else cout<<"YES\n";
 	}
 	return 0;
 }
