@@ -11,12 +11,10 @@ int main()
 	cin >> t;
 	while (t--)
 	{
-              string s;
-              cin>>s;
-              int a=s[0]-'0'+s[1]-'0'+s[2]-'0';
-              int b=s[3]-'0'+s[4]-'0'+s[5]-'0';
-              if(a==b)cout<<"YES\n";
-              else cout<<"NO\n";
+              int a,b;
+              cin>>a>>b;
+              int x=max(a,b);
+              cout<<x<<'\n';
 	}
 	return 0;
 }

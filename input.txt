@@ -1,17 +1,4 @@
-4
-1
-a
-b
-c
-2
-aa
-bb
-aa
-10
-mathforces
-luckforces
-adhoccoder
 3
-acc
-abd
-abc
+2 2
+5 7
+3 2
