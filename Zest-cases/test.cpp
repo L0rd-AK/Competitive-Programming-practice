@@ -4,21 +4,16 @@ using namespace std;
 
 int main()
 {
-       #ifndef ONLINE_JUDGE
-              freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-       #endif
-	int t;
-       cin>>t;
+    #ifndef ONLINE_JUDGE
+       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    #endif
 
-       while(t--){
-            int n;
-            cin>>n;
-            int a[n];
-            for(int i=0;i<n;i++){
-              cin>>a[i];
-            }
-            sort(a,a+n);
-            cout<<a[n-1]-a[0]<<'\n';
-       }
+    int n;
+    cin>>n;
+    int a[n],idx=0;
+    for(int i=0;i<n;i++){
+       cin>>a[i];
+       if(a[i]==-1)idx=i;
+    }
 	return 0;
 }
