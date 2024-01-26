@@ -8,12 +8,17 @@ int main()
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
 
-   int n;
-   cin>>n;
-   while(n--){
-      int a,b,c;
-      cin>>a>>b>>c;
-      if(a==b+c or b==a+c or c==b+a)cout<<"YES\n";
+   int t;
+   cin>>t;
+   while(t--){
+      int n,x;
+      cin>>n;
+      set<int> st;
+      for(int i=0;i<n;i++){
+         cin>>x;
+         st.insert(x);
+      }
+      if(st.size()==n)cout<<"Yes\n";
       else cout<<"No\n";
    }
     
