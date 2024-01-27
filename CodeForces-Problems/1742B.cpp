@@ -12,11 +12,14 @@ int main()
    cin>>t;
    while(t--){
       int n,x;
-      cin>>x>>n;
-      int z=x/n;
-      cout<<z<<" "<<x-(n*(z-1))<<endl;
-    //   cout<<__gcd(z,x-(z*(n-1)))<<'\n';
-      
+      cin>>n;
+      set<int> st;
+      for(int i=0;i<n;i++){
+         cin>>x;
+         st.insert(x);
+      }
+      if(st.size()==n)cout<<"Yes\n";
+      else cout<<"No\n";
    }
     
 	return 0;

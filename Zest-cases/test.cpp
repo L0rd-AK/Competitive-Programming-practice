@@ -11,15 +11,12 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n,x;
-      cin>>n;
-      set<int> st;
-      for(int i=0;i<n;i++){
-         cin>>x;
-         st.insert(x);
+      int n,k;
+      cin>>n>>k;
+      for(int i=0;i<n;i++){int j=1;
+         for(char c='a';j<=k;c++){cout<<c;j++;}
       }
-      if(st.size()==n)cout<<"Yes\n";
-      else cout<<"No\n";
+      cout<<'\n';
    }
     
 	return 0;
