@@ -11,17 +11,12 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n;
-      cin>>n;
-      ll a[n],mx=INT_MIN,idx=-1;
-      for(int i=0;i<n;i++) cin>>a[i];
-      ll ans=INT_MIN;
-      for(int i=1;i<n;i++){
-         if(ans<a[i]*a[i-1])ans=a[i]*a[i-1];
+      int n,k;
+      cin>>n>>k;
+      for(int i=0;i<n;i++){int j=1;
+         for(char c='a';j<=k;c++){cout<<c;j++;}
       }
-      cout<<ans<<endl;
-      
-      
+      cout<<'\n';
    }
     
 	return 0;
