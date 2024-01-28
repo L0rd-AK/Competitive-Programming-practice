@@ -8,23 +8,22 @@ int main()
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
 
-   int t;
-   cin>>t;
-   while(t--){
-      string s;
-      cin>>s;
-      int idx=-1,size=s.length();
-      if(s[size-1]=='2' or s[size-1]=='4' or s[size-1]=='6' or s[size-1]=='8'){
-         cout<<0<<'\n';
-         continue;
+   int x,y;
+   cin>>x>>y;
+   int ans=0;
+   for(int i=x+1;i<=50;i++){
+      int c=0;
+      for(int j=2;j*j<=i;j++){
+         if(i%j==0)c++;
+         if(c>2){break;}
       }
-      for(int i=0;i<size;i++){
-         if(s[i]=='2' or s[i]=='4' or s[i]=='8' or s[i]=='6'){idx=i+1;break;}
+      if(c==0){
+         ans=i;
+         break;
       }
-      if(idx==-1)cout<<idx<<'\n';
-      else if(s[0]=='2' or s[0]=='4' or s[0]=='8' or s[0]=='6')cout<<1<<'\n';
-      else cout<<2<<'\n';
    }
+   if(ans==y)cout<<"YES\n";
+   else cout<<"NO\n";
     
 	return 0;
 }
