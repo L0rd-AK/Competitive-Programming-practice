@@ -12,8 +12,7 @@ int main()
    while(t--){
       int n;
       cin>>n;
-
-      cout<<(n+1)/10<<endl;
+      cout<<n/2<<endl;
    }
    
 
