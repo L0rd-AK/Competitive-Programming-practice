@@ -10,10 +10,10 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int a,b,c;
-      cin>>a>>b>>c;
-      if(a+b>=10 or b+c>=10 or c+a>=10)cout<<"YES\n";
-      else cout<<"NO\n";
+      int a,b;
+      cin>>a>>b;
+      int ans=min(max(2*a,b),max(2*b,a));
+      cout<<ans*ans<<endl;
    }
    
 
