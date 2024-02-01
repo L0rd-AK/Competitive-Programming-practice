@@ -13,18 +13,16 @@ int main()
    while(t--){
       int n,k;
       cin>>n>>k;
-      if(n==1)cout<<k<<'\n';
-      else if(n==k)cout<<1<<'\n';
-      else if(k>n){
-         int x=k/n;
-         int y=k%n;
-         if(y!=0)x++;
-         cout<<x<<'\n';
-      }else{
-         int x=(n+k-1)/k;
-         ll y=((1LL*x*k)+n-1)/n;
-         cout<<y<<'\n';
+      int a[n];
+      for(int i=0;i<n;i++)cin>>a[i];
+      sort(a,a+n);
+      int max_len=-1,len=0;
+      for(int i=0;i<n-1;i++){
+         if(a[i+1]-a[i]>k)max_len=max(max_len,len),len=0;
+         else len++;
       }
+      max_len=max(max_len,len);
+      cout<<n-(max_len+1)<<endl;
 
    }
    
