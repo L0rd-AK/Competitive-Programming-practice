@@ -11,22 +11,22 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n;
-      cin>>n;
-      int a[n];
-      f(i,0,n)cin>>a[i];
-      int liers=-1;
-      f(i,0,n){
-         int suspects=0,ans=0;
-         f(j,0,n){
-            if(a[j]>a[i])suspects++;
+      string s;
+      cin>>s;
+      int size=s.length();
+      if(size%2==1)cout<<"NO\n";
+      else{
+         int flag=1;
+         for(int i=0;i<(size/2);i++){
+            if(s[i]==s[(size/2)+i])continue;
+            else{
+               flag=0;
+               cout<<"NO\n";
+               break;
+            }
          }
-         f(j,0,n){
-            if(a[j]>suspects)ans++;
-         }
-         if(suspects==ans and ans>=a[i])liers=ans;
+         if(flag)cout<<"YES\n";
       }
-      cout<<liers<<endl;
    }
    
    
