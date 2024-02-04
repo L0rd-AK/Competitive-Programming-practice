@@ -1,11 +1,4 @@
-10
-a
-aa
-aaa
-aaaa
-abab
-abcabc
-abacaba
-xxyy
-xyyx
-xyxy
+3
+10 3
+5 5
+420 69
