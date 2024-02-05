@@ -11,17 +11,32 @@ int main()
    int t;
    cin>>t;
    while(t--){
-     int n,x;
-     cin>>n>>x;
-     if(n==1 or n==2){cout<<1<<'\n';continue;}
-     //else if(n==3 or n==4 or)
-     n-=2;
-     int ans=(n+x-1)/x;
-     cout<<ans+1<<'\n';
-     
+     int n;
+     cin>>n;
+     int a[n];
+     int sum=0; 
+     set<int> st;
+     f(i,0,n){cin>>a[i];sum+=a[i];st.insert(a[i]);}
+     int one=0,tw0=0;
+     f(i,0,n){
+      if(a[i]==1)one++;
+      if(a[i]==2)tw0++;
+     }
+     bool flag=true;
+     if(sum%2==1){
+         cout<<"NO\n";flag=false;
+     }
+     else{
+         if(one>0 and tw0>0){
+            if(one%2==1 or tw0%2==1){cout<<"NO\n";flag=false;}
+         }else if(one>0 and tw0==0){
+               if(one%2==1){cout<<"NO\n";flag=false;}
+         }
+         else if(tw0>0 and one==0){
+               if(tw0%2==1){cout<<"NO\n";flag=false;}
+         }
+     }
+     if(flag)cout<<"YES\n";
    }
-   
-   
-    
-	return 0;
+   return 0;
 }
