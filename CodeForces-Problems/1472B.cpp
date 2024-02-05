@@ -24,12 +24,12 @@ int main()
      }
      bool flag=true;
      if(sum%2==1){
-         cout<<"NO\n";flag=false;
+        cout<<"NO\n";flag=false;
      }
      else{
-         if(st.size()==1){
+        if(st.size()==1){
             if(one%2==1 or tw0%2==1){cout<<"NO\n";flag=false;}
-         }
+        }
      }
      if(flag)cout<<"YES\n";
    }
