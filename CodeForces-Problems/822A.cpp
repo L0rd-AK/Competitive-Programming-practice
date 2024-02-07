@@ -9,16 +9,12 @@ int main()
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
 
-   int n;
-   cin>>n;
-   if(n%2==0){
-      cout<<n/2<<'\n';
-      f(i,0,n/2)cout<<"2 ";
-      cout<<'\n';
-   }else{
-      cout<<n/2<<'\n';
-      f(i,0,(n/2)-1)cout<<"2 ";
-      cout<<"3\n";
-   }
+   int a,b;
+   cin>>a>>b;
+   int ans=min(a,b);
+   ll fact=1;
+   for(int i=2;i<=ans;i++)fact*=i;
+
+   cout<<fact<<endl;
    return 0;
 }

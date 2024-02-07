@@ -9,16 +9,19 @@ int main()
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
 
-   int n;
-   cin>>n;
-   if(n%2==0){
-      cout<<n/2<<'\n';
-      f(i,0,n/2)cout<<"2 ";
-      cout<<'\n';
-   }else{
-      cout<<n/2<<'\n';
-      f(i,0,(n/2)-1)cout<<"2 ";
-      cout<<"3\n";
+   int t;
+   cin>>t;
+   while(t--){
+      int n;
+      cin>>n;
+      string s;
+      cin>>s;
+      int st=-1,end=-1;
+      for(int i=0;i<n;i++){
+         if(s[i]=='B' and st==-1)st=i;
+         if(s[i]=='B')end=i;
+      }
+      cout<<(end-st)+1<<'\n';
    }
    return 0;
 }

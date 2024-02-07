@@ -9,16 +9,20 @@ int main()
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
 
-   int n;
-   cin>>n;
-   if(n%2==0){
-      cout<<n/2<<'\n';
-      f(i,0,n/2)cout<<"2 ";
-      cout<<'\n';
-   }else{
-      cout<<n/2<<'\n';
-      f(i,0,(n/2)-1)cout<<"2 ";
-      cout<<"3\n";
+   int t;
+   cin>>t;
+   while(t--){
+      int n;
+      cin>>n;
+      int a[n];
+      
+      int mn=INT_MAX;
+      f(i,0,n) cin>>a[i];
+      sort(a,a+n);
+      f(i,0,n){
+         if(a[i+1]-a[i]<mn)mn=a[i+1]-a[i];
+      }
+      cout<<mn<<'\n';
    }
    return 0;
 }
