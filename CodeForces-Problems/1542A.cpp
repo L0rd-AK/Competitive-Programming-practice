@@ -9,14 +9,21 @@ int main()
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
 
-   string s;
-   cin>>s;
-   int c=0,size=s.length();
-   // cout<<size<<endl;
-   for(int i=0;i<size;i++){
-      if(s[i]=='a')c++;
+   int t;
+   cin>>t;
+   while(t--){
+      int n;
+      cin>>n;
+      int a[2*n];
+      int c=0,cc=0;
+      f(i,0,2*n){
+         cin>>a[i];
+         if(a[i]%2==1)c++;
+         else cc++;
+      }
+      if(c==cc)cout<<"Yes\n";
+      else cout<<"No\n";
+
    }
-   if(c>(size/2))cout<<size<<endl;
-   else cout<<2*c-1<<endl;
    return 0;
 }
