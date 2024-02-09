@@ -9,14 +9,15 @@ int main()
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
 
-   string s;
-   cin>>s;
-   int c=0,size=s.length();
-   // cout<<size<<endl;
-   for(int i=0;i<size;i++){
-      if(s[i]=='a')c++;
+   int t;
+   cin>>t;
+   while(t--){
+      int n;
+      cin>>n;
+      if(n%3==0)cout<<n/3<<" "<<n/3<<'\n';
+      else if(n%3==1) cout<<(n/3)+1<<" "<<(n/3)<<'\n';
+      else cout<<n/3<<" "<<(n/3)+1<<'\n';
+      
    }
-   if(c>(size/2))cout<<size<<endl;
-   else cout<<2*c-1<<endl;
    return 0;
 }
