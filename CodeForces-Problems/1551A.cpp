@@ -14,21 +14,9 @@ int main()
    while(t--){
       int n;
       cin>>n;
-      int a[n],b[n];
-      f(i,0,n)cin>>a[i];
-      f(i,0,n)cin>>b[i];
-      vector<pair<int,int>> v;
-      f(i,0,n){
-         v.push_back(make_pair(a[i],b[i]));
-      }
-      sort(v.begin(), v.end());
-       f(i,0,n){
-         cout<<v[i].first<<" ";
-      }cout<<'\n';
-       f(i,0,n){
-         cout<<v[i].second<<" ";
-      }cout<<'\n';
-
+      if(n%3==0)cout<<n/3<<" "<<n/3<<'\n';
+      else if(n%3==1) cout<<(n/3)+1<<" "<<(n/3)<<'\n';
+      else cout<<n/3<<" "<<(n/3)+1<<'\n';
       
    }
    return 0;
