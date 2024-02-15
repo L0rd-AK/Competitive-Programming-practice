@@ -14,16 +14,13 @@ int main()
       while(t--){
       int n;
       cin>>n;
-      
-      ll a[n],sum=0;
-      f(i,0,n){cin>>a[i];sum+=a[i];}
-      int min_water=sum/n;
-      bool flag=1;
-      f(i,0,n-1){
-         if(a[i]<min_water){cout<<"NO\n";flag=0;break;}
-         a[i+1]+=a[i]-min_water;
-         a[i]=min_water;
-      }if(flag)cout<<"YES\n";
+      if(n<=27){
+         cout<<"aa"<<s[n-2]<<'\n';
+      }else if(n>26 and n<=52){
+         cout<<"a"<<s[n-27]<<"z\n";
+      }else{
+         cout<<s[n-52]<<"zz\n";
+      }
    }
    
    return 0;
