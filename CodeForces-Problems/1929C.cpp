@@ -8,14 +8,15 @@ int main()
    #ifndef ONLINE_JUDGE
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
+      string s="#abcdefghijklmnopqrstuvwxyz";
       int t;
       cin>>t;
       while(t--){
-      int a,b,c,d;
-      cin>>a>>b>>c>>d;
-      if (min(a, b) > max(c, d) || max(a, b) < min(c, d))cout << "NO\n";
-      else cout << "YES\n";
-
+      int n,k;
+      cin>>n>>k;
+      if((4*n-2)==k)cout<<n*2<<'\n';
+      else if(k%2==1)cout<<(k/2)+1<<'\n';
+      else cout<<k/2<<'\n';
       
    }
    

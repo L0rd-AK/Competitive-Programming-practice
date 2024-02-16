@@ -3,7 +3,8 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "*.tcc": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "cmath": "cpp"
     },
     "terminal.explorerKind": "integrated",
     "terminal.sourceControlRepositoriesKind": "integrated"
