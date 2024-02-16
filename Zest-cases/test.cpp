@@ -11,12 +11,9 @@ int main()
       int t;
       cin>>t;
       while(t--){
-      int a,b,c,d;
-      cin>>a>>b>>c>>d;
-      if (min(a, b) > max(c, d) || max(a, b) < min(c, d))cout << "NO\n";
-      else cout << "YES\n";
-
-      
+      int h,m;
+      cin>>h>>m;
+      cout<<((23-h)*60)+(60-m)<<'\n';
    }
    
    return 0;
