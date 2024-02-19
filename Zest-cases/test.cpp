@@ -13,7 +13,17 @@ int main()
       while(t--){
       int n;
       cin>>n;
-      cout<<(n+1)/2<<'\n';
+      int a[n];
+      int mn=INT_MAX;
+      for(int i=0;i<n;i++){
+         cin>>a[i];
+         mn=min(mn,a[i]);
+      }
+      ll ans=0;
+      for(int i=0;i<n;i++){
+         ans+=a[i]-mn;
+      }
+      cout<<ans<<'\n';
    }
    
    return 0;
