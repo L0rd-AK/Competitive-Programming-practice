@@ -15,17 +15,17 @@ int main()
       while(t--){
          int n;
          cin>>n;
-         string s;
-         cin>>s;
-         int a[26]={0},ballons=0;
-         f(i,0,n){
-            if(a[s[i]-'A']>0){
-               a[s[i]-'A']++;
-               ballons++;
-            }
-            else if(a[s[i]-'A']==0) {a[s[i]-'A']++;ballons+=2;}
+         ll a[n]={0};
+         f(i,0,n)cin>>a[i];
+          
+         ll ans=2;
+         while(1){
+            set<ll> st;
+            f(i,0,n) st.insert(a[i]%ans);
+            if(st.size()==2)break;
+            ans*=2;
          }
-         cout<<ballons<<'\n';
+         cout<<ans<<'\n';
       }
    
    return 0;
