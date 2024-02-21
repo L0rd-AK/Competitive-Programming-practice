@@ -15,22 +15,28 @@ int main()
       while(t--){
          int n;
          cin>>n;
-         int a[n];
-         f(i,0,n)cin>>a[i];
-         int a1=0,a2=0;
-         for(int i=0;i<n-1;i++){
-            if(a[i]==a[0])a1++;
-            else break;
+         int a[n+10]={0};
+         f(i,0,n){
+            int x;cin>>x;
+            a[x]++;
          }
-         for(int i=n-1;i>=0;i--){
-            if(a[i]==a[n-1])a2++;
-            else break;
+         // f(i,0,n+1)cout<<a[i]<<" ";
+         // sort(a,a+n);
+         ll ans=0,idx=0;
+         f(i,0,n+2){
+            if(a[i]>=3){
+               ll x=(a[i]*(a[i]-1)*(a[i]-2))/6;
+               ans+=x;
+            }
+            if(a[i]>=2){
+               ll x=(a[i]*(a[i]-1))/2;
+               ans+=(x*idx);
+            }
+            idx+=a[i];
          }
-         int x=n-max(a1,a2);
-         // cout<<x<<endl;
-         // cout<<a1<<" "<<a2<<" "<<<<" "<<n<<endl;
-         if(a[0]==a[n-1])cout<<max(0,n-a1-a2)<<'\n';
-         else cout<<max(0,x)<<endl;
+         // cout<<'\n'<<ans<<'\n';
+         cout<<ans<<'\n';
+         
 
       }
    
