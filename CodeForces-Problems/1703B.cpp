@@ -15,14 +15,17 @@ int main()
       while(t--){
          int n;
          cin>>n;
-         int sum=0;
+         string s;
+         cin>>s;
+         int a[26]={0},ballons=0;
          f(i,0,n){
-            int x;
-            cin>>x;
-            sum+=x;
+            if(a[s[i]-'A']>0){
+               a[s[i]-'A']++;
+               ballons++;
+            }
+            else if(a[s[i]-'A']==0) {a[s[i]-'A']++;ballons+=2;}
          }
-         if(sum%2 == 0)cout<<"YES\n";
-         else cout<<"NO\n";
+         cout<<ballons<<'\n';
       }
    
    return 0;
