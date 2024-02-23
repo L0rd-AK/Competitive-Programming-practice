@@ -13,37 +13,25 @@ int main()
       int t;
       cin>>t;
       while(t--){
-         int n; cin>>n;
-         string s; cin>>s;
-         int zeros=0;
-         stack<int> zero_pos,one_pos;
-         for(int i=0;i<n;i++){
-            if(s[i]=='0'){
-               zeros++;
-               zero_pos.push(i+1);
-            }else one_pos.push(i+1);
+         int n,m; cin>>n>>m;
+         int a[n],b[m];
+         f(i,0,n)cin>>a[i];
+         f(i,0,m)cin>>b[i];
+         sort(a,a+n);
+         sort(b,b+m,greater<int>());
+         ll sum=0;
+         if(n==1){
+            cout<<abs(a[0]-b[0])<<endl;
+            continue;
          }
-         // printf("%d %d %d\n",zeros,zero_pos.size(),one_pos.size());
-        
-         int z=0;
-         for(int i=n-1;i>=0;i--){
-            if(i+1 < zeros)cout<<-1<<" ";
-            else if(s[i]=='0')cout<<0<<" ";
-            else{
-               int pos1=one_pos.top();
-               one_pos.pop();
-               int pos0;
-               while(1){
-                  pos0=zero_pos.top();
-                  zero_pos.pop();
-                  if(pos1>pos0)break;
-               }
-               z+=abs(pos0-pos1);
-               swap(s[pos0-1],s[pos1-1]);
-               cout<<z<<" ";
-            }
+         if(n%2==1){
+            for(int i=0;i<(n+1)/2;i++) sum+=abs(a[i]-b[i]);
+            for(int i=n-1,j=m-1;i>=(n+1)/2;i--,j--) sum+=abs(a[i]-b[j]);
+         }else{
+            for(int i=0;i<n/2;i++) sum+=abs(a[i]-b[i]);
+            for(int i=n-1,j=m-1;i>=n/2;i--,j--) sum+=abs(a[i]-b[j]);
          }
-         cout<<'\n';
+         cout<<sum<<endl;
       }
    
    return 0;

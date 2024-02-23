@@ -14,16 +14,17 @@ int main()
       cin>>t;
       while(t--){
          int n; cin>>n;
-         int arr[n];
-         for(int i=0;i<n;i++)cin>>arr[i];
-         int first=0,start_indx=0,end_indx=0;
-         for(int i=0;i<n;i++){
-            if(arr[i]==1 and first==0){start_indx=i;first=1;}
-            if(arr[i]==1)end_indx=i;
+         int a[n];
+         f(i,0,n)cin>>a[i];
+         int first=0,s_idx=0,e_idx=0;
+         f(i,0,n){
+            if(a[i]==1 and first==0){s_idx=i;first=1;}
+            if(a[i]==1)e_idx=i;
          }
          int ans=0;
-         for(int i=start_indx;i<=end_indx;i++){
-            if(arr[i]==0)ans++;
+         // cout<<s_idx<<" "<<e_idx<<endl;
+         for(int i=s_idx;i<=e_idx;i++){
+            if(a[i]==0)ans++;
          }
          cout<<ans<<endl;
       }
