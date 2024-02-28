@@ -10,19 +10,15 @@ int main()
       freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
    #endif
       
-      int t;
-      cin>>t;
-      while(t--){
-         int a[3],n;
-         cin>>a[0]>>a[1]>>a[2]>>n;
-         sort(a,a+3);
-         n -= 2 * a[2] - a[1] - a[0];
-         if (n < 0 || n % 3 != 0) {
-			   cout << "NO" << endl;
-         } else {
-            cout << "YES" << endl;
-         }
-      }
+   string s,str="a";
+   cin>>s;
+   str+=s;
+   int sum=0;
+   for(int i=1;i<str.length();i++){
+      int diff=abs(str[i]-str[i-1]);
+      sum+=min(diff,26-diff);
+   }
+   cout<<sum<<endl;
    
    return 0;
 }

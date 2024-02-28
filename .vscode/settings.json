@@ -4,7 +4,9 @@
         "iostream": "cpp",
         "*.tcc": "cpp",
         "vector": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "complex": "cpp",
+        "cstdlib": "cpp"
     },
     "terminal.explorerKind": "integrated",
     "terminal.sourceControlRepositoriesKind": "integrated"
