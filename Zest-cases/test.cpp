@@ -14,21 +14,18 @@ int main()
       cin>>t;
       while(t--){
          int n;cin>>n;
-         int a[n],b[n];
-         f(i,0,n)cin>>a[i];
-         f(i,0,n)cin>>b[i];
-         int min_a=a[0],min_b=b[0];
-         f(i,1,n){
-            min_a=min(min_a,a[i]);
-            min_b=min(min_b,b[i]);
-         }
-         ll ans=0;
+         string a,b;cin>>a>>b;
+         bool flag=1;
          f(i,0,n){
-            ans+=max(a[i]-min_a,b[i]-min_b);
+            if(a[i]==b[i])continue;
+            else if(a[i]=='G' and b[i]=='B' or a[i]=='B' and b[i]=='G') continue;
+            else{
+               flag=0;
+               cout<<"NO\n";
+               break;
+            }
          }
-         cout<<ans<<endl;
-
-
+         if(flag)cout<<"YES\n";
       }
    
    return 0;
