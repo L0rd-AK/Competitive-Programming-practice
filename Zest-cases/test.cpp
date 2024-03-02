@@ -15,18 +15,10 @@ int main()
          int n;cin>>n;
          string s;cin>>s;
          int size=s.length();
-         bool flag=true;
-         f(i,0,(size/2)+1){
-            if(s[i]==s[size-1-i]){
-               flag=0;
-               cout<<(size-i+1)-(i+1)<<endl;
-               break;
-            }
-            else continue;
-         }
-         
-         if(flag and size%2==1)cout<<"1\n";
-         else if(flag and size%2==0)cout<<"0\n";
+         int ans=1;
+         f(i,0,size){
+           ans=max(ans,(s[i]-'a')+1);
+         }cout<<ans<<endl;
       }
    return 0;
 }
