@@ -12,13 +12,15 @@ int main()
       
       int t;cin>>t;
       while(t--){
-         int n;cin>>n;
-         string s;cin>>s;
-         int size=s.length();
-         int ans=1;
-         f(i,0,size){
-           ans=max(ans,(s[i]-'a')+1);
-         }cout<<ans<<endl;
+         int a,b;
+         cin>>a>>b;
+         if(a<b){
+            if(abs(a-b)%2==1)cout<<"1\n";
+            else cout<<"2\n";
+         }else if(b<a){
+            if(abs(a-b)%2==1)cout<<"2\n";
+            else cout<<"1\n";
+         }else cout<<"0\n";
       }
    return 0;
 }

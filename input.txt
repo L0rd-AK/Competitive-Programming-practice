@@ -1,11 +1,6 @@
 5
-1
-a
-4
-down
-10
-codeforces
-3
-bcf
-5
-zzzzz
+2 3
+10 10
+2 4
+7 4
+9 3
