@@ -6,7 +6,8 @@
         "vector": "cpp",
         "cmath": "cpp",
         "complex": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "random": "cpp"
     },
     "terminal.explorerKind": "integrated",
     "terminal.sourceControlRepositoriesKind": "integrated"

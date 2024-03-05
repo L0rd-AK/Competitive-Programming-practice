@@ -12,15 +12,12 @@ int main()
       
       int t;cin>>t;
       while(t--){
-         int a,b;
-         cin>>a>>b;
-         if(a<b){
-            if(abs(a-b)%2==1)cout<<"1\n";
-            else cout<<"2\n";
-         }else if(b<a){
-            if(abs(a-b)%2==1)cout<<"2\n";
-            else cout<<"1\n";
-         }else cout<<"0\n";
+         int n;cin>>n;
+         int x,sum=0,odd=0,even=0;
+         f(i,0,n){cin>>x;sum+=x;if(x%2==0)even++;else odd++;}
+        
+         if(sum%2==1 or odd>0 and even>0)cout<<"YES\n";
+         else cout<<"NO\n";
       }
    return 0;
 }
