@@ -13,10 +13,13 @@ int main()
       int t;cin>>t;
       while(t--){
          int n;cin>>n;
-         int a[n],e=0,o=0;
-         f(i,0,n){cin>>a[i];if(a[i]%2==0)e+=a[i];else o+=a[i];}
-         if(e>o)cout<<"YES\n";
-         else cout<<"NO\n";
+         int a[n];
+         f(i,0,n)cin>>a[i];
+         for(int i=0;i<n/2;i++){
+            cout<<a[i]<<" "<<a[n-1-i]<<" ";
+         }
+         if(n%2==1)cout<<a[n/2]<<endl;
+         else cout<<endl;
       }
       
    return 0;
