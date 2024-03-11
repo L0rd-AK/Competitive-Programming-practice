@@ -14,8 +14,8 @@ int main()
    cin >> t;
    while (t--)
    {
-      int n;cin>>n;
-      cout<<1<<" "<<n-1<<endl;
+      int a, b;cin>>a>>b;
+      cout<<((a*b)+1)/2<<endl;
    }
 
    return 0;
