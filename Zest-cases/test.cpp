@@ -15,7 +15,9 @@ int main()
    while (t--)
    {
       int n;cin>>n;
-      cout<<1<<" "<<n-1<<endl;
+      cout<<n<<" ";
+      f(i,1,n)cout<<i<<" ";
+      cout<<'\n';
    }
 
    return 0;
