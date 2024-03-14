@@ -13,16 +13,11 @@ int main()
    cin >> t;
    while (t--)
    {
-      int n,m,k;cin>>n>>m>>k;
-      int a[n],b[m];
-      f(i,0,n)cin>>a[i];
-      f(i,0,m)cin>>b[i];
-      int ans=0;
-      f(i,0,n)
-         f(j,0,m){
-            if(a[i]+b[j]<=k)ans++;
-         }
-      cout<<ans<<endl;
+      int n;cin>>n;
+      ll s1=pow(2,n),s2=0;
+      for(int i=1;i<n/2;i++) s1+=pow(2,i);
+      for(int i=n/2;i<n;i++) s2+=pow(2,i);
+      cout<<s1-s2<<endl;
    }
 
    return 0;
