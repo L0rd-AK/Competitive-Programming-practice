@@ -13,16 +13,12 @@ int main()
    cin >> t;
    while (t--)
    {
-      string s;cin>>s;
-      int a=0,b=0,c=0;
-      f(i,0,s.length()){
-         if(s[i]=='A')a++;
-         else if(s[i]=='B')b++;
-         else c++;
-      }
-      if(a==b and c==0 or b==c and a==0)cout<<"YES\n";
-      else if(b==(a+c))cout<<"YES\n";
-      else cout<<"NO\n";
+      int a[3];
+      cin>>a[0]>>a[1]>>a[2];
+      sort(a,a+3);
+      if(a[1]!=a[2])cout<<"NO\n";
+      else cout<<"YES\n"<<a[0]<<" "<<a[0]<<" "<<a[2]<<endl;
+
    }
 
    return 0;
