@@ -13,12 +13,21 @@ int main()
    cin >> t;
    while (t--)
    {
-      int a[3];
-      cin>>a[0]>>a[1]>>a[2];
-      sort(a,a+3);
-      if(a[1]!=a[2])cout<<"NO\n";
-      else cout<<"YES\n"<<a[0]<<" "<<a[0]<<" "<<a[2]<<endl;
-
+      int n,m,k;cin>>n>>m>>k;
+      set<int> a,b,ans;
+      f(i,0,n){int x;
+         cin>>x;
+         a.insert(x);
+      }
+      f(i,0,m){int x;
+         cin>>x;
+         b.insert(x);
+      }
+      int x=0,y=0;
+      for(auto i:a) if(i<=k){ans.insert(i);x++;}
+      for(auto i:b) if(i<=k){ans.insert(i);y++;}
+      if(ans.size()==k and x>=k/2 and y>=k/2)cout<<"YES\n";
+      else cout<<"NO\n";
    }
 
    return 0;

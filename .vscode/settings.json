@@ -7,7 +7,9 @@
         "cmath": "cpp",
         "complex": "cpp",
         "cstdlib": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "bitset": "cpp",
+        "set": "cpp"
     },
     "terminal.explorerKind": "integrated",
     "terminal.sourceControlRepositoriesKind": "integrated"
