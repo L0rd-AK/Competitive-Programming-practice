@@ -12,19 +12,22 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n,m;
-      cin>>n>>m;
-      if(n == 1 ){
-            cout<<0<<endl;
-            continue;
-        }
-        if(n == 2){
-            cout<<m<<endl;
-            continue;
-        }
-        if(n>2){
-            cout<<m*2<<endl;
-        }
+      int n;cin>>n;
+      int a[n];
+      f(i,0,n)cin>>a[i];
+      if(n==1){cout<<1<<endl;continue;}
+      else if(n==2){
+        if(a[0]!=a[1])cout<<1<<endl;
+        else cout<<2<<endl;
+        continue;
+      }
+      sort(a,a+n);
+      int mean=a[(n - 1) / 2 ];
+      int ans=0;
+      f(i,0,n){
+        if(a[i]>mean)ans++;
+      }
+      cout<<((n/2)+1)-ans<<endl;
    }
 
 
