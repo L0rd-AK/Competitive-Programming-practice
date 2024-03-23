@@ -9,12 +9,23 @@ int main()
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
 
-   string a,b;
-   cin>>a;cin.ignore();
-   getline(cin,b);
-   // cout<<a<<" "<<b;
-   if(a[0]==b[0] or a[1]==b[1] or a[0]==b[3] or a[1]==b[4] or a[0]==b[6] or a[1]==b[7] or a[0]==b[9] or a[1]==b[10] or a[0]==b[12] or a[1]==b[13])cout<<"YES\n";
-   else cout<<"NO\n";
+   int t;
+   cin>>t;
+   while(t--){
+      int n,m;
+      cin>>n>>m;
+      if(n == 1 ){
+            cout<<0<<endl;
+            continue;
+        }
+        if(n == 2){
+            cout<<m<<endl;
+            continue;
+        }
+        if(n>2){
+            cout<<m*2<<endl;
+        }
+   }
 
 
    return 0;
