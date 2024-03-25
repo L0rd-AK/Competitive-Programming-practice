@@ -11,15 +11,23 @@ int main()
 
    int t;
    cin>>t;
-   int a[]={1,3,6,10,15};
    while(t--){
       int n;cin>>n;
-      int coin=0,i=4;
-      while(n>1){
-         if(n/a[i]){n/=a[i];coin++;}
-         else i--;
+      int a[n];
+      f(i,0,n)cin>>a[i];
+      if(n==1){cout<<1<<endl;continue;}
+      else if(n==2){
+        if(a[0]!=a[1])cout<<1<<endl;
+        else cout<<2<<endl;
+        continue;
       }
-      cout<<coin<<endl;
+      sort(a,a+n);
+      int mean=a[(n - 1) / 2 ];
+      int ans=0;
+      f(i,0,n){
+        if(a[i]>mean)ans++;
+      }
+      cout<<((n/2)+1)-ans<<endl;
    }
 
 
