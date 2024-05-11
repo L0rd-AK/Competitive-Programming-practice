@@ -1,0 +1,82 @@
+[
+    {
+        "id":1,
+        "name":"Amit Kumar Ghosh",
+        "img":"https://i.ibb.co/vQjhGc9/student-1.jpg",
+        "rating":4,
+        "subject":"General Physics",
+        "review":"The General Physics course provided a comprehensive understanding of fundamental principles. The content covered topics like mechanics, electromagnetism, and thermodynamics. The interactive simulations and practical examples enhanced learning. However, some complex concepts could benefit from additional explanations. Overall, a valuable resource for physics enthusiasts."
+    },
+    {
+        "id":2,
+        "name":"Mehedi Hasan",
+        "img":"https://i.ibb.co/0rbPr8j/student-2.jpg",
+        "rating":4,
+        "subject":"Contemporary Biology",
+        "review":"The Contemporary Biology course provides a personalized exploration of science and self. Learners delve into topics like cell structures, energy transfer, and adaptations. The interactive modules, videos, and quizzes enhance understanding. However, some complex concepts could benefit from additional explanations. Overall, a valuable introduction to biology for curious minds."
+    },
+    {
+        "id":3,
+        "name":"Wilder Nolan",
+        "img":"https://i.ibb.co/sgqhwmJ/student-3.jpg",
+        "rating":4,
+        "subject":"General Mathematics",
+        "review":"The General Mathematics course provides a solid foundation in essential mathematical concepts. Covering topics such as algebra, geometry, and statistics, it caters to both beginners and those seeking a refresher. The course materials are well-organized, with clear explanations and practical examples. However, some advanced topics could benefit from additional depth. Overall, a valuable resource for anyone looking to improve their mathematical skills."
+    },
+    {
+        "id":4,
+        "name":"Austin Benji",
+        "img":"https://i.ibb.co/RQM1LYz/student-4.jpg",
+        "rating":4,
+        "subject":"Physics-II",
+        "review":"Physics-II was like riding a rollercoaster through the fabric of the universe! The instructor, Professor Quirk, had us calculating the curvature of spacetime while juggling bananas (don't ask). The course covered everything from fluid dynamics (because physics needs more water slides) to quantum entanglement (which, incidentally, is like a banana split gone interdimensional). Beware: The final exam involved balancing on a unicycle while explaining string theory. Overall, a mind-bending experience just don't slip on those banana peels!"
+    },
+    {
+        "id":5,
+        "name":"Jayden Cade",
+        "img":"https://i.ibb.co/VWhxnJj/student-5.jpg",
+        "rating":4,
+        "subject":"Chemistry",
+        "review":"learn Sprint's Chemistry Courses offer a diverse exploration of matter and its interactions. Topics span organic and inorganic chemistry, industrial applications, and the chemistry of food, healthcare, and the environment. Whether you're an individual seeking to upskill or a company aiming to train your workforce, these courses provide valuable insights."
+    },
+    {
+        "id":6,
+        "name":"Ryder Huberman",
+        "img":"https://i.ibb.co/X7hS1Cr/student-6.jpg",
+        "rating":5,
+        "subject":"Web Development",
+        "review":"learn Sprint's Full Stack Web Development Course offers an engaging learning experience, equipping students with essential knowledge and expert guidance. Covering front-end and server-side development, the program delves into responsive design, frameworks, and user interface development. Participants gain hands-on skills through practical projects, including building client-side web pages using Bootstrap 4. Whether you're a beginner or aiming to enhance your tech expertise, this course provides a solid foundation for a rewarding career in web development."
+    },
+    {
+        "id":7,
+        "name":"Easton Gogins",
+        "img":"https://i.ibb.co/M5qcvYg/student-7.jpg",
+        "rating":4,
+        "subject":"Graphic Design",
+        "review":"learn Sprint's Fundamentals of Graphic Design, offered by the California Institute of the Arts, provides a solid foundation for aspiring designers. The course covers essential principles such as imagemaking, typography, composition, color theory, and shape manipulation. While it's beginner-friendly, even self-taught designers can benefit from revisiting these fundamental concepts. Learners appreciate the engaging format, practical exercises, and the opportunity to explore graphic design basics. However, note that it emphasizes art creation rather than software-specific skills like Photoshop or InDesign."
+    },
+    {
+        "id":8,
+        "name":"Andrew Hendrix",
+        "img":"https://i.ibb.co/K79NCrY/student-8.jpg",
+        "rating":4,
+        "subject":"UI/UX Design",
+        "review":"While UI/UX Design in 90 Words sounds intriguing, it's tough to gauge its effectiveness without knowing more. A strong course should balance UI (visual design) and UX (user experience) principles. Ideally, it would cater to your background (beginner or experienced) and offer a mix of lectures, projects, and industry insights. Look for reviews mentioning these aspects to see if it aligns with your needs."
+    },
+    {
+        "id":9,
+        "name":"Jericho Knah",
+        "img":"https://i.ibb.co/8xQ4Dj8/student-9.jpg",
+        "rating":4,
+        "subject":"English II",
+        "review":"English II online courses vary depending on the provider. Ideally, it should build on your English foundation, focusing on critical analysis of literature (fiction, poetry, novels) and honing writing skills through essays and analyses. Look for courses with a mix of reading materials, lectures, and writing exercises. Check reviews for details on instructor expertise, course structure, and if it aligns with your goals (improving general English, prepping for a specific exam)."
+    },
+    {
+        "id":10,
+        "name":"Dax Gunner",
+        "img":"https://i.ibb.co/7XBj9Cp/student-10.jpg",
+        "rating":4,
+        "subject":"Mathematics-II",
+        "review":"Math-II sounds like a solid online option for conquering your second semester of math. Check if the course structure aligns with your learning style. Does it offer interactive lessons, practice problems, and opportunities to ask questions? Look for reviews mentioning clear explanations and engaging instructors. If you crave a more personalized touch, consider supplementing Math-II with online tutoring or study groups."
+    }
+]

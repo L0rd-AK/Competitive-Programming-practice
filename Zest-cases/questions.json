@@ -1,0 +1,42 @@
+[
+    {
+        "question":"How can i enroll in a course?",
+        "ans":"First, you need to register on our website. After registering,you will find two types of courses on our website. Free and paid: you enroll in a free course right away, but to enroll in a paid course, you need to pay some amount of money."
+    },
+    {
+        "question":"How can I join as a teacher?",
+        "ans":"To join as a teacher, you need to provide certain information. You need to provide your full name, your NID number, your institute name, and your certificate copy. Your provided information will be checked by our team, and if all of your information is valid, you will be allowed to join as a teacher."
+    },
+    {
+        "question":"How can I pay for a course?",
+        "ans":"You can pay using the SSLCOMMERZ Payment Gateway. You can pay using a card or by using mobile banking services like bKash, Rocket, Nagad, and others."
+    },
+    {
+        "question":"I work Full time, Can i join a course?",
+        "ans":"It totally depends on you. If you can manage 1-2 hours every day, then you can join a course, but some courses demand more hours in a day. Even if you can't give time every day, you can catch up by giving more time on weekends."
+    },
+    {
+        "question":"How do I access my purchased courses?",
+        "ans":"After purchase, log in to your account, go to “My Courses,” and start learning!"
+    },
+    {
+        "question":" Are there any prerequisites for specific courses?",
+        "ans":"Course prerequisites vary. Check the course details for specific requirements."
+    },
+    {
+        "question":" Can I share my course access with others?",
+        "ans":"Course access is for individual use only. Sharing accounts violates our terms."
+    },
+    {
+        "question":"What topics do your courses cover?",
+        "ans":"Our diverse catalog includes programming, business, art, health, and much more!"
+    },
+    {
+        "question":" Can I get a refund if I'm not satisfied?",
+        "ans":"Yes! We offer a 7-day money-back guarantee. Just contact our support team."
+    },
+    {
+        "question":" Are certificates provided upon course completion?",
+        "ans":"Absolutely! Earn certificates for completing courses and showcase your skills."
+    }
+]

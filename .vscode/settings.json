@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "vector": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp",
+        "cstdlib": "cpp",
+        "random": "cpp",
+        "bitset": "cpp",
+        "set": "cpp",
+        "deque": "cpp",
+        "string": "cpp"
+    },
+    "terminal.explorerKind": "integrated",
+    "terminal.sourceControlRepositoriesKind": "integrated"
+}
