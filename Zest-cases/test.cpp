@@ -12,18 +12,21 @@ int main()
 
    int t;
    cin>>t;
+   int clock[]={1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12};
    while(t--){
-      int n;
-      cin>>n;
-      int a[n],b[n];
-      f(i,0,n)cin>>a[i];
-      f(i,0,n)cin>>b[i];
-      int ans=0,c=0;
-      for(int i=0;i<n;i++){
-         if(a[i-c]>b[i])ans++,c++;
+      int a,b,c,d;
+      cin>>a>>b>>c>>d;
+      int mn=min(a,b),mx=max(a,b);
+      // cout<<mn<<" "<<mx<<endl;
+      int f1=0,f2=0;
+
+      for(int i=mn;i<=mx;i++){
+         if(i==c)f1=1;
+         if(i==d)f2=1;
       }
-      cout<<ans<<endl;
+      if((f1+f2)==1)cout<<"YES"<<endl;
+      else cout<<"NO"<<endl;
+      
    }
-   
    return 0;
 }
