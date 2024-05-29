@@ -1,22 +1,5 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
-
-class Student {
-public:
-    int id;
-    string name;
-    char section;
-    int marks;
-
-    Student(int id, const string& name, char section, int marks){
-        this->id=id;
-        this->name=name;
-        this->section=section;
-        this->marks=marks;
-    }
-
-};
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -26,13 +9,13 @@ int main() {
     cin>>t;
     while(t--){
         int n=3;
-        int a; string b; char c; int d;
-        int max_a; string max_b; char max_c; int max_d=-999;
+        int a; char b[100]; char c; int d;
+        int max_a; char max_b[100]; char max_c; int max_d=-999;
         while(n--){
             cin>>a>>b>>c>>d;
             if(d>max_d){
                 max_a=a;
-                max_b=b;
+                strcpy(max_b,b);
                 max_c=c;
                 max_d=d;
             }

@@ -10,23 +10,12 @@ int main()
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
 
-   int t;
-   cin>>t;
-   int clock[]={1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12};
-   while(t--){
-      int a,b,c,d;
-      cin>>a>>b>>c>>d;
-      int mn=min(a,b),mx=max(a,b);
-      // cout<<mn<<" "<<mx<<endl;
-      int f1=0,f2=0;
-
-      for(int i=mn;i<=mx;i++){
-         if(i==c)f1=1;
-         if(i==d)f2=1;
-      }
-      if((f1+f2)==1)cout<<"YES"<<endl;
-      else cout<<"NO"<<endl;
-      
-   }
+   int a,b;
+   char c;
+   cin>>a>>c>>b;
+   if(a>b and c=='>')cout<<"Right\n";
+   else if(a<b and c=='<')cout<<"Right\n";
+   else if(a==b and c=='=')cout<<"Right\n";
+   else cout<<"Wrong\n";
    return 0;
 }
