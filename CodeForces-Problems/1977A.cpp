@@ -13,21 +13,13 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n;cin>>n;
-      string s;
-      cin>>s;
-      bool f=1;
-      f(i,0,n-1){
-         if(s[i]>='a' and s[i]<='z' and s[i]<=s[i+1] or s[i]>='0' and s[i]<='9' and s[i]<=s[i+1])continue;
-         else{
-            cout<<"NO\n";
-            f=0;
-            break;
-         }
+      int a,b;
+      cin>>a>>b;
+      if(a>=b){
+         if((a-b)%2==0)cout<<"YES\n";
+         else cout<<"NO\n";
       }
-      if(f)cout<<"YES\n";
-     
+      else cout<<"NO\n";
    }
-
    return 0;
 }
