@@ -13,18 +13,24 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      string s;
-      cin>>s;
-      int ok=0;
-      int ans=1;
-      f(i,0,s.length()-1){
-         if(s[i]==s[i+1]) continue;
-         else ans++;
-         if(s[i]=='0' and s[i+1]=='1')ok=1;
+      int a,b,c;
+      cin>>a>>b>>c;
+      int ans=0;
+      while(a>0 and c>0){
+         ans++;
+         a--;
+         c--;
       }
-      cout<<ans-ok<<endl;
-      
-      
+      if((a+b+c)%==1)cout<<"-1\n";
+      else{
+         while(b>0 and c>0){
+            ans++;
+            b--;
+            c--;
+         }
+         cout<<ans+(b/2)<<endl;
+      }
+     
    }
 
    return 0;

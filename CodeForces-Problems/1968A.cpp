@@ -13,18 +13,9 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      string s;
-      cin>>s;
-      int ok=0;
-      int ans=1;
-      f(i,0,s.length()-1){
-         if(s[i]==s[i+1]) continue;
-         else ans++;
-         if(s[i]=='0' and s[i+1]=='1')ok=1;
-      }
-      cout<<ans-ok<<endl;
-      
-      
+      int n;
+      cin>>n;
+      cout<<n-1<<endl;
    }
 
    return 0;

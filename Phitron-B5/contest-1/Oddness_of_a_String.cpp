@@ -13,17 +13,29 @@ int main()
    int t;
    cin>>t;
    while(t--){
+      int n,q;
+      cin>>n>>q;
       string s;
       cin>>s;
-      int ok=0;
-      int ans=1;
-      f(i,0,s.length()-1){
-         if(s[i]==s[i+1]) continue;
-         else ans++;
-         if(s[i]=='0' and s[i+1]=='1')ok=1;
+      while(q--){
+      int odd=0;
+        int a[26]={0},l,r;
+        cin>>l>>r;
+        for(int i=l-1;i<r;i++){
+            a['a'-s[i]]++;
+        }
+        for(int i=0;i<26;i++){
+            if(a[i]%2==1)odd++;
+        }
+        cout<<odd<<"\n";
+
       }
-      cout<<ans-ok<<endl;
+
       
+
+      for(int i=0;i<n;i++){
+        
+      }
       
    }
 

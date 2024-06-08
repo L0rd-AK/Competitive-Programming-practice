@@ -13,17 +13,22 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      string s;
-      cin>>s;
-      int ok=0;
-      int ans=1;
-      f(i,0,s.length()-1){
-         if(s[i]==s[i+1]) continue;
-         else ans++;
-         if(s[i]=='0' and s[i+1]=='1')ok=1;
+      int n,k;
+      cin>>n>>k;
+
+      int arr[10000+7]={0};
+      int x;
+      f(i,0,n){
+        cin>>x;
+        arr[x]++;
       }
-      cout<<ans-ok<<endl;
-      
+      int mx=arr[0];
+      f(i,1,10002){
+        if(arr[i]>mx)mx=arr[i];
+      }
+        // cout<<mx<<endl;
+      if(k>=n-mx)cout<<"YES\n";
+      else cout<<"NO\n";
       
    }
 

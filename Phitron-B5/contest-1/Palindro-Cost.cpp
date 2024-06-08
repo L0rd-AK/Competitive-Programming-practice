@@ -13,18 +13,21 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      string s;
-      cin>>s;
-      int ok=0;
-      int ans=1;
-      f(i,0,s.length()-1){
-         if(s[i]==s[i+1]) continue;
-         else ans++;
-         if(s[i]=='0' and s[i+1]=='1')ok=1;
+      string s;cin>>s;
+      int n;cin>>n;
+    //   cout<<s<<" "<<n<<endl;
+      int N=s.length();
+      int x=0;
+      for(int i=0;i<N/2;i++){
+        if(s[i]==s[N-1-i])continue;
+        else{
+            x+=abs(s[i]-s[N-1-i]);
+            // cout<<abs(s[i]-s[N-1-i])<<endl;
+        } 
       }
-      cout<<ans-ok<<endl;
-      
-      
+    // cout<<x<<endl;
+      if(n>=x)cout<<"YES\n";
+      else cout<<"NO\n";
    }
 
    return 0;
