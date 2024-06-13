@@ -13,16 +13,25 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      string s;
-      cin>>s;
-      int ok=0;
-      int ans=1;
-      f(i,0,s.length()-1){
-         if(s[i]==s[i+1]) continue;
-         else ans++;
-         if(s[i]=='0' and s[i+1]=='1')ok=1;
+      ll n;cin>>n;
+      int x=n%10;
+      if(x>8){cout<<"NO\n";continue;}
+      else{
+         n/=10;
+         int ok=1;
+         while(n>9){
+            x=n%10;
+            if(x==0){
+               cout<<"NO\n";
+               ok=0;
+               break;
+            }
+            n/=10;
+         }
+         if(ok){
+            cout<<(n==1?"YES\n":"NO\n");
+         }
       }
-      cout<<ans-ok<<endl;
       
       
    }
