@@ -17,13 +17,15 @@ int main()
       cin>>n>>q;
       string s;
       cin>>s;
+      
       while(q--){
-      int odd=0;
-        int a[26]={0},l,r;
+        int odd=0;
+        int l,r;
         cin>>l>>r;
-        for(int i=l-1;i<r;i++){
-            a['a'-s[i]]++;
-        }
+        int a[26]={0};
+         for(int i=l-1;i<r;i++){
+               a[s[i]-'a']++;
+         }
         for(int i=0;i<26;i++){
             if(a[i]%2==1)odd++;
         }
