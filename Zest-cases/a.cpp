@@ -1,21 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int n;
-    cin >> n;
-    vector<vector<char>> c(n, vector<char>(n, ' '));
-    for (int i=0;i<n;i++) {
-        c[i][i]='\\';           
-        c[i][n-i-1]='/';       
-    }
-   c[n/2][n/2]='X';
-    for (int i=0;i<n;i++){
-        for (int j=0;j<n; j++) {
-            cout<<c[i][j];
+void printAllSubsets(vector<int>& arr) {
+    int n = arr.size();
+    int totalSubsets = 1 << n; // 2^n subsets
+    
+    for (int i = 0; i < totalSubsets; ++i) {
+        cout << "{ ";
+        for (int j = 0; j < n; ++j) {
+            if (i & (1 << j)) {
+                cout << arr[j] << " ";
+            }
         }
-        cout<<endl;
+        cout << "}" << endl;
     }
+}
 
+int main() {
+    vector<int> arr = {1, 2, 3,4,5};
+    printAllSubsets(arr);
     return 0;
 }
