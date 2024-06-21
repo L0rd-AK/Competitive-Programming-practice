@@ -9,17 +9,17 @@ int main()
 #ifndef ONLINE_JUDGE
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-string a,b;
-    while(cin>>a>>b){
+   int t;cin>>t;
+
+    while(t--){
+      string s,a="314159265358979323846264338327";
+      cin>>s;
       int ans=0;
-        for(int i=0,j=0;i<a.length();i++){
-           if(a[i]==b[j]){
-            ans++;
-            j++;
-           }
-        }
-        if(ans==b.length())cout<<"Possible\n";
-        else cout<<"Impossible\n";
+      for(int i=0;i<s.length();i++){
+         if(s[i]==a[i])ans++;
+         else break;
+      }
+      cout<<ans<<endl;
     }
 
     return 0;
