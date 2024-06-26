@@ -12,14 +12,28 @@ int main()
    int t;cin>>t;
 
     while(t--){
-      string s,a="314159265358979323846264338327";
-      cin>>s;
-      int ans=0;
-      for(int i=0;i<s.length();i++){
-         if(s[i]==a[i])ans++;
-         else break;
-      }
-      cout<<ans<<endl;
+      int ans=0,carry=0;
+        for(int i=0;i<n;i++){
+            if(a[i]>=l and a[i]<=r or carry+a[i]>=l and carry+a[i]<=r){ans++;carry=0;}
+            else carry+=a[i];
+            if(carry>r)carry=0;
+            else if(carry>=l and carry<=r){
+                ans++;
+                carry=0;
+            }
+        }
+        int ans1=0;
+        carry=0;
+        for(int i=n-1;i>=0;i--){
+            if(a[i]>=l and a[i]<=r or carry+a[i]>=l and carry+a[i]<=r){ans1++;carry=0;}
+            else carry+=a[i];
+            if(carry>r)carry=0;
+            else if(carry>=l and carry<=r){
+                ans1++;
+                carry=0;
+            }
+        }
+        cout<<max(ans,ans1)<<endl;
     }
 
     return 0;
