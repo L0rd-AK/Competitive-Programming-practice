@@ -34,30 +34,23 @@ void print_linked_list(Node *head)
     cout << endl;
 }
 
-void delete_val(Node *&head, int x)
+void remove_duplicats(Node* head)
 {
-    if(head->val == x)
-    {
-        Node* deletenode = head;
-        head = head->next;
-        delete deletenode;
-        return;
-    }
-
-    Node *tmp = head;
-    while (tmp->next != NULL)
-    {
-        if(tmp->next->val == x)
-        {
-            Node* deletenode = tmp->next;
-            tmp->next = tmp->next->next;
-            delete deletenode;
-            break;
+    Node *cur, *prev, *temp;
+    cur = head;
+    while (cur != NULL && cur->next != NULL) {
+        prev = cur;
+        while (prev->next != NULL) {
+            if (cur->val == prev->next->val) {
+                temp = prev->next;
+                prev->next = prev->next->next;
+                delete (temp);
+            }
+            else prev = prev->next;
         }
-        tmp = tmp->next;
+        cur = cur->next;
     }
 }
-
 int main()
 {
     Node *head = NULL;
@@ -70,12 +63,7 @@ int main()
             break;
         insert_tail(head, tail, val);
     }
-    for(Node *i=head;i!=NULL;i=i->next){
-        for(Node *j=i->next;j!=NULL;j=j->next){
-            if(i==j) delete_val(head,j);
-        }
-    }
-    
+    remove_duplicats(head);
     print_linked_list(head);
     return 0;
 }

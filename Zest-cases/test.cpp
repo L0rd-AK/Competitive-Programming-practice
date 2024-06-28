@@ -10,14 +10,21 @@ int main()
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
    int t;cin>>t;
-
     while(t--){
-      int a,b,c;
-      cin>>a>>b>>c;
-      int x=abs(a-a)+abs(b-a)+abs(c-a);
-      int y=abs(a-b)+abs(b-b)+abs(c-b);
-      int z=abs(a-c)+abs(b-c)+abs(c-c);
-      cout<<min({x,y,z})<<endl;
+      int n;
+      cin>>n;
+      int mx=0,x=-1;
+      for(int i=2; i<=n; ++i)
+      {
+         int sum=0;
+         for(int j=1; j*i<=n; ++j) sum+=j*i;
+         if(sum>mx)
+         {
+               mx=sum;
+               x=i;
+         }
+      }
+      cout<<x<<endl;
     }
 
     return 0;
