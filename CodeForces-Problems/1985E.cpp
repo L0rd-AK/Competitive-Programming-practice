@@ -12,23 +12,22 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n;
-      cin>>n;
-      vector<ll> v(n),p(n,0),mx(n,0);
-      ll x=0;
-      f(i,0,n){
-         cin>>v[i];
-         x=max(x,v[i]);
-         mx[i]=x;
+      ll a,b,c,k;
+      cin>>a>>b>>c>>k;
+      ll ans=0,mx;
+      f1(i,1,a){
+         f1(j,1,b){
+            if(k%i==0 and k%j==0){
+               ll x=k/(i*j);
+               if(x<=c and i*j*x==k){
+                  mx=(a-i+1)*(b-j+1)*(c-x+1);
+                  ans=max(ans,mx);
+               }
+            }
+         }
       }
-      p[0]=v[0];
-      f(i,1,n)p[i]=v[i]+p[i-1];
-      int ans=0;
-      for(int i=n-1;i>=0;i--){
-            if(p[i]-mx[i]==mx[i])ans++;
-      }
-      cout<<ans<<"\n";
-
+      if(ans)cout<<ans<<"\n";
+      else cout<<"0\n";
 
     }
 

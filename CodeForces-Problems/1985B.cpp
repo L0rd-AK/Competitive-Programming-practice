@@ -9,27 +9,22 @@ int main()
 #ifndef ONLINE_JUDGE
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-   int t;
-   cin>>t;
-   while(t--){
+   int t;cin>>t;
+    while(t--){
       int n;
       cin>>n;
-      vector<ll> v(n),p(n,0),mx(n,0);
-      ll x=0;
-      f(i,0,n){
-         cin>>v[i];
-         x=max(x,v[i]);
-         mx[i]=x;
+      int mx=0,x=-1;
+      for(int i=2; i<=n; ++i)
+      {
+         int sum=0;
+         for(int j=1; j*i<=n; ++j) sum+=j*i;
+         if(sum>mx)
+         {
+               mx=sum;
+               x=i;
+         }
       }
-      p[0]=v[0];
-      f(i,1,n)p[i]=v[i]+p[i-1];
-      int ans=0;
-      for(int i=n-1;i>=0;i--){
-            if(p[i]-mx[i]==mx[i])ans++;
-      }
-      cout<<ans<<"\n";
-
-
+      cout<<x<<endl;
     }
 
     return 0;
