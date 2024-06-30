@@ -12,30 +12,27 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n;
-      cin>>n;
-      vector<pair<int,int>> v(n);
-      f(i,0,n){
-          cin>>v[i].first;
-          v[i].second=i;
-      }
-      int x=-69,idx=0;
-      f(i,0,n){
-         if(x<=v[i].first){
-            x=v[i].first;
-            idx=i;
+      int n,m;
+      cin>>n>>m;
+      vector<vector<int>>v(n+2,vector<int>(m+2));
+
+      f1(i,0,n+1)f1(j,0,m+1)v[i][j]=0;
+      f1(i,1,n)f1(j,1,m)cin>>v[i][j];
+      // f1(i,0,n+1){f1(j,0,m+1)cout<<v[i][j]<<" ";cout<<endl;}
+
+      f1(i,1,n){
+         f1(j,1,m){
+            if(v[i][j]>v[i-1][j] && v[i][j]>v[i+1][j] && v[i][j]>v[i][j-1] && v[i][j]>v[i][j+1]){
+               v[i][j]=max({v[i-1][j],v[i+1][j],v[i][j-1],v[i][j+1]});
+            }
          }
       }
-      if(n-1==idx){
-         sort(v.begin(),v.end());
-         cout<<v[n-1].first+v[n-2].first<<endl;
-      }else{
-         cout<<v[n-1].first+v[idx].first<<endl;
+      f1(i,1,n){
+         f1(j,1,m){cout<<v[i][j]<<" ";}
+         cout<<"\n";
       }
-       
-
-
-    }
+      
+      }
 
     return 0;
 }
