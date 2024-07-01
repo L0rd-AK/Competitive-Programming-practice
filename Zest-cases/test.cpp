@@ -12,27 +12,30 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n,m;
-      cin>>n>>m;
-      vector<vector<int>>v(n+2,vector<int>(m+2));
-
-      f1(i,0,n+1)f1(j,0,m+1)v[i][j]=0;
-      f1(i,1,n)f1(j,1,m)cin>>v[i][j];
-      // f1(i,0,n+1){f1(j,0,m+1)cout<<v[i][j]<<" ";cout<<endl;}
-
-      f1(i,1,n){
-         f1(j,1,m){
-            if(v[i][j]>v[i-1][j] && v[i][j]>v[i+1][j] && v[i][j]>v[i][j-1] && v[i][j]>v[i][j+1]){
-               v[i][j]=max({v[i-1][j],v[i+1][j],v[i][j-1],v[i][j+1]});
-            }
+      int n;
+      cin>>n;
+      vector<ll> v(n,0);
+      f(i,0,n) cin>>v[i];
+      if(n==2){
+         if(v[0]<v[1])cout<<v[0]<<"\n";
+         else cout<<v[1]<<"\n";
+      }else{
+         int mx=INT_MIN,x=0;
+         vector<int> vt;
+         f(i,0,n-2){
+            vt.push_back(v[i]);
+            vt.push_back(v[i+1]);
+            vt.push_back(v[i+2]);
+            sort(vt.begin(),vt.end());
+            mx=max(mx,vt[1]);
+            // for(auto i:vt)cout<<i<<" ";
+            // cout<<mx<<endl;
+            vt.clear();
          }
+         cout<<mx<<endl;
       }
-      f1(i,1,n){
-         f1(j,1,m){cout<<v[i][j]<<" ";}
-         cout<<"\n";
-      }
-      
-      }
+
+   }
 
     return 0;
 }

@@ -1,40 +1,28 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
-
-int main()
-{
-#ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+const int N = 1e5+10;
+int a[N];
+int main(){
+    #ifndef ONLINE_JUDGE
+   freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-    int t;
-    cin >> t;
-    while (t--) {
-        int n, m;
-        cin >> n >> m;
-        vector<vector<int>> v(n, vector<int>(m));
-
-        f(i, 0, n) f(j, 0, m) v[i][j] = 0;
-        f1(i, 1, n) f1(j, 1, m) cin >> v[i][j];
-        f1(i, 1, n) f1(j, 1, m) cout << v[i][j];
-
-        f1(i, 1, n) {
-            f1(j, 1, m) {
-                if (v[i][j] > v[i - 1][j] && v[i][j] > v[i + 1][j] && v[i][j] > v[i][j - 1] && v[i][j] > v[i][j + 1]) {
-                    if (v[i][j - 1] == 0 && v[i - 1][j] == 0)
-                        v[i][j] = v[i][j + 1];
-                    else if (v[i][j - 1] == 0 && v[i - 1][j] != 0)
-                        v[i][j] = v[i - 1][j];
-                }
+    int n,t;
+    cin>>t;
+    while(t--){
+        cin>>n;
+        for(int i=1;i<=n;i++) 
+            cin>>a[i];
+        if(n==2)cout<<min(a[1],a[2])<<"\n";
+        else{
+            int ans = min(a[1],a[2]);
+            for(int i=1;i<=n-2;i++){
+                vector<int> tmp;
+                for(int k=0;k<=2;k++)
+                    tmp.push_back(a[i+k]);
+                sort(tmp.begin(),tmp.end());
+                ans = max(ans,tmp[1]);
             }
-        }
-        f1(i, 1, n) {
-            f1(j, 1, m) { cout << v[i][j] << " "; }
-            cout << "\n";
+            cout<<ans<<"\n";
         }
     }
-
-    return 0;
 }
