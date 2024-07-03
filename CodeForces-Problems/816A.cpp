@@ -13,16 +13,29 @@ int main()
       int a,b,c,d,x,y,z,ans=0;
       char ch;
       cin>>x>>ch>>y;
-      
-      if(size_a>size_b){
-         for(auto i:a) if(i==b[j])j++;
-         ans=size_b-j;
-         cout<<size_a+ans<<endl;
-      }else{
-         for(auto i:b) if(i==a[j])j++;
-         ans=size_a-j;
-         cout<<size_b+ans<<endl;
+      a=x/10;b=x%10;
+      z=(b*10)+a;
+      if(z==y){
+        cout<<0<<endl;
+        return 0;
       }
+      while(z!=y){
+        y++;
+        ans++;
+        if(y==60){
+            y=0;
+            x++;
+            if(x==24){
+                x=0;
+                cout<<ans<<endl;
+                return 0;
+            }
+            a=x/10;b=x%10;
+            z=(b*10)+a;
+        }
+        if(z==24)z=0;
+      }
+      cout<<ans<<endl;
 
     return 0;
 }

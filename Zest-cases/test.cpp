@@ -14,27 +14,28 @@ int main()
    while(t--){
       int n;
       cin>>n;
-      vector<ll> v(n,0);
-      f(i,0,n) cin>>v[i];
-      if(n==2){
-         if(v[0]<v[1])cout<<v[0]<<"\n";
-         else cout<<v[1]<<"\n";
-      }else{
-         int mx=INT_MIN,x=0;
-         vector<int> vt;
-         f(i,0,n-2){
-            vt.push_back(v[i]);
-            vt.push_back(v[i+1]);
-            vt.push_back(v[i+2]);
-            sort(vt.begin(),vt.end());
-            mx=max(mx,vt[1]);
-            // for(auto i:vt)cout<<i<<" ";
-            // cout<<mx<<endl;
-            vt.clear();
-         }
-         cout<<mx<<endl;
+      int a[n],b[n];
+      f(i,0,n)cin>>a[i];
+      f(i,0,n)cin>>b[i];
+      int mn=0,mx=0,ans=INT_MIN,ans_pro_max=INT_MAX;
+      f(i,0,n){
+        if(a[i]<b[i]){
+           mx+=b[i];
+        }
+        else if(a[i]>b[i]){
+            mx+=a[i];
+        }
+        else{ 
+            if(a[i]==1)
+                mn+=a[i];
+            else if(a[i]==-1)
+                mx+=a[i];
+        }
       }
-
+      
+      cout<<min(mx,mn)<<endl;
+    //   cout<<ans_pro_max<<endl;
+      
    }
 
     return 0;
