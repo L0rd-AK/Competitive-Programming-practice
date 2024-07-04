@@ -12,9 +12,13 @@ int main()
    int t;
    cin>>t;
    while(t--){
-      int n,k;
-      cin>>n>>k;
-      cout<<(n*k)-(k-1)<<endl;
+      int a,b;
+      cin>>a>>b;
+      if(b>=-1)cout<<"YES\n";
+      else cout<<"NO\n";
+      
+      
+      
    }
 
     return 0;

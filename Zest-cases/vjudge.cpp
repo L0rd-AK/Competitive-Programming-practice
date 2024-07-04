@@ -1,29 +1,33 @@
 #include <bits/stdc++.h>
+ 
 using namespace std;
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
 
-int main()
-{
-#ifndef ONLINE_JUDGE
+int main() {
+   #ifndef ONLINE_JUDGE
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-   
-      int a,b,c,d,x,y,z,ans=0;
-      char ch;
-      cin>>x>>ch>>y;
-      
-      if(size_a>size_b){
-         for(auto i:a) if(i==b[j])j++;
-         ans=size_b-j;
-         cout<<size_a+ans<<endl;
-      }else{
-         for(auto i:b) if(i==a[j])j++;
-         ans=size_a-j;
-         cout<<size_b+ans<<endl;
+  int t;
+  cin >> t;
+  while (t--) {
+    int n;
+    cin >> n;
+    vector<int> a(n), b(n);
+    for (auto& x : a) cin >> x;
+    for (auto& x : b) cin >> x;
+    int x = 0, y = 0, neg = 0, pos = 0;
+    for (int i = 0; i < n; ++i) {
+      if (a[i] > b[i]) {
+        x += a[i];
+      } else if (a[i] < b[i]) {
+        y += b[i];
+      } else {
+        neg += (a[i] < 0);
+        pos += (a[i] > 0);
       }
-
-    return 0;
+    }
+    int ans = -1e9;
+    for (int i = -neg; i <= pos; ++i)
+      ans = max(ans, min(x + i, y + (pos - neg - i)));
+    cout << ans << '\n';
+  }
 }
-	 	 			    	   		  	 	 			    	
