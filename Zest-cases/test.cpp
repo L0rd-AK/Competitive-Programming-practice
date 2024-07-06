@@ -10,38 +10,27 @@ int main()
 #ifndef ONLINE_JUDGE
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-   int t;
-   cin>>t;
-   while(t--){
-      int n,m;
-      cin>>n>>m;cin.ignore();
-      char a[n][m];
-      int row_mx=INT_MIN,row_idx=0;
-      f(i,0,n){int x=0;
-         f(j,0,m){
-            cin>>a[i][j];
-            if(a[i][j]=='#')x++;
-         }
-         if(row_mx<x){
-            row_mx=x;
-            row_idx=i+1;
-         }
-      }
-      // column
-      int col_mx=INT_MIN,col_idx=0;
-      f(i,0,m){int z=0;
-         f(j,0,n){
-            if(a[j][i]=='#')z++;
-         }
-         if(col_mx<z){
-            col_mx=z;
-            col_idx=i+1;
+   // int t;
+   // cin>>t;
+   // while(t--){
+      ll s,n;
+      cin>>s>>n;
+      vector<pair<int,int>> v(n,{0,0});
+      f(i,0,n)cin>>v[i].first>>v[i].second;
+      bool flg=1;
+      sort(v.begin(),v.end());
+      f(i,0,n){
+         if(s>v[i].first)s+=v[i].second;
+         else{
+            cout<<"NO"<<endl;
+            flg=0;
+            break;
          }
       }
-      cout<<row_idx<<" "<<col_idx<<endl;
+      if(flg)cout<<"YES"<<endl;
       
 
-   }
+   // }
 
     return 0;
 }
