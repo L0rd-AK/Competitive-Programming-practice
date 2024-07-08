@@ -13,10 +13,39 @@ int main()
    int t;
    cin>>t;
    while(t--){
-        int n;
-        cin>>n;
-        f1(i,1,n)cout<<i<<" ";
-        cout<<endl;
+        int n,m;
+        cin>>n>>m;
+        
+        vector<vector<char>> a(n,vector<char>(m)),b(n,vector<char>(m));
+        int ans=0;
+        f(i,0,n)f(j,0,m)cin>>a[i][j];
+        f(i,0,n)f(j,0,m)cin>>b[i][j];
+        // f(i,0,n)f(j,0,m)cout<<a[i][j];
+        f(i,0,n-1){
+            f(j,0,m-1){
+                if(a[i][j]==b[i][j])continue;
+                if(a[i][j]<b[i][j]){
+                    while(a[i][j]!=b[i][j]){ //cout<<a[i][j]<<" ";
+                        a[i][j]=(char)(((a[i][j]+1-'0')%3)+'0');
+                        a[i+1][j+1]=(char)(((a[i+1][j+1]+1-'0')%3)+'0');
+                        a[i][j+1]=(char)(((a[i][j+1]+2-'0')%3)+'0');
+                        a[i+1][j]=(char)(((a[i+1][j]+2-'0')%3)+'0');
+                    }
+                }
+                else{
+                    while(a[i][j]!=b[i][j]){
+                        a[i][j]=(char)(((a[i][j]+1-'0')%3)+'0');
+                        a[i+1][j+1]=(char)(((a[i+1][j+1]+1-'0')%3)+'0');
+                        a[i][j+1]=(char)(((a[i][j+1]+2-'0')%3)+'0');
+                        a[i+1][j]=(char)(((a[i+1][j]+2-'0')%3)+'0');
+                    }
+                }
+            }
+        }
+            
+        
+        if(a==b)cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
    }
 
     return 0;

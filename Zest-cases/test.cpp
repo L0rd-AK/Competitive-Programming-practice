@@ -10,27 +10,38 @@ int main()
 #ifndef ONLINE_JUDGE
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-   // int t;
-   // cin>>t;
-   // while(t--){
-      ll s,n;
-      cin>>s>>n;
-      vector<pair<int,int>> v(n,{0,0});
-      f(i,0,n)cin>>v[i].first>>v[i].second;
-      bool flg=1;
-      sort(v.begin(),v.end());
-      f(i,0,n){
-         if(s>v[i].first)s+=v[i].second;
-         else{
-            cout<<"NO"<<endl;
-            flg=0;
-            break;
-         }
-      }
-      if(flg)cout<<"YES"<<endl;
-      
+   int t;
+   cin >> t;
+   while (t--) {
+        int n, m;
+        cin >> n >> m;
+        
+        vector<vector<char>> a(n, vector<char>(m)), b(n, vector<char>(m));
+        int ans = 0;
+        f(i, 0, n) f(j, 0, m) cin >> a[i][j];
+        f(i, 0, n) f(j, 0, m) cin >> b[i][j];
+        
+        f(i, 0, n - 1) {
+            f(j, 0, m - 1) {
+                while (a[i][j] != b[i][j]) {
+                    if (a[i][j] < b[i][j]) {
+                        a[i][j] = (char)(((a[i][j] - '0' + 1) % 3) + '0');
+                        a[i + 1][j + 1] = (char)(((a[i + 1][j + 1] - '0' + 1) % 3) + '0');
+                        a[i][j + 1] = (char)(((a[i][j + 1] - '0' + 2) % 3) + '0');
+                        a[i + 1][j] = (char)(((a[i + 1][j] - '0' + 2) % 3) + '0');
+                    } else {
+                        a[i][j] = (char)(((a[i][j] - '0' + 1) % 3) + '0');
+                        a[i + 1][j + 1] = (char)(((a[i + 1][j + 1] - '0' + 1) % 3) + '0');
+                        a[i][j + 1] = (char)(((a[i][j + 1] - '0' + 2) % 3) + '0');
+                        a[i + 1][j] = (char)(((a[i + 1][j] - '0' + 2) % 3) + '0');
+                    }
+                }
+            }
+        }
+        
+        if (a == b) cout << "YES" << endl;
+        else cout << "NO" << endl;
+   }
 
-   // }
-
-    return 0;
+   return 0;
 }
