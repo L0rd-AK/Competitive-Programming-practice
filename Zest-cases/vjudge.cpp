@@ -15,17 +15,25 @@ int main()
    while(t--){
     ll n,a,b;
     cin>>n>>a>>b;
-    if(n<b){
-        ll x=b-n;
-        if(x>n)cout<<(b*(b+1))/2 - ((x*(x+1))/2)<<endl;
-        else cout<<(n*a)+(x*(x+1))/2<<endl;
-    }else{
-        ll x=n-b;
-        if((n*a)>(n*(n+1))/2)cout<<n*a<<endl;
-        else cout<<(n*(n+1))/2<<endl;
+    
+    if(a>=b)cout<<n*a<<endl;
+    else{
+        ll x=b-a,ans=0;
+        if(x>n){
+            // if(n*a<((n*(n+1))/2)+(b-n)*a)cout<<((n*(n+1))/2)+(b-n)*a<<endl;
+            // else cout<<n*a<<endl;
+            ans=(n*b)-((n*(n-1))/2);
+            cout<<ans<<endl;
+        }else{
+            // if(n*a<((b*(b+1))/2)+(n-b)*a)cout<<((b*(b+1))/2)+(n-b)*a<<endl;
+            // else cout<<n*a<<endl;
+            ans=(x*b)-((x*(x-1))/2);
+            ans+=(n-x)*a;
+            cout<<ans<<endl;
+        }
     }
     
-        
+
    }
 
    return 0;
