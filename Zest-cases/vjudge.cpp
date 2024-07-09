@@ -1,38 +1,32 @@
-#include<bits/stdc++.h>
-#define mem(array,num) memset(array,num,sizeof(array))
+#include <bits/stdc++.h>
 using namespace std;
+#define ll long long int
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
+#define endl "\n"
+
 int main()
 {
 #ifndef ONLINE_JUDGE
    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-    long int x,c,i,j,s,n,array,num;
-    pair<int, int>a[1000];
-    while(cin>>s>>n)
-    {
-        c=1;
-        for(i=0;i<n;i++)
-        {
-            cin>>a[i].first>>a[i].second;
-
-        }
-        sort(a,a+n);
-         for(i=0;i<n;i++)
-         {
-             if(s<=a[i].first)
-             {
-                 c=0;
-                 break;
-             }
-             else
-             {
-                 s=s+a[i].second;
-             }
-         }
-         if(c==0)
-            cout<<"NO\n";
-         else
-            cout<<"YES\n";
+   int t;
+   cin>>t;
+   while(t--){
+    ll n,a,b;
+    cin>>n>>a>>b;
+    if(n<b){
+        ll x=b-n;
+        if(x>n)cout<<(b*(b+1))/2 - ((x*(x+1))/2)<<endl;
+        else cout<<(n*a)+(x*(x+1))/2<<endl;
+    }else{
+        ll x=n-b;
+        if((n*a)>(n*(n+1))/2)cout<<n*a<<endl;
+        else cout<<(n*(n+1))/2<<endl;
     }
-    return 0;
+    
+        
+   }
+
+   return 0;
 }
