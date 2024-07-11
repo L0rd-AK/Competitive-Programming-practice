@@ -12,19 +12,19 @@ int main()
         stack<char> st;
         string s;
         cin >> s;
+
         st.push(s[0]);
         for (int i = 1; i < s.length(); i++) {
-            if (!st.empty() && ((s[i] == '0' && st.top() == '1') || (s[i] == '1' && st.top() == '0'))) {
+            if (!st.empty() && s[i] == '1' && st.top() == '0') {
                 st.pop();
             } else {
                 st.push(s[i]);
             }
         }
-        if (st.empty()) {
-            cout << "YES" << endl;
-        } else {
-            cout << "NO" << endl;
-        }
+        
+        if(st.empty()) cout << "YES" << endl;
+        else cout << "NO" << endl;
+        
     }
     
     return 0;
