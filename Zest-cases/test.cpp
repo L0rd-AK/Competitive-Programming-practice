@@ -1,5 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define ll long long int
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
+#define endl "\n"
 
 int main()
 {
@@ -9,22 +13,16 @@ int main()
     int t;
     cin >> t;
     while (t--) {
-        stack<char> st;
-        string s;
-        cin >> s;
-        st.push(s[0]);
-        for (int i = 1; i < s.length(); i++) {
-            if (!st.empty() && ((s[i] == '0' && st.top() == '1') || (s[i] == '1' && st.top() == '0'))) {
-                st.pop();
-            } else {
-                st.push(s[i]);
-            }
+        int n;
+        cin>>n;
+        int x,odd=0,even=0;
+        f(i,0,n){
+            cin>>x;
+            if(x%2)odd++;
+            else even++;
         }
-        if (st.empty()) {
-            cout << "YES" << endl;
-        } else {
-            cout << "NO" << endl;
-        }
+        if(even==n || odd==n)cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
     }
     
     return 0;
