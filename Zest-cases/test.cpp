@@ -13,16 +13,16 @@ int main()
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin>>n;
-        int x,odd=0,even=0;
-        f(i,0,n){
-            cin>>x;
-            if(x%2)odd++;
-            else even++;
+        int a[3];
+        cin>>a[0]>>a[1]>>a[2];
+        sort(a,a+3);
+        int five=5;
+        while(five){
+            a[0]++;
+            five--;
+            sort(a,a+3);
         }
-        if(even==n || odd==n)cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
+        cout<<a[0]*a[1]*a[2]<<endl;
     }
     
     return 0;

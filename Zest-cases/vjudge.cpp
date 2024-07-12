@@ -13,27 +13,39 @@ int main()
    int t;
    cin>>t;
    while(t--){
-    ll n,a,b;
-    cin>>n>>a>>b;
-    
-    if(a>=b)cout<<n*a<<endl;
-    else{
-        ll x=b-a,ans=0;
-        if(x>n){
-            // if(n*a<((n*(n+1))/2)+(b-n)*a)cout<<((n*(n+1))/2)+(b-n)*a<<endl;
-            // else cout<<n*a<<endl;
-            ans=(n*b)-((n*(n-1))/2);
-            cout<<ans<<endl;
+        int n,m,k;
+        cin>>n>>m>>k;
+        string s;
+        cin>>s;
+        int start=0,end=m-1,jump=m,water=0;
+        bool flg=0;
+        if(n<=m){
+            cout<<"YES"<<endl;
+            continue;
         }else{
-            // if(n*a<((b*(b+1))/2)+(n-b)*a)cout<<((b*(b+1))/2)+(n-b)*a<<endl;
-            // else cout<<n*a<<endl;
-            ans=(x*b)-((x*(x-1))/2);
-            ans+=(n-x)*a;
-            cout<<ans<<endl;
+            // jumap
+            for(int i=m-1;i>=0;){
+                if(s[i]=='L' || s[i]=='W'){start=i;break;}
+                else i--;
+            }
+            if(s[start]=='C'){
+                cout<<"NO"<<endl;
+                continue;
+            }
+            int i=start;
+            while(i<n){
+                if(s[i]=='L'){
+                    while(jump){
+                        if(s[i+jump]=='L'){
+                            i+=jump;
+                        }else jump--;
+                    }
+                }
+                else if(s[i+1]=='W'){
+                    i++;
+                }
+            }
         }
-    }
-    
-
    }
 
    return 0;
