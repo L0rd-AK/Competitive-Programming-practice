@@ -13,34 +13,25 @@ int main()
     int t;
     cin >> t;
     while (t--) {
-        int n,m,k;
-        cin>>n>>m>>k;
-        string s;
-        cin>>s;
-
-        if(n<m){
-            cout<<"YES"<<endl;
+        ll n;
+        cin>>n;
+        ll x=sqrt(n);
+        if(x*x!=n || n<=2){
+            cout<<"NO"<<endl;
             continue;
         }
-        ll dp[n+2]={0};
-        f(i,0,n)if(s[i]=='C')dp[i+1]=INT_MAX;
-        if(s[n-1]=='L')dp[n]=0;
-        if(s[n-1]=='W')dp[n]=1;
-        for(int i=n;i>=1;i--){
-            if(s[i-1]=='W')dp[i]=dp[i+1]+1;
-            if(s[i-1]=='L'){
-                ll mn=INT_MAX;
-                for(int j=1;j<=m;j++)mn=min(mn,dp[i+j]);
-                dp[i]=mn;
+        int cnt=0;
+        for(int i=2;i*i<=x;i++){
+            if(x%i==0){
+                cnt++;
             }
+            if(cnt>1)break;
         }
-        ll mn=INT_MAX;
-        for(int j=1;j<=m;j++)mn=min(mn,dp[j]);
-        dp[0]=mn;
-        // f(i,0,n+2)cout<<dp[i]<<" ";
-        // cout<<endl;
-        if(dp[0]<=k)cout<<"YES"<<endl;
+        // cout<<cnt<<endl;
+        if(!cnt)cout<<"YES"<<endl;
         else cout<<"NO"<<endl;
+        
+        
 
     }
     

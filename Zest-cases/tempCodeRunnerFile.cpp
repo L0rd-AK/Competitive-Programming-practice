@@ -1,1 +1,1 @@
-(m*(m+1))/2
+v.push_back(n/i);

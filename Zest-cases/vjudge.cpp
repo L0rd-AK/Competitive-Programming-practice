@@ -8,45 +8,25 @@ using namespace std;
 int main()
 {
 #ifndef ONLINE_JUDGE
-   freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-   int t;
-   cin>>t;
-   while(t--){
-        int n,m,k;
-        cin>>n>>m>>k;
-        string s;
-        cin>>s;
-        int start=0,end=m-1,jump=m,water=0;
-        bool flg=0;
-        if(n<=m){
-            cout<<"YES"<<endl;
-            continue;
-        }else{
-            // jumap
-            for(int i=m-1;i>=0;){
-                if(s[i]=='L' || s[i]=='W'){start=i;break;}
-                else i--;
+    int t;
+    cin >> t;
+    while (t--) {
+        ll n;
+        cin>>n;
+        int c=0;
+        for(int i=2;i*i<=sqrt(n);i++){
+            if(n%i==0){
+                c++;
+                if(i!=(n/i))c++;
             }
-            if(s[start]=='C'){
-                cout<<"NO"<<endl;
-                continue;
-            }
-            int i=start;
-            while(i<n){
-                if(s[i]=='L'){
-                    while(jump){
-                        if(s[i+jump]=='L'){
-                            i+=jump;
-                        }else jump--;
-                    }
-                }
-                else if(s[i+1]=='W'){
-                    i++;
-                }
-            }
+            
         }
-   }
+        if(c==0)cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
 
-   return 0;
+    }
+    
+    return 0;
 }
