@@ -14,5 +14,6 @@
         "string": "cpp"
     },
     "terminal.explorerKind": "integrated",
-    "terminal.sourceControlRepositoriesKind": "integrated"
+    "terminal.sourceControlRepositoriesKind": "integrated",
+    "code-runner.runInTerminal": true
 }
