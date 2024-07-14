@@ -13,10 +13,10 @@ int main()
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
     
-    int n;
-    cin>>n;
-    if(n<=12) yes
-    else no
+    int a,b;
+    cin>>a>>b;
+    if(a>b)cout<<0<<endl;
+    else cout<<(max(a,b)-min(a,b))+1<<endl;
     
     return 0;
 }

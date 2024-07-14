@@ -1,1 +1,1 @@
-v.push_back(n/i);
+n+1
