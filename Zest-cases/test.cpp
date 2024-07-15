@@ -13,28 +13,22 @@ int main()
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
     
-    // int t;
-    // cin>>t;
-    // while(t--){
-        int n;
-        cin>>n;
+    int t;
+    cin>>t;
+    while(t--){
+        int n,k;
+        cin>>n>>k;
         int a[n];
-        int sum=0;
         f(i,0,n){
             cin>>a[i];
-            sum+=a[i];
         }
-        int x=sum/(n/2);
+        sort(a,a+n);
+        int ans=0;
         f(i,0,n){
-            f(j,i+1,n){
-                if(a[i]+a[j]==x){
-                    cout<<i+1<<" "<<j+1<<endl;
-                    a[i]=0;
-                    a[j]=0;
-                }
-            }
+            if(a[i]>k)ans++;
         }
-    // }
+        cout<<ans<<endl;
+    }
     
     
     return 0;
