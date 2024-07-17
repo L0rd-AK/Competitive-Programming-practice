@@ -8,24 +8,15 @@ using namespace std;
 #define no cout<<"NO"<<endl
 
 void AKG(){
-    int n;
-    cin>>n;
-    vector<int> v(n+1,1);
-    f(i,2,n+1){
-        if(v[i]==1){
-            for(int j=i;j<=n;j+=i){
-                int x=j;
-                while(x%i==0){
-                    v[j]++;
-                    x/=i;
-                }
-            }
-        }
+    ll n,k;
+    cin>>n>>k;
+    if(k<n)cout<<k<<endl;
+    else if(k==n)cout<<k+1<<endl;
+    else{
+        ll x=(k-1)/(n-1);
+        cout<<k+x<<endl;
     }
-    int mx = *max_element(v.begin(), v.end());
-    cout << mx << "\n";
-    f(i,1,n+1)cout<<v[i]<<" ";
-    cout<<endl;
+    
 }
 
 int main()
