@@ -7,32 +7,44 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 
+void AKG(){
+    int n;
+    cin>>n;
+    vector<int> v(n+1,1);
+    f(i,2,n+1){
+        if(v[i]==1){
+            for(int j=i;j<=n;j+=i){
+                int x=j;
+                while(x%i==0){
+                    v[j]++;
+                    x/=i;
+                }
+            }
+        }
+    }
+    int mx = *max_element(v.begin(), v.end());
+    cout << mx << "\n";
+    f(i,1,n+1)cout<<v[i]<<" ";
+    cout<<endl;
+}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    auto begin = std::chrono::high_resolution_clock::now();
 #endif
-    
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     int t;
     cin>>t;
     while(t--){
-        int n;
-        cin>>n;
-        int a[n];
-        f(i,0,n){
-            cin>>a[i];
-        }
-        if(a[0]==a[n-1])no;
-        else{
-            yes;
-            f(i,0,n){
-                if(i==1)cout<<"R";
-                else cout<<"B";
-            }
-            cout<<endl;
-        }
+        AKG();
     }
-    
-    
+#ifndef ONLINE_JUDGE
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n"; 
+#endif
     return 0;
 }

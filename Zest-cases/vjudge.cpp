@@ -7,28 +7,7 @@ using namespace std;
 #define endl "\n"
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
-int ans=-1;
-int napsuck(int n,int a[],int idx){
-    if(n<=0) return 0;
-    if(idx<0) return 0;
-    int mx=max(1+napsuck(n-a[idx],a,idx),napsuck(n,a,idx-1));
-    return ans=max(mx,ans); 
-}
-int unboundedKnapsack(int n, int a[],int idx)
-{
-    if (idx == 0) {
-        if(n%a[0]==0)return (n /a[0]);
-        else return 0;
-    }
-    
-    int notTake= unboundedKnapsack(n, a, idx - 1);
-    
-    int take = INT_MIN;
-    if (a[idx] <= n && n%a[idx]==0) {
-        take = 1+unboundedKnapsack(n - a[idx], a,idx);
-    }
-    return max(take, notTake);
-}
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -38,7 +17,24 @@ int main()
     int n;
     int a[3];
     cin>>n>>a[0]>>a[1]>>a[2];
-    cout<<unboundedKnapsack(n,a,2)<<endl;
+    vector<vector<ll>>dp(5,vector<ll>(n+2));
+    f(i,0,5){
+        f(j,0,n+2){
+            dp[i][j]=INT_MIN;
+        }
+    }
+    f(i,0,5) {dp[i][0]=0;}
+    // calc
+    f(i,1,4){
+        f(j,1,n+1){
+            if(a[i-1]>j) {dp[i][j]=dp[i-1][j];}
+            else{
+                dp[i][j]=max(dp[i-1][j],1+dp[i][j-a[i-1]]);
+            }
+        }
+    }
+    cout<<dp[3][n]<<endl;
+
 
     
     return 0;
