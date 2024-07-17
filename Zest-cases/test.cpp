@@ -16,18 +16,21 @@ int main()
     int t;
     cin>>t;
     while(t--){
-        int n,k;
-        cin>>n>>k;
+        int n;
+        cin>>n;
         int a[n];
         f(i,0,n){
             cin>>a[i];
         }
-        sort(a,a+n);
-        int ans=0;
-        f(i,0,n){
-            if(a[i]>k)ans++;
+        if(a[0]==a[n-1])no;
+        else{
+            yes;
+            f(i,0,n){
+                if(i==1)cout<<"R";
+                else cout<<"B";
+            }
+            cout<<endl;
         }
-        cout<<ans<<endl;
     }
     
     

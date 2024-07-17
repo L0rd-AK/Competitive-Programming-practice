@@ -7,46 +7,39 @@ using namespace std;
 #define endl "\n"
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
-
+int ans=-1;
+int napsuck(int n,int a[],int idx){
+    if(n<=0) return 0;
+    if(idx<0) return 0;
+    int mx=max(1+napsuck(n-a[idx],a,idx),napsuck(n,a,idx-1));
+    return ans=max(mx,ans); 
+}
+int unboundedKnapsack(int n, int a[],int idx)
+{
+    if (idx == 0) {
+        if(n%a[0]==0)return (n /a[0]);
+        else return 0;
+    }
+    
+    int notTake= unboundedKnapsack(n, a, idx - 1);
+    
+    int take = INT_MIN;
+    if (a[idx] <= n && n%a[idx]==0) {
+        take = 1+unboundedKnapsack(n - a[idx], a,idx);
+    }
+    return max(take, notTake);
+}
 int main()
 {
 #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
     
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        string s;
-        cin >> s;
-        
-        if(n == 1 && s[0] == '1') yes;
-        else if(n == 1 && s[0] == '0') no;
-        else if(n == 2 && s == "11") yes;
-        else if(n == 2 && s == "00") no;
-        else{
-            int one = 0, zero = 0;
-            stack<char> st;
-            st.push(s[0]);
-            f(i, 1, n) {
-                char c = st.top();
-                if(c=='1' and s[i]=='1'){//cout<<c<<" "<<s[i];
-                    st.push(s[i]);
-                    continue;
-                }
-                if(c != s[i]) st.push(s[i]);
-            }
-            while(!st.empty()) {//cout<<st.top()<<" ";
-                if(st.top() == '1') one++;
-                else zero++;
-                st.pop();
-            }
-            if (one > zero) yes;
-            else no;
-        }
-    }
+    int n;
+    int a[3];
+    cin>>n>>a[0]>>a[1]>>a[2];
+    cout<<unboundedKnapsack(n,a,2)<<endl;
+
     
     return 0;
 }
