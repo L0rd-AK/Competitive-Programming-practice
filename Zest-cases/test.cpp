@@ -9,22 +9,22 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n;
-    cin>>n;
-    int c=0,ans=0,mx=INT_MIN,x;
-    f(i,0,n){
-        cin>>x;
-        if(mx<=x){
-            mx=x;
-            c++;
-        }else{
-            // prnt(c);
-            ans=max(c,ans);
-            c=1;
-            mx=x;
+    int n,t;
+    cin>>n>>t;
+    int a[n],b[n];
+    f(i,0,n)cin>>a[i];
+    b[0]=a[0];
+    f(i,1,n)b[i]=a[i]+b[i-1];
+    int ans=INT_MIN;
+    int i=0,j=n-1;
+    while(1){
+        int mib=b[j]-b[i];
+        if(mib>t)i++;
+        else if(mib<t){
+            ans=j-i;
+            break;
         }
     }
-    ans=max(c,ans);
     prnt(ans);
 }
 
