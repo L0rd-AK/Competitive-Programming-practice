@@ -6,17 +6,25 @@ using namespace std;
 #define endl "\n"
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
+#define prnt(x) cout<<x<<endl
 
 void AKG(){
-    ll n,k;
-    cin>>n>>k;
-    if(k<n)cout<<k<<endl;
-    else if(k==n)cout<<k+1<<endl;
-    else{
-        ll x=(k-1)/(n-1);
-        cout<<k+x<<endl;
+    int n;
+    cin>>n;
+    int c=0,ans=0,mx=INT_MIN,x;
+    f(i,0,n){
+        cin>>x;
+        if(mx<=x){
+            mx=x;
+            c++;
+        }else{
+            ans=max(c,ans);
+            c=1; // Start a new segment
+            mx=x;
+        }
     }
-    
+    ans = max(c, ans); // Handle the last segment
+    prnt(ans);
 }
 
 int main()
@@ -27,8 +35,8 @@ int main()
 #endif
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    int t;
-    cin>>t;
+    int t=1;
+    // cin>>t;
     while(t--){
         AKG();
     }
