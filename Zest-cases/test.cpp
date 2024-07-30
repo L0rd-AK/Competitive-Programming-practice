@@ -9,16 +9,20 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n;
-    cin>>n;
-    string a,b;
-    cin>>a>>b;
-
-    int a_idx=n,b_idx=n;
-    f(i,0,n) if(a[i]=='1'){a_idx=i;break;}
-    f(i,0,n) if(b[i]=='1'){b_idx=i;break;}
-    if(a_idx<=b_idx) yes;
-    else no;
+    string s;
+    cin>>s;
+    
+    int idx=s.length()-1;
+    f(i,0,s.length()-1){
+        if(s[i]==s[i+1])idx=i;
+    }
+    int x=((s[idx]-'a')%25)+97;
+    char c=(char)(x+1);
+    f(i,0,s.length()){
+        if(i==idx)cout<<s[i]<<c;
+        else cout<<s[i];
+    }
+    cout<<endl;
 }
 
 int main()
