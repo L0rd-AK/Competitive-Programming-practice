@@ -9,13 +9,20 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n;cin>>n;
-    string s;
-    cin>>s;
+    int n;cin>>n;cin.ignore();
+    char a[2][n];
+    f(i,0,2)f(j,0,n)cin>>a[i][j];
     int ans=0;
-    f(i,0,n-1){
-        if(s[i]=='_' && s[i+1]=='(')ans+=3;
-        if(s[i]=='_' && s[i+1]==')')ans++;
+    for(int i=0;i<2;i++){
+        for(int j=0;j<n-2;j++){
+            if(a[i][j]=='x' && a[i][j+2]=='x' && a[i][j+1]=='.'){
+                if(i==0){
+                    if(a[1][j+1]=='.' && a[1][j+2]=='.' && a[1][j]=='.')ans++;
+                }else if(i==1){
+                    if(a[0][j+0]=='.' && a[0][j+2]=='.' && a[0][j]=='.')ans++;
+                }
+            }
+        }
     }
     prnt(ans);
 }
