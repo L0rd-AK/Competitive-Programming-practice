@@ -11,13 +11,9 @@ using namespace std;
 void AKG(){
     int n,k;
     cin>>n>>k;
-    char a[n][n];
-    f(i,0,n)f(j,0,n)cin>>a[i][j];
-        
-    for(int i=0;i<n;i+=k){
-        for(int j=0;j<n;j+=k){cout<<a[i][j];}
-        cout<<endl;
-    }
+    if(3*n<=k)prnt(0);
+    else if(3*n>k)prnt(3*n-k);
+    // prnt(ans);
 }
 
 int main()
@@ -29,7 +25,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         AKG();
     }
