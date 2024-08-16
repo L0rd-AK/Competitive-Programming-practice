@@ -9,47 +9,16 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int m,s;
-    cin>>m>>s;
-    if(s==0 && m==1){
-        prnt("0 0");
-        return;
+    int a,b,c,d;
+    cin>>a>>b>>c>>d;
+    int ans=0;
+    for(int i=a;i<=b;i++){
+        if(i>=c && i<=d)ans++;
     }
-    if(s==0 && m>1 || m==1 && s>9){
-        prnt("-1 -1");
-        return;
-    }
-    if(m==1 && s<=9){
-        cout<<s<<" "<<s<<endl;
-        return;
-    }
-    int rem=s%9;
-    if(m*9 < s){
-        prnt("-1 -1");
-        return;
-    }
-    int x=s-rem;
-    int cnt=x/9;
-    string a,b;
-    while(cnt--)a+='9';
-    int zero=0;
-    if(rem)zero=m-a.length()-1;
-    else zero=m-a.length();
-    // prnt(zero);
-    if(rem)a+=(char)(rem+'0');
+    if(a==c)ans--;
+    if(b==d)ans--;
+    prnt(ans+1);
     
-    if(zero>0){
-        // prnt("fuck");
-        while(zero--)a+='0';
-    }
-    b=a;
-    reverse(b.begin(),b.end());
-    int idx=0;
-    for(int i=0;i<b.length();i++){
-        if(b[i]!='0'){idx=i;break;}
-    }
-    b[0]++;b[idx]--;
-    cout<<b<<" "<<a<<endl;
 }
 
 int main()
@@ -61,7 +30,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
         AKG();
     }
