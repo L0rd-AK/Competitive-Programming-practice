@@ -9,20 +9,16 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    string a,b;
-    cin>>a;
-    if(a[0]!='1' || a[1]!='0')no;
-    else{
-        int n=a.length();
-        if(n<=2)no;
-        else{
-            if(a[2]>='2')yes;
-            else{
-                if(a[2]=='1' && n>=4)yes;
-                else no;
-            }
-        }
+    int a,b,c,d;
+    cin>>a>>b>>c>>d;
+    int ans=0;
+    for(int i=a;i<=b;i++){
+        if(i>=c && i<=d)ans++;
     }
+    if(a==c)ans--;
+    if(b==d)ans--;
+    prnt(ans+1);
+    
 }
 
 int main()

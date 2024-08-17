@@ -9,20 +9,21 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    string a,b;
-    cin>>a;
-    if(a[0]!='1' || a[1]!='0')no;
-    else{
-        int n=a.length();
-        if(n<=2)no;
-        else{
-            if(a[2]>='2')yes;
-            else{
-                if(a[2]=='1' && n>=4)yes;
-                else no;
-            }
+    int n;
+    cin>>n;
+    int a[n];
+    f(i,0,n)cin>>a[i];
+    if(n>2){
+        no;
+        return;
+    }
+    f(i,0,n-1){
+        if(abs(a[i]-a[i+1])==1 || abs(a[i]-a[i+1])==0){
+            no;
+            return;
         }
     }
+    yes;
 }
 
 int main()
