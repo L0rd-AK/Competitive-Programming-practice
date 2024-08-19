@@ -9,23 +9,20 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n,s,m;
-    cin>>n>>s>>m;
-    bool flg=0;
-    int a,b,x,y;
-    cin>>a>>b;n--;
-    x=a;
-    y=b;
-    if(a>=s)flg=1;
-    while(n--){
-        cin>>a>>b;
-        if(a-y>=s)flg=1;
-        x=a;
-        y=b;
+    int n;
+    cin>>n;
+    int a[n];
+    f(i,0,n)cin>>a[i];
+    int l=a[0],r=a[0];
+    f(i,1,n){
+        if(a[i]+1==l)l=a[i];
+        else if(a[i]-1==r)r=a[i];
+        else{
+            no;
+            return;
+        }
     }
-    if(m-b>=s)flg=1;
-    if(flg)yes;
-    else no;
+     yes;
 }
 
 int main()
