@@ -7,31 +7,22 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 #define prnt(x) cout<<x<<endl
-int akg(string& a, string& b)
-{
-    int ans=-1;
-    f(i,0,a.length()){
-        ans+=abs(a[i]-b[i]);
-    }
-    return ans;
-}
+
 
 void AKG(){
-    int q,n;
-    cin>>q>>n;
-    vector<string> s;
-    f(i,0,q){
-        string x;
-        cin>>x;
-        s.push_back(x);
+    int n;cin>>n;
+    int a=0,b=0;
+    while(n%2==0){
+        a++;
+        n/=2;
     }
-    int ans = INT_MAX;
-    for(int i = 0; i < q; ++i) {
-        for(int j = i + 1; j < q; ++j) {
-            ans = min(ans, akg(s[i], s[j]));
-        }
+    while(n%3==0){
+        b++;
+        n/=3;
     }
-    prnt(ans+1);
+    if(n==1 && a<=b){
+        prnt((2*b)-a);
+    }else prnt(-1);
 }
 
 int main()
