@@ -9,9 +9,11 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n,m,k;
-    cin>>n>>m>>k;
-    prnt(min(n,k)*min(m,k));
+    int n,m;
+    cin>>n>>m;
+    int x=m+n-1;
+    if((min(n,m))%2==0)prnt("Malvika");
+    else prnt("Akshat");
 }
 
 int main()
@@ -23,7 +25,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         AKG();
     }

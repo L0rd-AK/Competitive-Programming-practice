@@ -8,10 +8,21 @@ using namespace std;
 #define no cout<<"NO"<<endl
 #define prnt(x) cout<<x<<endl
 
+
 void AKG(){
-    int n,m,k;
-    cin>>n>>m>>k;
-    prnt(min(n,k)*min(m,k));
+    int n;cin>>n;
+    int a=0,b=0;
+    while(n%2==0){
+        a++;
+        n/=2;
+    }
+    while(n%3==0){
+        b++;
+        n/=3;
+    }
+    if(n==1 && a<=b){
+        prnt((2*b)-a);
+    }else prnt(-1);
 }
 
 int main()
