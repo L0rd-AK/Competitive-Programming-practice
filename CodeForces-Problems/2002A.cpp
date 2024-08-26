@@ -9,13 +9,9 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n;cin>>n;
-    int ans=0;
-    while(n--){
-        int x;cin>>x;
-        ans+=abs(x);
-    }
-    prnt(ans);
+    int n,m,k;
+    cin>>n>>m>>k;
+    prnt(min(n,k)*min(m,k));
 }
 
 int main()
