@@ -10,10 +10,15 @@ using namespace std;
 
 void AKG(){
     int n;cin>>n;
-    string s;cin>>s;
-    
-    if(s[0]!=s[n-1])yes;
-    else no;
+    set<int> st;
+    f(i,0,n){
+        int x;cin>>x;
+        st.insert(x);
+    }
+    auto it=st.begin();
+    it++;
+    if(it==st.end())prnt("NO");
+    else prnt(*it);
     
 }
 
@@ -26,7 +31,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         AKG();
     }
