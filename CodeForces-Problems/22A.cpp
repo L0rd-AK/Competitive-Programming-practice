@@ -9,17 +9,16 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    string s;
-    cin>>s;
-    ll cnt,x,y;
-    cnt=x=y=0;
-    for(int i=0; i<s.size() ;i++)
-        if(s[i]=='Q')
-            cnt+=x,y++;
-        else if(s[i]=='A')
-            x+=y;
-
-    prnt(cnt);
+    int n;cin>>n;
+    set<int> st;
+    f(i,0,n){
+        int x;cin>>x;
+        st.insert(x);
+    }
+    auto it=st.begin();
+    it++;
+    if(it==st.end())prnt("NO");
+    else prnt(*it);
     
 }
 

@@ -10,16 +10,20 @@ using namespace std;
 
 void AKG(){
     string s;
-    cin>>s;
-    ll cnt,x,y;
-    cnt=x=y=0;
-    for(int i=0; i<s.size() ;i++)
-        if(s[i]=='Q')
-            cnt+=x,y++;
-        else if(s[i]=='A')
-            x+=y;
-
-    prnt(cnt);
+    getline(cin, s);
+    string word,ans;
+    stringstream ss(s);
+    map<string, int> mp;
+    int mx=INT_MIN;
+    while (ss >> word)
+    {
+        mp[word]++;
+        if(mp[word]>mx){
+            mx=mp[word];
+            ans=word;
+        }
+    }
+    cout <<ans<<" "<< mp[ans] << endl;
     
 }
 
@@ -32,7 +36,8 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    // cin>>t;
+    cin>>t;
+    cin.ignore();
     while(t--){
         AKG();
     }

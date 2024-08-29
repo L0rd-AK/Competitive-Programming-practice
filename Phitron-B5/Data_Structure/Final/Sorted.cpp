@@ -9,17 +9,14 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    string s;
-    cin>>s;
-    ll cnt,x,y;
-    cnt=x=y=0;
-    for(int i=0; i<s.size() ;i++)
-        if(s[i]=='Q')
-            cnt+=x,y++;
-        else if(s[i]=='A')
-            x+=y;
-
-    prnt(cnt);
+    int n;cin>>n;
+    set<int> st;
+    f(i,0,n){
+        int x;cin>>x;
+        st.insert(x);
+    }
+    for(auto it=st.begin();it!=st.end();it++)cout<<*it<<" ";
+    cout<<endl;
     
 }
 
@@ -32,7 +29,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
         AKG();
     }

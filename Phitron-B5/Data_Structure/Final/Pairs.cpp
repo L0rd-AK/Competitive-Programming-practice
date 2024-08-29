@@ -7,20 +7,22 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 #define prnt(x) cout<<x<<endl
-
+bool cmp(const pair<string,int> &a,const pair<string,int> &b)
+{
+    if(a.first<b.first) return true;
+    else if(a.second>b.second && a.first==b.first) return true;
+    else return false;
+}
 void AKG(){
-    string s;
-    cin>>s;
-    ll cnt,x,y;
-    cnt=x=y=0;
-    for(int i=0; i<s.size() ;i++)
-        if(s[i]=='Q')
-            cnt+=x,y++;
-        else if(s[i]=='A')
-            x+=y;
-
-    prnt(cnt);
-    
+    int n;cin>>n;
+    vector<pair<string,int>> v(n);
+    f(i,0,n){
+        cin>>v[i].first>>v[i].second;
+    }
+    sort(v.begin(),v.end(),cmp);
+    f(i,0,n){
+        cout<<v[i].first<<" "<<v[i].second<<endl;
+    }
 }
 
 int main()
@@ -34,7 +36,16 @@ int main()
     int t=1;
     // cin>>t;
     while(t--){
-        AKG();
+        // AKG();
+        int n;cin>>n;
+        vector<pair<string,int>> v(n);
+        f(i,0,n){
+            cin>>v[i].first>>v[i].second;
+        }
+        sort(v.begin(),v.end(),cmp);
+        f(i,0,n){
+            cout<<v[i].first<<" "<<v[i].second<<endl;
+        }
     }
 #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();

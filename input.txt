@@ -1,10 +1,13 @@
-4
-1 2 2 -4
-2
-aa
 3
-aba
-4
-abcb
-12
-abcabcabcabc
+akib 23 95
+jobbar 24 99
+ali 25 100
+8
+1
+2
+2
+2
+0 kabir 15 65
+0 asif 55 65
+2
+0 tamim 35 65
