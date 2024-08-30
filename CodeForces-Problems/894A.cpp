@@ -9,25 +9,17 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n;cin>>n;
-    int a[n],b[n];
-    f(i,0,n)cin>>a[i];
-    f(i,0,n)cin>>b[i];
-    int ans=0;
-    f(i,0,n)if(a[i]==b[i])ans++;
-    if(ans==n){
-        prnt("Bob");
-        return;
-    }
-    ans=0;
-    for(int i=0,j=n-1;i<n && j>=0;i++,j--){
-        if(a[i]==b[j])ans++;
-    }
-    if(ans==n){
-        prnt("Bob");
-        return;
-    }
-    prnt("Alice");
+    string s;
+    cin>>s;
+    ll cnt,x,y;
+    cnt=x=y=0;
+    for(int i=0; i<s.size() ;i++)
+        if(s[i]=='Q')
+            cnt+=x,y++;
+        else if(s[i]=='A')
+            x+=y;
+
+    prnt(cnt);
     
 }
 
@@ -40,7 +32,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         AKG();
     }
