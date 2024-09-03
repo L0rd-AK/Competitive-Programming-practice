@@ -9,15 +9,9 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n;cin>>n;
-    set<int> a,b;
-    while(n--){
-        int x,y;cin>>x>>y;
-        a.insert(x);
-        b.insert(y);
-    }
-    if(a.size()==1 || b.size()==1)prnt(0);
-    else prnt(max(a.size(),b.size()));
+    int a,b;cin>>a>>b;
+    prnt(abs(a-b));
+    
 }
 
 int main()

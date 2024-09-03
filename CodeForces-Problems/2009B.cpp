@@ -10,14 +10,18 @@ using namespace std;
 
 void AKG(){
     int n;cin>>n;
-    set<int> a,b;
-    while(n--){
-        int x,y;cin>>x>>y;
-        a.insert(x);
-        b.insert(y);
+    // char c[n][4];
+    vector<int> v;
+    char c;
+    f(i,0,n){
+        f(j,0,4){
+            cin>>c;
+            if(c=='#')v.push_back(j+1);
+        }
     }
-    if(a.size()==1 || b.size()==1)prnt(0);
-    else prnt(max(a.size(),b.size()));
+    for(int i=v.size()-1;i>=0;i--)cout<<v[i]<<" ";
+    cout<<endl;
+    
 }
 
 int main()
