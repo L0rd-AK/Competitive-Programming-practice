@@ -8,16 +8,48 @@ using namespace std;
 #define no cout<<"NO"<<endl
 #define prnt(x) cout<<x<<endl
 
-void AKG(){
-    int n;cin>>n;
-    set<int> a,b;
-    while(n--){
-        int x,y;cin>>x>>y;
-        a.insert(x);
-        b.insert(y);
+char a[1005][1005];
+bool vis[1005][1005];
+
+vector<pair<int, int>> d = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+int n, m;
+bool valid(int i, int j)
+{
+    if (i < 0 || i >= n || j < 0 || j >= m || a[i][j]=='#')
+        return false;
+    return true;
+}
+void dfs(int si, int sj)
+{
+    // cout << si << " " << sj << endl;
+    vis[si][sj] = true;
+    for (int i = 0; i < 4; i++)
+    {
+        int ci = si + d[i].first;
+        int cj = sj + d[i].second;
+        if (valid(ci, cj) == true && vis[ci][cj] == false)
+        {
+            dfs(ci, cj);
+        }
     }
-    if(a.size()==1 || b.size()==1)prnt(0);
-    else prnt(max(a.size(),b.size()));
+}
+
+void AKG(){
+    cin >> n >> m;//cin.ignore();
+    int si=0,sj=0,x=0,y=0;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cin >> a[i][j];
+            if(a[i][j]=='A'){si=i;sj=j;}
+            if(a[i][j]=='B'){x=i;y=j;}
+        }
+    }
+    memset(vis, false, sizeof(vis));
+    dfs(si, sj);
+    if(vis[x][y])yes;
+    else no;
 }
 
 int main()
@@ -29,7 +61,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         AKG();
     }
