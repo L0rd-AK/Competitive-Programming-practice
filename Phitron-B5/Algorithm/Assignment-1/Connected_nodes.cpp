@@ -9,27 +9,26 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-     int n;cin>>n;
-     string s;cin>>s;
-     map<char,int> mp;
-     for(auto i:s) mp[i]++;
-     priority_queue<pair<char,int>> pq;
-     for(auto i:mp)pq.push({i.second,i.first});
-     string ans="";
-     while(pq.size()>=2){
-        auto a=pq.top();
-        pq.pop();
-        auto b=pq.top();
-        pq.pop();
-        ans+=a.firat;ans+=b.firat;
-        if(a.second>1)pq.push({a.second,a.firat-1});
-        if(b.second>1)pq.push({b.second,b.firat-1});
-     }
-     if(pq.size()!=0){
-        auto c=pq.top();
-        f(i,0,c.second)ans+=c.second;
-     }
-     prnt(ans);
+    int n, e;
+    cin >> n >> e;
+    vector<int> mat[n];
+    while (e--)
+    {
+        int a, b;
+        cin >> a >> b;
+        mat[a].push_back(b);
+        mat[b].push_back(a);
+    }
+    int q;cin>>q;
+    while(q--){
+        int x;cin>>x;
+        vector<int> v;
+        for (int i = 0; i < mat[x].size(); i++) v.push_back(mat[x][i]);
+        sort(v.begin(),v.end(),greater<int>());
+        for (int i :v)cout<<i<<" ";
+        cout<<endl;
+    }
+    
 }
 
 int main()
@@ -41,11 +40,10 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         AKG();
     }
-
 #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
