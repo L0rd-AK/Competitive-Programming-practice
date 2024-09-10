@@ -9,8 +9,25 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-     int a,b;cin>>a>>b;
-     prnt(6-a-b);
+     int n;cin>>n;
+     vector<pair<int,int>> vp;
+     f(i,0,n){
+        int a,b;cin>>a>>b;
+        vp.push_back({a,b});
+     }
+     ll si,sj,ei,ej;
+     cin>>si>>sj>>ei>>ej;
+     ll x=(ei-si)*(ei-si)+(ej-sj)*(ej-sj);
+     bool flg=true;
+     f(i,0,n){
+        ll z=(ei-vp[i].first)*(ei-vp[i].first)+(ej-vp[i].second)*(ej-vp[i].second);
+        if(z<=x){
+            flg=false;
+            break;
+        }
+     }
+     if(flg)yes;
+     else no;
 }
 
 int main()
@@ -22,7 +39,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
         AKG();
     }
