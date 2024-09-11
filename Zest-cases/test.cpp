@@ -9,25 +9,12 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-     int n;cin>>n;
-     vector<pair<int,int>> vp;
-     f(i,0,n){
-        int a,b;cin>>a>>b;
-        vp.push_back({a,b});
-     }
-     ll si,sj,ei,ej;
-     cin>>si>>sj>>ei>>ej;
-     ll x=(ei-si)*(ei-si)+(ej-sj)*(ej-sj);
-     bool flg=true;
-     f(i,0,n){
-        ll z=(ei-vp[i].first)*(ei-vp[i].first)+(ej-vp[i].second)*(ej-vp[i].second);
-        if(z<=x){
-            flg=false;
-            break;
-        }
-     }
-     if(flg)yes;
-     else no;
+     int a;cin>>a;
+     string s=to_string(a);
+     string ans="1";
+     f(i,0,s.length()-1)ans+='0';
+     int x=stoi(ans);
+     prnt(a-x);
 }
 
 int main()
