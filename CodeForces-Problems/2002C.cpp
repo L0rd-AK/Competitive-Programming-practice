@@ -9,20 +9,25 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n; 
-    cin >> n;
-    for (int a = 3; a < n; a++) {
-        int c = (n - a) / 2;
-        int b = n - a - c;
-        if (c > 1 && b+1 < a) {
-            c--;
-            b++;
+     int n;cin>>n;
+     vector<pair<int,int>> vp;
+     f(i,0,n){
+        int a,b;cin>>a>>b;
+        vp.push_back({a,b});
+     }
+     ll si,sj,ei,ej;
+     cin>>si>>sj>>ei>>ej;
+     ll x=(ei-si)*(ei-si)+(ej-sj)*(ej-sj);
+     bool flg=true;
+     f(i,0,n){
+        ll z=(ei-vp[i].first)*(ei-vp[i].first)+(ej-vp[i].second)*(ej-vp[i].second);
+        if(z<=x){
+            flg=false;
+            break;
         }
-        if (a > b && b > c) {
-            cout << b << ' ' << a << ' ' << c << endl;
-            return;
-        }
-    }
+     }
+     if(flg)yes;
+     else no;
 }
 
 int main()
@@ -38,6 +43,7 @@ int main()
     while(t--){
         AKG();
     }
+
 #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);

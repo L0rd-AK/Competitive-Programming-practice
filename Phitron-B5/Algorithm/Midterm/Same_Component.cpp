@@ -7,51 +7,47 @@ using namespace std;
 #define yes cout<<"YES"<<endl
 #define no cout<<"NO"<<endl
 #define prnt(x) cout<<x<<endl
-// #define INF LLONG_MAX 
-const long long int INF = 1e18+5;
 
+char a[1005][1005];
+bool vis[1005][1005];
+
+vector<pair<int, int>> d = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+int n, m;
+bool valid(int i, int j)
+{
+    if (i < 0 || i >= n || j < 0 || j >= m || a[i][j]=='-')
+        return false;
+    return true;
+}
+void dfs(int si, int sj)
+{
+    vis[si][sj] = true;
+    for (int i = 0; i < 4; i++)
+    {
+        int ci = si + d[i].first;
+        int cj = sj + d[i].second;
+        if (valid(ci, cj) == true && vis[ci][cj] == false)
+        {
+            dfs(ci, cj);
+        }
+    }
+}
 
 void AKG(){
-    int n,m;cin>>n>>m;
-
-    ll adj[n+5][n+5];
-    for (int i = 1; i <= n; i++)
+    cin >> n >> m;//cin.ignore();
+    int si=0,sj=0,x=0,y=0;
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 1; j <= n; j++)
+        for (int j = 0; j < m; j++)
         {
-            adj[i][j] = INF;
-            if (i == j) adj[i][j] = 0;
+            cin >> a[i][j];
         }
     }
-    while (m--)
-    {
-        ll a, b, c;
-        cin >> a >> b >> c;
-        adj[a][b] = min(adj[a][b],c);
-    }
-    for (int k = 1; k <= n; k++)
-    {
-        for (int i = 1; i <= n; i++)
-        {
-            for (int j = 1; j <= n; j++)
-            {
-                if (adj[i][k] + adj[k][j] < adj[i][j])
-                {
-                    adj[i][j] = adj[i][k] + adj[k][j];
-                }
-            }
-        }
-    }
-    int q;cin>>q;
-     while(q--)
-    {
-        int s,d;
-        cin >> s >> d;
-        if(adj[s][d] == INF)
-            cout << -1 << endl;
-        else
-            cout << adj[s][d] << endl;
-    }
+    cin>>si>>sj>>x>>y;
+    memset(vis, false, sizeof(vis));
+    dfs(si, sj);
+    if(vis[x][y])yes;
+    else no;
 }
 
 int main()

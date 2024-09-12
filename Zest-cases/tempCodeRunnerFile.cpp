@@ -1,2 +1,2 @@
-if(ans%2==0)prnt(ans+a+b);
-    // else prnt(ans+a+b+1);
+if(y<=dis[x])yes;
+        // else no;
