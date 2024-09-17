@@ -9,16 +9,22 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-     int n,m,q;cin>>n>>m>>q;
-     int t1,t2;cin>>t1>>t2;
-     int d;cin>>d;
-     if(d<t1 && d<t2){
-        prnt(min(t1,t2)-1);
-     }else if(d>t1 && d>t2){
-        prnt(n-max(t1,t2));
-     }else{
-        prnt(abs(t2-t1)/2);
-     }
+     const int N = 8;
+        vector<string> b(N);
+        long row(0), col(0);
+        for(long p = 0; p < N; p++){cin >> b[p];}
+        for(long p = 1; p + 1 < N; p++){
+            for(long q = 1; q + 1 < N; q++){
+                if(b[p][q] != '#'){continue;}
+                if(b[p + 1][q + 1] != '#'){continue;}
+                if(b[p + 1][q - 1] != '#'){continue;}
+                if(b[p - 1][q + 1] != '#'){continue;}
+                if(b[p - 1][q - 1] != '#'){continue;}
+                row = p + 1; col = q + 1;
+            }
+        }
+
+        cout<<row<<" "<<col<<endl;
     
 }
 

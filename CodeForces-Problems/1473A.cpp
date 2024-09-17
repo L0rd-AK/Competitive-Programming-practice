@@ -9,17 +9,12 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-     int n,m,q;cin>>n>>m>>q;
-     int t1,t2;cin>>t1>>t2;
-     int d;cin>>d;
-     if(d<t1 && d<t2){
-        prnt(min(t1,t2)-1);
-     }else if(d>t1 && d>t2){
-        prnt(n-max(t1,t2));
-     }else{
-        prnt(abs(t2-t1)/2);
-     }
-    
+    int n, d;
+    cin >> n >> d;
+    vector<int> a(n);
+    f(i,0,n)cin>>a[i];
+    sort(a.begin(), a.end());
+    cout << (a.back() <= d || a[0] + a[1] <= d ? "YES" : "NO") << endl;
 }
 
 int main()
