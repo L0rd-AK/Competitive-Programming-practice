@@ -9,27 +9,17 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-     string s;cin>>s;
-     int c=0,v=0,d=0;
-     f(i,0,s.length()){
-        if(s[i]>='0' && s[i]<='9')d++;
-        else if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u')v++;
-        else c++;
+     int n;cin>>n;
+     int a[n+1]={0};
+     f(i,0,n){
+        int x;cin>>x;
+        a[x-1]++;
      }
-     int ans=0;
-     while (c > 0 || v > 0 || d > 0) {
-        int c_cnt = min(c, 3);
-        int v_cnt = min(v, 2);
-        int d_cnt = min(d, 1);
-        
-        c -= c_cnt;
-        v -= v_cnt;
-        d -= d_cnt;
-        
-        ans++;
-    }
-    prnt(ans);
-     
+    int mx=INT_MIN;
+    f(i,0,n){
+        if(mx<a[i])mx=a[i];
+     }
+     prnt(n-mx);
 }
 
 int main()

@@ -9,20 +9,11 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n; 
-    cin >> n;
-    for (int a = 3; a < n; a++) {
-        int c = (n - a) / 2;
-        int b = n - a - c;
-        if (c > 1 && b+1 < a) {
-            c--;
-            b++;
-        }
-        if (a > b && b > c) {
-            cout << b << ' ' << a << ' ' << c << endl;
-            return;
-        }
-    }
+     string s,ans;cin>>s;
+     for(int i=s.length()-1;i>=0;i--){
+        ans+=tolower(s[i]);
+     }
+     prnt(ans);
 }
 
 int main()
@@ -34,7 +25,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         AKG();
     }

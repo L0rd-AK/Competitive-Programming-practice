@@ -8,43 +8,44 @@ using namespace std;
 #define no cout<<"NO"<<endl
 #define prnt(x) cout<<x<<endl
 
-void AKG(){
-     string s;cin>>s;
-     int c=0,v=0,d=0;
-     f(i,0,s.length()){
-        if(s[i]>='0' && s[i]<='9')d++;
-        else if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u')v++;
-        else c++;
-     }
-     int ans=0;
-     while (c > 0 || v > 0 || d > 0) {
-        int c_cnt = min(c, 3);
-        int v_cnt = min(v, 2);
-        int d_cnt = min(d, 1);
-        
-        c -= c_cnt;
-        v -= v_cnt;
-        d -= d_cnt;
-        
-        ans++;
+void AKG() {
+    int n;cin>>n;
+    ll a[n],p[n];
+    f(i,0,n)cin>>a[i];
+    p[0]=a[0];
+    f(i,1,n){
+        p[i]=p[i-1]+a[i];
     }
-    prnt(ans);
-     
+    int q;cin>>q;
+    while(q--){
+        int x;cin>>x;
+        bool ok=1;
+        f(i,0,n){
+            if(p[i]>=x){
+                prnt(i+1);
+                ok=0;
+                break;
+            }
+        }
+        if(ok)prnt(-1);
+    }
+    
 }
 
-int main()
-{
+int main() {
 #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     auto begin = std::chrono::high_resolution_clock::now();
 #endif
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    int t=1;
-    cin>>t;
-    while(t--){
-        AKG();
+    
+    int t = 1;
+    // cin >> t;  
+    while (t--) {
+        AKG();  
     }
+
 #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);

@@ -1,104 +1,81 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+#define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
-#define ll long long int
-#define INF LLONG_MAX 
-
-const int N = 1e3 + 5;
-ll dis[N];
-
-class Edge {
+#define endl "\n"
+#define yes cout<<"YES"<<endl
+#define no cout<<"NO"<<endl
+#define prnt(x) cout<<x<<endl
+class Node
+{
 public:
-    int u, v;
-    ll w;
-    Edge(int u, int v, ll w) {
-        this->u = u;
-        this->v = v;
-        this->w = w;
+    ll val;
+    Node *left;
+    Node *right;
+    Node(ll val)
+    {
+        this->val = val;
+        this->left = NULL;
+        this->right = NULL;
     }
 };
-
-void AKG(){
-    int n, e;
-    cin >> n >> e;
-    
-    vector<Edge> EdgeList;
-
-    for (int i = 0; i < e; i++) {
-        int u, v;
-        ll w;
-        cin >> u >> v >> w;
-        EdgeList.push_back(Edge(u, v, w));
-    }
-
-    int s;
-    cin >> s;
-
-    f(i,0,N)dis[i]=INF;
-    dis[s] = 0;
-
-    for (int i = 1; i <= n - 1; i++) {
-        for (auto ed : EdgeList) {
-            int u = ed.u;
-            int v = ed.v;
-            ll w = ed.w;
-            if (dis[u] < INF && dis[u] + w < dis[v]) {
-                dis[v] = dis[u] + w;
-            }
-        }
-    }
-
-    bool cycle = false;
-    for (auto ed : EdgeList) {
-        int u = ed.u;
-        int v = ed.v;
-        ll w = ed.w;
-        if (dis[u] < INF && dis[u] + w < dis[v]) {
-            cycle = true;
-            break;
-        }
-    }
-
-    if (cycle) {
-        cout << "Negative Cycle Detected" << endl;
+Node *convert(ll a[], ll n, ll l, ll r)
+{
+    if (l > r)
+        return NULL;
+    ll mid = (l + r) / 2;
+    Node *root = new Node(a[mid]);
+    Node *leftRoot = convert(a, n, l, mid - 1);
+    Node *rootRight = convert(a, n, mid + 1, r);
+    root->left = leftRoot;
+    root->right = rootRight;
+    return root;
+}
+void level_order(Node *root)
+{
+    if (root == NULL)
+    {
+        cout << "Tree nai" << endl;
         return;
     }
-
-
-    int T;
-    cin >> T;
-    while (T--) {
-        int d;
-        cin >> d;
-        if (dis[d] == INF)
-            cout << "Not Possible" << endl;
-        else
-            cout << dis[d] << endl;
+    queue<Node *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        Node *f = q.front();
+        q.pop();
+        cout << f->val << " ";
+        if (f->left)q.push(f->left);
+        if (f->right)q.push(f->right);
     }
 }
+void AKG(){
+    ll n,x;cin>>x;
+    n=pow(2,x)-1;
+    ll a[n];
+    for (int i = 0; i < n; i++)cin >> a[i];
+    Node *root = convert(a, n, 0, n - 1);
+    level_order(root);
+}
 
-int main() {
+int main()
+{
 #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     auto begin = std::chrono::high_resolution_clock::now();
 #endif
-
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-
     int t=1;
     // cin>>t;
     while(t--){
         AKG();
     }
-
 #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n"; 
 #endif
-
     return 0;
 }

@@ -10,16 +10,17 @@ using namespace std;
 
 void AKG(){
      int n;cin>>n;
-     int a[n+1]={0};
-     f(i,0,n){
-        int x;cin>>x;
-        a[x-1]++;
+     if(n%2==0)prnt(-1);
+     else{
+        vector<int> v;
+        f(i,1,((n+1)/2)+1){
+            // cout<<i<<" "<<(n+1-i);
+            v.push_back(i);
+            if(i!=(n+1-i))v.push_back(n+1-i);
+        }
+        for(int i:v)cout<<i<<" ";
+        cout<<endl;
      }
-    int mx=INT_MIN;
-    f(i,0,n){
-        if(mx<a[i])mx=a[i];
-     }
-     prnt(n-mx);
 }
 
 int main()
