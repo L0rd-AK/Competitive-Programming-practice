@@ -4,22 +4,25 @@ using namespace std;
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
 #define endl "\n"
-#define yes cout<<"YES"<<endl
-#define no cout<<"NO"<<endl
+#define  yn(f)  f? cout<<"YES\n":cout<<"NO\n"
 #define prnt(x) cout<<x<<endl
-
+const ll N=1e6;
+ll a[N]={0};
 void AKG(){
      int n;cin>>n;
-     if(n%2==0)prnt(-1);
-     else{
-        vector<int> v;
-        f(i,1,((n+1)/2)+1){
-            // cout<<i<<" "<<(n+1-i);
-            v.push_back(i);
-            if(i!=(n+1-i))v.push_back(n+1-i);
+     int b[n];
+     f(i,0,n)cin>>b[i];
+     int q;cin>>q;
+     while(q--){
+        string s;cin>>s;
+        int l=s.length();
+        if(l!=n){yn(0);continue;}
+        bool ok=1;
+        f(i,0,n){
+            if(a[b[i]]>0 && a[b[i]]!=s[i]){ok=0;break;}
+            else a[b[i]]=s[i];
         }
-        for(int i:v)cout<<i<<" ";
-        cout<<endl;
+        yn(ok);
      }
 }
 
@@ -41,5 +44,5 @@ int main()
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n"; 
 #endif
-    return 0;
+    return 0 ;
 }
