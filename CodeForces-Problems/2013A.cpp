@@ -9,10 +9,9 @@ using namespace std;
 
 void AKG(){
      int n;cin>>n;
-     ll a[n];
-     ll sum=0;
-     f(i,0,n){cin>>a[i];sum+=a[i];}
-     prnt(sum-2*a[n-2]);
+     int a,b;cin>>a>>b;
+     int x=min(a,b);
+     prnt((n+x-1)/x);
 }
 
 int main()
