@@ -8,21 +8,11 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-     int n,k;cin>>n>>k;
-     int a[n];
-     f(i,0,n)cin>>a[i];
-     sort(a,a+n,greater<int>());
-     int ans=0;
-     f(i,0,n){
-        if(i%2==0)ans+=a[i];
-        else{
-            int x=min(k,a[i-1]-a[i]);
-            a[i]+=x;
-            k-=x;
-            ans-=a[i];
-        }
-     }
-     prnt(ans);
+     int n;cin>>n;
+     ll a[n];
+     ll sum=0;
+     f(i,0,n){cin>>a[i];sum+=a[i];}
+     prnt(sum-2*a[n-2]);
 }
 
 int main()
