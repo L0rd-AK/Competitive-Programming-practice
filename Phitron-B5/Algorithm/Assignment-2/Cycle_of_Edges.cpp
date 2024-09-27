@@ -10,22 +10,6 @@ using namespace std;
 const int N = 1e5 + 10;
 int parent[N];
 int group_size[N];
-
-class Edge
-{
-public:
-    int u, v, w;
-    Edge(int u, int v, int w)
-    {
-        this->u = u;
-        this->v = v;
-        this->w = w;
-    }
-};
-bool cmp(Edge a, Edge b)
-{
-    return a.w < b.w;
-}
 void dsu_initialize(int n)
 {
     for (int i = 1; i <= n; i++)
@@ -58,40 +42,26 @@ void dsu_union_by_size(int node1, int node2)
     }
 }
 void AKG(){
-    int n, e;
+     int n, e;
     cin >> n >> e;
     dsu_initialize(n);
-    vector<Edge> edgeList;
+    int cycle = 0;
     while (e--)
     {
-        int u, v, w;
-        cin >> u >> v >> w;
-        edgeList.push_back(Edge(u, v, w));
-    }
-    sort(edgeList.begin(), edgeList.end(), cmp);
-    int totalCost = 0;
-    for (Edge ed : edgeList)
-    {
-        int leaderU = dsu_find(ed.u);
-        int leaderV = dsu_find(ed.v);
-        if (leaderU == leaderV)
+        int a, b;
+        cin >> a >> b;
+        int leaderA = dsu_find(a);
+        int leaderB = dsu_find(b);
+        if (leaderA == leaderB)
         {
-            continue;
+            cycle++;
         }
         else
         {
-            dsu_union_by_size(ed.u, ed.v);
-            totalCost += ed.w;
+            dsu_union_by_size(a, b);
         }
     }
-    int z=0;
-    for (int i = 1; i <= n; i++)
-    {
-        if(parent[i]==-1)z++;
-        
-    }
-    if(z>1) prnt(-1);
-    else cout << totalCost << endl;
+    prnt(cycle);
 }
 
 int main()
