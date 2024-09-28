@@ -1,77 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define ll long long int
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
+#define endl "\n"
+#define  yn(f)  f? cout<<"YES\n":cout<<"NO\n"
+#define prnt(x) cout<<x<<endl
 
-const int N = 1e3 + 10;
-bool vis[N][N];
-int dx[4] = {0, 0, 1, -1};
-int dy[4] =  {1, -1, 0, 0}; 
-map<pair<int, int>, pair<int, int>> par;
-int n, m;
-char a[N][N];
-
-bool valid(int ci, int cj) {
-    if (ci >= 0 && ci < n && cj >= 0 && cj < m && (a[ci][cj] == '.' || a[ci][cj] == 'D'))
-        return true;
-    return false;
+void AKG(){
+    int n;cin>>n;
+    int a[n];
+    f(i,0,n)cin>>a[i];
+    int x=0,y=0;
+    f(i,0,n){
+        if(i%2==0)x+=a[i];
+        else y+=a[i];
+    }
+    prnt((x-y));
+    
 }
 
-void bfs(int si, int sj) {
-    vis[si][sj] = true;
-
-    queue<pair<int, int>> q;
-    q.push({si, sj});
-
-    while (!q.empty()) {
-        pair<int, int> node = q.front();
-        q.pop();
-
-        for (int i = 0; i < 4; i++) {
-            int ci = node.first + dx[i];
-            int cj = node.second + dy[i];
-
-            if (valid(ci, cj) && !vis[ci][cj]) {
-                vis[ci][cj] = true;
-                q.push({ci, cj});
-                par[{ci, cj}] = {node.first, node.second};
-            }
-        }
+int main()
+{
+#ifndef ONLINE_JUDGE
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    auto begin = std::chrono::high_resolution_clock::now();
+#endif
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int t=1;
+    cin>>t;
+    while(t--){
+        AKG();
     }
-}
-
-int main() {
-    cin >> n >> m;
-    memset(vis, false, sizeof(vis));
-
-    int si = 0, sj = 0, x = 0, y = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> a[i][j];
-            if (a[i][j] == 'R') {si=i;sj=j;}
-            if (a[i][j] == 'D'){x=i;y=j;}
-        }
-    }
-
-    bfs(si, sj);
-
-    int sti = x, stj = y;
-
-    if(vis[x][y]){
-        while (a[sti][stj] != 'R') {
-            if (a[sti][stj] != 'D') {
-                a[sti][stj] = 'X';  
-            }
-            auto parent = par[{sti, stj}];
-            sti = parent.first;
-            stj = parent.second;
-        }
-    }
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cout << a[i][j];
-        }
-        cout << endl;
-    }
-
-    return 0;
+#ifndef ONLINE_JUDGE
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n"; 
+#endif
+    return 0 ;
 }
