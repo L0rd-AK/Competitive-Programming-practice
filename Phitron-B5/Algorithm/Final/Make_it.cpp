@@ -7,27 +7,34 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
- 
+
+const int maxN = 100000 + 5;
+int dp[maxN];  
+
+
+bool funk(int n, int i) {
+    if (i == n) return true;         
+    if (i > n) return false;         
+    if (dp[i] != -1) return dp[i];  
+
+    bool a = false, b = false, c = false;
+    if (i + 3 <= n) {  
+        a = funk(n, i + 3);
+    }
+    if (i * 2 <= n) { 
+        b = funk(n, i * 2);
+    }
+    if (i * 2 + 3 <= n) { 
+        c = funk(n, i * 2 + 3);
+    }
+    return dp[i] = (a || b || c);
+}
+
 void AKG() {
-    int n;cin>>n;
-    int a[n];
-    f(i,0,n)cin>>a[i];
-    int x=0,y=0,mx=INT_MIN;
-    f(i,0,n){
-        if(mx<a[i]){
-            mx=a[i];
-            x=i;
-        }
-    }       
-    mx=INT_MIN;
-    a[x]=-1;
-    f(i,0,n){
-        if(mx<a[i]){
-            mx=a[i];
-            y=i;
-        }
-    }        
-    cout<<min(x,y)<<" "<<max(x,y)<<endl;
+    int n;
+    cin >> n;
+    memset(dp, -1, sizeof(dp));  
+    yn(funk(n, 1));             
 }
 
 int main() {

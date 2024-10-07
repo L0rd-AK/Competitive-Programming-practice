@@ -9,20 +9,15 @@ using namespace std;
 
 void AKG(){
     int n,k;cin>>n>>k;
-    int a[n];
-    f(i,0,n)cin>>a[i];
-    int zero=0,ans=0,idx=0;
-    f(i,0,n){
-        if(a[i]>=k){
-            idx=i;
-            break;
+    if(k == 1) prnt(n);
+	else{
+        int ans = 0;
+        while(n){
+            ans += n%k;
+            n /= k;
         }
+        prnt(ans);
     }
-    f(i,idx,n){
-        if(a[i]>=k)zero+=a[i];
-        else if(a[i]==0 && zero>0) {zero--;ans++;}
-    }
-    prnt(ans);
     
 }
 

@@ -31,10 +31,6 @@ void AKG() {
 }
 
 int main() {
-#ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    auto begin = std::chrono::high_resolution_clock::now();
-#endif
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
@@ -46,11 +42,6 @@ int main() {
         AKG();
     }
 
-#ifndef ONLINE_JUDGE
-    auto end = std::chrono::high_resolution_clock::now();
-    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
-#endif
 
     return 0;
 }
