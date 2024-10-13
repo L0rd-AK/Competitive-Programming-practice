@@ -8,16 +8,14 @@ using namespace std;
 #define prnt(x) cout<<x<<endl
 
 void AKG(){
-    int n,k;cin>>n>>k;
-    if(k == 1) prnt(n);
-	else{
-        int ans = 0;
-        while(n){
-            ans += n%k;
-            n /= k;
+   int n, x; cin >> n >> x;
+    int ans = 0;
+    for (int i = 1; i <= n; i++) {
+        if (x % i == 0 && x / i <= n) {
+            ans++;
         }
-        prnt(ans);
     }
+    prnt(ans);
     
 }
 
@@ -30,7 +28,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         AKG();
     }

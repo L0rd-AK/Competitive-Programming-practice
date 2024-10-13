@@ -8,35 +8,21 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-// Use 1D DP array to optimize space
-int dp[10005];
-
-// Recursive function to check if there's a subset sum equal to given sum
-bool checkSum(int n, int sum, vector<int>& arr) {
-    if (sum == 0) return true;      // Found subset with required sum
-    if (n == 0 || sum < 0) return false; // No elements left or invalid sum
-
-    if (dp[sum] != -1) return dp[sum];   // Use memoized result
-
-    // Either include the current element or exclude it
-    bool include = checkSum(n - 1, sum - arr[n - 1], arr);  // Include current element
-    bool exclude = checkSum(n - 1, sum, arr);  // Exclude current element
-
-    return dp[sum] = include || exclude;
-}
-
 void AKG() {
-    int n, sum;
-    cin >> n >> sum;
-
-    vector<int> v(n);
-    f(i, 0, n) cin >> v[i];
-
-    // Initialize dp array with -1 (uncomputed states)
-    memset(dp, -1, sizeof(dp));
-
-    // Check if subset with given sum exists
-    yn(checkSum(n, sum, v));
+    int n;
+    cin >> n;
+    
+    ll sum = 0;
+    vector<ll> v(n);
+    f(i,0,n){ cin >> v[i], sum += v[i];}
+ 
+    sort(v.begin(),v.end());
+ 
+    if (n < 3){
+        prnt(-1);
+        return;
+    }
+    prnt(max(0LL,v[n/2]*2*n-sum+1));
 }
 
 int main() {

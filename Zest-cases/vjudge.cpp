@@ -9,25 +9,9 @@ using namespace std;
 #define prnt(x) cout << x << endl
  
 void AKG() {
-    int n;cin>>n;
-    int a[n];
-    f(i,0,n)cin>>a[i];
-    int x=0,y=0,mx=INT_MIN;
-    f(i,0,n){
-        if(mx<a[i]){
-            mx=a[i];
-            x=i;
-        }
-    }       
-    mx=INT_MIN;
-    a[x]=-1;
-    f(i,0,n){
-        if(mx<a[i]){
-            mx=a[i];
-            y=i;
-        }
-    }        
-    cout<<min(x,y)<<" "<<max(x,y)<<endl;
+    ll n;
+    cin >> n;
+    cout << n + int(sqrtl(n) + 0.5) << "\n";
 }
 
 int main() {

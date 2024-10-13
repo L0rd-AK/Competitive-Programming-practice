@@ -8,35 +8,59 @@ using namespace std;
 #define no cout<<"NO"<<endl
 #define prnt(x) cout<<x<<endl
 
-bool valid(const vector<vector<int>>& pref, int l, int r, int k) {
-    int odd = 0;
-    for (int i = 0; i < 26; ++i) {
-        int freq = pref[r + 1][i] - pref[l][i];  
-        if (freq % 2 != 0) {
-            odd++; 
+void AKG() {
+    int n;
+    cin >> n;
+    int a[n], s = 0;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        s += a[i];
+    }
+    bool dp[n + 1][s + 1];
+    dp[0][0] = true;
+    for (int i = 1; i <= s; i++)
+        dp[0][i] = false;
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 0; j <= s; j++)
+        {
+            if (a[i - 1] <= j)
+            {
+                dp[i][j] = dp[i - 1][j - a[i - 1]] || dp[i - 1][j];
+            }
+            else
+            {
+                dp[i][j] = dp[i - 1][j];
+            }
         }
     }
-    return (odd / 2) <= k;
+    vector<int> v;
+    for (int i = 0; i <= n; i++)
+    {
+        for (int j = 0; j <= s; j++)
+        {
+            if (dp[i][j] == 1)
+                v.push_back(j);
+        }
+    }
+    int ans = INT_MAX;
+    for (int val : v)
+    {
+        int s1 = val;
+        int s2 = s - s1;
+        ans = min(ans, abs(s1 - s2));
+    }
+    cout << ans << endl;
 }
 
 int main() {
         ios_base::sync_with_stdio(false);
         cin.tie(0);
-        string s;
-        int n, q;
-        cin>>n>>s>>q;
-        vector<vector<int>> pref(n + 1, vector<int>(26, 0));
-        for (int i = 0; i < n; ++i) {
-            pref[i + 1] = pref[i];  
-            pref[i + 1][s[i] - 'a']++; 
-        }
+        int q;
+        cin>>q;
         while (q--) {
-            int l,r,k;
-            cin>>l>>r>>k;
-            l--; r--;
-            if (valid(pref, l, r, k)) yes;
-            else no;
-            
+            AKG();
         }
     return 0;
 }
