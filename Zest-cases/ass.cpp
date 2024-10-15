@@ -1,66 +1,67 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <cmath>
 using namespace std;
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
-#define endl "\n"
-#define yes cout<<"YES"<<endl
-#define no cout<<"NO"<<endl
-#define prnt(x) cout<<x<<endl
 
-void AKG() {
-    int n;
-    cin >> n;
-    int a[n], s = 0;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        s += a[i];
-    }
-    bool dp[n + 1][s + 1];
-    dp[0][0] = true;
-    for (int i = 1; i <= s; i++)
-        dp[0][i] = false;
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 0; j <= s; j++)
-        {
-            if (a[i - 1] <= j)
-            {
-                dp[i][j] = dp[i - 1][j - a[i - 1]] || dp[i - 1][j];
-            }
-            else
-            {
-                dp[i][j] = dp[i - 1][j];
+// Function to calculate the best sum close to half the total sum with exactly 'k' coins
+int bestSubsetSum(vector<int>& coins, int N, int k, int totalSum) {
+    int targetSum = totalSum / 2; // We want to get as close as possible to half the total sum
+
+    // DP table to store whether a specific sum with exactly j coins is possible
+    vector<vector<bool>> dp(k + 1, vector<bool>(targetSum + 1, false));
+    dp[0][0] = true;  // A sum of 0 is always possible with 0 coins
+
+    // DP calculation
+    for (int i = 0; i < N; ++i) {
+        int coinValue = coins[i];
+        for (int j = k; j > 0; --j) {  // Loop for exactly 'k' coins
+            for (int s = targetSum; s >= coinValue; --s) {
+                dp[j][s] = dp[j][s] || dp[j - 1][s - coinValue];
             }
         }
     }
-    vector<int> v;
-    for (int i = 0; i <= n; i++)
-    {
-        for (int j = 0; j <= s; j++)
-        {
-            if (dp[i][j] == 1)
-                v.push_back(j);
+
+    // Find the closest sum to targetSum
+    for (int s = targetSum; s >= 0; --s) {
+        if (dp[k][s]) {
+            return s;
         }
     }
-    int ans = INT_MAX;
-    for (int val : v)
-    {
-        int s1 = val;
-        int s2 = s - s1;
-        ans = min(ans, abs(s1 - s2));
+
+    return 0;
+}
+
+int minDifference(vector<int>& coins, int N) {
+    int totalSum = accumulate(coins.begin(), coins.end(), 0);  // Total sum of coins
+
+    int halfSize = N / 2;
+    int bestSum1 = bestSubsetSum(coins, N, halfSize, totalSum);
+
+    if (N % 2 == 0) {
+        // If N is even, both subsets have N/2 coins
+        return abs(totalSum - 2 * bestSum1);
+    } else {
+        // If N is odd, find the best sum with N/2 coins and (N/2) + 1 coins
+        int bestSum2 = bestSubsetSum(coins, N, halfSize + 1, totalSum);
+        return min(abs(totalSum - 2 * bestSum1), abs(totalSum - 2 * bestSum2));
     }
-    cout << ans << endl;
 }
 
 int main() {
-        ios_base::sync_with_stdio(false);
-        cin.tie(0);
-        int q;
-        cin>>q;
-        while (q--) {
-            AKG();
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int N;
+        cin >> N;
+        vector<int> coins(N);
+        for (int i = 0; i < N; ++i) {
+            cin >> coins[i];
         }
+
+        cout << minDifference(coins, N) << endl;
+    }
+
     return 0;
 }

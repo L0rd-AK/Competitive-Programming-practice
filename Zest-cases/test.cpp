@@ -1,41 +1,56 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
 #define endl "\n"
-#define  yn(f)  f? cout<<"YES\n":cout<<"NO\n"
-#define prnt(x) cout<<x<<endl
+#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
+#define prnt(x) cout << x << endl
 
-void AKG(){
-   int n, x; cin >> n >> x;
-    int ans = 0;
-    for (int i = 1; i <= n; i++) {
-        if (x % i == 0 && x / i <= n) {
-            ans++;
+
+void AKG() {
+    int n;cin>>n;
+    int a[i];
+    f(i,0,n)cin>>a[i];
+    sort(a,a+n);
+    int mx=a[0];
+    int x=a[0];
+    for (int i = 1; i < n; ++i) {
+        if (a[i] >= x) {
+            if (x > 0) {
+                x--;
+            }
+            mx += x;
+        } else {
+            x = a[i];
+            mx += x;
         }
     }
-    prnt(ans);
-    
+    prnt(mx);
+
 }
 
-int main()
-{
-#ifndef ONLINE_JUDGE
+int main() {
+    #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     auto begin = std::chrono::high_resolution_clock::now();
-#endif
+    #endif
+
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    int t=1;
-    // cin>>t;
-    while(t--){
+
+    int t = 1;
+    // cin >> t;
+    while (t--) {
         AKG();
     }
-#ifndef ONLINE_JUDGE
+
+    #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n"; 
-#endif
-    return 0 ;
+    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    #endif
+    
+    return 0;
 }

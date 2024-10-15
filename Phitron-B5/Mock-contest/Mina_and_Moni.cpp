@@ -40,13 +40,13 @@ void AKG() {
         cin >> coins[i];
         sum+=coins[i];
     }
-    int half = n / 2;
-    int op1 = subset_sum(coins, n, half, sum);
+    int halfc = n / 2;
+    int op1 = subset_sum(coins, n, halfc, sum);
 
      if (n % 2 == 0) {
         prnt(abs(sum - 2 * op1));
     }else{
-        int op2 = subset_sum(coins, n, half + 1, sum);
+        int op2 = subset_sum(coins, n, halfc + 1, sum);
         prnt(min(abs(sum - 2 * op1), abs(sum - 2 * op2)));
     }
     

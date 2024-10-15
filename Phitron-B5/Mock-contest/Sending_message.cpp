@@ -8,28 +8,24 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
+
 void AKG() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    f(i, 0, n) cin >> a[i];
-    sort(a.begin(), a.end(), greater<int>());
-    
-    ll mx = 0;
-    int prev = INT_MAX;
-    
-    for (int i = 0; i < n; ++i) {
-        if (a[i] >= prev) {
-            a[i] = max(0, prev - 1);
+    string a,b;
+    while(cin>>a>>b){
+      int ans=0;
+        for(int i=0,j=0;i<a.length();i++){
+           if(a[i]==b[j]){
+            ans++;
+            j++;
+           }
         }
-        mx += a[i];
-        prev = a[i];
+        if(ans==b.length())cout<<"Possible\n";
+        else cout<<"Impossible\n";
     }
-    
-    prnt(mx);
 }
 
 int main() {
+
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
