@@ -9,7 +9,28 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    f(i, 0, n) cin >> a[i];
+
+    vector<ll> pre(n);
+    pre[0] = a[0];
+    for (int i = 1; i < n; i++) {
+        pre[i] = pre[i - 1] + a[i];
+    }
+
+    for (int i = 0; i < n; i++) {
+        ll x = (i == 0) ? 0 : pre[i - 1];
+        ll y = pre[n - 1] - pre[i];
+
+        if (x == y) {
+            cout << pre[i] << " " << i + 1 << endl;
+            return;
+        }
+    }
+
+    cout << "UNSTABLE" << endl;
 }
 
 int main() {
@@ -24,35 +45,7 @@ int main() {
     int t = 1;
     // cin >> t;
     while (t--) {
-        ll n, q;
-        cin >> n >> q;
-        while (q--) {
-            ll x, y;
-            cin >> x >> y;
-            x--;
-            ll a,b,ans_a,ans_b;
-            if(x%2==1){
-                a=x/2;
-                ans_a=a*(a+1);
-                ans_a+=(a+1);
-            }else{
-                a=x/2;
-                a=a*(a+1);
-                ans_a=a;
-            }
-            if(y%2==1){
-                b=y/2;
-                ans_b=b*(b+1);
-                ans_b+=(b+1);
-            }else{
-                b=y/2;
-                b=b*(b+1);
-                ans_b=b;
-            }
-            // cout<<a<<" "<<b<<endl;
-            cout<<ans_b-ans_a<<endl;
-            
-        }
+        AKG();
     }
 
     #ifndef ONLINE_JUDGE

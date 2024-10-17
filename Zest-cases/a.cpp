@@ -1,51 +1,33 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
-#define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
 
-void AKG() {
-    int n;
-    cin >> n;
-    
-    ll sum = 0;
-    vector<ll> v(n);
-    f(i,0,n){ cin >> v[i], sum += v[i];}
- 
-    sort(v.begin(),v.end());
- 
-    if (n < 3){
-        prnt(-1);
-        return;
+// Function to compute the sum from L to R in the sequence
+long long rangeSum(long long L, long long R) {
+    long long sum = 0;
+    // Iterate through the range from L to R and compute the sum
+    for (long long i = L; i <= R; i++) {
+        sum += (i + 1) / 2;
     }
-    prnt(max(0LL,v[n/2]*2*n-sum+1));
+    return sum;
 }
 
 int main() {
-#ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    auto begin = std::chrono::high_resolution_clock::now();
-#endif
-
-    ios_base::sync_with_stdio(0);
+    ios_base::sync_with_stdio(false);
     cin.tie(0);
     
-    int t;
-    cin >> t;
+    // Read N and Q
+    long long N, Q;
+    cin >> N >> Q;
     
-    while (t--) {
-        AKG();
+    // Process each query
+    while (Q--) {
+        long long L, R;
+        cin >> L >> R;
+        
+        // Output the sum for the range [L, R]
+        cout << rangeSum(L, R) << '\n';
     }
-
-#ifndef ONLINE_JUDGE
-    auto end = std::chrono::high_resolution_clock::now();
-    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
-#endif
 
     return 0;
 }

@@ -8,21 +8,33 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
+bool cmp(const pair<int, int>& a, const pair<int, int>& b) {
+    return a.second > b.second;
+}
 
 void AKG() {
-    int n,m;cin>>n>>m;
-    int a[n],p[n]={0};
-    f(i,0,n)cin>>a[i];
-    set<int> st;
-    for(int i=n-1;i>=0;i--){
-        st.insert(a[i]);
-        p[i]=st.size();
-    }
-    while(m--){
-        int x;cin>>x;
-        prnt(p[x-1]);
+    int n, k;
+    cin >> n >> k;
+    int a[n];
+    f(i, 0, n) cin >> a[i];
+    map<int, int> mp;
+
+    for (int i = 0; i < n; i++) {
+        mp[a[i]]++;
     }
 
+    vector<pair<int, int>> vec(mp.begin(), mp.end());
+    sort(vec.begin(), vec.end(), cmp);
+    int ans=vec[0].second,idx=0,prev=vec[0].second;
+    for (int i=1;i<vec.size();i++) {
+        if(idx>k)break;
+        idx++;
+        if((prev-vec[i].second)<=1){
+            ans+=vec[i].second;
+            prev=vec[i].second;
+        }
+    }
+    prnt(ans);
 }
 
 int main() {
@@ -35,7 +47,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
@@ -45,6 +57,6 @@ int main() {
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     #endif
-    
+
     return 0;
 }

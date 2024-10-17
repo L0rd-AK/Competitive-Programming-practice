@@ -8,8 +8,17 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
+
 void AKG() {
-    
+    int n,k;cin>>n>>k;
+    string a,b;
+    cin>>a>>b;
+    int ans=0;
+    for(int i=0;i<n;i++){
+        if(a[i]!=b[i])ans++;
+    }
+    yn(ans<=k);
+
 }
 
 int main() {
@@ -22,37 +31,9 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
-        ll n, q;
-        cin >> n >> q;
-        while (q--) {
-            ll x, y;
-            cin >> x >> y;
-            x--;
-            ll a,b,ans_a,ans_b;
-            if(x%2==1){
-                a=x/2;
-                ans_a=a*(a+1);
-                ans_a+=(a+1);
-            }else{
-                a=x/2;
-                a=a*(a+1);
-                ans_a=a;
-            }
-            if(y%2==1){
-                b=y/2;
-                ans_b=b*(b+1);
-                ans_b+=(b+1);
-            }else{
-                b=y/2;
-                b=b*(b+1);
-                ans_b=b;
-            }
-            // cout<<a<<" "<<b<<endl;
-            cout<<ans_b-ans_a<<endl;
-            
-        }
+        AKG();
     }
 
     #ifndef ONLINE_JUDGE
@@ -60,6 +41,6 @@ int main() {
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     #endif
-
+    
     return 0;
 }
