@@ -9,26 +9,20 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n, k;
-    cin >> n >> k;
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
+    int n;cin>>n;
+    int a[56]={0};
+    f(i,0,n){
+        int x;cin>>x;
+        a[x]++;
     }
-    
-    sort(a.begin(), a.end());
-    
-    int ans = 0;
-    int j = 0;
-    for (int i = 0; i < n; ++i) {
-        j = max(i, j);
-        while (j + 1 < n && a[j + 1] - a[j] <= 1 && a[j + 1] - a[i] < k) {
-            j++;
+    f(i,1,51){
+        if(a[i]%2==1 && a[i]!=0){
+            yn(1);
+            return;
         }
-        ans = max(ans, j - i + 1);
     }
-    
-    prnt(ans);
+    yn(0);
+
 }
 int main() {
     #ifndef ONLINE_JUDGE
