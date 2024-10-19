@@ -9,20 +9,16 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n;cin>>n;
-    int a[56]={0};
-    f(i,0,n){
-        int x;cin>>x;
-        a[x]++;
+    string a,b;
+    cin>>a>>b;
+    int len=min(a.length(),b.length());
+    int same=0;
+    f(i,0,len){
+        if(a[i]==b[i])same++;
+        else break;
     }
-    f(i,1,51){
-        if(a[i]%2==1 && a[i]!=0){
-            yn(1);
-            return;
-        }
-    }
-    yn(0);
-
+    if(same>0)prnt(a.length()+b.length()+1-same);
+    else prnt(a.length()+b.length());
 }
 int main() {
     #ifndef ONLINE_JUDGE
