@@ -9,24 +9,19 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    map<int,int> mp;
+    int n;cin>>n;
+    string s;cin>>s;
+    int ans=-1,mx=0;
     f(i,0,n){
-        int x;cin>>x;
-        mp[x]++;
-    }
-    for(int i=0;i<=n;i++){
-        if(mp[i]==0){
-            prnt(i);
-            return;
-        }
-        else if(mp[i]>1){
-            if(i+k<=n){
-                mp[i]--;
-                mp[i+k]+=mp[i];
-            }
+        if(s[i]!='a' && s[i]!='e' && s[i]!='i' && s[i]!='o' && s[i]!='u')mx++;
+        else{
+            ans=max(mx,ans);
+            mx=0;
         }
     }
+    ans=max(mx,ans);
+    yn(ans<4);
+    
 }
 
 int main() {
