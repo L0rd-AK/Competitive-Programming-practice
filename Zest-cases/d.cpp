@@ -1,43 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int count_drinks(string s) {
-    vector<int> v;
-    int count = 0;
-    for (char c : s) {
-        if (c == '1') {
-            count++;
-        } else {
-            if (count > 0) {
-                v.push_back(count);
-                count = 0;
-            }
+#define ll long long int
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
+#define endl "\n"
+#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
+#define prnt(x) cout << x << endl
+
+bool cmp(const pair<int, int>& a, const pair<int, int>& b) {
+    return a.first+a.second < b.first+b.second;
+}
+
+void AKG() {
+    int n;cin>>n;
+    int a[n];
+    f(i,0,n)cin>>a[i];
+    ll ans=0,temp=0,idx=0;
+    f(i,0,n){
+        temp+=a[i];
+        idx++;
+        if(temp==0){
+            ans=max(ans,idx);
+            idx=0;
         }
     }
-    if (count > 0) {
-        v.push_back(count);
-    }
-    sort(v.rbegin(), v.rend());
-    int sum = 0;
-    
-    for (int i = 0; i < v.size(); i += 2) {
-        sum += v[i];
-    }
-
-    return sum;
+    prnt(ans);
+   
 }
 
 int main() {
+    #ifndef ONLINE_JUDGE
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    auto begin = std::chrono::high_resolution_clock::now();
+    #endif
+
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
     int t;
     cin >> t;
     while (t--) {
-        string s;
-        cin >> s;
-        cout << count_drinks(s) << endl;
+        AKG();
     }
+
+    #ifndef ONLINE_JUDGE
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    #endif
 
     return 0;
 }

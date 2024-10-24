@@ -8,25 +8,47 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-bool cmp(const pair<int, int>& a, const pair<int, int>& b) {
-    return a.first+a.second < b.first+b.second;
-}
+
 
 void AKG() {
-    int d1,d2,d3;cin>>d1>>d2>>d3;
-    int s1,s2,s3;cin>>s1>>s2>>s3;
-    int sum1=d1+d2+d3;
-    int sum2=s1+s2+s3;
-    if(sum1==sum2){
-        if(d1==s1 && s2==d2 && s3==d3)prnt("TIE");
-        else if(d1>s1)prnt("DRAGON");
-        else if(s1>d1)prnt("SLOTH");
-        else if(d2>s2)prnt("DRAGON");
-        else if(s2>d2)prnt("SLOTH");
-    }else if(sum1>sum2){
-        prnt("DRAGON");
-    }else prnt("SLOTH");
-   
+    int n;
+    cin >> n;
+
+    vector<vector<int>> a(n, vector<int>(n));
+    int ans=0;
+    f(i, 0, n) {
+        f(j, 0, n) {
+            cin >> a[i][j];
+            int x = a[i][j];
+            if (x < 0) {
+                ans += abs(x);
+            }
+        }
+    }
+
+    int ma=0;
+    f(i, 0, n - 1) {
+        f(j, 0, n - 1) {
+            
+            if(a[i][j]<0 && a[i + 1][j + 1] < 0){
+                while(a[i][j]<0 && a[i + 1][j + 1] < 0){
+                    ma++;
+                    a[i][j]++;
+                    a[i + 1][j + 1]++;
+                }
+            }
+            if(a[i][j + 1] < 0 && a[i + 1][j] < 0){
+                while(a[i][j + 1] < 0 && a[i + 1][j] < 0){
+                    ma++;
+                    a[i][j + 1]++;
+                    a[i + 1][j]++;
+                }
+            }
+        }
+    }
+    
+    // cout<<ans<<" "<<ma<<endl;
+    prnt(ans-ma);
 }
 
 int main() {
