@@ -8,33 +8,23 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-int dist(const vector<int>& a, int n) {
-    int x = 0;
-    for (int i = 0; i < n - 1; ++i) {
-        if (a[i] == a[i + 1]) {
-            x++;
-        }
-    }
-    return x;
-}
-
 void AKG() {
     int n;
     cin >> n;
     
     vector<int> a(n);
     f(i, 0, n) cin >> a[i];
-
-    int start = dist(a, n);
-
-    for (int i = 0; i < n / 2; ++i) {
-        swap(a[i], a[n - i - 1]);  
-        int cur = dist(a, n); 
-        start = min(start, cur);  
-        swap(a[i], a[n - i - 1]);  
+    for (int i = 1; i < (n/2); ++i) {
+         int x=i,y=n-i-1;
+         if(a[x-1]!=a[y] && a[x]!=a[y+1])swap(a[x],a[y]);
     }
+    int ans=0;
+    f(i,0,n-1){
+        if(a[i]==a[i+1])ans++;
+    }
+    prnt(ans);
 
-    prnt(start);
+
 }
 
 int main() {

@@ -1,52 +1,72 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-#define ll long long
+#define ll long long int
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
+#define endl "\n"
+#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
+#define prnt(x) cout << x << endl
+
+
 
 void AKG() {
     int n;
     cin >> n;
+
+    vector<vector<int>> a(n, vector<int>(n));
     
-    vector<ll> arr(n-2);
-    ll part_sum = 0;
-    
-    // Input the remaining elements of the array and calculate their sum
-    for (int i = 0; i < n-2; i++) {
-        cin >> arr[i];
-        part_sum += arr[i];
-    }
-    
-    ll total_sum;
-    cin >> total_sum;
-    
-    // Calculate the sum of the two deleted elements
-    ll deletedSum = total_sum - part_sum;
-    
-    // We need to count the number of valid pairs (x, y) where x + y = deletedSum
-    ll count = 0;
-    
-    // Iterate through possible values of x and calculate y = deletedSum - x
-    for (ll x = 1; x <= deletedSum; x++) {
-        ll y = deletedSum - x;
-        if (y >= 1 && y <=1e18) {
-            count++;
+    f(i, 0, n) {
+        f(j, 0, n) {
+            cin >> a[i][j];
         }
     }
+
+    int ans=0;
+    f(i, 0, n) {
+        int mn=0;
+        int x=0,y=i;
+        while(x>=0 && x<n && y>=0 && y<n){
+            if(a[x][y]<0)mn=min(mn,a[x][y]);
+            x++;y++;
+            // cout<<mn<<" ";
+        }
+        ans+=(mn*-1);
+    }
+    f(i, 1, n) {
+        int mn=0;
+        int x=i,y=0;
+        while(x>=0 && x<n && y>=0 && y<n){
+            if(a[x][y]<0)mn=min(mn,a[x][y]);
+            x++;y++;
+            // cout<<mn<<" ";
+        }
+        ans+=(mn*-1);
+    }
     
-    // Output the result for this test case
-    cout << count << endl;
+    prnt(ans);
 }
 
 int main() {
+    #ifndef ONLINE_JUDGE
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    auto begin = std::chrono::high_resolution_clock::now();
+    #endif
+
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    
+
     int t;
     cin >> t;
     while (t--) {
         AKG();
     }
+
+    #ifndef ONLINE_JUDGE
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    #endif
 
     return 0;
 }

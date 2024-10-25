@@ -8,45 +8,60 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-int max_segment(vector<int>& a) {
-    unordered_map<long long, int> mp;
-    long long prefixSum = 0;
-    int ans = 0;
-    
-    mp[0] = -1;
 
-    for (int i = 0; i < a.size(); i++) {
-        prefixSum += a[i];
-        if (mp.find(prefixSum) != mp.end()) {
-            ans++;
-            mp.clear();
-            prefixSum = 0;
-            mp[0] = i; 
-        } else {
-            mp[prefixSum] = i;
+
+void AKG() {
+    int n;
+    cin >> n;
+
+    vector<vector<int>> a(n, vector<int>(n));
+    
+    f(i, 0, n) {
+        f(j, 0, n) {
+            cin >> a[i][j];
         }
     }
 
-    return ans;
+    int ans=0;
+    f(i, 0, n) {
+        int mn=0;
+        int x=0,y=i;
+        while(x>=0 && x<n && y>=0 && y<n){
+            if(a[x][y]<0)mn=min(mn,a[x][y]);
+            x++;y++;
+            // cout<<mn<<" ";
+        }
+        ans+=(mn*-1);
+    }
+    f(i, 1, n) {
+        int mn=0;
+        int x=i,y=0;
+        while(x>=0 && x<n && y>=0 && y<n){
+            if(a[x][y]<0)mn=min(mn,a[x][y]);
+            x++;y++;
+            // cout<<mn<<" ";
+        }
+        ans+=(mn*-1);
+    }
+    
+    prnt(ans);
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-        freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-        auto begin = std::chrono::high_resolution_clock::now();
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    auto begin = std::chrono::high_resolution_clock::now();
     #endif
+
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
     int t;
     cin >> t;
     while (t--) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-        }
-        prnt(max_segment(a));
+        AKG();
     }
+
     #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);

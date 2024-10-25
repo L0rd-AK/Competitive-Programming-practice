@@ -1,35 +1,33 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
+vector<int> sumMainDiagonal(const vector<vector<int>>& matrix) {
+    int n = matrix.size();
+    vector<int> sums(n);
 
-void solve(){
-    int n,x;cin>>n>>x;
-    int arr[n];
-
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    int freq[n+1] = {0};
-    for(int i=0;i<n;i++){
-        if(arr[i]<n+1) freq[arr[i]]++;
+    for (int i = 0; i < n; i++) {
+        sums[i] = matrix[i][i];
     }
 
-    for(int i=0;i<n+1;i++){
-        if(freq[i]==0){
-            cout<<i<<endl;
-            return;
-        }
-        else if(freq[i]>1){
-            if(i+x<=n) freq[i+x]+=freq[i]-1;
-        }
-        //cout<<freq[i]<<" ";
-    }
-
-    
+    return sums;
 }
 
-int main(){
-    int t;cin>>t;
-    while(t--) solve();
+int main() {
+    vector<vector<int>> matrix = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    vector<int> individualSums = sumMainDiagonal(matrix);
+
+    cout << "Individual sums of the main diagonal: ";
+    for (int sum : individualSums) {
+        cout << sum << " ";
+    }
+    cout << endl;
+
+    return 0;
 }

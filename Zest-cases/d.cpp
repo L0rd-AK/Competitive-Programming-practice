@@ -8,42 +8,45 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-bool cmp(const pair<int, int>& a, const pair<int, int>& b) {
-    return a.first+a.second < b.first+b.second;
-}
+int max_segment(vector<int>& a) {
+    unordered_map<long long, int> mp;
+    long long prefixSum = 0;
+    int ans = 0;
+    
+    mp[0] = -1;
 
-void AKG() {
-    int n;cin>>n;
-    int a[n];
-    f(i,0,n)cin>>a[i];
-    ll ans=0,temp=0,idx=0;
-    f(i,0,n){
-        temp+=a[i];
-        idx++;
-        if(temp==0){
-            ans=max(ans,idx);
-            idx=0;
+    for (int i = 0; i < a.size(); i++) {
+        prefixSum += a[i];
+        if (mp.find(prefixSum) != mp.end()) {
+            ans++;
+            mp.clear();
+            prefixSum = 0;
+            mp[0] = i; 
+        } else {
+            mp[prefixSum] = i;
         }
     }
-    prnt(ans);
-   
+
+    return ans;
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    auto begin = std::chrono::high_resolution_clock::now();
+        freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+        auto begin = std::chrono::high_resolution_clock::now();
     #endif
-
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
 
     int t;
     cin >> t;
     while (t--) {
-        AKG();
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        prnt(max_segment(a));
     }
-
     #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);

@@ -14,7 +14,6 @@ void AKG() {
     int n;
     cin >> n;
     int a[n];
-    flg=1;
     f(i, 0, n){
         cin>>a[i];
     }
@@ -25,7 +24,7 @@ void AKG() {
             else even = 1;
     }
     if (even)cout << "YES\n";
-    elsecout << "NO\n";
+    else cout << "NO\n";
 
 }
 
