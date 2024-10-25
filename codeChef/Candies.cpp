@@ -8,8 +8,6 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-
-
 void AKG() {
     int n;
     cin >> n;
