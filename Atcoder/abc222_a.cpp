@@ -9,21 +9,11 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    string s,ans="abcdefghijklmnopqrstuvwxyz";
+    string s;
     cin>>s;
-    int n=s.length();
-    int a[26]={0};
-    f(i,0,n){
-        a[s[i]-'a']++;
-    }
-    f(i,0,26){
-        if(a[i]==0){
-            prnt(ans[i]);
-            return;
-        }
-    }
-    prnt("None");
-    
+    int n=4-s.length();
+    f(i,0,n)cout<<0;
+    prnt(s);
 }
 
 int main() {

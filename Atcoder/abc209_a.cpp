@@ -8,22 +8,14 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
+
+
 void AKG() {
-    string s,ans="abcdefghijklmnopqrstuvwxyz";
-    cin>>s;
-    int n=s.length();
-    int a[26]={0};
-    f(i,0,n){
-        a[s[i]-'a']++;
-    }
-    f(i,0,26){
-        if(a[i]==0){
-            prnt(ans[i]);
-            return;
-        }
-    }
-    prnt("None");
-    
+    int a,b;
+    cin>>a>>b;
+    if(a>b) prnt(0);
+    else prnt((max(a,b)-min(a,b))+1);
+
 }
 
 int main() {
