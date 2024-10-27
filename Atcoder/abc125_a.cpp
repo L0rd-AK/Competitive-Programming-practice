@@ -9,17 +9,8 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    ll n,ans=0;
-    cin>>n;
-    ll x,mn=INT_MAX;
-    f(i,0,n){
-        cin>>x;
-        ans+=x;
-        if(x%2==1)mn=min(x,mn);
-    }
-    if(ans%2==0)prnt(ans);
-    else prnt(ans-mn);
-    
+    int a,b,t;cin>>a>>b>>t;
+    prnt((t/a)*b);
 }
 
 int main() {
