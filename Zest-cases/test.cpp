@@ -10,14 +10,13 @@ using namespace std;
 
 void AKG() {
     int n;cin>>n;
-    int x,mn=INT_MAX,mx=INT_MIN;
-    f(i,0,n){
-        cin>>x;
-        mn=min(x,mn);
-        mx=max(x,mx);
+    set<pair<string,string>>st;
+    while(n--){
+        string a,b;
+        cin>>a>>b;
+        st.insert({a,b});
     }
-    prnt((mx-mn)*(n-1));
-
+    prnt(st.size());
 }
 
 int main() {
@@ -30,7 +29,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
