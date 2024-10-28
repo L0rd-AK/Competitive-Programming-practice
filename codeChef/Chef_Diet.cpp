@@ -11,26 +11,30 @@ using namespace std;
 void AKG() {
     int n, k;
     cin >> n >> k;
-    int x, rem = 0;
-    cin >> x;
+    int a[n];
+    f(i,0,n)cin>>a[i];
+    int rem = 0;
     bool flg=1;
-    if (x < k) {
-        cout << "NO " << 1 << endl;
-        return;
-    }
-
-    if (x > k) rem = x - k;
-
-    for (int i = 1; i < n; i++) {
-        cin >> x;
-        if ((x + rem) < k) {
-            cout << "NO " << i + 1 << endl;
-            return;
+    for (int i = 0; i < n; i++) {
+        int x=a[i];
+        if (i == 0) {
+            if (x < k) {
+                cout << "NO " << 1 << endl;
+                flg=0;
+                break;
+            }
+            rem = x - k;
+        } else {
+            if ((x + rem) < k) {
+                cout << "NO " << i + 1 << endl;
+                flg=0;
+                break;
+            }
+            rem = (x + rem) - k;
         }
-        rem = (x + rem) - k;
     }
 
-    yn(1);
+    if(flg)yn(1);
 }
 
 int main() {

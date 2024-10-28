@@ -9,28 +9,15 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n, k;
-    cin >> n >> k;
-    int x, rem = 0;
-
-    for (int i = 0; i < n; i++) {
-        cin >> x;
-        if (i == 0) {
-            if (x < k) {
-                cout << "NO " << 1 << endl;
-                return;
-            }
-            rem = x - k;
-        } else {
-            if ((x + rem) < k) {
-                cout << "NO " << i + 1 << endl;
-                return;
-            }
-            rem = (x + rem) - k;
-        }
+    int n;cin>>n;
+    int x,mn=INT_MAX,mx=INT_MIN;
+    f(i,0,n){
+        cin>>x;
+        mn=min(x,mn);
+        mx=max(x,mx);
     }
+    prnt((mx-mn)*(n-1));
 
-    yn(1);
 }
 
 int main() {
