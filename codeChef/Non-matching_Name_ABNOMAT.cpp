@@ -9,21 +9,21 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n;cin>>n;
-    int a[n];
-    f(i,0,n)cin>>a[i];
-    int x;cin>>x;
-    sort(a,a+n,greater<int>());
-    bool flg=1;
-    for(int i=n-1;i>=0;i--){
-        if(a[i]<=2*x && a[i]>x){
-            swap(a[i],x);
+    int a,b;
+    cin>>a>>b;
+    int arr[26]={0};
+    string s,t;
+    cin>>s>>t;
+    f(i,0,a)arr[s[i]-'a']++;
+    f(i,0,b)arr[t[i]-'a']++;
+
+    f(i,0,26){
+        if(arr[i]==0){
+            prnt("Yes");
+            return;
         }
     }
-    // f(i,0,n)cout<<a[i]<<" ";
-    int ans=0;
-    f(i,0,n)ans+=a[i];
-    prnt(ans);
+    prnt("No");
 }
 
 int main() {

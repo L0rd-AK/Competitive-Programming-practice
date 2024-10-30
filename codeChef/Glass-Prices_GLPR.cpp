@@ -9,22 +9,10 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n;
-    cin >> n;
-    
-    vector<int> a(n);
-    f(i, 0, n) cin >> a[i];
-    for (int i = 1; i < (n/2); ++i) {
-         int x=i,y=n-i-1;
-         if(a[x-1]!=a[y] && a[x]!=a[y+1])swap(a[x],a[y]);
-    }
-    int ans=0;
-    f(i,0,n-1){
-        if(a[i]==a[i+1])ans++;
-    }
-    prnt(ans);
-
-
+    int a,b;
+    cin>>a>>b;
+    if(b>a*2)prnt("PLASTIC");
+    else prnt("METAL");
 }
 
 int main() {
@@ -32,16 +20,17 @@ int main() {
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     auto begin = std::chrono::high_resolution_clock::now();
     #endif
+
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--) {
         AKG();
     }
 
-     #ifndef ONLINE_JUDGE
+    #ifndef ONLINE_JUDGE
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";

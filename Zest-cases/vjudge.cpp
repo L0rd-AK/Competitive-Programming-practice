@@ -11,26 +11,30 @@ using namespace std;
 void AKG() {
     int n, k;
     cin >> n >> k;
-    int x, rem = 0;
-    cin >> x;
-    bool flg=1;
-    if (x < k) {
-        cout << "NO " << 1 << endl;
-        return;
+    string s, t;
+    cin >> s >> t;
+    int x = 0;
+    f(i, 0, n) {
+        if (s[i] != t[i]) x++;
     }
+    sort(s.begin(), s.end());
+    sort(t.begin(), t.end());
 
-    if (x > k) rem = x - k;
-
-    for (int i = 1; i < n; i++) {
-        cin >> x;
-        if ((x + rem) < k) {
-            cout << "NO " << i + 1 << endl;
-            return;
-        }
-        rem = (x + rem) - k;
+    // Check if s and t have the same characters after sorting
+    if (s != t) {
+        yn(0);
     }
-
-    yn(1);
+    // Check if there are enough moves to fix all differences
+    else if (k < (x + 1) / 2) {
+        yn(0);
+    }
+    // Check if the number of remaining moves is odd
+    else if ((k - ((x + 1) / 2)) % 2 == 1) {
+        yn(0);
+    }
+    else {
+        yn(1);
+    }
 }
 
 int main() {

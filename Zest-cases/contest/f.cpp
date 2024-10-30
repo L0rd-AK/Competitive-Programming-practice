@@ -8,43 +8,24 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-
-
 void AKG() {
-    int n;
-    cin >> n;
-
-    vector<vector<int>> a(n, vector<int>(n));
-    
-    f(i, 0, n) {
-        f(j, 0, n) {
-            cin >> a[i][j];
-        }
+    int n,k;cin>>n>>k;
+    string s,t;cin>>s>>t;
+    int x=0,o=0,z=0;
+    f(i,0,n){
+        if(s[i]!=t[i])x++;
+        if(t[i]=='1')o++;
+        if(t[i]=='0')z++;
     }
-
-    int ans=0;
-    f(i, 0, n) {
-        int mn=0;
-        int x=0,y=i;
-        while(x>=0 && x<n && y>=0 && y<n){
-            if(a[x][y]<0)mn=min(mn,a[x][y]);
-            x++;y++;
-            // cout<<mn<<" ";
-        }
-        ans+=(mn*-1);
-    }
-    f(i, 1, n) {
-        int mn=0;
-        int x=i,y=0;
-        while(x>=0 && x<n && y>=0 && y<n){
-            if(a[x][y]<0)mn=min(mn,a[x][y]);
-            x++;y++;
-            // cout<<mn<<" ";
-        }
-        ans+=(mn*-1);
-    }
-    
-    prnt(ans);
+    sort(s.begin(),s.end());
+    sort(t.begin(),t.end());
+    if(s!=t)yn(0);
+    else if(k<(x+1)/2)yn(0);
+    else if(z>=2 || o>=2)yn(1);
+    else if((k-((x+1)/2))%2==1)yn(0);
+    else yn(1);
+    // cout<<k<<" "<<x<<" "<<x/2<<" "<<k-(x/2)<<" "<<(k-((x)/2))<<endl;
+    // cout<<0%2<<endl;
 }
 
 int main() {
@@ -56,7 +37,7 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t;
+    int t = 1;
     cin >> t;
     while (t--) {
         AKG();
