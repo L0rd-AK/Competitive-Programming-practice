@@ -3,34 +3,28 @@ using namespace std;
 
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
 #define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
 
 void AKG() {
     int n;
     cin >> n;
-    if (n == 1) {
-        int x;
-        cin >> x;
-        if (x % 2 == 0) prnt(1);
-        else prnt(0);
-        return;
+    vector<int> a(n);
+    f(i, 0, n) cin >> a[i];
+    
+    map<int, int> mp;  
+    f(i, 0, n) {
+        int x = a[i];
+        mp[x]++;
+        
+        while (mp[x] >= 2) {
+            mp[x] -= 2;
+            if (mp[x] == 0) mp.erase(x);
+            x *= 2;
+            mp[x]++;
+        }
+        cout << mp.size() << " ";
     }
-    int a[n];
-    f(i,0,n)cin>>a[i];
-    int ans = 0;
-    f(i,0,n){
-       int len=0;
-       f(j,i,n){
-           len++;
-           int sum=0;
-           for(int k=i;k<=j;k++)sum+=a[k];
-           if(sum%2==0)ans=max(ans,len);
-       }
-   }
-    prnt(ans);
+    cout << endl;
 }
 
 int main() {
@@ -42,7 +36,7 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
+    int t;
     cin >> t;
     while (t--) {
         AKG();

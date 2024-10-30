@@ -9,11 +9,16 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int a,b;
-    cin>>a>>b;
-    yn(a<b);
+    int n;cin>>n;
+    int odd=0,even=0;
+    for(int i=1;i<=n;i++){
+        if(n%i==0 && i%2==0)even++;
+        else if(n%i==0 && i%2==1)odd++;
+    }
+    if(odd==even)prnt(0);
+    else if(odd>even) prnt(-1);
+    else prnt(1);
 }
-
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
@@ -24,7 +29,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
