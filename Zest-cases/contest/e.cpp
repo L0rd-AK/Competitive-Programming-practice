@@ -6,17 +6,17 @@ using namespace std;
 #define endl "\n"
 
 void AKG() {
-    int n;
+    ll n;
     cin >> n;
-    vector<int> a(n);
+    vector<ll> a(n);
     f(i, 0, n) cin >> a[i];
     
-    map<int, int> mp;  
+    map<ll, ll> mp;  
     f(i, 0, n) {
-        int x = a[i];
+        ll x = a[i];
         mp[x]++;
         
-        while (mp[x] >= 2) {
+        while (mp[x] == 2) {
             mp[x] -= 2;
             if (mp[x] == 0) mp.erase(x);
             x *= 2;
