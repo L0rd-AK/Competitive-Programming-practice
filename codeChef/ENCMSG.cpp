@@ -9,16 +9,18 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n;cin>>n;
-    int a[n];
-    f(i,0,n)cin>>a[i];
-    bool flg=1;
-    // sort(a,a+n);
-    f(i,0,n-1){
-        if(abs(a[i+1]-a[i])==7 || abs(a[i+1]-a[i])==5)continue;
-        else flg=0;
+    int n;
+    cin >> n;
+    string s;cin>>s;
+    for(int i=0;i<n-1;i+=2){
+        swap(s[i],s[i+1]);
     }
-    yn(flg);
+    // prnt(s);
+    string ans="";
+    f(i,0,n){
+        ans+=(char)('a'+(25-(s[i]-'a')));
+    }
+    prnt(ans);
 }
 
 int main() {

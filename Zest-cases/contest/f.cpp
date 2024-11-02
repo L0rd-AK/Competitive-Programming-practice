@@ -3,35 +3,63 @@ using namespace std;
 
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-void AKG() {
-    int n,k;cin>>n>>k;
-    string s,t;cin>>s>>t;
-    int x=0,o=0,z=0;
-    f(i,0,n){
-        if(s[i]!=t[i])x++;
-        if(t[i]=='1')o++;
-        if(t[i]=='0')z++;
+void func(vector<int>& str, string& s, int a, int len) {
+    for (int i = max(0, a - 3); i <= min(len - 4, a); i++) {
+        if (s.substr(i, 4) == "1100") {
+            if (find(str.begin(), str.end(), i) == str.end()) {
+                str.push_back(i);
+            }
+        } else {
+            auto it = find(str.begin(), str.end(), i);
+            if (it != str.end()) {
+                str.erase(it);
+            }
+        }
     }
-    sort(s.begin(),s.end());
-    sort(t.begin(),t.end());
-    if(s!=t)yn(0);
-    else if(k<(x+1)/2)yn(0);
-    else if(z>=2 || o>=2)yn(1);
-    else if((k-((x+1)/2))%2==1)yn(0);
-    else yn(1);
-    // cout<<k<<" "<<x<<" "<<x/2<<" "<<k-(x/2)<<" "<<(k-((x)/2))<<endl;
-    // cout<<0%2<<endl;
+}
+
+void AKG() {
+    string s;
+    cin >> s;
+    int n;
+    cin >> n;
+    int len = s.length();
+
+    vector<int> str;
+
+    for (int i = 0; i <= len - 4; i++) {
+        if (s.substr(i, 4) == "1100") {
+            str.push_back(i);
+        }
+    }
+
+    while (n--) {
+        int a;
+        cin >> a;
+        a--;
+        char c;
+        cin >> c;
+
+        if (len < 4) {
+            yn(0);
+            continue;
+        }
+
+        s[a] = c;
+        func(str, s, a, len);
+
+        yn(!str.empty());
+    }
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    auto begin = std::chrono::high_resolution_clock::now();
+    // auto begin = chrono::high_resolution_clock::now();
     #endif
 
     ios_base::sync_with_stdio(0);
@@ -43,11 +71,7 @@ int main() {
         AKG();
     }
 
-    #ifndef ONLINE_JUDGE
-    auto end = std::chrono::high_resolution_clock::now();
-    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
-    #endif
+   
 
     return 0;
 }

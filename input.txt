@@ -1,13 +1,24 @@
+4
+100
+4
+1 1
+2 0
+2 0
+3 1
+1100000
 3
-1
-abc
-def
-abc
-3
-orz for qaq
-qaq orz for
-cod for ces
-5
-iat roc hem ica lly
-bac ter iol ogi sts
-bac roc lly iol iat
+6 1
+7 1
+4 1
+111010
+4
+1 1
+5 0
+4 1
+5 0
+0100
+4
+3 1
+1 1
+2 0
+2 1

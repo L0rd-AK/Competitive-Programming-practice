@@ -3,50 +3,32 @@ using namespace std;
 
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    string s; 
-    cin >> s;
-    int n; 
-    cin >> n;
-    int len = s.length();
-
-    bool flg1 = false,flg2=false;
-    while (n--) {
-        int a; 
-        cin >> a;
-        a--;  
-        char c; 
-        cin >> c;
-
-        if(len < 4){
-            yn(0);
-            continue;
-        }
-
-        if(s[a] != c){
-            s[a] = c;
-
-            flg2 = false;
-            for (int i = a; i <= a+3; i++){
-                if (s.substr(i, 4) == "1100"){
-                    flg2 = true;
-                    break;
-                }
-            }
-        }
-		flg1=false;
-		for (int i = 0; i <= len - 4; i++) {
-			if (s.substr(i, 4) == "1100") {
-				flg1 = true;
-				break;
-			}
-    	}
-        yn((flg1 || flg2));
+    int n;cin>>n;
+    string s; cin>>s;
+    set<char> st;
+    f(i,0,n){
+        st.insert(s[i]);
     }
+    string a="";
+    for(auto i:st)a+=i;
+    
+    map<char,char> mp;
+    int sz=a.length();
+    for(int i=0;i<sz;i++){
+        mp[a[i]]=a[sz-1-i];
+    }
+
+    f(i,0,n){
+        cout<<mp[s[i]];
+    }cout<<endl;
+    
+
 }
 
 int main() {
