@@ -3,20 +3,19 @@ using namespace std;
 
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    string s;cin>>s;
-    int a[26]={0};
-    f(i,0,n)a[s[i]-'a']++;
+    string a,b;cin>>a>>b;
     int ans=0;
-    f(i,0,26){
-        if(a[i]%2==1)ans++;
+    int n=a.length();
+    f(i,0,n){
+        if(a[i]!=b[i])ans++;
     }
-    yn(ans<=(k+1));
+    prnt(ans);
 }
 
 int main() {
@@ -29,7 +28,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
