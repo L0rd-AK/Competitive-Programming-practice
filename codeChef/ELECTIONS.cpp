@@ -8,20 +8,11 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    ll n,x,z;
-    char ch;
-    string s;
-    vector<int> a,b;
-    cin>>n;
-    z=n;
-    while(z--){
-        cin>>x;
-        a.push_back(x);
-    }
-    sort(a.begin(),a.end());
-    int ans=1,c=0;
-    f(i,0,n) if(a[i]>=ans){ans++;c++;}
-    cout<<c;
+    int a,b,c;cin>>a>>b>>c;
+    if(a<=50 && b<=50 && c<=50)prnt("NOTA");
+    else if(a>b && a>c)prnt("A");
+    else if(b>a && b>c)prnt("B");
+    else if(c>b && c>a)prnt("C");
 }
 
 int main() {
@@ -34,7 +25,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }

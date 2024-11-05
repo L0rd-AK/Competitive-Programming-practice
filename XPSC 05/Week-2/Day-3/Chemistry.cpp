@@ -8,20 +8,15 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    ll n,x,z;
-    char ch;
-    string s;
-    vector<int> a,b;
-    cin>>n;
-    z=n;
-    while(z--){
-        cin>>x;
-        a.push_back(x);
+    int n,k;cin>>n>>k;
+    string s;cin>>s;
+    int a[26]={0};
+    f(i,0,n)a[s[i]-'a']++;
+    int ans=0;
+    f(i,0,26){
+        if(a[i]%2==1)ans++;
     }
-    sort(a.begin(),a.end());
-    int ans=1,c=0;
-    f(i,0,n) if(a[i]>=ans){ans++;c++;}
-    cout<<c;
+    yn(ans<=(k+1));
 }
 
 int main() {
@@ -34,7 +29,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }

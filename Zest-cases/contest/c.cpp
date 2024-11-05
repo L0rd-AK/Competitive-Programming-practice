@@ -7,59 +7,22 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-void func(vector<int>& str, string& s, int a, int len) {
-    for (int i = max(0, a - 3); i <= min(len - 4, a); i++) {
-        if (s.substr(i, 4) == "1100") {
-            if (find(str.begin(), str.end(), i) == str.end()) {
-                str.push_back(i);
-            }
-        } else {
-            auto it = find(str.begin(), str.end(), i);
-            if (it != str.end()) {
-                str.erase(it);
-            }
-        }
-    }
-}
-
 void AKG() {
-    string s;
-    cin >> s;
-    int n;
-    cin >> n;
-    int len = s.length();
-
-    vector<int> str;
-
-    for (int i = 0; i <= len - 4; i++) {
-        if (s.substr(i, 4) == "1100") {
-            str.push_back(i);
-        }
-    }
-
-    while (n--) {
-        int a;
-        cin >> a;
-        a--;
-        char c;
-        cin >> c;
-
-        if (len < 4) {
-            yn(0);
-            continue;
-        }
-
-        s[a] = c;
-        func(str, s, a, len);
-
-        yn(!str.empty());
+    int n;cin>>n;
+    if(n<=7 && n>=2){
+        prnt(1);
+    }else{
+        int ans=(n/7);
+        int x=n%7;
+        if(x>=2) prnt(ans+1);
+        else prnt(ans);
     }
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    // auto begin = chrono::high_resolution_clock::now();
+        freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+        auto begin = chrono::high_resolution_clock::now();
     #endif
 
     ios_base::sync_with_stdio(0);
@@ -71,7 +34,11 @@ int main() {
         AKG();
     }
 
-   
+    #ifndef ONLINE_JUDGE
+        auto end = chrono::high_resolution_clock::now();
+        auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);
+        cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    #endif
 
     return 0;
 }

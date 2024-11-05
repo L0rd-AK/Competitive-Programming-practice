@@ -10,23 +10,19 @@ using namespace std;
 
 void AKG() {
     int n;
-    cin >> n;
+    cin>>n;
     string s;
-    cin >> s;
+    cin>>s;
+    sort(s.begin(),s.end());//cout<<s<<endl;
+    if(n==5 and s=="Timru")yn(1);
+    else yn(0);
 
-    for (int i = 0; i < n - 2; i++) {
-        if (s[i] == '1') {
-            s[i + 1] = '0';
-            s[i + 2] = '0';
-        }
-    }
-    prnt(s);
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    auto begin = chrono::high_resolution_clock::now();
+        freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+        auto begin = chrono::high_resolution_clock::now();
     #endif
 
     ios_base::sync_with_stdio(0);
@@ -39,9 +35,9 @@ int main() {
     }
 
     #ifndef ONLINE_JUDGE
-    auto end = chrono::high_resolution_clock::now();
-    auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);
-    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+        auto end = chrono::high_resolution_clock::now();
+        auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);
+        cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     #endif
 
     return 0;

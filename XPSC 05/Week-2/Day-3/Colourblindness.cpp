@@ -3,25 +3,26 @@ using namespace std;
 
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define f1(x1, y1, z1) for (int x1 = y1; x1 <= z1; x1++)
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    ll n,x,z;
-    char ch;
-    string s;
-    vector<int> a,b;
-    cin>>n;
-    z=n;
-    while(z--){
-        cin>>x;
-        a.push_back(x);
+    int n;cin>>n;
+    string a,b;cin>>a>>b;
+    bool flag=1;
+    f(i,0,n){
+    if(a[i]==b[i])continue;
+    else if(a[i]=='G' and b[i]=='B' or a[i]=='B' and b[i]=='G') continue;
+    else{
+            flag=0;
+            cout<<"NO\n";
+            break;
+        }
     }
-    sort(a.begin(),a.end());
-    int ans=1,c=0;
-    f(i,0,n) if(a[i]>=ans){ans++;c++;}
-    cout<<c;
+    if(flag)cout<<"YES\n";
+
 }
 
 int main() {
@@ -34,7 +35,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }

@@ -8,41 +8,43 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 
-void AKG() {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
 
-    for (int i = 0; i < n - 2; i++) {
-        if (s[i] == '1') {
-            s[i + 1] = '0';
-            s[i + 2] = '0';
-        }
+void AKG() {
+    int n,m;cin>>n>>m;
+    int a[n],p[n]={0};
+    f(i,0,n)cin>>a[i];
+    set<int> st;
+    for(int i=n-1;i>=0;i--){
+        st.insert(a[i]);
+        p[i]=st.size();
     }
-    prnt(s);
+    while(m--){
+        int x;cin>>x;
+        prnt(p[x-1]);
+    }
+
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    auto begin = chrono::high_resolution_clock::now();
+    auto begin = std::chrono::high_resolution_clock::now();
     #endif
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
 
     #ifndef ONLINE_JUDGE
-    auto end = chrono::high_resolution_clock::now();
-    auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     #endif
-
+    
     return 0;
 }
