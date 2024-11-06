@@ -7,31 +7,11 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
-
+ll p=1e9+7;
 void AKG() {
-    int n;cin>>n;
-    string a,b;cin>>a>>b;
-    int c1=0,c2=0;
-    f(i,0,n){
-        if(a[i]=='P' && b[i]=='R')c1++;
-        else if(a[i]=='R' && b[i]=='S')c1++;
-        else if(a[i]=='S' && b[i]=='P')c1++;
-        else if(a[i]!=b[i]) c2++;
-    }
-    if(c1>c2)prnt(0);
-    else if(c1==c2)prnt(1);
-    else{
-        int ans=0;
-        while(1){
-            if(c1>c2)break;
-            if(c2){
-                c1++;
-                c2--;
-            }else c1++;
-            ans++;
-        }
-        prnt(ans);
-    }
+    int n,d;cin>>n>>d;
+    // ( a / b ) % m = ( a % m ) * ( ( b ^ ( m — 2 ) ) % m )
+    cout<<((n % p) * (d^(p-2))) % p<<endl;
 }
 
 int main() {

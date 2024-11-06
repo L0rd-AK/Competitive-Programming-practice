@@ -8,14 +8,27 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n;cin>>n;
-    if(n<=7 && n>=2){
-        prnt(1);
-    }else{
-        int ans=(n/7);
-        int x=n%7;
-        if(x>=2) prnt(ans+1);
-        else prnt(ans);
+    int n, q;
+    cin >> n >> q;
+    vector<int> a(n);
+    map<int, pair<int, int>> mp;
+    f(i, 0, n) {
+        cin >> a[i];
+        if (mp.find(a[i]) == mp.end()) {
+            mp[a[i]] = {i + 1, i + 1};
+        } else {
+            mp[a[i]].second = i + 1;
+        }
+    }
+    
+    while (q--) {
+        int a, b;
+        cin >> a >> b;
+        if (mp.find(a) == mp.end() || mp.find(b) == mp.end()) {
+            yn(0);
+        } else {
+            yn(mp[b].second >= mp[a].first);
+        }
     }
 }
 

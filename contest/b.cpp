@@ -8,35 +8,13 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    f(i, 0, n) cin >> a[i];
-    int l = 0, r = n - 1, mn = 1, mx = n;
-    
-    while (l <= r) {
-        if (a[l] == mn) {
-            l++;
-            mn++;
-        } else if (a[l] == mx) {
-            l++;
-            mx--;
-        } else if (a[r] == mn) {
-            r--;
-            mn++;
-        } else if (a[r] == mx) {
-            r--;
-            mx--;
-        } else {
-            break;
-        }
+    int a,b;cin>>a>>b;
+    int ans=0;
+    for(int i=1;i<=a;i++){
+        if(i!=b && (i+b)%2==0)ans++;
     }
+    prnt(ans);
     
-    if (l <= r) {
-        cout << l + 1 << " " << r + 1 << endl;
-    } else {
-        prnt(-1);
-    }
 }
 
 int main() {

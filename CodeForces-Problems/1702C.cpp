@@ -8,9 +8,28 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int a,b,c;cin>>a>>b>>c;
-    yn((a*b)<=(c*24*60));
+    int n, q;
+    cin >> n >> q;
+    vector<int> a(n);
+    map<int, pair<int, int>> mp;
+    f(i, 0, n) {
+        cin >> a[i];
+        if (mp.find(a[i]) == mp.end()) {
+            mp[a[i]] = {i + 1, i + 1};
+        } else {
+            mp[a[i]].second = i + 1;
+        }
+    }
     
+    while (q--) {
+        int a, b;
+        cin >> a >> b;
+        if (mp.find(a) == mp.end() || mp.find(b) == mp.end()) {
+            yn(0);
+        } else {
+            yn(mp[b].second >= mp[a].first);
+        }
+    }
 }
 
 int main() {
