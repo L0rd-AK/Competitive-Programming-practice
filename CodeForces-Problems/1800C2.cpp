@@ -11,21 +11,17 @@ void AKG() {
     int n;
     cin >> n;
     priority_queue<int> pq;
-    for(int i=1;i<=n;i++){
-        pq.push(i);
+    ll ans=0;
+    f(i,0,n){
+        int x;cin>>x;
+        if(x==0){
+            if(pq.size()>=1){
+                ans+=pq.top();
+                pq.pop();
+            }
+        }else pq.push(x);
     }
-    prnt(2);
-    ll a,b,c;
-    while(pq.size()>1){
-        a=pq.top();
-        pq.pop();
-        b=pq.top();
-        pq.pop();
-        cout<<a<<" "<<b<<endl;
-        pq.push((a+b+1)/2);
-    }
-        
-        
+    prnt(ans);  
 }
 
 int main() {
