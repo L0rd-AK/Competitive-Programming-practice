@@ -4,7 +4,7 @@ using namespace std;
 
 int main() 
 {
-  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+  //freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
   int index=1;
   while(1){
     int n,m,c;
