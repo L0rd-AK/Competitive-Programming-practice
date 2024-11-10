@@ -11,7 +11,8 @@
         "bitset": "cpp",
         "set": "cpp",
         "deque": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "chrono": "cpp"
     },
     "terminal.explorerKind": "integrated",
     "terminal.sourceControlRepositoriesKind": "integrated",

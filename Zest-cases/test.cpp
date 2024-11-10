@@ -6,215 +6,41 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
-#ifndef DEBUG_TEMPLATE_CPP
-#define DEBUG_TEMPLATE_CPP
-#define debug(...) std::cerr << __LINE__ << ": [", _DEBUG_UTIL_::printer(#__VA_ARGS__, __VA_ARGS__)
-#define debugArr(arr, n) std::cerr << __LINE__ << ": [", _DEBUG_UTIL_::printerArr(#arr, arr, n)
-#define debug(...)
-#define debugArr(arr, n)
-/* Uncomment following line to see Debug code on leetcode */
-// #define cerr cout
-namespace _DEBUG_UTIL_
-{
-    /* Primitive Datatypes Print */
-    void print(const char *x) {}
-    void print(bool x) { cerr << (x ? "T" : "F"); }
-    void print(char x) { cerr << '\'' << x << '\''; }
-    void print(signed short int x) { cerr << x; }
-    void print(unsigned short int x) { cerr << x; }
-    void print(signed int x) { cerr << x; }
-    void print(unsigned int x) { cerr << x; }
-    void print(signed long int x) { cerr << x; }
-    void print(unsigned long int x) { cerr << x; }
-    void print(signed long long int x) { cerr << x; }
-    void print(unsigned long long int x) { cerr << x; }
-    void print(float x) { cerr << x; }
-    void print(double x) { cerr << x; }
-    void print(long double x) { cerr << x; }
-    void print(string x) { cerr << '\"' << x << '\"'; }
-    template <size_t N>
-    void print(bitset<N> x) { cerr << x; }
-    void print(vector<bool> x)
-    {
-        /* vector<bool> doesn't work in general iteration template because of rvalue problems */
-        int f = 0;
-        cerr << '{';
-        for (bool i : x)
-        {
-            cerr << (f++ ? "," : "");
-            cerr << (i ? "T" : "F");
-        }
-        cerr << "}";
-    }
-    /* Templates Declarations to support nested datatypes */
-    template <typename T>
-    void print(T x);
-    template <typename T>
-    void print(vector<vector<T>> mat);
-    template <typename T, size_t N>
-    void print(T (&arr)[N]);
-    template <typename T, size_t N, size_t M>
-    void print(T (&mat)[N][M]);
-    template <typename... T>
-    void print(tuple<T...> x);
-    template <typename F, typename S>
-    void print(pair<F, S> x);
-    template <typename... T>
-    void print(priority_queue<T...> pq);
-    template <typename T>
-    void print(stack<T> st);
-    template <typename T>
-    void print(queue<T> q);
-    /* Template Datatypes Definitions */
-    template <typename T>
-    void print(T x)
-    {
-        /* This works for every container that supports range-based loop i.e. vector, set, map, dequeue */
-        int f = 0;
-        cerr << '{';
-        for (auto i : x)
-            cerr << (f++ ? "," : ""), print(i);
-        cerr << "}";
-    }
-    template <typename T>
-    void print(vector<vector<T>> mat)
-    {
-        /* Specialized for 2D to format every 1D in new line */
-        int f = 0;
-        cerr << "{\n";
-        for (auto i : mat)
-            cerr << (f++ ? ",\n" : ""), print(i);
-        cerr << "}\n";
-    }
-    template <typename T, size_t N>
-    void print(T (&arr)[N])
-    {
-        /* Helps in iterating through arrays and prevent decays */
-        int f = 0;
-        cerr << '{';
-        for (auto &i : arr)
-            cerr << (f++ ? "," : ""), print(i);
-        cerr << "}";
-    }
-    template <typename T, size_t N, size_t M>
-    void print(T (&mat)[N][M])
-    {
-        /* Helps in iterating through 2D arrays and prevent decays and also print arrays in new line */
-        int f = 0;
-        cerr << "{\n";
-        for (auto &i : mat)
-            cerr << (f++ ? ",\n" : ""), print(i);
-        cerr << "}\n";
-    }
-    template <typename... T>
-    void print(tuple<T...> x)
-    {
-        int f = 0;
-        cerr << '(';
-        apply([&f](auto... args)
-              { ((cerr << (f++ ? "," : ""), print(args)), ...); },
-              x);
-        cerr << ')';
-    }
-    template <typename F, typename S>
-    void print(pair<F, S> x)
-    {
-        /* Works for pairs and iterating through maps */
-        cerr << '(';
-        print(x.first);
-        cerr << ',';
-        print(x.second);
-        cerr << ')';
-    }
-    template <typename... T>
-    void print(priority_queue<T...> pq)
-    {
-        int f = 0;
-        cerr << '{';
-        while (!pq.empty())
-            cerr << (f++ ? "," : ""), print(pq.top()), pq.pop();
-        cerr << "}";
-    }
-    template <typename T>
-    void print(stack<T> st)
-    {
-        int f = 0;
-        cerr << '{';
-        while (!st.empty())
-            cerr << (f++ ? "," : ""), print(st.top()), st.pop();
-        cerr << "}";
-    }
-    template <typename T>
-    void print(queue<T> q)
-    {
-        int f = 0;
-        cerr << '{';
-        while (!q.empty())
-            cerr << (f++ ? "," : ""), print(q.front()), q.pop();
-        cerr << "}";
-    }
-    /* Printer functions responsible for.... printing beautifully ? */
-    template <typename T>
-    void printer(const char *name, T &&head)
-    {
-        /* Base conditions for printer */
-        cerr << name << " = ";
-        print(head);
-        cerr << "]\n";
-    }
-    template <typename T, typename... V>
-    void printer(const char *names, T &&head, V &&...tail)
-    {
-        /* Using && to capture both lvalues and rvalues */
-        int bracket = 0, i = 0;
-        while (names[i] != ',' or bracket != 0)
-        {
-            if (names[i] == '(')
-                bracket++;
-            else if (names[i] == ')')
-                bracket--;
-            i++;
-        }
-        cerr.write(names, i) << " = ";
-        print(head);
-        cerr << " ||";
-        printer(names + i + 1, tail...);
-    }
-    /* PrinterArr */
-    template <typename T>
-    void printerArr(const char *name, T arr[], int N)
-    {
-        cerr << name << " : {";
-        for (int i = 0; i < N; i++)
-        {
-            cerr << (i ? "," : ""), print(arr[i]);
-        }
-        cerr << "}]\n";
-    }
-}
-void AKG() {
-    int n, m, q; cin >> n >> m >> q;
 
-	vector<int> a(m);
-	for (int i = 0; i < m; i++) cin >> a[i];
-    //debugArr(a,m);
-	sort(a.begin(), a.end());
+int diagonals(int i, int j, int n, int m, vector<vector<int>>& a) {
+    int now = 0;
+    int ci = i, cj = j;
+    while (ci >= 0 && cj >= 0) now += a[ci--][cj--];
+    ci = i; cj = j;
+    while (ci >= 0 && cj < m) now += a[ci--][cj++]; 
+    ci = i; cj = j;
+    while (ci < n && cj >= 0) now += a[ci++][cj--];
+    ci = i; cj = j;
+    while (ci < n && cj < m) now += a[ci++][cj++];
+    return now - 3 * a[i][j];
+}   
 
-	for (int i = 1; i <= q; i++) {
-		int b; cin >> b;
-		int k = upper_bound(a.begin(), a.end(), b) - a.begin();
+void AKG() { 
+    int n, m; cin >> n >> m; 
+    vector<vector<int>> a(n, vector<int>(m)); 
+    f(i,0,n){
+        f(j,0,m){
+            cin >> a[i][j]; 
+        }
+    }
 
-		if (k == 0) cout << a[0] - 1 << ' ';   
-		else if (k == m) cout << n - a[m - 1] << ' '; 
-		else cout << (a[k] - a[k - 1]) / 2 << ' ';    
-	}
-	cout<<endl;  
+    int mx = 0;
+    f(i,0,n){
+        f(j,0,m){
+            mx = max(mx, diagonals(i, j, n, m, a)); 
+        }
+    }
+    cout << mx << endl; 
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-        freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-        auto begin = chrono::high_resolution_clock::now();
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
 
     ios_base::sync_with_stdio(0);
@@ -226,11 +52,7 @@ int main() {
         AKG();
     }
 
-    #ifndef ONLINE_JUDGE
-        auto end = chrono::high_resolution_clock::now();
-        auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);
-        cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
-    #endif
+
 
     return 0;
 }
