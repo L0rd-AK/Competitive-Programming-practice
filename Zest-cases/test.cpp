@@ -9,30 +9,47 @@ using namespace std;
    
 
 void AKG() { 
-   int n,m,h;cin>>n>>m>>h;
-   vector<ll> v(n);
-   f(i,0,n)cin>>v[i];
-   vector<ll> p(m);
-   f(i,0,m)cin>>p[i];
-   sort(v.begin(),v.end(),greater<ll>());
-   sort(p.begin(),p.end(),greater<ll>());
-   ll ans=0;
-   for(int i=0;i<min(n,m);i++){
-    ans+=min(v[i],p[i]*h);
+   int n,m;cin>>n>>m;
+   vector<vector<char>> v( n+2 , vector<char> (m+2)); 
+   for(int i=1;i<=n;i++){
+    for(int j=1;j<=m;j++){
+        cin>>v[i][j];
+    }
+   }
+   int ans=0;
+   for(int i=1;i<=n;){
+    for(int j=1;j<=m;){
+        if(v[i][j]=='#'){
+            ans++;
+            v[i+1][j]='.';
+            v[i-1][j]='.';
+            v[i][j+1]='.';
+            v[i][j-1]='.';
+            v[i-1][j-1]='.';
+            v[i+1][j+1]='.';
+            v[i-1][j+1]='.';
+            v[i+1][j-1]='.';
+            i+=3;
+            j+=3;
+        }else{
+            i++;
+            j++;
+        }
+    }
    }
    prnt(ans);
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }

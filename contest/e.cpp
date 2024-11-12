@@ -9,21 +9,18 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    int a[n];
-    int sum=0;
-    f(i,0,n){
-        cin>>a[i];
-        sum+=a[i];
+    int n;cin>>n;
+    ll sum=0,sum1=0,mn=INT_MAX,neg=0;
+    while(n--){
+        ll x;cin>>x;
+        if(x<0)neg++;
+        mn=min(mn,abs(x));
+        sum+=abs(x);
     }
-    if(sum==n)yn(1);
-    else if(sum<n)yn(0);
-    else{
-        int x=sum-n;
-        if(x%n==0)yn(1);
-        else if(k>0)yn(1);
-        else yn(0);
-    }
+    // cout<<mn<<" "<<sum<<endl;
+    if(neg%2==0)prnt(sum);
+    else prnt(sum-(mn*2));
+    
 }
 
 int main() {

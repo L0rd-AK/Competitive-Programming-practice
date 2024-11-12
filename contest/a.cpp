@@ -6,16 +6,17 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
+   
 
-void AKG() {
-    int a,b;cin>>a>>b;
-   cout<<min(a,b)<<endl;
+void AKG() { 
+   int a,b,c;
+   cin>>a>>b>>c;
+   yn((a+c)>=b);
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-        freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-        auto begin = chrono::high_resolution_clock::now();
+     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
 
     ios_base::sync_with_stdio(0);
@@ -27,11 +28,7 @@ int main() {
         AKG();
     }
 
-    #ifndef ONLINE_JUDGE
-        auto end = chrono::high_resolution_clock::now();
-        auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);
-        cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
-    #endif
+
 
     return 0;
 }
