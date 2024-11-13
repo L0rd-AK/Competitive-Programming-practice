@@ -9,20 +9,21 @@ using namespace std;
    
 
 void AKG() { 
-   int n,k;cin>>n>>k;
-   bool flg = false;
-    for (int x = 0; x <= n && !flg; x++) { 
-        for (int y = 0; y <= n - x && !flg; y++){
-            int z = n - x - y; 
-            ll sum = x * 10 + y * 11 + z * 12;
-            if (sum == k) {
-                flg = true;
-                break;
-            }
+    int n;cin>>n;
+    string s;cin>>s;
+    int size=s.length();
+    bool flag=true;
+    f(i,0,(size/2)+1){
+        if(s[i]==s[size-1-i]){
+            flag=0;
+            cout<<(size-i+1)-(i+1)<<endl;
+            break;
         }
+        else continue;
     }
-    
-    yn(flg);
+         
+    if(flag and size%2==1)cout<<"1\n";
+    else if(flag and size%2==0)cout<<"0\n";
 }
 
 int main() {

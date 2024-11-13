@@ -6,46 +6,47 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
-   
-bool cmp(pair<int,int>& a,pair<int,int>& b){
-    return a.first > b.first;
-}
-void AKG(){ 
-   int n,k,l;cin>>n>>k>>l;
-   vector<pair<int,int>>vp;
-   while(n--){
-    int a,b;cin>>a>>b;
-    vp.push_back({a,b});
-   }
-   sort(vp.begin(),vp.end(),cmp);
-   ll ans=0,idx=0;
-   for(auto i:vp){
-    if(idx>=k)break;
-    if(i.second==l){
-        ans+=i.first;
-        idx++;
+
+void AKG() { 
+    int a, b;
+    cin >> a >> b;
+    string s1, s2;
+    cin >> s1 >> s2;
+
+    if (s1 == s2) {
+        yn(1);
+        return;
     }
-    //cout<<i.first<<" "<<i.second<<endl;
-   }
-   if(ans==0 || idx<k)prnt(-1);
-   else prnt(ans);
+
+    int a1 = count(s1.begin(), s1.end(), 'a');
+    int a2 = count(s2.begin(), s2.end(), 'a');
+
+    string t1 = "", t2 = "";
+    for (char c : s1) {
+        if (c == 'a') break;
+        t1 += c;
+    }
+    for (char c : s2) {
+        if (c == 'a') break;
+        t2 += c;
+    }
+
+    yn(a1 == a2 && t1 == t2 && a1 != 0);
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+        freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
+    int t;
     cin >> t;
     while (t--) {
         AKG();
     }
-
-
 
     return 0;
 }

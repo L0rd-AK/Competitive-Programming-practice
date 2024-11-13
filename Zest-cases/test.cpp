@@ -9,35 +9,21 @@ using namespace std;
    
 
 void AKG() { 
-   int n,m;cin>>n>>m;
-   vector<vector<char>> v( n+2 , vector<char> (m+2)); 
-   for(int i=1;i<=n;i++){
-    for(int j=1;j<=m;j++){
-        cin>>v[i][j];
-    }
-   }
-   int ans=0;
-   for(int i=1;i<=n;){
-    for(int j=1;j<=m;){
-        if(v[i][j]=='#'){
-            ans++;
-            v[i+1][j]='.';
-            v[i-1][j]='.';
-            v[i][j+1]='.';
-            v[i][j-1]='.';
-            v[i-1][j-1]='.';
-            v[i+1][j+1]='.';
-            v[i-1][j+1]='.';
-            v[i+1][j-1]='.';
-            i+=3;
-            j+=3;
-        }else{
-            i++;
-            j++;
+    int n;cin>>n;
+    string s;cin>>s;
+    int size=s.length();
+    bool flag=true;
+    f(i,0,(size/2)+1){
+        if(s[i]==s[size-1-i]){
+            flag=0;
+            cout<<(size-i+1)-(i+1)<<endl;
+            break;
         }
+        else continue;
     }
-   }
-   prnt(ans);
+         
+    if(flag and size%2==1)cout<<"1\n";
+    else if(flag and size%2==0)cout<<"0\n";
 }
 
 int main() {

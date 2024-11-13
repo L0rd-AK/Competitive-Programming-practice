@@ -11,7 +11,8 @@ using namespace std;
 void AKG() { 
    int a,b,c;
    cin>>a>>b>>c;
-   yn((a+c)>=b);
+   if((a+b)<c)prnt(2*a+3*b);
+   else prnt((c*2+b));
 }
 
 int main() {

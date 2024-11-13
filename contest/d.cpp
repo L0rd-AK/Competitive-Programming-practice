@@ -10,30 +10,18 @@ using namespace std;
 
 void AKG() { 
    int n;cin>>n;
-   vector<ll> v(n);
-   ll ans=0,pos=0,f=0,l=0;
-   f(i,0,n){
-    cin>>v[i];
-    if(v[i]<0)ans++;
-    else pos++;
-    if(v[i]>0 && f==0)f=i+1;
-    if(v[i]>0)l=i+1;
-   }
-   int ans2=0;
+   vector<int> v(n);
+   f(i,0,n)cin>>v[i];
+   int x=0,y=0;
    f(i,0,n-1){
-    if(v[i]<0 && v[i+1]>0)ans2++;
-    if(v[i]>0 && v[i+1]<0)ans2++;
+     if(v[i]==1)x++;
    }
-//    cout<<f<<" "<<l<<" "<<ans2<<endl;
-//    if(ans2<2)prnt(0);
-//    else{
-    
-//    }
-    int x=0;
-     for(int i=f-1;i<l-1;i++){
-        if(v[i]<0)x++;
-     }
-     prnt(x);
+   f(i,1,n){
+     if(v[i]==0)y++;
+   }
+   if(x+y < n-1){
+        prnt((x+y)+n);
+   }else prnt(2*n-1);
 
 }
 
