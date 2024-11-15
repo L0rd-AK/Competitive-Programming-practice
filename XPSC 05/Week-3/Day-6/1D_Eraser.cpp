@@ -8,17 +8,18 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    string s;cin>>s;
-    int pfx[n]={0};
-    for(int i = 0; i < n; i++){
-        pfx[i+1] = pfx[i] + (s[i] == 'W');
+     int n,k;
+    string s;
+    cin>>n>>k;
+    cin>>s;
+    int ans=0;
+    for(int i=0;i<n;){
+        if(s[i]=='B'){
+          ans++;
+          i+=k;
+        }else i++;
     }
-    int ans = 1e9;
-    for(int i = 0; i <= n-k; i++){
-        ans = min(ans, pfx[i+k] - pfx[i]);
-    }
-    prnt(ans);
+    cout<<ans<<endl;
 }
 
 int main() {

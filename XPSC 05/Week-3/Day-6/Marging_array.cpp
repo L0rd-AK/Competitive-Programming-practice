@@ -8,17 +8,32 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    string s;cin>>s;
-    int pfx[n]={0};
-    for(int i = 0; i < n; i++){
-        pfx[i+1] = pfx[i] + (s[i] == 'W');
-    }
-    int ans = 1e9;
-    for(int i = 0; i <= n-k; i++){
-        ans = min(ans, pfx[i+k] - pfx[i]);
-    }
-    prnt(ans);
+   int n,m;cin>>n>>m;
+   vector<int> a(n),b(m),ans;
+   f(i,0,n)cin>>a[i];
+   f(i,0,m)cin>>b[i];
+   int l=0,r=0;
+   while(l<n && r<m){
+        if(a[l]<b[r]){
+            ans.push_back(a[l]);
+            l++;
+        }else if(a[l]>b[r]){
+            ans.push_back(b[r]);
+            r++;
+        }else{
+            ans.push_back(a[l]);
+            l++;
+        }
+   }
+   while(l<n){
+        ans.push_back(a[l]);
+        l++;
+   }
+   while(r<m){
+        ans.push_back(b[r]);
+        r++;
+   }
+   for(int i:ans)cout<<i<<" ";
 }
 
 int main() {
