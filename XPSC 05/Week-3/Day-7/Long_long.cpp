@@ -8,25 +8,29 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n,k,q;cin>>n>>k>>q;
-    vector<int> a(n);
-    f(i,0,n)cin>>a[i];
-    int ans = 0, len = 0;
-    for (int i = 0; i < n; ++i) {
-        if (a[i] <= q) {
-            len++;
-        } else{
-            if (len >= k) {
-                ans += (len - k + 1) * (len - k + 2) / 2;
-            }
-            len = 0;
+    int n;cin>>n;
+    vector<int> v(n);
+    ll sum=0;
+    f(i,0,n){
+        cin>>v[i];
+        sum+=abs(v[i]);
+    }
+    int ans=0;
+    int i=0;
+    while(i<n){
+        if(v[i]<0){
+            bool flg=1;
+            while(i<n && v[i]<=0){
+                if(flg){
+                    ans++;
+                    flg=0;
+                }
+                i++;
             }
         }
-
-        if (len >= k) {
-            ans += (len - k + 1) * (len - k + 2) / 2;
-        }
-        cout << ans << endl;
+        i++;
+    }
+    cout<<sum<<" "<<ans<<endl;
 }
 
 int main() {

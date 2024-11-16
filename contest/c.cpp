@@ -4,49 +4,63 @@ using namespace std;
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
+// #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
+#define yn(f) f ? cout << "Yes\n" : cout << "No\n"
 #define prnt(x) cout << x << endl
+   
 
 void AKG() { 
-    int a, b;
-    cin >> a >> b;
-    string s1, s2;
-    cin >> s1 >> s2;
-
-    if (s1 == s2) {
-        yn(1);
-        return;
-    }
-
-    int a1 = count(s1.begin(), s1.end(), 'a');
-    int a2 = count(s2.begin(), s2.end(), 'a');
-
-    string t1 = "", t2 = "";
-    for (char c : s1) {
-        if (c == 'a') break;
-        t1 += c;
-    }
-    for (char c : s2) {
-        if (c == 'a') break;
-        t2 += c;
-    }
-
-    yn(a1 == a2 && t1 == t2 && a1 != 0);
+   int n,k;cin>>n>>k;
+   string s;cin>>s;
+   int sIdx=0,eIdx=0,cnt=0;
+   bool flg=1,flg1=1;
+   for(int i=0;i<n;i++){
+      if(s[i]=='1'){
+        cnt++;
+        if(cnt==k && flg1){
+            eIdx=i;
+            flg1=0;
+        }
+        while(i<n && s[i]=='1')i++;
+      }
+      if(cnt==k-1 && flg){
+        sIdx=i;
+        flg=0;
+      }
+   }
+//    cout<<sIdx<<" "<<eIdx<<endl;
+//    while(eIdx>=0 && s[eIdx]=='1'){
+//      eIdx--;
+//    }
+//    cout<<sIdx<<" "<<eIdx<<endl;
+//    while(sIdx<n && eIdx<n){
+//      swap(s[sIdx],s[eIdx]);
+//      sIdx++;
+//      eIdx++;
+//    }
+   while(s[eIdx]=='1'){
+     swap(s[sIdx],s[eIdx]);
+     sIdx++;
+     eIdx++;
+   }
+   prnt(s);
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-        freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--) {
         AKG();
     }
+
+
 
     return 0;
 }

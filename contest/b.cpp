@@ -4,25 +4,22 @@ using namespace std;
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
+// #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
+#define yn(f) f ? cout << "Yes\n" : cout << "No\n"
 #define prnt(x) cout << x << endl
    
 
 void AKG() { 
-   int n,k;cin>>n>>k;
-   bool flg = false;
-    for (int x = 0; x <= n && !flg; x++) { 
-        for (int y = 0; y <= n - x && !flg; y++){
-            int z = n - x - y; 
-            ll sum = x * 10 + y * 11 + z * 12;
-            if (sum == k) {
-                flg = true;
-                break;
-            }
-        }
-    }
-    
-    yn(flg);
+   string s;cin>>s;
+   int ans=0;
+   for(int i=1;i<s.length();i++){
+       if(s[i]=='-')ans++;
+       else{
+        cout<<ans<<" ";
+        ans=0;
+       }
+   }
+   
 }
 
 int main() {
@@ -34,7 +31,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
