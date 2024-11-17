@@ -8,10 +8,8 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-   ll a,b,n,s;cin>>a>>b>>n>>s;
-   ll x=s/n;
-   //cout<<x<<" ";
-   yn((s - n*min(a,x)) <= b);
+    int a,b;cin>>a>>b;
+    (a-b >= 18) ? cout << "RCB\n" : cout << "CSK\n";
 }
 
 int main() {
@@ -23,7 +21,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--) {
         AKG();
     }

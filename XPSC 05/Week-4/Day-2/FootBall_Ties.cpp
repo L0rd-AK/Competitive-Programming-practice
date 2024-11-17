@@ -8,10 +8,8 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-   ll a,b,n,s;cin>>a>>b>>n>>s;
-   ll x=s/n;
-   //cout<<x<<" ";
-   yn((s - n*min(a,x)) <= b);
+    int a,b;cin>>a>>b;
+    cout<<a%3<<endl;
 }
 
 int main() {
