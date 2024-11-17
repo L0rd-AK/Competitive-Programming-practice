@@ -4,63 +4,72 @@ using namespace std;
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-// #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define yn(f) f ? cout << "Yes\n" : cout << "No\n"
 #define prnt(x) cout << x << endl
-   
+
+bool isComposite(int num) { 
+    if (num <= 1) return false; 
+    if (num % 2 == 0 && num > 2) return true; 
+    for (int i = 3; i * i <= num; i += 2) { 
+        if (num % i == 0) return true; 
+    } 
+    return false; 
+}
 
 void AKG() { 
-   int n,k;cin>>n>>k;
-   string s;cin>>s;
-   int sIdx=0,eIdx=0,cnt=0;
-   bool flg=1,flg1=1;
-   for(int i=0;i<n;i++){
-      if(s[i]=='1'){
-        cnt++;
-        if(cnt==k && flg1){
-            eIdx=i;
-            flg1=0;
+    int n;
+    cin >> n;
+    if (n == 3) {
+        cout << -1 << endl;
+        return;
+    }
+
+    vector<int> evn, od, ans;
+    for (int i = 1; i <= n; i++) {
+        if (i % 2 == 0) {
+            evn.push_back(i);
+        } else {
+            od.push_back(i);
         }
-        while(i<n && s[i]=='1')i++;
-      }
-      if(cnt==k-1 && flg){
-        sIdx=i;
-        flg=0;
-      }
-   }
-//    cout<<sIdx<<" "<<eIdx<<endl;
-//    while(eIdx>=0 && s[eIdx]=='1'){
-//      eIdx--;
-//    }
-//    cout<<sIdx<<" "<<eIdx<<endl;
-//    while(sIdx<n && eIdx<n){
-//      swap(s[sIdx],s[eIdx]);
-//      sIdx++;
-//      eIdx++;
-//    }
-   while(s[eIdx]=='1'){
-     swap(s[sIdx],s[eIdx]);
-     sIdx++;
-     eIdx++;
-   }
-   prnt(s);
+    }
+
+    for (int x : evn) ans.push_back(x);
+    for (int x : od) ans.push_back(x);
+
+    if (!isComposite(ans[evn.size() - 1] + ans[evn.size()])) {
+        int i = evn.size(), x = evn.size() - 1;
+        bool flg = false;
+        while (i < ans.size()) {
+            if (isComposite(ans[x] + ans[i])) {
+                swap(ans[x + 1], ans[i]);
+                flg = true;
+                break;
+            }
+            i++;
+        }
+
+        if (!flg) {
+            cout << -1 << endl;
+            return;
+        }
+    }
+
+    for (int i : ans) cout << i << " ";
+    cout << endl;
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
      freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
-
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         AKG();
     }
-
-
 
     return 0;
 }
