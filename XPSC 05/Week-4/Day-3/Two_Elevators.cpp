@@ -8,13 +8,11 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-   ll a,b,n;cin>>a>>b>>n;
-   ll ans=b;
-   while(n--){
-        ll x;cin>>x;
-        ans+=min(x,a-1);
-   }
-   prnt(ans);
+   int a,b,c;
+    cin>>a>>b>>c;
+    if(abs(1-a)==(abs(b-c)+abs(1-c)))cout<<3<<endl;
+    else if(abs(1-a)<(abs(b-c)+abs(1-c)))cout<<1<<endl;
+    else cout<<2<<endl;
 }
 
 int main() {
