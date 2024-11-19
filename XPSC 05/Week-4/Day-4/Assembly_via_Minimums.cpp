@@ -6,28 +6,17 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
-
+#define all(x) x.begin(),x.end()
 void AKG() {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-
-    string result = "";
-    for (int i = n - 1; i >= 0; ) {
-        if (s[i] == '0') {
-            int x = (s[i - 2] - '0') * 10 + (s[i - 1] - '0');
-            result += (char)('a' + x - 1);
-            i -= 3;
-        } else {
-            int x = s[i] - '0';
-            result += (char)('a' + x - 1);
-            i--;
-        }
-    }
-
-    reverse(result.begin(), result.end());
-    cout << result << endl;
+   int n;cin>>n;
+   int z=(n*(n-1)/2);
+   vector<int> v(z);
+   f(i,0,z)cin>>v[i];
+   sort(all(v));
+   for(int i=0;i<z;i+=--n){
+    cout<<v[i]<<" ";
+   }
+   cout<<1000000000<<endl;
 }
 
 int main() {
