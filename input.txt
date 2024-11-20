@@ -1,7 +1,2 @@
-6
-logic
-codeforces
-bca
-aaaaaaaaaaa
-adbaadabad
-to
+7 20
+2 6 4 3 6 8 9

@@ -7,61 +7,70 @@ using namespace std;
 #define yn(f) f ? cout << "Yes\n" : cout << "No\n"
 #define prnt(x) cout << x << endl
 
-bool isComposite(int num) { 
-    if (num <= 1) return false; 
-    if (num % 2 == 0 && num > 2) return true; 
-    for (int i = 3; i * i <= num; i += 2) { 
-        if (num % i == 0) return true; 
-    } 
-    return false; 
-}
-
 void AKG() { 
     int n;
     cin >> n;
-    if (n == 3) {
-        cout << -1 << endl;
-        return;
+    vector<ll> a(n), b(n),ans(n);
+    set<int> st1, st2;
+    f(i, 0, n) {
+        cin >> a[i];
+        st1.insert(a[i]);
     }
-
-    vector<int> evn, od, ans;
-    for (int i = 1; i <= n; i++) {
-        if (i % 2 == 0) {
-            evn.push_back(i);
-        } else {
-            od.push_back(i);
+    f(i, 0, n) {
+        cin >> b[i];
+        st2.insert(b[i]);
+    }
+    ll mx_a = -1;
+    ll mx_idx = -1;
+    f(i,0,n){
+        if (a[i] > mx_a)
+        {
+            mx_a = a[i];
+            mx_idx = i;
+        }
+    }
+    ll mx_a2 = -1;
+    ll mx_idx2 = -1;
+    f(i,0,n){
+        if (i == mx_idx)continue;
+        if (a[i] > mx_a2){
+            mx_a2 = a[i];
+            mx_idx2 = i;
         }
     }
 
-    for (int x : evn) ans.push_back(x);
-    for (int x : od) ans.push_back(x);
+    ll mx_b = b[mx_idx];
+    ll max_ab = max(mx_a, mx_b);
+    ll max_ab2 = -1;
+    if (mx_idx2 != -1)
+    {
+        max_ab2 = max(mx_a2, a[mx_idx2]);
+    }
+    bool l = false;
+        if (mx_idx2 != -1)
+        {
+            l = (max_ab > max_ab2);
+        }
 
-    if (!isComposite(ans[evn.size() - 1] + ans[evn.size()])) {
-        int i = evn.size(), x = evn.size() - 1;
-        bool flg = false;
-        while (i < ans.size()) {
-            if (isComposite(ans[x] + ans[i])) {
-                swap(ans[x + 1], ans[i]);
-                flg = true;
+        bool r = false;
+        for (int i = 0; i < n; i++)
+        {
+            if (i == mx_idx)
+                continue;
+            if (b[i] > max_ab)
+            {
+                r = true;
                 break;
             }
-            i++;
         }
-
-        if (!flg) {
-            cout << -1 << endl;
-            return;
-        }
-    }
-
-    for (int i : ans) cout << i << " ";
-    cout << endl;
+    yn(l || r);
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
-     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
+
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 

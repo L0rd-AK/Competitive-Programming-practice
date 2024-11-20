@@ -9,60 +9,22 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 
 void AKG() {
- string s;
-    cin>>s;
-    int n=s.size();
- 
-    map<char, vector<int>> mp;
- 
-    for(int i=0; i<s.size(); i++)
-        mp[s[i]].push_back(i+1);
- 
-    if(s[0]>s[n-1]){
-        int cst= abs(s[0]-s[n-1]);
-        vector<int> ans;
- 
-        for(int i=0; s[0]+i>=s[n-1]; i--)
-        {
-            char c= s[0]+i;
-            if(mp.find(c)!=mp.end()){
-                for(auto v: mp[c])
-                    ans.push_back(v);
-            }
-        }
- 
-        cout<<cst<<" "<<ans.size()<<endl;
- 
-        for(auto x: ans)
-            cout<<x<<" ";
-        cout<<endl;
+  int n,k;cin>>n>>k;
+  vector<int> v(n);
+  f(i,0,n)cin>>v[i];
+  int l=0,r=0,ans=0;
+  ll sum=0;
+  while(r<n){
+    sum+=v[r];
+    if(sum<=k){
+        ans=max(ans,(r-l+1));
+    }else{
+        sum-=v[l];
+        l++;
     }
-    else if(s[0]<s[n-1]){
-        int cst= abs(s[0]-s[n-1]);
-        vector<int> ans;
- 
-        for(int i=0; s[0]+i<=s[n-1]; i++)
-        {
-            char c= s[0]+i;
- 
-            if(mp.find(c)!=mp.end())
-            {
-                for(auto v: mp[c])
-                    ans.push_back(v);
-            }
-        }
- 
-        cout<<cst<<" "<<ans.size()<<endl;
-        for(auto x: ans)cout<<x<<" ";
-        cout<<endl;
-    }
-    else{
-        cout<<0<<" "<<mp[s[0]].size()<<endl;
- 
-        for(auto x: mp[s[0]])
-            cout<<x<<" ";
-        cout<<endl;
-    }
+    r++;
+  }
+  prnt(ans);
 }
 
 int main() {
@@ -73,8 +35,8 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t;
-    cin >> t;
+    int t=1;
+    //cin >> t;
     while (t--) {
         AKG();
     }

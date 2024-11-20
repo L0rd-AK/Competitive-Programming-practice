@@ -9,18 +9,11 @@ using namespace std;
    
 
 void AKG() { 
-   int n;
-   cin>>n;
-   map<int,int> mp;
-   while(n--){
-    int x;cin>>x;
-    mp[x]++;
-   }
-   int ans=0;
-   for(auto [x,y]:mp){
-    ans+=(y/2);
-   }
+   ll n,m;
+   cin>>n>>m;
+   ll ans=n*5000+m*9800;
    prnt(ans);
+   
 }
 
 int main() {
@@ -30,7 +23,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-     cin >> t;
+    //  cin >> t;
     while (t--) {
         AKG();
     }

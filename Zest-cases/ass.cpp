@@ -1,99 +1,68 @@
-// C++ program to implement Shortest Remaining Time First
-// Shortest Remaining Time First (SRTF)
-
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Process {
-    int pid; // Process ID
-    int bt; // Burst Time
-    int art; // Arrival Time
-};
+bool canAchieveUnsavoriness(vector<int>& A, int N, int K, int U) {
+    int segments = 1;  // Start with one segment
+    int lower = A[0] - U, upper = A[0] + U;  // Initial allowable range for B_1
 
-void findWaitingTime(Process proc[], int n,int wt[]){
-    int rt[n];
+    for (int i = 1; i < N; i++) {
+        int newLower = A[i] - U, newUpper = A[i] + U;
 
-    for (int i = 0; i < n; i++)
-        rt[i] = proc[i].bt;
-
-    int complete = 0, t = 0, minm = INT_MAX;
-    int shortest = 0, finish_time;
-    bool check = false;
-
-    while (complete != n) {
-        for (int j = 0; j < n; j++) {
-            if ((proc[j].art <= t) &&
-            (rt[j] < minm) && rt[j] > 0) {
-                minm = rt[j];
-                shortest = j;
-                check = true;
-            }
+        // Check if the current range [lower, upper] intersects with [newLower, newUpper]
+        if (newUpper < lower || newLower > upper) {
+            // Create a new segment if the ranges don't overlap
+            segments++;
+            lower = newLower;
+            upper = newUpper;
+        } else {
+            // Update the overlapping range
+            lower = max(lower, newLower);
+            upper = min(upper, newUpper);
         }
 
-        if (check == false) {
-            t++;
-            continue;
-        }
-
-        rt[shortest]--;
-
-        minm = rt[shortest];
-        if (minm == 0)
-            minm = INT_MAX;
-
-        if (rt[shortest] == 0) {
-            complete++;
-            check = false;
-
-            finish_time = t + 1;
-
-            wt[shortest] = finish_time - proc[shortest].bt - proc[shortest].art;
-
-            if (wt[shortest] < 0)
-                wt[shortest] = 0;
-        }
-        t++;
+        // If we exceed the allowed number of segments, return false
+        if (segments > K + 1) return false;
     }
+    return true;
 }
 
-
-void findTurnAroundTime(Process proc[], int n,int wt[], int tat[]){
-    for (int i = 0; i < n; i++)tat[i] = proc[i].bt + wt[i];
-}
-
-void findavgTime(Process proc[], int n)
-{
-    int wt[n], tat[n], total_wt = 0,total_tat = 0;
-
-    findWaitingTime(proc, n, wt);
-
-    findTurnAroundTime(proc, n, wt, tat);
-
-    cout << " P\t\t"
-        << "BT\t\t"
-        << "WT\t\t"
-        << "TAT\t\t\n";
-
-    for (int i = 0; i < n; i++) {
-        total_wt = total_wt + wt[i];
-        total_tat = total_tat + tat[i];
-        cout << " " << proc[i].pid << "\t\t"
-            << proc[i].bt << "\t\t " << wt[i]
-            << "\t\t " << tat[i] << endl;
+void solve() {
+    int N, K;
+    cin >> N >> K;
+    vector<int> A(N);
+    for (int i = 0; i < N; i++) {
+        cin >> A[i];
     }
 
-    cout << "\nAverage waiting time = "
-        << (float)total_wt / (float)n;
-    cout << "\nAverage turn around time = "
-        << (float)total_tat / (float)n;
+    int left = 0, right = 1e9, answer = right;
+
+    // Binary search to find the minimum unsavoriness
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (canAchieveUnsavoriness(A, N, K, mid)) {
+            answer = mid;
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+
+    cout << answer << "\n";
 }
 
-int main()
-{
-    Process proc[] = { { 1, 6, 2 }, { 2, 2, 5 },
-                    { 3, 8, 1 }, { 4, 3, 0}, {5, 4, 4} };
-    int n = sizeof(proc) / sizeof(proc[0]);
+int main() {
+    #ifndef ONLINE_JUDGE
+freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    #endif
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    findavgTime(proc, n);
+    int T;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
     return 0;
 }

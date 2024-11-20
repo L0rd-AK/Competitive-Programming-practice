@@ -8,26 +8,21 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() { 
-    int n;
-    cin >> n;
-    map<int, int> mp;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-        mp[a[i]]++;
-    }
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n), b(m);
+    f(i, 0, n) cin >> a[i];
+    f(i, 0, m) cin >> b[i];
+    int ans = 0;
 
-    int sz = n - 2; 
-    for (int i = 0; i < n; i++) {
-        int x = a[i];
-        if (sz % x == 0) {
-            int y = sz / x;
-            if ((x != y && mp[y] > 0) || (x == y && mp[x] > 1)) {
-                cout << x << " " << y << endl;
-                return;
-            }
+    f(i, 0, m) {
+        int idx = b[i] - 1; 
+        if (idx >= 0 && idx < n) { 
+            if (a[idx] <= 0) ans++;
+            else a[idx]--;
         }
     }
+    prnt(ans);
 }
 
 int main() {
