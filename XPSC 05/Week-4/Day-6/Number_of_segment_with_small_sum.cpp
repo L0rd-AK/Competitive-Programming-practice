@@ -14,25 +14,19 @@ void AKG() {
   f(i,0,n)cin>>v[i];
   ll l=0,r=0,ans=0;
   ll sum=0;
-  multiset<ll> st;
+
   while(r<n){
-    st.insert(v[r]);
-    ll mn=*st.begin(),mx=*st.rbegin();
-    if(mx-mn<=k){
+    sum+=v[r];
+    if(sum<=k){
       ans+=(r-l+1);
     }else{
-      while (l <= r) {
-        mn = *st.begin(), mx = *st.rbegin();
-        if (mx - mn <= k){
-          break;
-        }
-            st.erase(st.find(v[l]));
-            l++;
+      while(sum>k){
+        sum-=v[l];
+        l++;
       }
-         mn = *st.begin(), mx = *st.rbegin();
-         if (mx - mn <= k) {
-            ans += (r - l + 1);
-         }
+      if(sum<=k){
+        ans+=(r-l+1);
+      }
     }
     r++;
   }
