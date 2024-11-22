@@ -11,22 +11,31 @@ using namespace std;
 void AKG() {
     int n, k;
     cin >> n >> k;
-    vector<ll> a(n),b(n);
-    f(i, 0, n)cin >> a[i];
-    f(i, 0, n)cin >> b[i];
-    
-    ll l = 0, r = 1, ans = 0;
-    ll sum = a[0];
+    vector<ll> v(n);
+    ll total = 0;
+    f(i, 0, n){
+        cin >> v[i];
+        total+=v[i];
+    }
+    if(total==k){
+        prnt(0);
+        return;
+    }else if(total<k){
+        prnt(-1);
+        return;
+    }
+    ll l = 0, r = 0, ans = INT_MIN;
+    ll sum = 0;
     while (r < n) {
-        sum += a[r];
-        if(b[r-1]%b[r]!=0 || sum > k) { 
-           l=r;
-           sum=a[r];
+        sum += v[r];
+        while (sum > k) { 
+            sum -= v[l];
+            l++;
         }
         ans = max(ans, r - l + 1);
         r++;
     }
-   prnt(ans);
+   prnt(n-ans);
 }
 
 int main() {
