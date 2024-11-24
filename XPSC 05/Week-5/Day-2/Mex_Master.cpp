@@ -10,21 +10,19 @@ using namespace std;
 
 void AKG() {
    int n;cin>>n;
-   if(n==1){
-    prnt(1);
-    prnt("1 3");
-   }else if(n==2){
-    prnt(1);
-    prnt("1 6");
-   }else{
-    if(n%2==0)prnt(n/2);
-    else prnt((n/2)+1);
-    ll l=1,r=3*n;
-    while(l<r){
-        cout<<l<<" "<<r<<endl;
-        l+=3;r-=3;
-    }
+   vector<int> v(n);
+   int z=0,nz=0;
+   bool flg=false;
+   f(i,0,n){
+        cin>>v[i];
+        if(v[i]==0)z++;
+        else nz++;
+        if(v[i]>=2)flg=true;
    }
+   if(z<=((n+1)/2))prnt(0);
+   else if(flg || z==n)prnt(1);
+   else prnt(2);
+
 }
 
 int main() {

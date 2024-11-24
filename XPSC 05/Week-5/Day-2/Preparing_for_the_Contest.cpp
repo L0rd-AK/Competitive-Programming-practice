@@ -9,22 +9,11 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 
 void AKG() {
-   int n;cin>>n;
-   if(n==1){
-    prnt(1);
-    prnt("1 3");
-   }else if(n==2){
-    prnt(1);
-    prnt("1 6");
-   }else{
-    if(n%2==0)prnt(n/2);
-    else prnt((n/2)+1);
-    ll l=1,r=3*n;
-    while(l<r){
-        cout<<l<<" "<<r<<endl;
-        l+=3;r-=3;
-    }
-   }
+    int n,k;
+    cin>>n>>k;
+    for(int i=1;i<=k;i++)cout<<i<<" ";
+    for(int i=n;i>k;i--)cout<<i<<" ";
+    cout<<'\n';
 }
 
 int main() {
