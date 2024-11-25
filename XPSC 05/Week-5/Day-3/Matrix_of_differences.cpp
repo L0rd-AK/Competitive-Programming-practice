@@ -62,7 +62,7 @@ void AKG() {
             {
                 if(c%2==0)
                 {
-                    a[i][sc]=down;
+                    a[i][sc]= down;
                     down--;c++;
                 }
                 else

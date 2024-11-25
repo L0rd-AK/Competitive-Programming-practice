@@ -35,7 +35,7 @@ void AKG() {
         auto c = pq.top();
         pq.pop(); f(i,0,c.first )ans += c.second;
     }
-  prnt(ans);
+    prnt(ans);
 }
  
 
