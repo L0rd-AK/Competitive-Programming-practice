@@ -4,66 +4,33 @@ using namespace std;
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) f ? cout << "Yes\n" : cout << "No\n"
+#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
+#define all(x) x.begin(), x.end()
 
-void AKG() { 
-    int n;
-    cin >> n;
-    vector<ll> a(n), b(n),ans(n);
-    set<int> st1, st2;
+void AKG() {
+    int n, k;
+    cin >> n >> k;
+    vector<ll> v(n);
+    bool f = true;
     f(i, 0, n) {
-        cin >> a[i];
-        st1.insert(a[i]);
+        cin >> v[i];
+        if (v[i] >= k) f = false;
     }
-    f(i, 0, n) {
-        cin >> b[i];
-        st2.insert(b[i]);
+    
+    if (f) {
+        prnt(-1);
+        return;
     }
-    ll mx_a = -1;
-    ll mx_idx = -1;
-    f(i,0,n){
-        if (a[i] > mx_a)
-        {
-            mx_a = a[i];
-            mx_idx = i;
-        }
-    }
-    ll mx_a2 = -1;
-    ll mx_idx2 = -1;
-    f(i,0,n){
-        if (i == mx_idx)continue;
-        if (a[i] > mx_a2){
-            mx_a2 = a[i];
-            mx_idx2 = i;
+
+    ll ans = LLONG_MAX;
+    for (int i = 0; i < n; i++) {
+        if (v[i] >= k) {
+            ans = min(ans, v[i] % k);
         }
     }
 
-    ll mx_b = b[mx_idx];
-    ll max_ab = max(mx_a, mx_b);
-    ll max_ab2 = -1;
-    if (mx_idx2 != -1)
-    {
-        max_ab2 = max(mx_a2, a[mx_idx2]);
-    }
-    bool l = false;
-        if (mx_idx2 != -1)
-        {
-            l = (max_ab > max_ab2);
-        }
-
-        bool r = false;
-        for (int i = 0; i < n; i++)
-        {
-            if (i == mx_idx)
-                continue;
-            if (b[i] > max_ab)
-            {
-                r = true;
-                break;
-            }
-        }
-    yn(l || r);
+    prnt(ans);
 }
 
 int main() {
@@ -74,7 +41,7 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t;
+    int t = 1;
     cin >> t;
     while (t--) {
         AKG();

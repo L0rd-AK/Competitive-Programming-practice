@@ -6,29 +6,26 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
-   
+#define all(x) x.begin(), x.end()
 
-void AKG() { 
-   ll n,m;
-   cin>>n>>m;
-   ll ans=n*5000+m*9800;
-   prnt(ans);
-   
+void AKG() {
+   int n,m,a,b;cin>>n>>m>>a>>b;
+   cout<<(n*a)+(m*b)<<endl;
 }
 
 int main() {
- 
+    #ifndef ONLINE_JUDGE
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    #endif
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
-    //  cin >> t;
+    int t=1;
+    // cin >> t;
     while (t--) {
         AKG();
     }
-
-
 
     return 0;
 }
