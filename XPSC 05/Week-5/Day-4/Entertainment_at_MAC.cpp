@@ -9,37 +9,31 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 
 void AKG() {
-    int n;cin>>n;
-    vector<ll> v;
-    ll od=0,evn=0,mx=INT_MIN;
-    f(i,0,n){
-        ll x;
-        cin>>x;
-        if(x%2==0){
-            evn++;
-            v.push_back(x);
+    int z;cin>>z;
+    string s;cin>>s;
+    int n=s.length();
+    if(s[0]<s[n-1])prnt(s);
+    else if(s[0]>s[n-1]){
+        string x=s;
+        reverse(all(s));
+        cout<<s<<x<<endl;
+    }else{
+        int l=0,r=n-1;
+        while(l<r){
+            if(s[l]<s[r]){
+                prnt(s);
+                return;
+            }
+            else if(s[l]>s[r]){
+                string x=s;
+                reverse(all(s));
+                cout<<s<<x<<endl;
+                return;
+            }
+            l++;r--;
         }
-        else{
-            od++;
-            mx=max(mx,x);
-        }
-        
+        cout<<s<<endl;
     }
-    if(od==n || evn==n){
-        prnt(0);
-        return;
-    }
-    sort(all(v));
-    int ans=evn;
-    for(auto i:v){
-        if(i<mx)mx+=i;
-        else{
-            ans++;
-            break;
-        }
-        
-    }
-    prnt(ans);
 }
 
 int main() {
