@@ -9,8 +9,10 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 
 void AKG() {
-   int n,m,a,b;cin>>n>>m>>a>>b;
-   cout<<(n*a)+(m*b)<<endl;
+   int a,b,c;cin>>a>>b>>c;
+   ll z=(a)-(c*b);
+   if(z<=0)prnt(-1);
+   else prnt(z);
 }
 
 int main() {

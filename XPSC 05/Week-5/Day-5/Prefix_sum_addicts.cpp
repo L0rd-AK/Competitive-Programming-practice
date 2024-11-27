@@ -9,27 +9,31 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 void AKG() {
-    int n,k;
-	string s;
-	cin>>n>>k>>s;
-	int i=0,j=0,cnt=0,ans=0;
-	bool flg=false;
-	while(i<n && j<n){
-		if(s[j]=='1'){
-			if(!flg)ans+=(cnt/(k+1));
-			else ans+=((cnt-k)/(k+1));
-			i=j;
-			cnt=0;
-			flg=true;
+    ll n,k;
+    cin >> n >> k;
+        bool flg=1;
+        vector<ll> a;
+        ll temp1=0;
+        ll temp2=0;
+        for(int i=0; i<k; i++) {
+            int x;
+        	cin >> x;
+        	a.push_back(x);
+        	if(i==1) {
+        		temp1=a[1]-a[0];
+        		if(temp1*(n-k+1)<a[0]){
+                    flg=0;
+                }
+			}
+            if(i>1) {
+                temp2=a[i]-a[i-1];
+                if(temp2<temp1){
+                    flg=0;
+                }
+                temp1=temp2;
+            }
 		}
-		else if(s[j]=='0')cnt++;
-		j++;
-		//cout<<ans<<" "<<cnt<<" "<<flg<<endl;
-	}
-	if(!flg)ans+=((cnt-1)/(k+1))+1;
-	else ans+=(cnt/(k+1));
-
-	prnt(ans);
+        yn(flg);
     
 }
 

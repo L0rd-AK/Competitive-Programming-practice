@@ -9,28 +9,24 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 
 void AKG() {
-    int n, k;
-    cin >> n >> k;
-    vector<ll> v(n);
-    bool f = true;
-    f(i, 0, n) {
-        cin >> v[i];
-        if (v[i] >= k) f = false;
-    }
-    
-    if (f) {
-        prnt(-1);
-        return;
-    }
-
-    ll ans = LLONG_MAX;
-    for (int i = 0; i < n; i++) {
-        if (v[i] >= k) {
-            ans = min(ans, v[i] % k);
+    int n;
+        cin >> n;
+        vector<int> B(n - 1);
+        for (int i = 0; i < n - 1; i++) {
+            cin >> B[i];
         }
-    }
+        sort(B.begin(), B.end());
+        vector<int> A(n);
+        A[0] = 1;
+        for (int i = 1; i < n; i++) {
+            A[i] = B[i - 1] - A[i - 1];
+        }
 
-    prnt(ans);
+        for (int i = 0; i < n; i++) {
+            cout << A[i] << " ";
+        }
+        
+        cout << endl;
 }
 
 int main() {

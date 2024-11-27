@@ -6,31 +6,17 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
-#define all(x) x.begin(), x.end()
-#define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
-void AKG() {
-    int n,k;
-	string s;
-	cin>>n>>k>>s;
-	int i=0,j=0,cnt=0,ans=0;
-	bool flg=false;
-	while(i<n && j<n){
-		if(s[j]=='1'){
-			if(!flg)ans+=(cnt/(k+1));
-			else ans+=((cnt-k)/(k+1));
-			i=j;
-			cnt=0;
-			flg=true;
-		}
-		else if(s[j]=='0')cnt++;
-		j++;
-		//cout<<ans<<" "<<cnt<<" "<<flg<<endl;
-	}
-	if(!flg)ans+=((cnt-1)/(k+1))+1;
-	else ans+=(cnt/(k+1));
 
-	prnt(ans);
-    
+void AKG() {
+    int n, k;
+    cin >> n >> k;
+    if (n == 1 || k == 1) {
+        prnt(-1);
+        return;
+    }
+    cout<<n<<" ";
+    for(int i=1;i<=n-1;i++)cout<<i<<" ";
+    cout << endl;
 }
 
 int main() {
@@ -41,7 +27,7 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
+    int t;
     cin >> t;
     while (t--) {
         AKG();

@@ -9,15 +9,18 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 
 void AKG() {
-   int n,x,y;cin>>n>>x>>y;
-   vector<int> v(n);
-   f(i,0,n)cin>>v[i];
-   int ans=0;
-   for(int i=0;i<n;i++){
-    if(v[i]*x < y)ans+=(v[i]*x);
-    else ans+=y;
-   }
-   prnt(ans);
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    ll ans = 0;
+    f(i, 0, n) {
+        cin >> v[i];
+        ans += v[i];
+    }
+    ll x = 50 * (n + 1) - ans;
+    if (x > 100) prnt(-1);
+    else if (x <= 0) prnt(0);
+    else prnt(x);
 }
 
 int main() {
@@ -28,7 +31,7 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t=1;
+    int t = 1;
     cin >> t;
     while (t--) {
         AKG();

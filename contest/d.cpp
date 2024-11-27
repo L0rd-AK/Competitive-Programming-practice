@@ -8,26 +8,24 @@ using namespace std;
 #define prnt(x) cout << x << endl
 
 void AKG() {
-    int n, m;
-    cin >> n >> m;
-    string s, k;
-    cin >> s >> k;
-    int diff = 0;
-    int ans = INT_MAX;
-
-    for (int i = 0; i <= n - m; i++) {
-        diff = 0;
-        for (int j = 0; j < m; j++) {
-            int x = abs(s[i + j] - k[j]);
-            if (x > 5) {
-                diff += 10 - x;
-            } else {
-                diff += x;
-            }
-        }
-        ans = min(ans, diff);
+    int n, k;
+    cin >> n >> k;
+    if(n==1 || k==1){
+        prnt(-1);
+        return;
     }
-    prnt(ans);
+        int z=n-k;
+        if(z>k){
+            for(int i=k+1;i<=n;i++)cout<<i<<" ";
+            for(int i=k;i>=1;i--)cout<<i<<" ";
+            cout<<endl;
+        }else{
+            for(int i=k;i>=1;i--)cout<<i<<" ";
+            for(int i=k+1;i<=n;i++)cout<<i<<" ";
+            cout<<endl;
+        }
+    
+    
 }
 
 int main() {
