@@ -8,22 +8,10 @@ using namespace std;
 #define prnt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
-
-int findMinimumXOR(vector<int>& nums) {
-	int n = nums.size();
-	int ans = 0;
-	for (int i = 0; i < n; ++i) {
-		ans ^= nums[i];
-	}
-	if(ans==0)return 0;
-	else if(n%2)return ans;
-	else return -1;
-}
 void AKG() {
     int n;cin>>n;
-	vector<int> v(n);
-	f(i,0,n)cin>>v[i];
-	cout<<findMinimumXOR(v)<<endl;
+	for(int i=n;i>=1;i--)cout<<i<<" ";
+	cout<<endl;
 }
 
 int main() {

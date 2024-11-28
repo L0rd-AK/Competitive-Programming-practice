@@ -11,13 +11,21 @@ using namespace std;
 
 int findMinimumXOR(vector<int>& nums) {
 	int n = nums.size();
+	sort(nums.begin(), nums.end());
+
 	int ans = 0;
 	for (int i = 0; i < n; ++i) {
 		ans ^= nums[i];
 	}
-	if(ans==0)return 0;
-	else if(n%2)return ans;
-	else return -1;
+
+	int mn_xor = ans;
+
+	for (int i = 0; i < n; ++i) {
+		int xor_after_removal = ans ^ nums[i];
+		mn_xor = min(mn_xor, xor_after_removal);
+	}
+
+	return mn_xor;
 }
 void AKG() {
     int n;cin>>n;
