@@ -27,6 +27,5 @@ int main() {
     while (t--) {
         AKG();
     }
-
     return 0;
 }
