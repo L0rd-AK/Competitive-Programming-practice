@@ -10,10 +10,9 @@ using namespace std;
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
 void AKG() {
-    int a,b;cin>>a>>b;
-    cout<<(b^a)<<endl;
+    ll n,k;cin>>n;
+    cout<<n-1<<" "<<n<<endl;
 }
-
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
@@ -23,7 +22,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }

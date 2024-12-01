@@ -7,24 +7,25 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
+#define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
-
+void AKG() {
+    ll n,k;cin>>n;
+    cout<<n-1<<" "<<n<<endl;
+}
 int main() {
-    //freopen("input.txt", "r", stdin);
-    //freopen("output.txt", "w", stdout);
+    #ifndef ONLINE_JUDGE
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    #endif
+
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    ll n,k;cin>>n>>k;
-    ll ans=0,x;
-    for(int i=0;i<n;i++){
-        cin>>x;
-        if(x>=k*3)ans+=x-k*3;
-        else if(x>=k*2)ans+=x-k*2;
-        else if(x>=k)ans+=x-k;
-        else ans+=x;
+    int t = 1;
+    cin >> t;
+    while (t--) {
+        AKG();
     }
-    prnt(ans);
 
     return 0;
 }
