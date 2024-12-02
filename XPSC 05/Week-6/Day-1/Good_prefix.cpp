@@ -10,22 +10,22 @@ using namespace std;
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
 void AKG() {
-    string s;cin>>s;
-    int n=s.length();
-    if(n==2 && s[0]=='(' && s[1]==')'){
-        prnt("NO");
-        return;
-    }else{
-        int cnt=0;
-        f(i,0,n-1){
-            if(s[i]=='(' && s[i+1]==')')cnt++;
-        }
-        if(cnt>=2){
-            f(i,0,2*n){
-                if(n){}
-            }
-        }
-    }
+    int n;
+      cin>>n;
+      vector<ll> v(n),p(n,0),mx(n,0);
+      ll x=0;
+      f(i,0,n){
+         cin>>v[i];
+         x=max(x,v[i]);
+         mx[i]=x;
+      }
+      p[0]=v[0];
+      f(i,1,n)p[i]=v[i]+p[i-1];
+      int ans=0;
+      for(int i=n-1;i>=0;i--){
+            if(p[i]-mx[i]==mx[i])ans++;
+      }
+      cout<<ans<<"\n";
 }
 int main() {
     #ifndef ONLINE_JUDGE

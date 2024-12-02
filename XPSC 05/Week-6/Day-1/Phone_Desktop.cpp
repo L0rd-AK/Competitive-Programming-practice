@@ -10,22 +10,15 @@ using namespace std;
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
 void AKG() {
-    string s;cin>>s;
-    int n=s.length();
-    if(n==2 && s[0]=='(' && s[1]==')'){
-        prnt("NO");
-        return;
-    }else{
-        int cnt=0;
-        f(i,0,n-1){
-            if(s[i]=='(' && s[i+1]==')')cnt++;
-        }
-        if(cnt>=2){
-            f(i,0,2*n){
-                if(n){}
-            }
-        }
-    }
+    int x, y; 
+	cin >> x >> y; 
+	int ans = y / 2 + (y % 2 == 0? 0 : 1);
+	int xn = 15 * ans;
+	xn -= 4 * y;
+	int v = 0;
+	if(x > xn) v = (x - xn) / 15 + ((x - xn) % 15 == 0? 0 : 1);
+	ans += v; 
+	prnt(ans);
 }
 int main() {
     #ifndef ONLINE_JUDGE
