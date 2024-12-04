@@ -1,56 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
-#define all(x) x.begin(), x.end()
+#define ll long long
 
-void AKG() {
-    int n;
-    cin >> n;
-    vector<ll> v(n), p(n, 0);
+void solve() {
+    ll n, k;
+    cin >> n >> k;
 
-    f(i, 0, n) {
-        cin >> v[i];
-    }
-    p[0] = v[0];
-    f(i, 1, n) {
-        p[i] = v[i] + p[i - 1];
+    vector<ll> a(n);
+    ll totalSum = 0;
+
+    for (ll i = 0; i < n; i++) {
+        cin >> a[i];
+        totalSum += a[i];
     }
 
-    int ans = 0;
-    ll sum = p[n - 1];
-    f(i, 1, n - 1) {  
-        if (v[i] == 0) {
-            ll l = p[i - 1];
-            ll r = sum - p[i];
-
-            if (l == r) {
-                ans += 2;
-            } else if (abs(l - r) == 1) {
-                ans++;
-            }
-        }
+    // If total sum is not divisible by K, it's impossible
+    if (totalSum % k != 0) {
+        cout << "NO\n";
+        return;
     }
 
-    prnt(ans);
+    // Modular distribution
+    ll positiveRemainder = 0, negativeRemainder = 0;
+    for (ll i = 0; i < n; i++) {
+        ll mod = ((a[i] % k) + k) % k; // Normalize the remainder to be positive
+        positiveRemainder += mod;
+        negativeRemainder += (k - mod) % k;
+    }
+
+    // Check if remainders balance out
+    if (positiveRemainder % k == 0 && negativeRemainder % k == 0) {
+        cout << "YES\n";
+    } else {
+        cout << "NO\n";
+    }
 }
 
 int main() {
-    #ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    #endif
-
-    ios_base::sync_with_stdio(0);
+    ios_base::sync_with_stdio(false);
     cin.tie(0);
 
-    int t = 1;
+    int t;
     cin >> t;
     while (t--) {
-        AKG();
+        solve();
     }
 
     return 0;

@@ -9,24 +9,32 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 
 void AKG() {
-    int n;
-        cin >> n;
-        vector<int> B(n - 1);
-        for (int i = 0; i < n - 1; i++) {
-            cin >> B[i];
-        }
-        sort(B.begin(), B.end());
-        vector<int> A(n);
-        A[0] = 1;
-        for (int i = 1; i < n; i++) {
-            A[i] = B[i - 1] - A[i - 1];
-        }
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    ll Csum = 0, odd = 0, sum = 0,fsum=0;
 
-        for (int i = 0; i < n; i++) {
-            cout << A[i] << " ";
+    f(i, 0, n) {
+        cin >> a[i];
+        sum += a[i];
+        Csum += ((a[i] + k - 1) / k);  
+        fsum+=(a[i]/k);
+        if (abs(a[i]) % 2 == 1) {
+            odd++;
         }
-        
-        cout << endl;
+    }
+
+    // cout << Csum << " " << odd << endl;
+    if(k==1 && sum!=0)yn(0);
+    else if(k==1 && sum==0)yn(1);
+    else if(Csum==0)yn(1);
+    else if(fsum==0)yn(1);
+    else if(Csum > 0 && Csum <= odd) {
+        yn(1);
+    }else if(fsum<0 && fsum<=odd)yn(1); 
+    else {
+        yn(0);
+    }
 }
 
 int main() {

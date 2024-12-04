@@ -11,25 +11,19 @@ using namespace std;
 
 void AKG() {
     int n;cin>>n;
-    vector<ll> v(n);
-    for(int i=0;i<n;i++){
-        cin>>v[i];
-    }
-    int pos=0;
-    for(int i=0;i<n-1;i++){
-        if(v[i]==0)continue;
-        else{
-            pos=i;
-            break;
+    vector<int> v;
+    for(int i=1;i<=n;i++){
+        int x;cin>>x;
+        int z=abs(x-i);
+        if(z!=0){
+            v.push_back(z);
         }
     }
-    ll ans=0,z=0;
-    for(int i=pos;i<n-1;i++){
-        if(v[i]==0)z++;
-        ans+=v[i];
+    int ans=v[0];
+    for(int i=1;i<v.size();i++){
+        ans=__gcd(ans,v[i]);
     }
-    if(ans==0) prnt(0);
-    else prnt(ans+z);
+    prnt(ans);
 }
 int main() {
     #ifndef ONLINE_JUDGE

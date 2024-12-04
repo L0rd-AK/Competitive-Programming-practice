@@ -6,40 +6,35 @@ using namespace std;
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
+#define all(x) x.begin(), x.end()
 
-void AKG() {
-    int n, k;
+
+void solve() {
+    ll n, k;
     cin >> n >> k;
-    if(n==1 || k==1){
-        prnt(-1);
-        return;
+
+    vector<ll> a(n);
+    ll lowerSum = 0, upperSum = 0;
+
+    for (ll i = 0; i < n; i++) {
+        cin >> a[i];
+        ll lo = floor(1.0 * a[i] / k);
+        ll up = ceil(1.0 * a[i] / k);
+
+        lowerSum += lo;
+        upperSum += up;
     }
-        int z=n-k;
-        if(z>k){
-            for(int i=k+1;i<=n;i++)cout<<i<<" ";
-            for(int i=k;i>=1;i--)cout<<i<<" ";
-            cout<<endl;
-        }else{
-            for(int i=k;i>=1;i--)cout<<i<<" ";
-            for(int i=k+1;i<=n;i++)cout<<i<<" ";
-            cout<<endl;
-        }
-    
-    
+    yn(lowerSum <= 0 && 0 <= upperSum);
 }
 
 int main() {
-    #ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    #endif
-
-    ios_base::sync_with_stdio(0);
+    ios_base::sync_with_stdio(false);
     cin.tie(0);
 
-    int t = 1;
+    int t;
     cin >> t;
     while (t--) {
-        AKG();
+        solve();
     }
 
     return 0;

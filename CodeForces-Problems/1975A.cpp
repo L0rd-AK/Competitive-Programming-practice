@@ -11,25 +11,22 @@ using namespace std;
 
 void AKG() {
     int n;cin>>n;
-    vector<ll> v(n);
-    for(int i=0;i<n;i++){
-        cin>>v[i];
-    }
-    int pos=0;
-    for(int i=0;i<n-1;i++){
-        if(v[i]==0)continue;
-        else{
+    vector<int> a(n),ans(n);
+    f(i,0,n)cin>>a[i];
+    int pos=-1;
+    f(i,0,n-1){
+        if(a[i]>a[i+1]){
             pos=i;
             break;
         }
     }
-    ll ans=0,z=0;
-    for(int i=pos;i<n-1;i++){
-        if(v[i]==0)z++;
-        ans+=v[i];
+    if(pos==-1){
+        yn(1);
+    }else{
+        f(i,pos+1,n)ans.push_back(a[i]);
+        f(i,0,pos+1)ans.push_back(a[i]);
+        yn(is_sorted(all(ans)));
     }
-    if(ans==0) prnt(0);
-    else prnt(ans+z);
 }
 int main() {
     #ifndef ONLINE_JUDGE
