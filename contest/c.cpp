@@ -8,33 +8,41 @@ using namespace std;
 #define prnt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 
-void AKG() {
-    ll n, k;
-    cin >> n >> k;
-    vector<ll> a(n);
-    ll Csum = 0, odd = 0, sum = 0,fsum=0;
+ll func(const string& n) {
+    ll sum = 0;
+    for (char c : n) {
+        sum += (c - '0');
+    }
+    return sum;
+}
 
-    f(i, 0, n) {
-        cin >> a[i];
-        sum += a[i];
-        Csum += ((a[i] + k - 1) / k);  
-        fsum+=(a[i]/k);
-        if (abs(a[i]) % 2 == 1) {
-            odd++;
+void AKG() {
+    string s;
+    cin >> s;
+    ll sum = func(s);
+    if (sum % 9 == 0) {
+        yn(1);
+        return;
+    }
+    sort(all(s));
+    reverse(all(s));
+
+    ll ans=sum;
+    for (char c : s) {
+        int x = c - '0';
+        if ( x == 2 || x==3) {
+            ll sq_x = x * x;
+            ans += sq_x-x;
+
+            if (ans % 9 == 0) {
+                yn(1);
+                return;
+            }
+            //sum+=x;
         }
     }
 
-    // cout << Csum << " " << odd << endl;
-    if(k==1 && sum!=0)yn(0);
-    else if(k==1 && sum==0)yn(1);
-    else if(Csum==0)yn(1);
-    else if(fsum==0)yn(1);
-    else if(Csum > 0 && Csum <= odd) {
-        yn(1);
-    }else if(fsum<0 && fsum<=odd)yn(1); 
-    else {
-        yn(0);
-    }
+    yn(0);
 }
 
 int main() {
