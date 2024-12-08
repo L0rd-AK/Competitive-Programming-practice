@@ -10,41 +10,24 @@ using namespace std;
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
 void AKG() {
-    int k,n;cin>>n>>k;
-    vector<int> a;
-    map<int,int> mp;
+    int n;cin>>n;
+    int sum=0;
+    vector<int> a(n);
+    int ans=0;
     f(i,0,n){
-        int x;cin>>x;
-        mp[x]++;
-        if(mp[x]==k)a.push_back(x);
+        cin>>a[i];
+        ans+=a[i];
     }
-    if(a.size() == 0)
-	{
-		cout << -1 << endl;
-		return;
-	}
-    sort(all(a));
-    int sz=a.size();
-    int mx = 0;
-	int l = a[0], r = a[0];
-	for(int i = 1; i < a.size(); i++)
-	{
-		if(a[i]-1 == a[i-1])
-		{
-			if(a[i]-l > mx)
-			{
-				l = l;
-				r = a[i];
-				mx = a[i]-l;
-			}
-		}
-		else
-		{
-			l = a[i];
-		}
-	}
-	cout << l << " " << r << endl;
-
+    if(ans==360){
+        yn(1);
+        return;
+    }
+    sum=0;
+    f(i,0,n){
+        if(sum-a[i]>0)sum-=a[i];
+        else sum+=a[i];
+    }
+    yn(sum==0);
 }
 int main() {
     #ifndef ONLINE_JUDGE
@@ -55,7 +38,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
