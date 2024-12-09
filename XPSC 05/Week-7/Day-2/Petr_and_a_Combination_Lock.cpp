@@ -10,8 +10,34 @@ using namespace std;
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    yn(k<n);
+    int n;cin>>n;
+    int sum=0;
+    vector<int> a(n);
+    int ans=0;
+    f(i,0,n){
+        cin>>a[i];
+        ans+=a[i];
+    }
+    if(ans==360){
+        yn(1);
+        return;
+    }
+    int m=1<<n;
+    for(int i=0;i<m;i++)
+    {
+        sum=0;
+        for(int j=0;j<n;j++)
+        {
+            if((1<<j)&i) sum+=a[j];
+            else sum-=a[j];
+        }
+        if(sum%360==0){
+            yn(1);
+            return;
+        }
+    }
+
+    yn(0);
 }
 int main() {
     #ifndef ONLINE_JUDGE
@@ -22,7 +48,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }

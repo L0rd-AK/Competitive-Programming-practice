@@ -7,44 +7,19 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
-
-ll func(const string& n) {
-    ll sum = 0;
-    for (char c : n) {
-        sum += (c - '0');
-    }
-    return sum;
-}
+#define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
 void AKG() {
-    string s;
-    cin >> s;
-    ll sum = func(s);
-    if (sum % 9 == 0) {
-        yn(1);
-        return;
+    int n;cin>>n;
+    vector<ll> a(n),b(n);
+    f(i,0,n)cin>>a[i];
+    f(i,0,n)cin>>b[i];
+    ll al=0,bb=0,ans=0;
+    f(i,0,n){
+        if(b[i]<=a[i]*2 && a[i]<=b[i]*2)ans++;
     }
-    sort(all(s));
-    reverse(all(s));
-
-    ll ans=sum;
-    for (char c : s) {
-        int x = c - '0';
-        if ( x == 2 || x==3) {
-            ll sq_x = x * x;
-            ans += sq_x-x;
-
-            if (ans % 9 == 0) {
-                yn(1);
-                return;
-            }
-            //sum+=x;
-        }
-    }
-
-    yn(0);
+    prnt(ans);
 }
-
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);

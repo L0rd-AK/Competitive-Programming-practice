@@ -7,34 +7,42 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
+#define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
-
-void solve() {
-    ll n, k;
-    cin >> n >> k;
-
-    vector<ll> a(n);
-    ll lowerSum = 0, upperSum = 0;
-
-    for (ll i = 0; i < n; i++) {
-        cin >> a[i];
-        ll lo = floor(1.0 * a[i] / k);
-        ll up = ceil(1.0 * a[i] / k);
-
-        lowerSum += lo;
-        upperSum += up;
+void AKG() {
+    int n;
+    cin >> n;
+    ll l = 1, r = n;
+    
+    if (n == 3) {
+        prnt("1 2 3");
+        return;
     }
-    yn(lowerSum <= 0 && 0 <= upperSum);
+
+    while (l < r) {
+        cout << r << " " << l << " ";
+        l++;
+        r--;
+    }
+
+    if (l == r) {
+        cout<<l;
+    }
+    cout<<endl;
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
+    #ifndef ONLINE_JUDGE
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    #endif
+
+    ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t;
+    int t = 1;
     cin >> t;
     while (t--) {
-        solve();
+        AKG();
     }
 
     return 0;
