@@ -10,8 +10,17 @@ using namespace std;
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    yn(k<n);
+    int n,k,p;cin>>n>>k>>p;
+    int mx=INT_MIN,sum=0;
+    vector<int> a(n);
+    f(i,0,n){
+        cin>>a[i];
+        sum+=a[i];
+        mx=max(mx,a[i]);
+    }
+    if(mx+k>(sum-mx)+p)prnt("Ved");
+    else if(mx+k<(sum-mx)+p)prnt("Varun");
+    else prnt("Equal");
 }
 int main() {
     #ifndef ONLINE_JUDGE

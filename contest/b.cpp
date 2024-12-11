@@ -10,12 +10,17 @@ using namespace std;
 #define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
 
 void AKG() {
-    int h,x,y;cin>>h>>x>>y;
-    h-=y;
-    if(h%x==0){
-        prnt((h/x)+1);
-    }else{
-        prnt((h/x)+2);
+    int n;cin>>n;
+    string a,b;cin>>a>>b;
+    if(a==b)yn(1);
+    else{
+        int flip=0;
+        sort(all(a));
+        sort(all(b));
+        f(i,0,n){
+            if(a[i]!=b[i])flip++;
+        }
+        yn(flip%2==0);
     }
     
 }
