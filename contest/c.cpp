@@ -19,11 +19,11 @@ vector<int> func(int n, int sum) {
     if (sum % (n + 1) == 0) {
         return {-1};
     }
-
     vector<int> permutation(n);
     for (int i = 0; i < n; i++) {
         permutation[i] = (i + 1);
     }
+    
     for (int i = 0; i < n; i++) {
         int ans = 0;
         for (int j = i; j < n; j++) {

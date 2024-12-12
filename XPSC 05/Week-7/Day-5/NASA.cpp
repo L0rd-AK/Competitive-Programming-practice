@@ -34,19 +34,38 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define debug(x...)
 #endif
 
+vector<int> ans;
+const int N=32768;
+bool isPalindrom(int a){
+    string x=to_string(a);
+    string y=x;
+    reverse(all(x));
+    return x==y;
+}
+void findPalindrom(){
+    f(i,0,N){
+        if(isPalindrom(i)){
+            ans.push_back(i);
+        }
+    }
+}
 
 void AKG() {
-    int n,m,k;cin>>n>>m>>k;
-    vector<int> a(m+1);
-    f(i,0,m+1)cin>>a[i];
-    ll ans=0;
-    for (int i = 0; i < m; i++){
-        int t = 0;
-        for (int j = 0; j < n; j++)
-            if (((a[i] >> j) & 1) != ((a[m] >> j) & 1)) t++;
-        if(t <= k)ans++;
+    int n;cin>>n;
+    vector<int> a(n),freq(N,0);
+    f(i,0,n){
+        cin>>a[i];
+        freq[a[i]]++;
     }
-    prnt(ans);
+    ll cnt=n;
+    f(i,0,n){
+        f(j,0,ans.size()){
+            ll x=(a[i]^ans[j]);
+            cnt+=freq[x];
+        }
+    }
+    prnt(cnt/2);
+    
 }
 
 int main() {
@@ -56,9 +75,9 @@ int main() {
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-
+    findPalindrom();
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
