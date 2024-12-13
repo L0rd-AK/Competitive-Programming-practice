@@ -36,13 +36,12 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 
 
 void AKG() {
-    ll n,m;cin>>n>>m;
-    ll l = max(0LL, n - m), r = n + m, ans = 0;
-	for (int i = 31; i>=0; --i) {
-		if ((l & (1LL << i)) || (r & (1LL << i)) || (l >> (i + 1)) != (r >> (i + 1))) {
-			ans |= (1LL << i);
-		}
-	}
+    int n;cin>>n;
+    ll ans=0;
+    f(i,0,n){
+        int x;cin>>x;
+        ans=(ans|x);
+    }
     prnt(ans);
 }
 

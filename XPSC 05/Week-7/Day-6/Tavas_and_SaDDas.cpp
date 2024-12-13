@@ -36,14 +36,17 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 
 
 void AKG() {
-    ll n,m;cin>>n>>m;
-    ll l = max(0LL, n - m), r = n + m, ans = 0;
-	for (int i = 31; i>=0; --i) {
-		if ((l & (1LL << i)) || (r & (1LL << i)) || (l >> (i + 1)) != (r >> (i + 1))) {
-			ans |= (1LL << i);
-		}
-	}
-    prnt(ans);
+    string a;cin>>a;
+    ll l=a.size();ll ans=0,x=1,sum;
+    for(int i=l-1;i>=0;i--){
+        if(a[i]=='7')sum=pow(2,x);
+        else sum=pow(2,x)-pow(2,x-1);
+        ans+=sum;
+        //dbg(x,point,sum);
+        x++;
+    }
+    cout<<ans<<endl;
+    
 }
 
 int main() {
@@ -55,7 +58,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }

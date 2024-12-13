@@ -29,21 +29,31 @@ void _print() {cerr << "]\n";}
 template <typename T, typename... V>
 void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
 #ifndef ONLINE_JUDGE
-#define dbg(x...) cerr << "[" << #x << "] = ["; _print(x)
+#define debug(x...) cerr << "[" << #x << "] = ["; _print(x)
 #else
-#define dbg(x...)
+#define debug(x...)
 #endif
 
 
 void AKG() {
-    ll n,m;cin>>n>>m;
-    ll l = max(0LL, n - m), r = n + m, ans = 0;
-	for (int i = 31; i>=0; --i) {
-		if ((l & (1LL << i)) || (r & (1LL << i)) || (l >> (i + 1)) != (r >> (i + 1))) {
-			ans |= (1LL << i);
-		}
-	}
-    prnt(ans);
+    string a,b;cin>>a>>b;
+    int final=0;
+    f(i,0,a.length()){
+        final+=(a[i]=='+'?1:-1);
+    }
+    int move=0,err=0;
+    f(i,0,b.length()){
+        if(b[i]=='?')move++;
+        else err+=(b[i]=='+'?1:-1);
+    }
+    if(move<(final-err) || (move+(final-err))%2!=0) printf("%.12f\n", 0);
+    else{
+        int m = (move+abs((final-err)))/2 ; 
+        int c = 1 ;
+        for(int i=0;i<m;i++)c *= move-i ;
+        for(int i=2;i<=m;i++)c /= i ;
+        printf("%.12f\n",(double)c/(1<<move) );
+    }
 }
 
 int main() {
@@ -55,7 +65,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
