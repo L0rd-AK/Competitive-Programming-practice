@@ -34,19 +34,37 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void AKG(){
-    int n;cin>>n;
-    vector<int> a(n);
-    f(i,0,n)cin>>a[i];
-    ll ans=0;
-    for(int i=29;i>=0;i--){
-        ll x=0;
-        for(int j=0;j<n;j++){
-            if(a[j]>=(1<<i) && a[j]<(1<<(i+1)))x++;
-        }
-        ans+=(x*(x-1))/2;
+string s;
+int odd = 0, even = 0;
+ll sum = 0;
+
+bool func(int n) {
+    odd = even = sum = 0;
+    f(i, 0, n) {
+        if (s[i] == '2') odd++;
+        if (s[i] == '3') even++;
+        sum += (s[i] - '0');
     }
-    prnt(ans);
+    return sum % 9 == 0;
+}
+
+void AKG() {
+    cin >> s;
+    int n = s.length();
+    bool ans = func(n);
+    if (ans) {
+        yn(1);
+        return;
+    }
+    for (int i = 0; i <= odd; i++) {
+        for (int j = 0; j <= even; j++) {
+            if ((sum + 2 * i + 6 * j) % 9 == 0) {
+                yn(1);
+                return;
+            }
+        }
+    }
+    yn(0);
 }
 
 int main() {

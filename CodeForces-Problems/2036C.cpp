@@ -34,19 +34,38 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void AKG(){
-    int n;cin>>n;
-    vector<int> a(n);
-    f(i,0,n)cin>>a[i];
-    ll ans=0;
-    for(int i=29;i>=0;i--){
-        ll x=0;
-        for(int j=0;j<n;j++){
-            if(a[j]>=(1<<i) && a[j]<(1<<(i+1)))x++;
-        }
-        ans+=(x*(x-1))/2;
+string s;
+bool func(int i, int n) {
+    if (i <= 2) return false;
+    if (i >= n) return false;
+    if (s[i] == '0' && s[i-1] == '0' && s[i-2] == '1' && s[i-3] == '1') return true;
+    return false;
+}
+
+void AKG() {
+    cin >> s;
+    int n = s.length();
+    ll ans = 0;
+    f(i, 3, n) {
+        ans += func(i, n);
     }
-    prnt(ans);
+    int q;
+    cin >> q;
+    while (q--) {
+        ll x;
+        char y;
+        cin >> x >> y;
+        x--;
+        if (s[x] != y) {
+            bool l = func(x, n) || func(x + 1, n) || func(x + 2, n) || func(x + 3, n);
+            s[x] = y;
+            bool r = func(x, n) || func(x + 1, n) || func(x + 2, n) || func(x + 3, n);
+            // dbg(l, r);
+            if (l && !r) ans--;
+            else if (!l && r) ans++;
+        }
+        yn(ans > 0);
+    }
 }
 
 int main() {
