@@ -7,28 +7,73 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
-#define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
+
+void __print(int x) {cerr << x;}
+void __print(long x) {cerr << x;}
+void __print(long long x) {cerr << x;}
+void __print(unsigned x) {cerr << x;}
+void __print(unsigned long x) {cerr << x;}
+void __print(unsigned long long x) {cerr << x;}
+void __print(float x) {cerr << x;}
+void __print(double x) {cerr << x;}
+void __print(long double x) {cerr << x;}
+void __print(char x) {cerr << '\'' << x << '\'';}
+void __print(const char *x) {cerr << '\"' << x << '\"';}
+void __print(const string &x) {cerr << '\"' << x << '\"';}
+void __print(bool x) {cerr << (x ? "true" : "false");}
+
+template<typename T, typename V>
+void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
+template<typename T>
+void __print(const T &x) {int f = 0; cerr << '{'; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}
+void _print() {cerr << "]\n";}
+template <typename T, typename... V>
+void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
+#ifndef ONLINE_JUDGE
+#define dbg(x...) cerr << "[" << #x << "] = ["; _print(x)
+#else
+#define dbg(x...)
+#endif
 
 void AKG() {
     int n;
     cin >> n;
-    ll l = 1, r = n;
+    unordered_map<ll, ll> freq_map;
+    priority_queue<pair<ll, ll>> pq; 
+    vector<ll> x(n);
+    for(int i=0;i<n;i++){
+        cin >> x[i];
+        freq_map[x[i]]++;
+        if(pq.empty()){
+            pq.push({freq_map[x[i]], x[i]});
+
+        }
+        else{
+            if(pq.top().second==x[i]){
+                pq.push({freq_map[x[i]], x[i]});
     
-    if (n == 3) {
-        prnt("1 2 3");
-        return;
+            }
+            else{
+                ll z=pq.top().second;
+                ll temp=(i+2)/2;
+                while(temp--){
+                    pq.pop();
+                    freq_map[z]--;
+                }
+                temp=(i+2)/2;
+                while(temp--){
+                    freq_map[x[i]]++;
+                    pq.push({freq_map[x[i]], x[i]});
+                }
+    
+            }
+        }
     }
-
-    while (l < r) {
-        cout << r << " " << l << " ";
-        l++;
-        r--;
+    while (!pq.empty()) {
+         cout << pq.top().second << " ";
+         pq.pop();
     }
-
-    if (l == r) {
-        cout<<l;
-    }
-    cout<<endl;
+    cout << endl;
 }
 
 int main() {

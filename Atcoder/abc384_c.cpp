@@ -34,19 +34,38 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void AKG(){
-    int n;cin>>n;
-    string s;cin>>s;
-    stack<char> st;
-    int cnt=0;
-    for(char i:s){
-        if(!st.empty() && st.top()!=i){
-            cnt++;
-            st.pop();
-        }else st.push(i);
+string s = "ABCDE";
+vector<pair<string, int>> ans;
+vector<int> a(5);
+
+bool cmp(const pair<string, int> &a, const pair<string, int> &b) {
+    if(a.second==b.second)return a.first < b.first;
+    else return a.second > b.second;
+}
+
+void generateSubsets() {
+    int n = s.length();
+    int powerSetSize = 1 << n;
+    for (int i = 1; i < powerSetSize; ++i) {
+        string subset = "";
+        ll sum = 0;
+        for (int j = 0; j < n; ++j) {
+            if (i & (1 << j)) {
+                subset += s[j];
+                sum += a[j];
+            }
+        }
+        ans.push_back({subset, sum});
     }
-    if(cnt%2==0)prnt("Ramos");
-    else prnt("Zlatan");
+    sort(all(ans), cmp);
+    for (auto i : ans) {
+        cout << i.first << endl;
+    }
+}
+
+void AKG() {
+    f(i, 0, 5) cin >> a[i];
+    generateSubsets();
 }
 
 int main() {
@@ -56,9 +75,8 @@ int main() {
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }

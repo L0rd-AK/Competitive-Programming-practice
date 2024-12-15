@@ -35,20 +35,14 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG(){
-    int n,r;cin>>n>>r;
-    while(n--){
-        int a,b;cin>>a>>b;
-        if(a==1){
-            if(r>=1600 && r<=2799){
-                r+=b;
-            }
-        }else if(a==2){
-            if(r>=1200 && r<=2399){
-                r+=b;
-            }
-        }
+    string s;cin>>s;
+    for(int i=0;i<s.length();i++){
+        if(s[i]=='q')s[i]='p';
+        else if(s[i]=='p')s[i]='q';
     }
-    prnt(r);
+    reverse(all(s));
+    prnt(s);
+
 }
 
 int main() {
@@ -60,7 +54,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }

@@ -35,12 +35,8 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG(){
-    int n;char a,b;cin>>n>>a>>b;
-    string s;cin>>s;
-    f(i,0,n){
-        if(s[i]!=a)s[i]=b;
-    }
-    prnt(s);
+    int n;cin>>n;
+    prnt(n-1);
 }
 
 int main() {
@@ -52,7 +48,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
