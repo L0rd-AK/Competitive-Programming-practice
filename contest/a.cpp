@@ -34,9 +34,20 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void AKG(){
-    int n;cin>>n;
-    prnt(n-1);
+void AKG() {
+    int N, M, K;
+    cin >> N >> M >> K;
+    ll min_diff = INT_MAX; 
+    for(int length = 1; length <= N; length++) {
+        for(int width = 1; width <= M; width++) {
+            ll perimeter = 2 * (length + width);
+            ll diff = abs(perimeter - K); 
+            if(diff < min_diff) {
+                min_diff = diff;
+            }
+        }
+    }
+    prnt(min_diff);
 }
 
 int main() {

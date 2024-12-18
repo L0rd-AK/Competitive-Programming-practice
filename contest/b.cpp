@@ -34,15 +34,21 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void AKG(){
-    string s;cin>>s;
-    for(int i=0;i<s.length();i++){
-        if(s[i]=='q')s[i]='p';
-        else if(s[i]=='p')s[i]='q';
+void AKG() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    f(i, 0, n) {
+        cin >> a[i];
     }
-    reverse(all(s));
-    prnt(s);
-
+    sort(a.begin(), a.end());
+    ll t_cost = 0;
+    for(int i = 0; i < n; i++) {
+        int dis = max(0, a[i] - i);
+        t_cost += dis;
+    }
+    
+    cout << t_cost << endl;
 }
 
 int main() {

@@ -34,32 +34,44 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void AKG(){
-    ll m,a,b,c;cin>>m>>a>>b>>c;
-    ll total=2*m;
-    ll ans=0;
-    if(a<=m){
-        total-=a;
-        ans+=a;
-    }
-    else if(a>m){
-        total-=m;
-        ans+=m;
-    }
-    if(b<=m){
-        total-=b;
-        ans+=b;
-    }
-    else if(b>m){
-        total-=m;
-        ans+=m;
-    }
-    if(total>0){
-        if(total>c)ans+=c;
-        else ans+=total;
-    }
-    prnt(ans);
+void stabilizeArray(vector<int>& a) {
+    stack<int> vlaue;
+    stack<int> idx; 
+    int n=a.size();
+    vlaue.push(a[0]);
+    idx.push(0);
 
+    int max_diff = 0;
+
+    for (int i = 1; i < n; i++) {
+        int val = a[i];
+        while (!vlaue.empty()) {
+            int top = vlaue.top();
+            if (top < val) {
+                vlaue.pop();
+                idx.pop();
+            } else {
+                break;
+            }
+        }
+        if (!vlaue.empty()) {
+            int top_index = idx.top();
+            int diff = i - top_index - 1;
+            max_diff = max(max_diff, diff);
+        } else {
+            max_diff = i; 
+        }
+        vlaue.push(val);
+        idx.push(i);
+    }
+    prnt(max_diff);
+}
+
+void AKG(){
+    int n;cin>>n;
+    vector<int> a(n);
+    f(i,0,n)cin>>a[i];
+    stabilizeArray(a);
 }
 
 int main() {

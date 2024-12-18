@@ -1,52 +1,66 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
-#define all(x) x.begin(), x.end()
-#define debug(p) for(auto i:p)cout<<i<<" ";cout<<endl;
+void solve() {
+    int n;
+    cin >> n;
 
-void AKG() {
-    int n ;cin>>n ;
-    vector<vector<int>> a(n+2) ;
-    for(int i = 0 ; i < n ; i++){
-        int x;cin>>x;
-        a[x].push_back(i) ;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
     }
-    int idx = 0 , day = INT_MAX ;
-    for(int i = 1 ; i <= n ; i++){
-        if(a[i].size() == 0) continue ;
 
-        int mx = a[i][0] ;
-        int j = 0 ;
-        for(j = 1 ; j < a[i].size() ; j++){
-            int y = (a[i][j] - a[i][j-1])/2 ;
-            mx = max(mx,y) ;
+    stack<int> values; // To store values
+    stack<int> indices; // To store indices
+
+    values.push(arr[0]);
+    indices.push(0);
+
+    int max_diff = 0;
+
+    for (int i = 1; i < n; i++) {
+        int val = arr[i];
+
+        // Pop smaller values and their indices
+        while (!values.empty()) {
+            int top = values.top();
+            if (top < val) {
+                values.pop();
+                indices.pop();
+            } else {
+                break;
+            }
         }
-        mx = max(mx,n-1-a[i][j-1]) ;
-        if(day > mx){
-            day = mx ;
-            idx = i ;
+
+        // Calculate the difference if the stack is not empty
+        if (!values.empty()) {
+            int top_index = indices.top();
+            int diff = i - top_index - 1;
+            max_diff = max(max_diff, diff);
+        } else {
+            max_diff = i; // If stack is empty
         }
+
+        // Push current value and its index into the stacks
+        values.push(val);
+        indices.push(i);
     }
-    cout<<idx<<" "<<day<<endl ;
+
+    cout << max_diff << endl;
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-
-    int t = 1;
+    int t;
     cin >> t;
+
     while (t--) {
-        AKG();
+        solve();
     }
 
     return 0;
