@@ -37,20 +37,27 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 void AKG(){
     int n;
     cin >> n;
-    vector<int> a(n),ans;
-    f(i, 0, n) cin >> a[i];
-    int cnt = 0;
-    for(int i=0;i<n;i++){
-        int nw_cnt = cnt + (ans.size() > 0 && ans.back() > a[i]);
-        if (nw_cnt == 0 || (nw_cnt == 1 && a[i] <= ans[0])) {
-            ans.push_back(a[i]);
-            cnt = nw_cnt;
-            cout << "1";
-        } else {
-            cout << "0";
+    string s; cin >> s;
+    string str = "abcdefghijklmnopqrstuvwxyz";
+    int ans = INT_MAX;
+    f(i, 0, 26){
+        int l = 0, r = n - 1, c = 0;
+        while (l <= r){
+            if (s[l] == s[r]){
+                l++; r--;
+            } else if (s[l] == str[i]){
+                c++; l++;
+            } else if (s[r] == str[i]){
+                c++; r--;
+            } else {
+                c = INT_MAX;
+                break;
+            }
         }
-    }cout<<endl;
-    
+        ans = min(ans, c);
+    }
+    if (ans == INT_MAX) prnt(-1);
+    else prnt(ans);
 }
 
 int main() {

@@ -37,20 +37,11 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 void AKG(){
     int n;
     cin >> n;
-    vector<int> a(n),ans;
-    f(i, 0, n) cin >> a[i];
-    int cnt = 0;
-    for(int i=0;i<n;i++){
-        int nw_cnt = cnt + (ans.size() > 0 && ans.back() > a[i]);
-        if (nw_cnt == 0 || (nw_cnt == 1 && a[i] <= ans[0])) {
-            ans.push_back(a[i]);
-            cnt = nw_cnt;
-            cout << "1";
-        } else {
-            cout << "0";
-        }
-    }cout<<endl;
-    
+    string s="abbaabba";
+   f(i,0,n){
+    int x = i%s.length();
+      cout<<s[x];
+   }cout<<endl;
 }
 
 int main() {
@@ -62,7 +53,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
