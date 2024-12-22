@@ -35,27 +35,22 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG(){
-    int n, m;
-	cin >> n >> m;
-	char c[n + 7][m + 7];
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
-			cin >> c[i][j];
-		}
-	}
-	for (int j = 0; j < m; j++) {
-		int last = n - 1;
-		for (int i = n - 1; i >= 0; i--) {
-			if (c[i][j] == 'o') {last = i - 1;}
-			else if (c[i][j] == '*') {swap(c[i][j], c[last][j]); last--;}
-		}
-	}
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
-			cout << c[i][j];
-		}
-		cout << endl;
-	}
+    int n;
+    cin >> n;
+    vector<int> a(n),ans;
+    f(i, 0, n) cin >> a[i];
+    int cnt = 0;
+    for(int i=0;i<n;i++){
+        int nw_cnt = cnt + (ans.size() > 0 && ans.back() > a[i]);
+        if (nw_cnt == 0 || (nw_cnt == 1 && a[i] <= ans[0])) {
+            ans.push_back(a[i]);
+            cnt = nw_cnt;
+            cout << "1";
+        } else {
+            cout << "0";
+        }
+    }cout<<endl;
+    
 }
 
 int main() {
