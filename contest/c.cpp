@@ -34,44 +34,36 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void stabilizeArray(vector<int>& a) {
-    stack<int> vlaue;
-    stack<int> idx; 
-    int n=a.size();
-    vlaue.push(a[0]);
-    idx.push(0);
-
-    int max_diff = 0;
-
-    for (int i = 1; i < n; i++) {
-        int val = a[i];
-        while (!vlaue.empty()) {
-            int top = vlaue.top();
-            if (top < val) {
-                vlaue.pop();
-                idx.pop();
-            } else {
-                break;
-            }
-        }
-        if (!vlaue.empty()) {
-            int top_index = idx.top();
-            int diff = i - top_index - 1;
-            max_diff = max(max_diff, diff);
-        } else {
-            max_diff = i; 
-        }
-        vlaue.push(val);
-        idx.push(i);
-    }
-    prnt(max_diff);
+bool cmp(const pair<ll, int>& a, const pair<ll, int>& b) {
+    return a.first > b.first;
 }
 
 void AKG(){
-    int n;cin>>n;
-    vector<int> a(n);
-    f(i,0,n)cin>>a[i];
-    stabilizeArray(a);
+        int n;
+        cin >> n;
+ 
+        vector<ll> a(n);
+        f(i, 0, n)cin >> a[i];
+        
+        vector<pair<ll, int>> vp(n);
+        f(i, 0, n){
+            vp[i] = {a[i], i};
+        }
+        sort(all(vp), cmp);
+        vector<int> b(n);
+        for (int i = 1; i <= n; i++) {
+            int idx = vp[i - 1].second;
+            b[idx] = i;
+        }
+ 
+ 
+        ll c = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (abs(b[i] - b[i + 1]) == 1) {
+                c++;
+            }
+        }
+        prnt(n - c);
 }
 
 int main() {

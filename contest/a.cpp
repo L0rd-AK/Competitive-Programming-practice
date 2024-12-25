@@ -35,19 +35,10 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG() {
-    int N, M, K;
-    cin >> N >> M >> K;
-    ll min_diff = INT_MAX; 
-    for(int length = 1; length <= N; length++) {
-        for(int width = 1; width <= M; width++) {
-            ll perimeter = 2 * (length + width);
-            ll diff = abs(perimeter - K); 
-            if(diff < min_diff) {
-                min_diff = diff;
-            }
-        }
-    }
-    prnt(min_diff);
+    int a,b,c;cin>>a>>b>>c;
+    int x=a*b,y=a*c,z=b*c;
+    ll ans=1000/((x+y+z)*2);
+    prnt(ans);
 }
 
 int main() {

@@ -35,20 +35,18 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    f(i, 0, n) {
-        cin >> a[i];
+    int n;cin>>n;
+    map<int,int> mp;
+    f(i,0,n){
+        int x;cin>>x;
+        mp[x]=i+1;
     }
-    sort(a.begin(), a.end());
-    ll t_cost = 0;
-    for(int i = 0; i < n; i++) {
-        int dis = max(0, a[i] - i);
-        t_cost += dis;
+    ll ans=0;
+    // dbg(mp);
+    for(auto i:mp){
+        ans+=i.second;
     }
-    
-    cout << t_cost << endl;
+    prnt(ans);
 }
 
 int main() {
