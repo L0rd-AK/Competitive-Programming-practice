@@ -35,18 +35,20 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG(){
-      ll l,r;
-      cin>>l>>r;
-      if(r%2==0 and (r/2)>=l){
-        ll lcm=(r*(r/2))/__gcd(r,r/2);
-        if(lcm>=l and lcm<=r)cout<<min(r/2,r)<<" "<<max(r/2,r)<<'\n';
-        else cout<<-1<<" "<<-1<<endl;
-      }else if(r%2==1 and (r/2)>=l){//cout<<r/2<<" "<<l<<endl;
-        r--;
-        ll lcm=(r*(r/2))/__gcd(r,r/2);
-        if(lcm>=l and lcm<=r)cout<<min(r/2,r)<<" "<<max(r/2,r)<<'\n';
-        else cout<<-1<<" "<<-1<<endl;
-      }else cout<<-1<<" "<<-1<<endl;
+    ll n,k; cin >> n>>k;
+    vector<ll> v;
+    for (ll i=1; i*i<=n; i++){
+            if (n % i == 0)
+            {
+                v.push_back(i);
+                if ((n/i) != i)v.push_back (n/i);
+            }
+        }
+
+        sort (all(v));
+
+        if (v.size() < k)prnt(-1);
+        else prnt(v[k-1]);
 }
 
 int main() {
@@ -58,7 +60,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
