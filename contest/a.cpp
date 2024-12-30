@@ -35,10 +35,9 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG() {
-    int a,b,c;cin>>a>>b>>c;
-    int x=a*b,y=a*c,z=b*c;
-    ll ans=1000/((x+y+z)*2);
-    prnt(ans);
+    int n;cin>>n;
+    if(n==7)prnt("THALA");
+    else prnt("SADGE");
 }
 
 int main() {
@@ -50,7 +49,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }

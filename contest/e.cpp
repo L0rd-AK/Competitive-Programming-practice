@@ -34,18 +34,26 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-
-void AKG(){
-    int n;cin>>n;
-    ll x=1;
-    for(int i=1;;i++){
-        if(x>=n){
-            prnt(i);
-            return;
-        }
-        x=x*2+2;
-        
+ll gcd(ll a, ll b) {
+    while (b != 0) {
+        ll temp = b;
+        b = a % b;
+        a = temp;
     }
+    return a;
+}
+
+ll lcm(ll a, ll b) {
+    return (a * b) / gcd(a, b);
+}
+
+void AKG() {
+    ll x, y;
+	cin >> x >> y;
+	    
+	ll a = ceil(x/(y+1.0));
+	ll b = x - 2*y;
+	prnt(max(a, b));
 }
 
 int main() {

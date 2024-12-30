@@ -35,7 +35,7 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG(){
-  int n;
+    int n;
     cin >> n;
     vector<ll> a(n);
     for(int i = 0; i < n; i++)

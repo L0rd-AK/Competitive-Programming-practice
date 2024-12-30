@@ -34,19 +34,15 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
+bool func(int N) {
+    if (N == 0) return true;
+    if (N < 0) return false;
+    return func(N - 3) || func(N - 4);
+}
+
 void AKG() {
     int n;cin>>n;
-    map<int,int> mp;
-    f(i,0,n){
-        int x;cin>>x;
-        mp[x]=i+1;
-    }
-    ll ans=0;
-    // dbg(mp);
-    for(auto i:mp){
-        ans+=i.second;
-    }
-    prnt(ans);
+    yn(func(n));
 }
 
 int main() {

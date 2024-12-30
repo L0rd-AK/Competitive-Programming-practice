@@ -34,36 +34,20 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-bool cmp(const pair<ll, int>& a, const pair<ll, int>& b) {
-    return a.first > b.first;
-}
-
-void AKG(){
-        int n;
-        cin >> n;
- 
-        vector<ll> a(n);
-        f(i, 0, n)cin >> a[i];
-        
-        vector<pair<ll, int>> vp(n);
-        f(i, 0, n){
-            vp[i] = {a[i], i};
-        }
-        sort(all(vp), cmp);
-        vector<int> b(n);
-        for (int i = 1; i <= n; i++) {
-            int idx = vp[i - 1].second;
-            b[idx] = i;
-        }
- 
- 
-        ll c = 0;
-        for (int i = 0; i < n - 1; i++) {
-            if (abs(b[i] - b[i + 1]) == 1) {
-                c++;
-            }
-        }
-        prnt(n - c);
+void AKG() {
+    int n;cin>>n;
+    vector<ll> a(n);
+    ll ans = 0;
+    for(int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        if(a[i]==0)ans++;
+    }
+    int z=ans;
+    int o=n-ans;
+    if(ans==n)prnt(0);
+    else if(ans==0)prnt(0);
+    else prnt(min(z,o));
 }
 
 int main() {
