@@ -33,27 +33,43 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #else
 #define dbg(x...)
 #endif
-ll bs(ll arr[], ll low, ll high, ll x)
-{
-    while (low <= high) {
-        ll mid = low + (high - low) / 2;
 
-        if (arr[mid] == x)return mid;
-
-        if (arr[mid] < x)low = mid + 1;
-
-        else high = mid - 1;
-    }
-    return -1;
-}
 void AKG(){
-    ll n,k;cin>>n>>k;
-    vector<ll> a(n);
-    f(i,0,n)cin>>a[i];
-    sort(all(a));
-    while(k--){
-        ll x;cin>>x;
-        yn(bs(&a[0],0,n-1,x)!=-1);
+    string s;cin>>s;
+    int n = s.size();
+    vector<int> a(27,0);
+    for(int i=0;i<n;i++){
+        a[s[i]-'A']++;
+    }
+    int odd = 0,even=0;
+    string ans = "";
+    char odds;
+    for(int i=0;i<26;i++){
+        if(a[i]%2==1){
+            odd++;
+            odds=i+'A';
+        }
+        ans+=string(a[i]/2,i+'A');
+        
+    }
+    // dbg(odd,even);
+    if(n%2==0){
+        if(odd>0){
+            cout<<"NO SOLUTION\n";
+        }else{
+            // cout<<"YES\n";
+            cout<<ans;
+            reverse(all(ans));
+            cout<<ans<<endl;
+        }
+    }else{
+        if(odd==1){
+            // cout<<"YES\n";
+            cout<<ans<<odds;
+            reverse(all(ans));
+            cout<<ans<<endl;
+
+        }else cout<<"NO SOLUTION\n";
     }
 }
 

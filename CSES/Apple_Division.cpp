@@ -33,28 +33,25 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #else
 #define dbg(x...)
 #endif
-ll bs(ll arr[], ll low, ll high, ll x)
-{
-    while (low <= high) {
-        ll mid = low + (high - low) / 2;
 
-        if (arr[mid] == x)return mid;
-
-        if (arr[mid] < x)low = mid + 1;
-
-        else high = mid - 1;
-    }
-    return -1;
-}
 void AKG(){
-    ll n,k;cin>>n>>k;
-    vector<ll> a(n);
-    f(i,0,n)cin>>a[i];
-    sort(all(a));
-    while(k--){
-        ll x;cin>>x;
-        yn(bs(&a[0],0,n-1,x)!=-1);
+    int n;cin>>n;
+    vector<int> a(n);
+    ll ans=0;
+    f(i,0,n){
+        cin>>a[i];
+        ans+=a[i];
     }
+    ll xom=INT_MAX;
+    for(ll i = 0; i < 1<<n; i++) {
+		ll s = 0;
+		for(ll j = 0; j < n; j++) {
+			if(i & 1<<j) s += a[j];
+		}
+		ll curr = abs((ans-s)-s);
+		xom = min(xom, curr);
+	}
+    prnt(xom);
 }
 
 int main() {
