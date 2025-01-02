@@ -38,15 +38,18 @@ void AKG(){
     int n, x; cin >> n >> x;
     vector<int> a(n);
     f(i, 0, n) cin >> a[i];
-    map<ll, int> mp;
-    mp[0] = 1;
+    int l = 0, r = 0;
     ll sum = 0, ans = 0;
-    f(i, 0, n) {
-        sum += a[i];
-        ans += mp[sum - x];
-        mp[sum]++;
+    while (r < n) {
+        sum += a[r];
+        while (sum > x && l <= r) {
+            sum -= a[l];
+            l++;
+        }
+        if (sum == x) ans++;
+        r++;
     }
-    cout << ans << endl;
+    prnt(ans);
 }
 
 int main() {
