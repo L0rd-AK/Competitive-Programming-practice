@@ -33,34 +33,22 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #else
 #define dbg(x...)
 #endif
-int bs(vector<int>& arr, int low, int high, int x){
-    int ans = -1;
-    while (low <= high) {
-        int mid = low + (high - low) / 2;
-        if (arr[mid] >= x){
-            ans = mid + 1;
-            high = mid - 1;
-        }
-        else if (arr[mid] < x)low = mid + 1;
-    }
-    return ans;
-}
+
 void AKG(){
     int n,q; cin >> n>>q;
-    vector<int> a(n),p(n,0);
+    vector<int> a(n);
     f(i, 0, n) cin >> a[i];
-    sort(all(a),greater<int>());
-    p[0] = a[0];
-    f(i, 1, n) p[i] = p[i-1] + a[i];
-    // dbg(a,p);
     while (q--) {
         int x;
         cin >> x;
-        auto ans = bs(p,0,n-1,x);
-        if (ans == -1) {
-            cout << -1 << endl;
-        } else {
-            cout << ans << endl;
+        auto it = lower_bound(a.begin(), a.end(), x);
+        if (it == a.end()) {
+            cout << n+1 << endl;
+        }else if(*it==x){
+            cout << (it - a.begin())+1<< endl;
+        }
+        else{
+            cout << (it - a.begin())+1 << endl;
         }
     }
     
@@ -75,7 +63,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
