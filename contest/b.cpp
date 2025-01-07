@@ -34,15 +34,39 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-bool func(int N) {
-    if (N == 0) return true;
-    if (N < 0) return false;
-    return func(N - 3) || func(N - 4);
-}
 
 void AKG() {
     int n;cin>>n;
-    yn(func(n));
+    vector<ll> v;
+    ll od=0,evn=0,mx=INT_MIN;
+    f(i,0,n){
+        ll x;
+        cin>>x;
+        if(x%2==0){
+            evn++;
+            v.push_back(x);
+        }
+        else{
+            od++;
+            mx=max(mx,x);
+        }
+        
+    }
+    if(od==n || evn==n){
+        prnt(0);
+        return;
+    }
+    sort(all(v));
+    int ans=evn;
+    for(auto i:v){
+        if(i<mx)mx+=i;
+        else{
+            ans++;
+            break;
+        }
+        
+    }
+    prnt(ans);
 }
 
 int main() {

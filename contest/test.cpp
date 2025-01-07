@@ -1,37 +1,41 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
-
-void AKG() {
-    int n, k;
-    cin >> n >> k;
-    if (n == 1 || k == 1) {
-        prnt(-1);
-        return;
+int findEarliestMoment(int n, vector<int>& a, int k) {
+    int lcm = k; // Least common multiple of k and the differences between installation times
+    for (int i = 1; i < n; ++i) {
+        int diff = abs(a[i] - a[0]);
+        lcm = (lcm * k) / __gcd(lcm, k);
     }
-    cout<<n<<" ";
-    for(int i=1;i<=n-1;i++)cout<<i<<" ";
-    cout << endl;
+    
+    int earliestMoment = a[0];
+    while (true) {
+        bool allOn = true;
+        for (int i = 0; i < n; ++i) {
+            if ((earliestMoment - a[i]) % (2 * k) >= k) {
+                allOn = false;
+                break;
+            }
+        }
+        if (allOn) return earliestMoment;
+        earliestMoment += lcm;
+    }
 }
 
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
     #endif
-
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-
-    int t;
-    cin >> t;
-    while (t--) {
-        AKG();
+    int t;cin>>t;
+    while(t--){
+        int n,k;cin>>n>>k;
+        vector<int> a(n);
+        for(int i=0;i<n;i++)cin>>a[i];
+        cout<<findEarliestMoment(n,a,k)<<endl;
     }
-
+    
     return 0;
 }

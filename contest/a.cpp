@@ -34,10 +34,21 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void AKG() {
-    int n;cin>>n;
-    if(n==7)prnt("THALA");
-    else prnt("SADGE");
+void AKG(){
+     int n;cin>>n;
+     ll a[n];
+     ll c=0,mx=INT_MIN;
+     f(i,0,n)cin>>a[i];
+        f(i,0,n){
+            c=0;
+            f(j,i,n){
+                if(a[i]>=a[j]){
+                    c++;
+                }
+            }
+            mx=max(mx,c);
+        }
+        prnt(n-mx);
 }
 
 int main() {
@@ -49,7 +60,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
