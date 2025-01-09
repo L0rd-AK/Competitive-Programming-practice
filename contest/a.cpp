@@ -39,16 +39,12 @@ void AKG(){
      ll a[n];
      ll c=0,mx=INT_MIN;
      f(i,0,n)cin>>a[i];
-        f(i,0,n){
-            c=0;
-            f(j,i,n){
-                if(a[i]>=a[j]){
-                    c++;
-                }
-            }
-            mx=max(mx,c);
-        }
-        prnt(n-mx);
+     cout<<"1 ";
+        f(i,1,n){
+            mx=max(mx,a[i-1]);
+            if(a[i]>mx)cout<<"1 ";
+            else cout<<"0 ";
+        }cout<<endl;
 }
 
 int main() {

@@ -37,36 +37,16 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 
 void AKG() {
     int n;cin>>n;
-    vector<ll> v;
-    ll od=0,evn=0,mx=INT_MIN;
+    string a,b;cin>>a>>b;
+    bool ok=false;
+    int odd=0,extra=0;
     f(i,0,n){
-        ll x;
-        cin>>x;
-        if(x%2==0){
-            evn++;
-            v.push_back(x);
-        }
-        else{
-            od++;
-            mx=max(mx,x);
-        }
         
+        if(a[i]=='1' && b[i]=='1')odd++;
+        else if(a[i]=='1' || b[i]=='1')extra++;
     }
-    if(od==n || evn==n){
-        prnt(0);
-        return;
-    }
-    sort(all(v));
-    int ans=evn;
-    for(auto i:v){
-        if(i<mx)mx+=i;
-        else{
-            ans++;
-            break;
-        }
-        
-    }
-    prnt(ans);
+    if(odd%2==1)yn(1);
+    else yn(extra>0);
 }
 
 int main() {

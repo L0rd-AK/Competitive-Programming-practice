@@ -41,7 +41,7 @@ void AKG(){
     f(i,0,n) cin>>v[i];
     sort(all(v));
 	ll ans = v[med];
-	ll low = 0 , high = 1e9 + 5;
+	ll low = 0 , high = 1e18 + 5;
 	while(low <= high){
 		ll mid = low + ( (high-low) >> 1);
 		ll sum = 0;
