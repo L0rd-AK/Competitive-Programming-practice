@@ -34,15 +34,25 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-void AKG(){
+void AKG() {
     int n,k;cin>>n>>k;
-	vector<int>a(n);
-	int cnt=1;
-	f(i,0,n){
-		cin>>a[i];
-		if(a[i]==cnt)cnt++;
-	}
-	prnt((n-cnt+k)/k);
+    vector<ll>ans(n), a;
+    vector<pair<int,int>> vp;
+    f(i,0,n){
+        int x;cin>>x;
+        vp.push_back({x,i});
+    }
+    f(i,0,n){
+        int x;cin>>x;
+        a.push_back(x);
+    }
+    sort(all(a));
+    sort(all(vp));
+    f(i,0,n){
+        ans[vp[i].second]=a[i];
+    }
+    for(auto i:ans)cout<<i<<" ";
+    cout<<endl;
 }
 
 int main() {
