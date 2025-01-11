@@ -1,56 +1,56 @@
+/*
+    author    : MishkatIT
+    created   : Sunday 2024-02-11-20.35.03
+*/
+
 #include <bits/stdc++.h>
+#define fio                       \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+#define debug(_) cout << #_ << " is " << _ << '\n';
+
 using namespace std;
+using ll = long long;
+using ld = long double;
+const ll mod = 1e9 + 7;
+const ll N = 2e5 + 10;
+const ll inf = 1e9;
+const ll linf = 1e18;
 
-#define ll long long int
-#define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-
-void solve() {
-    int n;
-    cin >> n;
-    vector<ll> a(n);
-    ll sum = 0;
-
-    // Input the array and calculate the total sum
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-        sum += a[i];
-    }
-
-    // If the total sum is not divisible by n, it's impossible to equalize
-    if (sum % n != 0) {
-        yn(0);
-        return;
-    }
-
-    ll target = sum / n;
-
-    // Redistribute values from left to right
-    for (int i = 0; i < n - 1; i++) {
-        ll diff = a[i] - target; // Excess or deficit at the current index
-        a[i] -= diff;           // Set current element to the target
-        a[i + 1] += diff;       // Pass excess/deficit to the next element
-
-        // If any value becomes negative, it's impossible to equalize
-        if (a[i] < 0 || a[i + 1] < 0) {
-            yn(0);
-            return;
-        }
-    }
-
-    // Check if the last element is also equal to the target
-    yn(a[n - 1] == target);
-}
-
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-
+int main()
+{
+    fio;
     int t;
     cin >> t;
-    while (t--) {
-        solve();
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        set<int> s;
+        for (int i = 0; i < n; i++)
+        {
+            int x;
+            cin >> x;
+            s.insert(x);
+        }
+        vector<int> v(s.begin(), s.end());
+        int l = 0, r = l;
+        int mx = 0;
+        while (r < v.size())
+        {
+            if (v[r] - v[l] < n)
+            {
+                r++;
+                mx = max(mx, r - l);
+            }
+            else
+            {
+                l++;
+                r = max(l, r);
+            }
+        }
+        prnt(mx);
     }
-
     return 0;
 }
