@@ -56,34 +56,30 @@ void _print(T t, V... v)
 #define dbg(x...)
 #endif
 
+bool func(vector<ll>& a,ll mid,ll k){
+  ll ans=0,n=a.size();
+  f(i,0,n){
+    ans+=(mid/a[i]);
+    if(ans>=k)return true;
+  }
+  if(ans>=k)return true;
+  else return false;
+}
 void AKG()
 {
-    ll n;
-    cin >> n;
+    ll n,k;cin>>n>>k;
     vector<ll> a(n);
-    set<ll> b, c;
-    f(i, 0, n)
-    {
-        cin >> a[i];
-        b.insert(a[i]);
+    f(i,0,n)cin>>a[i];
+    ll ans;
+    ll l=0,r=1e18;
+    while(l<=r){
+        ll mid=(l+r)/2;
+        if(func(a,mid,k)){
+            ans=mid;
+            r=mid-1;
+        }else l=mid+1;
     }
-    vector<int> v(b.begin(), b.end());
-    int l = 0, r = l;
-    int mx = 0;
-    while (r < v.size())
-    {
-        if (v[r] - v[l] < n)
-        {
-            r++;
-            mx = max(mx, r - l);
-        }
-        else
-        {
-            l++;
-            r = max(l, r);
-        }
-    }
-    prnt(mx);
+    prnt(ans);
 }
 
 int main()
@@ -96,7 +92,7 @@ int main()
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
     {
         AKG();
