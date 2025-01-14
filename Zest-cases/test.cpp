@@ -56,30 +56,47 @@ void _print(T t, V... v)
 #define dbg(x...)
 #endif
 
-bool func(vector<ll>& a,ll mid,ll k){
-  ll ans=0,n=a.size();
-  f(i,0,n){
-    ans+=(mid/a[i]);
-    if(ans>=k)return true;
-  }
-  if(ans>=k)return true;
-  else return false;
+bool func(string s){
+  string a=s;
+  reverse(all(s));
+  return a==s;
 }
-void AKG()
-{
-    ll n,k;cin>>n>>k;
-    vector<ll> a(n);
-    f(i,0,n)cin>>a[i];
-    ll ans;
-    ll l=0,r=1e18;
-    while(l<=r){
-        ll mid=(l+r)/2;
-        if(func(a,mid,k)){
-            ans=mid;
-            r=mid-1;
-        }else l=mid+1;
+void AKG(){
+    int t,n;cin>>t>>n;
+    vector<string> tmp,l,m,r;
+    map<string,int>mp;
+    while(t--){
+        string s;cin>>s;
+        tmp.push_back(s);
+        mp[s]++;
     }
-    prnt(ans);
+    for(auto s:tmp){
+        if(func(s)){
+            if(m.size()>0){
+                string x = m.back();
+                if(x==s)m.push_back(s);
+            }else m.push_back(s);
+        }else{
+            string a=s;
+            reverse(all(a));
+            if(mp[a] && mp[s]){
+                mp[a]--;
+                mp[s]--;
+                l.push_back(s);
+                r.push_back(a);
+            }
+        }
+    }
+    ll z=(l.size() + m.size() + r.size())*n;
+    if(z==0)prnt(0);
+    else{
+        reverse(all(r));
+        prnt(z);
+        for(auto i:l)cout<<i;
+        for(auto i:m)cout<<i;
+        for(auto i:r)cout<<i;
+    }
+    
 }
 
 int main()
