@@ -3,7 +3,7 @@ using namespace std;
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) f ? cout << "1\n" : cout << "2\n"
+#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define prnt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 
@@ -56,61 +56,24 @@ void _print(T t, V... v)
 #define dbg(x...)
 #endif
 
-void AKG()
-{
-    int n, k;
-    cin >> n >> k;
-    vector<int> A(n);
-    f(i,0,n){
-        cin >> A[i];
-    }
 
-    unordered_map<ll, ll> mp;
-    for (int num : A){
-        mp[num]++;
-    }
-
-    ll freqK = mp[k];
-    ll maxFreq = 0;
-    for (const auto &i : mp)
-    {
-        maxFreq = max(maxFreq, i.second);
-    }
-
-    if (freqK == maxFreq)
-    {
-        cout << 0 << endl;
+void AKG(){
+    int n,k;
+    cin >> n>>k;
+    vector<ll> a(n);
+    f(i,0,n)cin>>a[i];
+    if(n>k){
+        yn(0);
         return;
     }
-    else
-    {
-        unordered_map<ll, ll> mp;
-        ll mx = 0;
-        bool ok = 0;
-        f(i, 0, n)
-        {
-            mp[A[i]]++;
-            mx = max(mx, mp[A[i]]);
-            if (mx == mp[k])
-            {
-                ok = true;
-                break;
-            }
-        }
-        mp.clear();
-        mx = 0;
-        for (int i = n - 1; i >= 0; i--)
-        {
-            mp[A[i]]++;
-            mx = max(mx, mp[A[i]]);
-            if (mx == mp[k])
-            {
-                ok = true;
-                break;
-            }
-        }
-        yn(ok);
+    sort(all(a));
+    a.push_back(a[0]);
+    ll ans=n;
+    f(i,0,a.size()-1){
+        // dbg(ans,k);
+        ans+=max(a[i],a[i+1]);
     }
+    yn(ans<=k);
 }
 
 int main()
@@ -118,11 +81,16 @@ int main()
 #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-    int t;
+
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    int t = 1;
     cin >> t;
     while (t--)
     {
         AKG();
     }
+
     return 0;
 }
