@@ -55,28 +55,19 @@ void _print(T t, V... v)
 #else
 #define dbg(x...)
 #endif
-int func(int n) {
-    vector<int> v(n + 1, 0);
-    for (int i = 2; i <= n; i++) {
-        if (v[i] == 0) { 
-            for (int j = i; j <= n; j += i) {
-                v[j]++;
-            }
-        }
-    }
-    int count = 0;
-    for (int i = 2; i <= n; i++) {
-        if (v[i] == 2) {
-            count++;
-        }
-    }
-    return count;
-}
+
 
 void AKG(){
     int n;
     cin >> n;
-    prnt(func(n));
+    ll ans=0;
+    for(int i=1;i*i<=n;i++){
+        if(n%i==0){
+            ans++;
+            if(i!=(n/i))ans++;
+        }
+    }
+    prnt(ans);
 }
 
 int main()
@@ -89,7 +80,7 @@ int main()
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
     {
         AKG();
