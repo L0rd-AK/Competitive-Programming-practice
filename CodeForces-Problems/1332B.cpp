@@ -56,32 +56,29 @@ void _print(T t, V... v)
 #define dbg(x...)
 #endif
 
+vector<int> p = {2 , 3, 5, 7, 11 , 13, 17 , 19 , 23 , 29 , 31} ;
+
 void AKG(){
     ll n;
     cin >> n;
-    vector<ll> a(n),ans(n+1,0);
-    f(i, 0, n){
-        cin >> a[i];
-        if(a[i]>n){
-            continue;
-        }else ans[a[i]]++;
-    }
-    ll res = INT_MIN;
-    f(i,1,n+1){
-        ll c=0;
-        for(int j=1;j*j<=i;j++){
-            if(i%j==0){
-                c+=ans[j];
-                if(j!=i/j){
-                    c+=ans[i/j];
+    vector<ll> a(n),ans(n);
+    f(i, 0, n) cin >> a[i];
+    ll cnt=0;
+    for(int i:p){
+        bool flg=false;
+        for(int j=0;j<n;j++){
+            if(ans[j]==0 && a[j]%i==0){
+                if(!flg){
+                    ++cnt;
+                    flg=true;
                 }
-                
+                ans[j]=cnt;
             }
         }
-        res = max(res,c);
     }
-    prnt(res);
-   
+    prnt(cnt);
+    for(auto i:ans) cout << i << " ";
+    cout << endl;
 }
 
 int main()

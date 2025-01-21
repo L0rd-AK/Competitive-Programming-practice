@@ -57,31 +57,44 @@ void _print(T t, V... v)
 #endif
 
 void AKG(){
-    ll n;
-    cin >> n;
-    vector<ll> a(n),ans(n+1,0);
-    f(i, 0, n){
-        cin >> a[i];
-        if(a[i]>n){
-            continue;
-        }else ans[a[i]]++;
-    }
-    ll res = INT_MIN;
-    f(i,1,n+1){
-        ll c=0;
-        for(int j=1;j*j<=i;j++){
-            if(i%j==0){
-                c+=ans[j];
-                if(j!=i/j){
-                    c+=ans[i/j];
-                }
-                
+    int x;
+    cin >> x;
+    vector<ll> divs;
+    for (int i = x + 1; ; i++)
+    {
+        bool flg = 1;
+        for (int j = 2; j * j <= i; j++)
+        {
+            if (i % j == 0)
+            {
+                flg = 0;
+                break;
             }
         }
-        res = max(res,c);
+        if (flg)
+        {
+            divs.push_back(i);
+            break;
+        }
     }
-    prnt(res);
-   
+    for (int i =divs.back() + x; ; i++)
+    {
+        bool flg = 1;
+        for (int j = 2; j * j <= i; j++)
+        {
+            if (i % j == 0)
+            {
+                flg = 0;
+                break;
+            }
+        }
+        if (flg)
+        {
+            divs.push_back(i);
+            break;
+        }
+    }
+    cout << min( divs[0] * divs[1],divs[0] * divs[0] * divs[0]) << endl;
 }
 
 int main()
