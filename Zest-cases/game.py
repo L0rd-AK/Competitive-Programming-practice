@@ -1,21 +1,24 @@
-def recommendMovies(movies, user_genres):
-    genre_match_count = {movie: 0 for movie in movies}
-    
-    for movie, genres in movies.items():
-        genre_match_count[movie] = len(set(genres) & set(user_genres))
-    
-    recommended_movies = sorted(genre_match_count, key=genre_match_count.get, reverse=True)
-    
-    recommended_movies = [movie for movie in recommended_movies if genre_match_count[movie] > 0]
-    
-    return recommended_movies
+from collections import Counter
 
-movies = {
-    "John Wick": ["action", "thriller"],
-    "Bheeshma": ["comedy", "romance"],
-    "Bad Boys for Life": ["action", "comedy", "thriller"],
-    "The Great Hack": ["documentary"]
-}
+def largest_cluster_size(test_cases):
+    results = []
+    for test_case in test_cases:
+        N, A = test_case
+        bucket_count = Counter(A)  # Count frequency of frogs in each bucket
+        results.append(max(bucket_count.values()))  # Find the maximum frequency
+    return results
+def main():
+    T = int(input())  # Read number of test cases
+    test_cases = []
 
-userGenres = ["action", "comedy"]
-print(recommendMovies(movies, userGenres))
+    for _ in range(T):
+        N = int(input())  # Read the number of frogs
+        A = list(map(int, input().split()))  # Read the list of positions
+        test_cases.append((N, A))
+
+    results = largest_cluster_size(test_cases)
+
+    for result in results:
+        print(result)
+if __name__ == "__main__":
+    main()
