@@ -57,58 +57,21 @@ void _print(T t, V... v)
 #endif
 
 void AKG(){
-    int k,n,m;cin>>k>>n>>m;
-    vector<int> a(n),b(m),v;
+    ll n, l,r;cin>>n>>l>>r;
+    vector<ll> a(n);
     f(i,0,n)cin>>a[i];
-    f(i,0,m)cin>>b[i];
-    int i=0,j=0;
-    while (i<n && j<m) {
-        int cur = 0;
-        if (a[i] == 0) {
-            v.push_back(a[i++]);
-            k++;
-            continue;
-        } else if (b[j] == 0) {
-            v.push_back(b[j++]);
-            k++;
-            continue;
-        }else if (a[i]<b[j]){
-            cur = a[i++];
-        } else{
-            cur = b[j++];
-        }
-        if (cur<=k){
-            v.push_back(cur);
-        } else{
-            prnt(-1);
-            return;
-        }
+    ll rng=r-l+1;
+    vector<ll>lf,rt;
+    f(i,0,r)lf.push_back(a[i]);
+    f(i,l-1,n)rt.push_back(a[i]);
+    sort(all(lf));
+    sort(all(rt));
+    ll x=0,y=0;
+    f(i,0,rng){
+        x+=lf[i];
+        y+=rt[i];
     }
-    while(i<n){
-        if (a[i] == 0) {
-            v.push_back(a[i++]);
-            k++;
-        } else if (a[i]<=k){
-            v.push_back(a[i++]);
-        } else{
-            prnt(-1);
-            return;
-        }
-    }
-    while(j<m){
-        if (b[j] == 0) {
-            v.push_back(b[j++]);
-            k++;
-        } else if (b[j]<=k){
-            v.push_back(b[j++]);
-        } else{
-            prnt(-1);
-            return;
-        }
-    }
-    for(auto x:v){
-        cout<<x<<" ";
-    }cout<<endl;
+    prnt(min(x,y));
 }
 
 int main()
@@ -120,7 +83,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t=1;
+    int t;
     cin >> t;
     while (t--)
     {

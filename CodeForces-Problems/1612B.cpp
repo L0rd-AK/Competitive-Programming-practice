@@ -57,58 +57,23 @@ void _print(T t, V... v)
 #endif
 
 void AKG(){
-    int k,n,m;cin>>k>>n>>m;
-    vector<int> a(n),b(m),v;
-    f(i,0,n)cin>>a[i];
-    f(i,0,m)cin>>b[i];
-    int i=0,j=0;
-    while (i<n && j<m) {
-        int cur = 0;
-        if (a[i] == 0) {
-            v.push_back(a[i++]);
-            k++;
-            continue;
-        } else if (b[j] == 0) {
-            v.push_back(b[j++]);
-            k++;
-            continue;
-        }else if (a[i]<b[j]){
-            cur = a[i++];
-        } else{
-            cur = b[j++];
+   int n, a, b;
+        cin >> n >> a >> b;
+        vector<int> p;
+        p.push_back(a);
+        for (int j = n; j > 0; --j) {
+            if (j != a && j != b) {
+                p.push_back(j);
+            }
         }
-        if (cur<=k){
-            v.push_back(cur);
-        } else{
-            prnt(-1);
-            return;
-        }
-    }
-    while(i<n){
-        if (a[i] == 0) {
-            v.push_back(a[i++]);
-            k++;
-        } else if (a[i]<=k){
-            v.push_back(a[i++]);
-        } else{
-            prnt(-1);
-            return;
-        }
-    }
-    while(j<m){
-        if (b[j] == 0) {
-            v.push_back(b[j++]);
-            k++;
-        } else if (b[j]<=k){
-            v.push_back(b[j++]);
-        } else{
-            prnt(-1);
-            return;
-        }
-    }
-    for(auto x:v){
-        cout<<x<<" ";
-    }cout<<endl;
+        p.push_back(b);
+        int x=*min_element(p.begin(), p.begin() + n / 2);
+        int y=*max_element(p.begin() + n / 2, p.end());
+        if (p.size() == n && x == a && y == b) {
+            for (int x : p) cout << x << " ";
+            cout << endl;
+        } else  prnt(-1);
+        
 }
 
 int main()

@@ -57,58 +57,25 @@ void _print(T t, V... v)
 #endif
 
 void AKG(){
-    int k,n,m;cin>>k>>n>>m;
-    vector<int> a(n),b(m),v;
-    f(i,0,n)cin>>a[i];
-    f(i,0,m)cin>>b[i];
-    int i=0,j=0;
-    while (i<n && j<m) {
-        int cur = 0;
-        if (a[i] == 0) {
-            v.push_back(a[i++]);
-            k++;
-            continue;
-        } else if (b[j] == 0) {
-            v.push_back(b[j++]);
-            k++;
-            continue;
-        }else if (a[i]<b[j]){
-            cur = a[i++];
-        } else{
-            cur = b[j++];
+    int n;
+    cin >> n;
+    unordered_map<int, int> mp;
+    while(n--){
+        int x;
+        cin >> x;
+        for(int i=2;i*i<=x;i++){
+            if(x%i==0)mp[i]++;
+            while (x%i==0){
+                x/=i;
+            }
         }
-        if (cur<=k){
-            v.push_back(cur);
-        } else{
-            prnt(-1);
-            return;
-        }
+        if(x>1)mp[x]++;
     }
-    while(i<n){
-        if (a[i] == 0) {
-            v.push_back(a[i++]);
-            k++;
-        } else if (a[i]<=k){
-            v.push_back(a[i++]);
-        } else{
-            prnt(-1);
-            return;
-        }
+    int mx=1;
+    for(auto i:mp){
+        mx=max(mx,i.second);
     }
-    while(j<m){
-        if (b[j] == 0) {
-            v.push_back(b[j++]);
-            k++;
-        } else if (b[j]<=k){
-            v.push_back(b[j++]);
-        } else{
-            prnt(-1);
-            return;
-        }
-    }
-    for(auto x:v){
-        cout<<x<<" ";
-    }cout<<endl;
+    prnt(mx);
 }
 
 int main()
@@ -121,7 +88,7 @@ int main()
     cin.tie(0);
 
     int t=1;
-    cin >> t;
+    // cin >> t;
     while (t--)
     {
         AKG();

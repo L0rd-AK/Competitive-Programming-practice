@@ -57,58 +57,22 @@ void _print(T t, V... v)
 #endif
 
 void AKG(){
-    int k,n,m;cin>>k>>n>>m;
-    vector<int> a(n),b(m),v;
-    f(i,0,n)cin>>a[i];
-    f(i,0,m)cin>>b[i];
-    int i=0,j=0;
-    while (i<n && j<m) {
-        int cur = 0;
-        if (a[i] == 0) {
-            v.push_back(a[i++]);
-            k++;
-            continue;
-        } else if (b[j] == 0) {
-            v.push_back(b[j++]);
-            k++;
-            continue;
-        }else if (a[i]<b[j]){
-            cur = a[i++];
-        } else{
-            cur = b[j++];
-        }
-        if (cur<=k){
-            v.push_back(cur);
-        } else{
-            prnt(-1);
-            return;
-        }
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    f(i, 0, n) cin >> a[i];
+    int ans = 0;
+    f(i,0,n-1){
+        ans=max(ans,(a[i]-a[i+1]));
     }
-    while(i<n){
-        if (a[i] == 0) {
-            v.push_back(a[i++]);
-            k++;
-        } else if (a[i]<=k){
-            v.push_back(a[i++]);
-        } else{
-            prnt(-1);
-            return;
-        }
+    ans=max(ans,(a[n-1]-a[0]));
+    f(i,1,n){
+        ans=max(ans,(a[i]-a[0]));
     }
-    while(j<m){
-        if (b[j] == 0) {
-            v.push_back(b[j++]);
-            k++;
-        } else if (b[j]<=k){
-            v.push_back(b[j++]);
-        } else{
-            prnt(-1);
-            return;
-        }
+    f(i,0,n-1){
+        ans=max(ans,(a[n-1]-a[i]));
     }
-    for(auto x:v){
-        cout<<x<<" ";
-    }cout<<endl;
+    prnt(ans);
 }
 
 int main()
