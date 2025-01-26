@@ -56,15 +56,40 @@ void _print(T t, V... v)
 #define dbg(x...)
 #endif
 
-
 void AKG(){
     string s;cin>>s;
     int n = s.size();
-    int ans = 0;
-    f(i,0,n){
-        if(s[i]=='1')ans++;
+    unordered_map<char,int> mp;
+    
+    f(i,0,n)mp[s[i]]++;
+    int l=mp['L'],r=mp['R'],u=mp['U'],d=mp['D'];
+    l = min(l,r),d = min(u,d);
+    u = min(u,d),r = min(l,r);
+    if(l==0 || r==0){
+        if(u>0 && d>0){
+            prnt(2);
+            prnt("UD");
+            return;
+        }
     }
-    prnt(ans);
+    if(u==0 || d==0){
+        if(l>0 && r>0){
+            prnt(2);
+            prnt("LR");
+            return;
+        }
+    }
+    if(l>0 && r>0 && u>0 && d>0){
+        string ans="";
+        while(l--)ans+='L';
+        while(u--)ans+='U';
+        while(r--)ans+='R';
+        while(d--)ans+='D';
+        prnt(ans.size());
+        prnt(ans);
+    }else{
+        prnt(0);
+    }
 }
 
 int main()
@@ -76,7 +101,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
+    int t=1;
     cin >> t;
     while (t--)
     {

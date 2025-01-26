@@ -33,22 +33,19 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #else
 #define dbg(x...)
 #endif
-ll n;
-vector<string> v;
-bool cmp(ll a,ll b){
-    if(a<b)return v[a][b]=='1';
-    return v[a][b]=='0';
-}
+
 void AKG() {
-    cin>>n;
-    v.resize(n);
-    f(i,0,n)cin>>v[i];
-    vector<int> ans(n);
-    f(i,0,n)ans[i]=i;
-    sort(all(ans),cmp);
-    f(i,0,n){
-        cout<<++ans[i]<<" ";
-    }cout<<endl;
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    f(i, 0, n) cin >> v[i];
+    int ans=0;
+    f(i, 0, n) {
+        if (v[i] > i * 2 && v[i] > (n - 1 - i) * 2) {
+            ans++;
+        }
+    }
+    yn(ans==n);
 }
 
 int main() {

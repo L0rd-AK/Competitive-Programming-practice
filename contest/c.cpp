@@ -35,24 +35,33 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    vector<ll>ans(n), a;
-    vector<pair<int,int>> vp;
-    f(i,0,n){
-        int x;cin>>x;
-        vp.push_back({x,i});
+    int n;
+    cin >> n;
+    vector<ll> a(n);
+    f(i,0,n)cin >> a[i];
+    ll ans = accumulate(all(a), 0LL);
+    while (true) {
+        if (a.size() == 1) {
+            ans = max(ans, a[0]);
+            break;
+        }
+        vector<ll> diff;
+        for (int i = 0; i < a.size() - 1; ++i) {
+            // diff.push_back(abs(a[i + 1] - a[i]));
+            diff.push_back(a[i + 1] - a[i]);
+        }
+        if (accumulate(all(diff), 0LL) < 0) {
+            for (ll &x : diff) {
+                dbg(x, diff);
+                x = -x;
+            }
+        }
+        dbg(diff);
+        ans = max(ans, accumulate(all(diff), 0LL));
+        reverse(all(diff));
+        a = diff;
     }
-    f(i,0,n){
-        int x;cin>>x;
-        a.push_back(x);
-    }
-    sort(all(a));
-    sort(all(vp));
-    f(i,0,n){
-        ans[vp[i].second]=a[i];
-    }
-    for(auto i:ans)cout<<i<<" ";
-    cout<<endl;
+    prnt(ans);
 }
 
 int main() {

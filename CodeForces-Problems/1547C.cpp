@@ -56,15 +56,59 @@ void _print(T t, V... v)
 #define dbg(x...)
 #endif
 
-
 void AKG(){
-    string s;cin>>s;
-    int n = s.size();
-    int ans = 0;
-    f(i,0,n){
-        if(s[i]=='1')ans++;
+    int k,n,m;cin>>k>>n>>m;
+    vector<int> a(n),b(m),v;
+    f(i,0,n)cin>>a[i];
+    f(i,0,m)cin>>b[i];
+    int i=0,j=0;
+    while (i<n && j<m) {
+        int cur = 0;
+        if (a[i] == 0) {
+            v.push_back(a[i++]);
+            k++;
+            continue;
+        } else if (b[j] == 0) {
+            v.push_back(b[j++]);
+            k++;
+            continue;
+        }else if (a[i]<b[j]){
+            cur = a[i++];
+        } else{
+            cur = b[j++];
+        }
+        if (cur<=k){
+            v.push_back(cur);
+        } else{
+            prnt(-1);
+            return;
+        }
     }
-    prnt(ans);
+    while(i<n){
+        if (a[i] == 0) {
+            v.push_back(a[i++]);
+            k++;
+        } else if (a[i]<=k){
+            v.push_back(a[i++]);
+        } else{
+            prnt(-1);
+            return;
+        }
+    }
+    while(j<m){
+        if (b[j] == 0) {
+            v.push_back(b[j++]);
+            k++;
+        } else if (b[j]<=k){
+            v.push_back(b[j++]);
+        } else{
+            prnt(-1);
+            return;
+        }
+    }
+    for(auto x:v){
+        cout<<x<<" ";
+    }cout<<endl;
 }
 
 int main()
@@ -76,7 +120,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
+    int t=1;
     cin >> t;
     while (t--)
     {

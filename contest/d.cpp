@@ -34,26 +34,27 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define dbg(x...)
 #endif
 
-ll gcd(ll a, ll b) {
-    while (b != 0) {
-        ll temp = b;
-        b = a % b;
-        a = temp;
-    }
-    return a;
-}
-
-ll lcm(ll a, ll b) {
-    return (a * b) / gcd(a, b);
-}
-
 void AKG() {
-    ll n,a,b,p,q;cin>>n>>a>>b>>p>>q;
-    ll ans=0;
-    ans+=(n/a)*p;
-    ans+=(n/b)*q;
-    ll l=lcm(a,b);
-    ans-=(n/l)*min(p,q);
+    int n; cin >> n;
+    vector<ll> a(n);
+    f(i,0,n) cin >> a[i];
+    ll ans = accumulate(all(a), 0);
+    while (a.size() > 1) {
+        vector<ll> diff;
+        for (int i = 0; i < a.size() - 1; ++i) {
+            // diff.push_back(abs(a[i + 1] - a[i]));
+            diff.push_back(a[i + 1] - a[i]);
+        }
+        if (accumulate(all(diff), 0) < 0) {
+            for (auto& x : diff) {//dbg(x,diff);
+                x = -x;
+            }
+        }
+        // dbg(diff);
+        ans = max(ans, accumulate(all(diff), 0*1LL));
+        reverse(diff.begin(), diff.end());
+        a = diff;
+    }
     prnt(ans);
 }
 
@@ -66,7 +67,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
