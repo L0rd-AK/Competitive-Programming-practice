@@ -56,37 +56,30 @@ void _print(T t, V... v)
 #define dbg(x...)
 #endif
 
-void AKG()
-{
-    int n;
+void AKG(){
+    ll n, sum = 0;
     cin >> n;
-    vector<int> a(n);
-    int x = 0;
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        x ^= a[i];
+    vector<ll> a(n);
+    unordered_map<ll, ll> mp;
+    f(i, 0, n) cin >> a[i], sum += a[i], mp[a[i]]++;
+    if (n == 1) {
+        pt("YES");
+        return;
     }
-
-    if (x == 0)
-    {
-        yn(1);
+    priority_queue<ll> pq;
+    pq.push(sum);
+    while (pq.size() < n) {
+        ll x = pq.top();
+        pq.pop();
+        ll a = x / 2, b = (x + 1) / 2;
+        if (mp.count(a) && mp[a] > 0) mp[a]--, n--;
+        else pq.push(a);
+        if (mp[a] == 0) mp.erase(a);
+        if (mp.count(b) && mp[b] > 0) mp[b]--, n--;
+        else pq.push(b);
+        if (mp[b] == 0) mp.erase(b);
     }
-    else{
-        int k = 0;
-        int count = 0;
-        for (int i = 0; i < n; i++)
-        {
-            k ^= a[i];
-            if (k == x)
-            {
-                k = 0;
-                count++;
-            }
-        }
-        yn(count >= 2);
-    }
+    yn(pq.size() == 0);
 }
 
 int main()
