@@ -4,7 +4,7 @@ using namespace std;
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
+#define pt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 
 void __print(int x) {cerr << x;}
@@ -35,17 +35,19 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #endif
 
 void AKG() {
-    int n;
-    cin >> n;
-    vector<int> v(n);
-    f(i, 0, n) cin >> v[i];
-    int ans=0;
-    f(i, 0, n) {
-        if (v[i] > i * 2 && v[i] > (n - 1 - i) * 2) {
-            ans++;
-        }
+    int n,k;
+    cin >> n>>k;
+    string s;cin>>s;
+    int cnt = 0;
+    f(i,0,n){
+        if(s[i]=='S')cnt++;
     }
-    yn(ans==n);
+    if(cnt>=k){
+        pt(n);
+    }else{
+        int dif=k-cnt;
+        pt(n+dif-1);
+    }
 }
 
 int main() {

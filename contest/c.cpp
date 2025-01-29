@@ -4,7 +4,7 @@ using namespace std;
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
+#define pt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 
 void __print(int x) {cerr << x;}
@@ -33,35 +33,31 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #else
 #define dbg(x...)
 #endif
-
-void AKG() {
-    int n;
-    cin >> n;
-    vector<ll> a(n);
-    f(i,0,n)cin >> a[i];
-    ll ans = accumulate(all(a), 0LL);
-    while (true) {
-        if (a.size() == 1) {
-            ans = max(ans, a[0]);
-            break;
+int func(string s){
+    string a="BGR";
+    int cnt=0;
+    f(i,0,3){
+        if(s[i]!=a[i]){
+            cnt++;
         }
-        vector<ll> diff;
-        for (int i = 0; i < a.size() - 1; ++i) {
-            // diff.push_back(abs(a[i + 1] - a[i]));
-            diff.push_back(a[i + 1] - a[i]);
-        }
-        if (accumulate(all(diff), 0LL) < 0) {
-            for (ll &x : diff) {
-                dbg(x, diff);
-                x = -x;
-            }
-        }
-        dbg(diff);
-        ans = max(ans, accumulate(all(diff), 0LL));
-        reverse(all(diff));
-        a = diff;
     }
-    prnt(ans);
+    dbg(cnt);
+    return cnt;
+}
+void AKG() {
+    int n;cin>>n;
+    string s;cin>>s;
+    int ans=0;
+    f(i,0,n-2){
+        string temp;
+        temp+=s[i];
+        temp+=s[i+1];
+        temp+=s[i+2];
+        sort(all(temp));
+        dbg(temp);
+        ans+=func(temp);
+    }
+    pt(ans);
 }
 
 int main() {

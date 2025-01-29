@@ -59,10 +59,16 @@ void _print(T t, V... v)
 
 void AKG(){
     string s;cin>>s;
-    int n = s.size();
+    string z="ADVITIYA";
+    if(s==z){
+        prnt(0);
+        return;
+    }
+    int n =s.size();
     int ans = 0;
     f(i,0,n){
-        if(s[i]=='1')ans++;
+        int dif = (z[i]-s[i]+26)%26;
+        ans+=abs(dif);
     }
     prnt(ans);
 }

@@ -1,86 +1,72 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
+#define pt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 
-const int MAXN = 300005;
+void __print(int x) {cerr << x;}
+void __print(long x) {cerr << x;}
+void __print(long long x) {cerr << x;}
+void __print(unsigned x) {cerr << x;}
+void __print(unsigned long x) {cerr << x;}
+void __print(unsigned long long x) {cerr << x;}
+void __print(float x) {cerr << x;}
+void __print(double x) {cerr << x;}
+void __print(long double x) {cerr << x;}
+void __print(char x) {cerr << '\'' << x << '\'';}
+void __print(const char *x) {cerr << '\"' << x << '\"';}
+void __print(const string &x) {cerr << '\"' << x << '\"';}
+void __print(bool x) {cerr << (x ? "true" : "false");}
 
-struct FenwickTree {
-    vector<int> bit;
-    int n;
+template<typename T, typename V>
+void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
+template<typename T>
+void __print(const T &x) {int f = 0; cerr << '{'; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}
+void _print() {cerr << "]\n";}
+template <typename T, typename... V>
+void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
+#ifndef ONLINE_JUDGE
+#define dbg(x...) cerr << "[" << #x << "] = ["; _print(x)
+#else
+#define dbg(x...)
+#endif
 
-    FenwickTree(int n) {
-        this->n = n;
-        bit.assign(n + 1, 0);
-    }
+#define fastIO ios_base::sync_with_stdio(0); cin.tie(0);
+#define ll long long int
 
-    void add(int idx, int val) {
-        for (; idx <= n; idx += idx & -idx)
-            bit[idx] += val;
-    }
-
-    int sum(int idx) {
-        int ret = 0;
-        for (; idx > 0; idx -= idx & -idx)
-            ret += bit[idx];
-        return ret;
-    }
-
-    int rangeSum(int l, int r) {
-        return sum(r) - sum(l - 1);
-    }
-};
-
-void AKG() {
+void solve() {
     int n;
     cin >> n;
-    vector<int> A(n);
-    map<int, int> valueToIndex;
-    f(i, 0, n) {
-        cin >> A[i];
-        valueToIndex[A[i]] = i + 1;
+    string s;
+    cin >> s;
+
+    int min_changes = 0;
+
+    for (int i = 0; i <= n - 3; i++) {
+        string segment = s.substr(i, 3); 
+
+        int countR = count(segment.begin(), segment.end(), 'R');
+        int countG = count(segment.begin(), segment.end(), 'G');
+        int countB = count(segment.begin(), segment.end(), 'B');
+
+        int changes_needed = 3 - ((countR >= 1) + (countG >= 1) + (countB >= 1));
+        // dbg(segment, countR, countG, countB, changes_needed);
+        min_changes =+ changes_needed;
     }
 
-    sort(all(A));
-    FenwickTree fenwick(n);
-
-    set<vector<int>> distinctRanks;
-
-    f(i, 1, n + 1)
-        fenwick.add(i, 1);
-
-    for (int i = 0; i < n; ++i) {
-        fenwick.add(valueToIndex[A[i]], -1);
-        vector<int> ranks;
-        for (int j = 0; j < n; ++j) {
-            if (i == j) continue;
-            ranks.push_back(fenwick.rangeSum(1, valueToIndex[A[j]]));
-        }
-        distinctRanks.insert(ranks);
-        fenwick.add(valueToIndex[A[i]], 1);
-    }
-
-    prnt(distinctRanks.size());
+    cout << min_changes << "\n";
 }
 
 int main() {
-    #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    #endif
-
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-
+    fastIO;
     int t;
     cin >> t;
     while (t--) {
-        AKG();
+        solve();
     }
-
     return 0;
 }
