@@ -1,9 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define ll long long int
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define endl "\n"
+#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
+#define pt(x) cout << x << endl
+#define all(x) x.begin(), x.end()
 
-#define LOCAL
+
 #ifdef LOCAL
 #include "dbg.h"
+#else
+#define dbg(x...) 
 #endif
 
 void AKG() {
@@ -34,7 +42,7 @@ int main()
     cin.tie(0);
 
     int t=1;
-    cin >> t;
+    // cin >> t;
     while (t--){
         AKG();
     }

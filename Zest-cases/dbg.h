@@ -1,15 +1,8 @@
-#ifndef DEBUG_H
-#define DEBUG_H
+#ifndef DBG_H
+#define DBG_H
 
 #include <bits/stdc++.h>
 using namespace std;
-
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define pt(x) cout << x << endl
-#define all(x) x.begin(), x.end()
 
 void __print(int x) { cerr << x; }
 void __print(long x) { cerr << x; }
