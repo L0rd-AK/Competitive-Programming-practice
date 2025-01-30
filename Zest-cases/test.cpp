@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#ifndef ONLINE_JUDGE
+#define LOCAL
+#endif
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
@@ -10,7 +13,7 @@ using namespace std;
 
 
 #ifdef LOCAL
-#include "dbg.h"
+#include "D:\VS-Code\Competitive programming practice\Zest-cases\dbg.h"
 #else
 #define dbg(x...) 
 #endif
