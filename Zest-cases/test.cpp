@@ -1,81 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define pt(x) cout << x << endl
-#define all(x) x.begin(), x.end()
 
-void __print(int x) { cerr << x; }
-void __print(long x) { cerr << x; }
-void __print(long long x) { cerr << x; }
-void __print(unsigned x) { cerr << x; }
-void __print(unsigned long x) { cerr << x; }
-void __print(unsigned long long x) { cerr << x; }
-void __print(float x) { cerr << x; }
-void __print(double x) { cerr << x; }
-void __print(long double x) { cerr << x; }
-void __print(char x) { cerr << '\'' << x << '\''; }
-void __print(const char *x) { cerr << '\"' << x << '\"'; }
-void __print(const string &x) { cerr << '\"' << x << '\"'; }
-void __print(bool x) { cerr << (x ? "true" : "false"); }
-
-template <typename T, typename V>
-void __print(const pair<T, V> &x)
-{
-    cerr << '{';
-    __print(x.first);
-    cerr << ',';
-    __print(x.second);
-    cerr << '}';
-}
-template <typename T>
-void __print(const T &x)
-{
-    int f = 0;
-    cerr << '{';
-    for (auto &i : x)
-        cerr << (f++ ? "," : ""), __print(i);
-    cerr << "}";
-}
-void _print() { cerr << "]\n"; }
-template <typename T, typename... V>
-void _print(T t, V... v)
-{
-    __print(t);
-    if (sizeof...(v))
-        cerr << ", ";
-    _print(v...);
-}
-#ifndef ONLINE_JUDGE
-#define dbg(x...)                 \
-    cerr << "[" << #x << "] = ["; \
-    _print(x)
-#else
-#define dbg(x...)
+#define LOCAL
+#ifdef LOCAL
+#include "dbg.h"
 #endif
 
-
 void AKG() {
-    string s;cin>>s;
-    stack<char> st;
-    int n=s.size();
-    ll ans=0;
+    int n;cin>>n;
+    vector<ll> a(n);
+    f(i,0,n) cin>>a[i];
+    unordered_map<ll,ll> mp;
     f(i,0,n) {
-        if(st.empty()) {
-            st.push(s[i]);
-        } else {
-            if(st.top()==s[i]) {
-                st.pop();
-                ans++;
-            } else {
-                st.push(s[i]);
-            }
+        for(int j=i+1;j<n;j++) {
+            mp[a[j]+a[i]]++;
         }
     }
-    yn(ans%2);
-   
+    ll ans=0;
+    for(auto x:mp) {
+        ans=max(ans,x.second);
+    }
+    dbg(mp);
+    pt(ans);
 }
 
 int main()
@@ -88,9 +34,8 @@ int main()
     cin.tie(0);
 
     int t=1;
-    // cin >> t;
-    while (t--)
-    {
+    cin >> t;
+    while (t--){
         AKG();
     }
 
