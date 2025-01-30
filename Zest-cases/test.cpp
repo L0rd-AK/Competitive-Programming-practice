@@ -6,7 +6,8 @@ using namespace std;
 #define yn(f) f ? cout << "YES\n" : cout << "NO\n"
 #define pt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
-
+#define vi vector<int>
+#define vll vector<ll>
 
 #ifdef LOCAL
 #include "dbg.h"
