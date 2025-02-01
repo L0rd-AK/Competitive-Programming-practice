@@ -20,11 +20,19 @@ using namespace std;
 #define N 200005
 ll b[N], a[N];
 void AKG() {
-    int n;cin>>n;
-    while(n--){
+    int n,m;cin>>n>>m;
+    f(i,0,n) cin>>a[i];
+    f(i,0,m){
         int x,y;cin>>x>>y;
-        a[x]++;
+        b[x-1]++;
+        b[y]--;
     }
+    f(i,1,n) b[i]+=b[i-1];
+    sort(a,a+n);
+    sort(b,b+n);
+    ll ans=0;
+    f(i,0,n) ans+=a[i]*b[i];
+    pt(ans);
 }
 
 int main()
