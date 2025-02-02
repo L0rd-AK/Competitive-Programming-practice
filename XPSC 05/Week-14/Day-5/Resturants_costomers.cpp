@@ -20,23 +20,30 @@ using namespace std;
 #define N 200005
 
 void AKG() {
-   int n, k;
-    cin >> n >> k;
-    vector<int> a(n);
-    f(i,0,n) cin >> a[i];
-    int sz = (n+k-1) / k;
-    vector<int> b;
-    for (int i = 1; i < n; i += 2) {  
-        for (int j = i; j <= sz && j<n; j++) {
-         dbg(a[j], j);  
-         if(a[j] != j){
-            b.push_back(j);
+    int n;cin>>n;
+    vector<int> ar(n), br(n);
+    f(i,0,n){
+        int a, b;
+        cin >> a >> b;
+        ar[i] = a;
+        br[i] = b;
+    }
+    dbg(ar, br);
+    sort(all(ar));
+    sort(all(br));
+    ll ans = 0,cnt=0;
+    int i=0,j=0;
+    while(i<n && j<n){
+        if(ar[i] < br[j]){
+            cnt++;
+            ans = max(ans, cnt);
+            i++;
+        }else{
+            j++;
+            cnt--;
         }
     }
-   dbg(b);
-    ll ans=*max_element(all(b));
     pt(ans);
-   }
 }
 
 int main()
@@ -49,7 +56,7 @@ int main()
     cin.tie(0);
 
     int t=1;
-    cin >> t;
+    // cin >> t;
     while (t--){
         AKG();
     }
