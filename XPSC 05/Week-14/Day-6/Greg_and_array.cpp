@@ -20,28 +20,27 @@ using namespace std;
 #else
 #define dbg(x...) 
 #endif
-#define N 200005
+#define N 100005
 
 void AKG() {
-    int n,k,q;cin>>n>>k>>q;
-    vl a(N,0);
-    f(i,0,n){
-        int l,r;cin>>l>>r;
-        a[l]++;
-        a[r+1]--;
+    int n,m,k;cin>>n>>m>>k;
+    vector<ll> a(N,0),l(N,0),r(N,0),d(N,0),dx(N,0),ans(N,0);
+    for(int i=1;i<=n;i++)cin>>a[i];
+    for(int i=1;i<=m;i++)cin>>l[i]>>r[i]>>d[i];
+    f(i,0,k){
+        ll x,y;
+        cin>>x>>y;
+        dx[x]++,dx[y+1]--;
     }
-    int c=0;
-    f(i,0,N){
-        c+=a[i];
-        (c>=k?a[i]=1:a[i]=0);
+    for(int i=1;i<=m;i++){
+        dx[i]+=dx[i-1];
+        d[i]*=dx[i];
+        ans[l[i]]+=d[i];
+        ans[r[i]+1]-=d[i];
     }
-    vl ans(N,0);
-    f(i,1,N){
-        ans[i]=ans[i-1]+a[i];
-    }
-    while(q--){
-        int l,r;cin>>l>>r;
-        cout<<ans[r]-ans[l-1]<<endl;
+    for(int i=1;i<=n;i++){
+        ans[i]+=ans[i-1];
+        cout<<ans[i]+a[i]<<" ";
     }
 }
 

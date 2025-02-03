@@ -23,26 +23,24 @@ using namespace std;
 #define N 200005
 
 void AKG() {
-    int n,k,q;cin>>n>>k>>q;
-    vl a(N,0);
+    int n;cin>>n;
+    vector<pair<int,int>> a(n);
+    f(i,0,n) cin>>a[i].first>>a[i].second;
+    sort(all(a));
+    pi tv1 = {0,0}, tv2 = {0,0};
     f(i,0,n){
-        int l,r;cin>>l>>r;
-        a[l]++;
-        a[r+1]--;
+        if(tv1.second<a[i].first)tv1={0,0};
+        if(tv2.second<a[i].first)tv2={0,0};
+        if(tv1.second==0){
+            tv1 = a[i];
+        }else if(tv2.second==0){
+            tv2 = a[i];
+        }else{
+            pt("NO");
+            return;
+        }
     }
-    int c=0;
-    f(i,0,N){
-        c+=a[i];
-        (c>=k?a[i]=1:a[i]=0);
-    }
-    vl ans(N,0);
-    f(i,1,N){
-        ans[i]=ans[i-1]+a[i];
-    }
-    while(q--){
-        int l,r;cin>>l>>r;
-        cout<<ans[r]-ans[l-1]<<endl;
-    }
+    pt("YES");
 }
 
 
