@@ -22,21 +22,44 @@ using namespace std;
 #endif
 #define N 200005
 
+ll merge(vector<ll> &a, ll l, ll m, ll r) {
+    ll n1 = m-l+1, n2 = r-m;
+    vector<ll> L(n1), R(n2);
+    f(i,0,n1) L[i] = a[l+i];
+    f(i,0,n2) R[i] = a[m+1+i];
+    
+    ll i = 0, j = 0, k = l, ans = 0;
+    while(i < n1 && j < n2){
+        if(L[i] <= R[j]){
+            a[k++] = L[i++];
+        }else{
+            a[k++] = R[j++];
+            ans += n1-i;
+        }
+    }
+    
+    while(i < n1) a[k++] = L[i++];
+    while(j < n2) a[k++] = R[j++];
+    
+    return ans;
+}
+
+ll func(vector<ll> &a, ll l, ll r) {
+    ll ans = 0;
+    if(l < r){
+        ll m = (l+r)/2;
+        ans += func(a, l, m);
+        ans += func(a, m+1, r);
+        ans += merge(a, l, m, r);
+    }
+    
+    return ans;
+}
 void AKG() {
     ll n;cin>>n;
-    vector<ll> a(n),b(n),c(n);
+    vector<ll> a(n);
     f(i,0,n) cin>>a[i];
-    f(i,0,n) cin>>b[i];
-    f(i,0,n){
-        c[i] = b[i] - a[i];
-    }
-    sort(all(c));
-    ll ans = 0;
-    f(i,0,n){
-        auto it = lower_bound(c.begin()+i+1,c.end(),-c[i]);
-        ans += (it - (c.begin()+i+1));
-    }
-    pt(ans);
+    pt(func(a,0,n-1));
 }
 
 
@@ -50,7 +73,7 @@ int main()
     cin.tie(0);
 
     int t=1;
-    // cin >> t;
+    cin >> t;
     while (t--){
         AKG();
     }
