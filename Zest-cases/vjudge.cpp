@@ -1,56 +1,66 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-int countAndMerge(vector<int>& arr, int l, int m, int r) {
-  
-    int n1 = m - l + 1, n2 = r - m;
-    vector<int> left(n1), right(n2);
-    for (int i = 0; i < n1; i++)
-        left[i] = arr[i + l];
-    for (int j = 0; j < n2; j++)
-        right[j] = arr[m + 1 + j];
+#ifndef ONLINE_JUDGE
+#define LOCAL
+#endif
+#define ll long long int
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define endl "\n"
+#define yn(f) cout << (f ? "YES\n" : "NO\n")
+#define pt(x) cout << x << endl
+#define all(x) x.begin(), x.end()
+#define vl vector<ll>
+#define vi vector<int>
+#define pb push_back
+#define pi pair<int, int>
 
-    int res = 0;
-    int i = 0, j = 0, k = l;
-    while (i < n1 && j < n2) {
-        if (left[i] <= right[j]) 
-            arr[k++] = left[i++];
-    
-        else {
-            arr[k++] = right[j++];
-            res += (n1 - i);
+#ifdef LOCAL
+#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
+#else
+#define dbg(x...) 
+#endif
+// #define N 200005
+
+
+void AKG() {
+    int n, m;
+    cin >> n >> m;
+    vl a(n);
+    f(i, 0, n)cin >> a[i];
+    cin >> m;
+
+    ll up = 1e9+7;
+    ll low = -up; 
+    bool flg = true;
+    f(i, 0, n){
+        ll tmp1 = up;
+        if(a[i] >= low)tmp1 = a[i];
+        ll x = low + a[i],tmp2 = up;
+        if (m - a[i] >= low) tmp2 = m - a[i];
+        ll z_idx = min(tmp1, tmp2);
+        if(z_idx == up){
+            flg = false;
+            break;
         }
+        low = z_idx;
     }
-
-    while (i < n1)
-        arr[k++] = left[i++];
-    while (j < n2)
-        arr[k++] = right[j++];
-
-    return res;
+    yn(flg);
 }
 
-int countInv(vector<int>& arr, int l, int r){
-    int res = 0;
-    if (l < r) {
-        int m = (r + l) / 2;
-        res += countInv(arr, l, m);
-        res += countInv(arr, m + 1, r);
-        res += countAndMerge(arr, l, m, r);
+int main() {
+#ifndef ONLINE_JUDGE
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+#endif
+
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    int t = 1;
+    cin >> t;
+    while (t--) {
+        AKG();
     }
-    return res;
-}
-
-int inversionCount(vector<int> &arr) {
-      int n = arr.size();
-      return countInv(arr, 0, n-1);
-}
-
-int main(){
-    int t;
-    vector<int> arr = {4, 3, 2, 1};
     
-    cout << inversionCount(arr);
     return 0;
 }

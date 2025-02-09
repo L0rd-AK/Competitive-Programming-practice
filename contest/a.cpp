@@ -1,80 +1,62 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+#ifndef ONLINE_JUDGE
+#define LOCAL
+#endif
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) f ? cout << "YES\n" : cout << "NO\n"
-#define prnt(x) cout << x << endl
+#define yn(f) cout << (f ? "YES\n" : "NO\n")
+#define pt(x) cout << x << endl
 #define all(x) x.begin(), x.end()
+#define vl vector<ll>
+#define vi vector<int>
+#define pb push_back
+#define pi pair<ll, ll>
 
-void __print(int x) { cerr << x; }
-void __print(long x) { cerr << x; }
-void __print(long long x) { cerr << x; }
-void __print(unsigned x) { cerr << x; }
-void __print(unsigned long x) { cerr << x; }
-void __print(unsigned long long x) { cerr << x; }
-void __print(float x) { cerr << x; }
-void __print(double x) { cerr << x; }
-void __print(long double x) { cerr << x; }
-void __print(char x) { cerr << '\'' << x << '\''; }
-void __print(const char *x) { cerr << '\"' << x << '\"'; }
-void __print(const string &x) { cerr << '\"' << x << '\"'; }
-void __print(bool x) { cerr << (x ? "true" : "false"); }
-
-template <typename T, typename V>
-void __print(const pair<T, V> &x)
-{
-    cerr << '{';
-    __print(x.first);
-    cerr << ',';
-    __print(x.second);
-    cerr << '}';
-}
-template <typename T>
-void __print(const T &x)
-{
-    int f = 0;
-    cerr << '{';
-    for (auto &i : x)
-        cerr << (f++ ? "," : ""), __print(i);
-    cerr << "}";
-}
-void _print() { cerr << "]\n"; }
-template <typename T, typename... V>
-void _print(T t, V... v)
-{
-    __print(t);
-    if (sizeof...(v))
-        cerr << ", ";
-    _print(v...);
-}
-#ifndef ONLINE_JUDGE
-#define dbg(x...)                 \
-    cerr << "[" << #x << "] = ["; \
-    _print(x)
+#ifdef LOCAL
+#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
 #else
-#define dbg(x...)
+#define dbg(x...) 
 #endif
+// #define N 200005
 
-
-void AKG(){
-    string s;cin>>s;
-    string z="ADVITIYA";
-    if(s==z){
-        prnt(0);
-        return;
-    }
-    int n =s.size();
-    int ans = 0;
-    f(i,0,n){
-        int dif = (z[i]-s[i]+26)%26;
-        ans+=abs(dif);
-    }
-    prnt(ans);
+bool cmp(const pi &a, const pi &b){
+    return a.first > b.first;
 }
 
-int main()
-{
+void AKG() {
+    int n, m;
+    cin >> n >> m;
+    vector<pi> a(n);
+    ll total = 0; 
+    for (int i = 0; i < n; i++){
+        ll sum = 0,val_row = 0,sum2 = 0;
+        for (int j = 0; j < m; j++){
+            int x;cin >> x;
+            sum += x;
+            sum2 += x;
+            val_row += sum2;
+        }
+        dbg(sum,sum2,val_row);
+        a[i].first = sum;
+        a[i].second = val_row;
+        total += val_row;
+        dbg(total);
+    }
+    sort(all(a),cmp);
+
+    ll xtra = 0;
+    for (int i = 0; i < n; i++){
+        xtra += (ll)(n-1-i) * a[i].first;
+    }
+
+    ll ans = total+(m * xtra);
+    pt(ans);
+}
+
+int main() {
 #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
@@ -84,10 +66,9 @@ int main()
 
     int t = 1;
     cin >> t;
-    while (t--)
-    {
+    while (t--) {
         AKG();
     }
-
+    
     return 0;
 }
