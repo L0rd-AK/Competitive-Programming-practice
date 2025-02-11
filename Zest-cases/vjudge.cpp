@@ -20,32 +20,57 @@ using namespace std;
 #else
 #define dbg(x...) 
 #endif
-// #define N 200005
 
 
 void AKG() {
-    int n, m;
-    cin >> n >> m;
-    vl a(n);
-    f(i, 0, n)cin >> a[i];
-    cin >> m;
+   int n;
+   cin >> n;
+   vi a(n);
+   map<int, int> mp;
+   int mn = INT_MAX;
+   f(i, 0, n) {
+      cin >> a[i];
+      mp[a[i]]++;
+      mn = min(mn, a[i]);
+   }
 
-    ll up = 1e9+7;
-    ll low = -up; 
-    bool flg = true;
-    f(i, 0, n){
-        ll tmp1 = up;
-        if(a[i] >= low)tmp1 = a[i];
-        ll x = low + a[i],tmp2 = up;
-        if (m - a[i] >= low) tmp2 = m - a[i];
-        ll z_idx = min(tmp1, tmp2);
-        if(z_idx == up){
-            flg = false;
-            break;
-        }
-        low = z_idx;
+   if (mp[mn] < 2) {
+      yn(0);
+      return;
+   }
+   int flg=0;
+   for (const auto& p : mp) {
+        if (p.second % 2 == 0) flg++;
     }
-    yn(flg);
+    if(flg==mp.size()){
+        yn(1);
+        return;
+    }
+   auto it = mp.begin();
+   while (it != mp.end()) {
+      if (it->second > 2) {
+         auto next_it = next(it);
+         while (it->second > 2 && next_it != mp.end()) {
+            if (next_it->second % 2 == 1) {
+               it->second--;
+               mp[it->first+1]++;
+            }
+            ++next_it;
+         }
+      }
+      ++it;
+   }
+//    dbg(mp);
+
+   for (const auto& p : mp) {
+      if (p.second % 2 != 0) {
+         yn(0);
+         return;
+      }
+   }
+//    dbg(mp);
+
+   yn(1);
 }
 
 int main() {

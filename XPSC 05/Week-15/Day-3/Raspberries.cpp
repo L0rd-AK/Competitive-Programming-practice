@@ -8,7 +8,7 @@ using namespace std;
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 #define yn(f) cout << (f ? "YES\n" : "NO\n")
-#define pt(x) cout << x << endl
+#define pr(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 #define vl vector<ll>
 #define vi vector<int>
@@ -20,50 +20,39 @@ using namespace std;
 #else
 #define dbg(x...) 
 #endif
-
+# define N 2000005
 
 void AKG() {
-   ll n;
-   cin >> n;
-   vl a(n);
-   map<ll, ll> mp;
-   ll mn = INT_MAX;
-   f(i, 0, n) {
-      cin >> a[i];
-      mp[a[i]]++;
-      mn = min(mn, a[i]);
-   }
-
-   if (mp[mn] < 2) {
-      yn(0);
-      return;
-   }
-   int flg = 0;
-   for (const auto& p : mp) {
-        if (p.second % 2 == 0) flg++;
-    }
-    if (flg == mp.size()) {
-        yn(1);
-        return;
-    }
-
-   auto it = mp.begin();
-   while (it != mp.end()) {
-      if (it->second > 2) {
-         mp[it->first + 1] += (it->second - 2);
-         it->second = 2;
+    int n,k; cin>>n>>k;
+    vi a(n);
+    f(i, 0, n)cin >> a[i];
+    int ans=INT_MAX,e_cnt=0;
+    if(k==2||k==3||k==5){
+      for(int i:a){
+         if(i%2==0)e_cnt++;
+         int tmp=i,cnt=0;
+         while(tmp%k!=0){
+            tmp++;
+            cnt++;
+         }
+         ans=min(ans,cnt);
       }
-      ++it;
-   }
-
-   for (const auto& p : mp) {
-      if (p.second % 2 != 0) {
-         yn(0);
-         return;
+      pr(ans);
+    }else{
+      for(int i:a){
+         if(i%2==0)e_cnt++;
+         int tmp=i,cnt=0;
+         while(tmp%4!=0){
+            tmp++;
+            cnt++;
+         }
+         ans=min(ans,cnt);
       }
-   }
-
-   yn(1);
+      if(e_cnt>=2)pr(0);
+      else if(e_cnt==1)pr(min(ans,1));
+      else pr (min(ans,2));
+    }
+    
 }
 
 int main() {

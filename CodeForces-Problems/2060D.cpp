@@ -20,50 +20,33 @@ using namespace std;
 #else
 #define dbg(x...) 
 #endif
+// #define N 200005
 
 
 void AKG() {
-   ll n;
-   cin >> n;
-   vl a(n);
-   map<ll, ll> mp;
-   ll mn = INT_MAX;
-   f(i, 0, n) {
-      cin >> a[i];
-      mp[a[i]]++;
-      mn = min(mn, a[i]);
-   }
-
-   if (mp[mn] < 2) {
-      yn(0);
-      return;
-   }
-   int flg = 0;
-   for (const auto& p : mp) {
-        if (p.second % 2 == 0) flg++;
-    }
-    if (flg == mp.size()) {
-        yn(1);
-        return;
-    }
-
-   auto it = mp.begin();
-   while (it != mp.end()) {
-      if (it->second > 2) {
-         mp[it->first + 1] += (it->second - 2);
-         it->second = 2;
+      int n; cin >> n;
+      vl a(n);
+      f(i, 0, n) {
+        cin >> a[i];
       }
-      ++it;
-   }
-
-   for (const auto& p : mp) {
-      if (p.second % 2 != 0) {
-         yn(0);
+      if (is_sorted(all(a))) {
+         yn(1);
          return;
       }
-   }
-
-   yn(1);
+      int idx=0;
+      f(i,1,n){
+         if(a[i-1]>a[i])idx=i;
+      }
+      if(idx==0){
+         yn(1);
+         return;
+      }
+      f(i,0,idx){
+         int x=min(a[i],a[i+1]);
+         a[i]-=x;
+         a[i+1]-=x;
+      }
+      yn(is_sorted(all(a)));
 }
 
 int main() {

@@ -21,49 +21,20 @@ using namespace std;
 #define dbg(x...) 
 #endif
 
-
 void AKG() {
-   ll n;
-   cin >> n;
-   vl a(n);
-   map<ll, ll> mp;
-   ll mn = INT_MAX;
-   f(i, 0, n) {
-      cin >> a[i];
-      mp[a[i]]++;
-      mn = min(mn, a[i]);
-   }
+    int n; cin >> n;
+    vi a(n);
+    f(i, 0, n) cin >> a[i];
 
-   if (mp[mn] < 2) {
-      yn(0);
-      return;
-   }
-   int flg = 0;
-   for (const auto& p : mp) {
-        if (p.second % 2 == 0) flg++;
-    }
-    if (flg == mp.size()) {
-        yn(1);
-        return;
+    map<int, int> mp;
+    ll ans = 0;
+    f(i, 0, n) {
+        int key = i - a[i];
+        ans += mp[key];  
+        mp[key]++;
     }
 
-   auto it = mp.begin();
-   while (it != mp.end()) {
-      if (it->second > 2) {
-         mp[it->first + 1] += (it->second - 2);
-         it->second = 2;
-      }
-      ++it;
-   }
-
-   for (const auto& p : mp) {
-      if (p.second % 2 != 0) {
-         yn(0);
-         return;
-      }
-   }
-
-   yn(1);
+    pt(ans);
 }
 
 int main() {
