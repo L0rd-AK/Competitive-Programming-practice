@@ -4,11 +4,12 @@ using namespace std;
 #ifndef ONLINE_JUDGE
 #define LOCAL
 #endif
+
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 #define yn(f) cout << (f ? "YES\n" : "NO\n")
-#define pt(x) cout << x << endl
+#define pr(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 #define vl vector<ll>
 #define vi vector<int>
@@ -18,59 +19,43 @@ using namespace std;
 #ifdef LOCAL
 #include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
 #else
-#define dbg(x...) 
+#define dbg(x...)
 #endif
 
-
 void AKG() {
-   int n;
-   cin >> n;
-   vi a(n);
-   map<int, int> mp;
-   int mn = INT_MAX;
-   f(i, 0, n) {
-      cin >> a[i];
-      mp[a[i]]++;
-      mn = min(mn, a[i]);
-   }
+    int n, m;
+    cin >> n >> m;
+    
+    vl a(n), b(m), B(m);
+    f(i, 0, n) cin >> a[i];
 
-   if (mp[mn] < 2) {
-      yn(0);
-      return;
-   }
-   int flg=0;
-   for (const auto& p : mp) {
-        if (p.second % 2 == 0) flg++;
+    f(i, 0, m)cin >> b[i];
+    int mn_idx =  min_element(all(b)) - b.begin();
+
+    f(i, 0, m) {
+        B[i] = b[(mn_idx + i) % m];
     }
-    if(flg==mp.size()){
-        yn(1);
-        return;
-    }
-   auto it = mp.begin();
-   while (it != mp.end()) {
-      if (it->second > 2) {
-         auto next_it = next(it);
-         while (it->second > 2 && next_it != mp.end()) {
-            if (next_it->second % 2 == 1) {
-               it->second--;
-               mp[it->first+1]++;
+
+    for (int i = 0; i <= n - m; ++i) {
+        bool ok = 0;
+        for (int j = 0; j < m; ++j) {
+            if (a[i + j] < B[j]) break;
+            else if (a[i + j] > B[j]) {
+                ok = 1;
+                break;
             }
-            ++next_it;
-         }
-      }
-      ++it;
-   }
-//    dbg(mp);
+        }
+        
+        if (ok) {
+            for (int j = 0; j < m; ++j) {
+                a[i + j] = B[j];
+            }
+            //break;
+        }
+    }
 
-   for (const auto& p : mp) {
-      if (p.second % 2 != 0) {
-         yn(0);
-         return;
-      }
-   }
-//    dbg(mp);
-
-   yn(1);
+    for (int i : a) cout << i << " ";
+    cout << endl;
 }
 
 int main() {
@@ -78,14 +63,14 @@ int main() {
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
 
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
+   ios_base::sync_with_stdio(false);
+   cin.tie(nullptr);
 
     int t = 1;
     cin >> t;
     while (t--) {
         AKG();
     }
-    
+
     return 0;
 }

@@ -4,11 +4,12 @@ using namespace std;
 #ifndef ONLINE_JUDGE
 #define LOCAL
 #endif
+
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 #define yn(f) cout << (f ? "YES\n" : "NO\n")
-#define pt(x) cout << x << endl
+#define pr(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 #define vl vector<ll>
 #define vi vector<int>
@@ -18,52 +19,51 @@ using namespace std;
 #ifdef LOCAL
 #include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
 #else
-#define dbg(x...) 
+#define dbg(x...)
 #endif
 
-
 void AKG() {
-   ll n;
-   cin >> n;
-   vl a(n);
-   map<ll, ll> mp;
-   ll mn = INT_MAX;
-   f(i, 0, n) {
-      cin >> a[i];
-      mp[a[i]]++;
-      mn = min(mn, a[i]);
-   }
+    int n, m;
+    cin >> n >> m;
+    
+    vl a(n), b(m), B(m);
+    f(i, 0, n) cin >> a[i];
 
-   if (mp[mn] < 2) {
-      yn(0);
-      return;
-   }
-   int flg = 0;
-   for (const auto& p : mp) {
-        if (p.second % 2 == 0) flg++;
-    }
-    if (flg == mp.size()) {
-        yn(1);
-        return;
+    ll mn = LLONG_MAX;
+    int mn_idx = 0;
+    f(i, 0, m) {
+        cin >> b[i];
+        if (b[i] < mn) {
+            mn = b[i];
+            mn_idx = i;
+        }
     }
 
-   auto it = mp.begin();
-   while (it != mp.end()) {
-      if (it->second > 2) {
-         mp[it->first + 1] += (it->second - 2);
-         it->second = 2;
-      }
-      ++it;
-   }
+    f(i, 0, m) {
+        B[i] = b[(mn_idx + i) % m];
+    }
 
-   for (const auto& p : mp) {
-      if (p.second % 2 != 0) {
-         yn(0);
-         return;
-      }
-   }
+    for (int i = 0; i <= n - m; ++i) {
+        bool ok = 0;
+        
+        for (int j = 0; j < m; ++j) {
+            if (a[i + j] < B[j]) break;
+            else if (a[i + j] > B[j]) {
+                ok = 1;
+                break;
+            }
+        }
+        
+        if (ok) {
+            for (int j = 0; j < m; ++j) {
+                a[i + j] = B[j];
+            }
+            i += m - 1;
+        }
+    }
 
-   yn(1);
+    for (int i : a) cout << i << " ";
+    cout << endl;
 }
 
 int main() {
@@ -79,6 +79,6 @@ int main() {
     while (t--) {
         AKG();
     }
-    
+
     return 0;
 }
