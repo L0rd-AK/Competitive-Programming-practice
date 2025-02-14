@@ -23,16 +23,16 @@ using namespace std;
 
 void AKG()
 {
-    ll n,k;
+    long long n,k;
         string s;
         cin>>n>>k>>s;
-        ll cnt=0;
+        long long nob=0;
         for(int i=0;i<n;i++){
             if(s[i]=='B'){
-                cnt++;
+                nob++;
             }
         }
-        ll flag=(k-cnt);
+        long long flag=(k-nob);
         if(flag==0){
             cout<<0<<endl;
         }

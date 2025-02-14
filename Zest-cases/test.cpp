@@ -21,45 +21,14 @@ using namespace std;
 #define dbg(x...)
 #endif
 
-void AKG()
-{
-    long long n,k;
-        string s;
-        cin>>n>>k>>s;
-        long long nob=0;
-        for(int i=0;i<n;i++){
-            if(s[i]=='B'){
-                nob++;
-            }
-        }
-        long long flag=(k-nob);
-        if(flag==0){
-            cout<<0<<endl;
-        }
-        else if(flag>0){
-            for(int i=0;i<n;i++){
-                if(s[i]=='A'){
-                    flag--;
-                }
-                if(flag==0){
-                    cout<<1<<endl;
-                    cout<<i+1<<" B"<<endl;
-                    break;
-                }
-            }
-        }
-        else{
-            for(int i=0;i<n;i++){
-                if(s[i]=='B'){
-                    flag++;
-                }
-                if(flag==0){
-                    cout<<1<<endl;
-                    cout<<i+1<<" A"<<endl;
-                    break;
-                }
-            }
-        }
+void AKG(){
+    int n;cin>>n;
+    int a=0,b=0;
+    f(i,0,n){
+        int x;cin>>x;
+        (x%2 ? b++:a++);
+    }
+    (a>0 ? pr(b+1):pr(b-1));
 }
 
 int main()
