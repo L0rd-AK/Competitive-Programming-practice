@@ -13,7 +13,7 @@ using namespace std;
 #define vl vector<ll>
 #define vi vector<int>
 #define pb push_back
-#define pi pair<ll, ll>
+#define pi pair<int, int>
 
 #ifdef LOCAL
 #include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
@@ -21,41 +21,33 @@ using namespace std;
 #define dbg(x...)
 #endif
 
-void AKG() {
-    ll n, c, q;
-    cin >> n >> c >> q;
-    string s;
-    cin >> s;
- 
-    vector<pair<ll, ll>> a(c), b(c);
-    vector<ll> start(c);
-    
-    ll len = n;
-    
-    for (ll i = 0; i < c; i++) {
-        ll l, r;
-        cin >> l >> r;
-        a[i] = {l, r};
-        b[i] = {len + 1, len + (r - l + 1)};
-        start[i] = b[i].first;
-        len = b[i].second;
-    }
- 
-    while (q--) {
-        ll x;
-        cin >> x;
- 
-        while (x > n) {
-            int idx = upper_bound(start.begin(), start.end(), x) - start.begin() - 1;
-            if (idx < 0) break;
-            x = a[idx].first + (x - b[idx].first);
+void AKG(){
+    string s;cin>>s;
+    int n=s.length();
+    int ans=INT_MAX;
+    for(char ch='a';ch<='z';ch++){
+        int mx=INT_MIN,cnt=0;
+        f(i,0,n){
+            if(s[i]!=ch){
+                cnt++;
+            }else{
+                mx=max(mx,cnt);
+                cnt=0;
+            }
         }
- 
-        cout << s[x - 1] << endl;
+        mx=max(mx,cnt);
+        int c=0;
+        while(mx!=0){
+            c++;
+            mx/=2;
+        }
+        ans=min(ans,c);
     }
+    pr(ans);
 }
 
-int main() {
+int main()
+{
 #ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
@@ -65,7 +57,8 @@ int main() {
 
     int t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         AKG();
     }
 

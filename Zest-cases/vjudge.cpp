@@ -4,7 +4,6 @@ using namespace std;
 #ifndef ONLINE_JUDGE
 #define LOCAL
 #endif
-
 #define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
@@ -23,39 +22,51 @@ using namespace std;
 #endif
 
 void AKG() {
-    int n, m;
-    cin >> n >> m;
+    string s;
+    cin >> s;
+    int n = s.length();
+    string s1, s2;
+    map<char, int> a, b;
     
-    vl a(n), b(m), B(m);
-    f(i, 0, n) cin >> a[i];
-
-    f(i, 0, m)cin >> b[i];
-    int mn_idx =  min_element(all(b)) - b.begin();
-
-    f(i, 0, m) {
-        B[i] = b[(mn_idx + i) % m];
+    // Distribute characters into two groups
+    f(i, 0, n) {
+        if (i % 2) {
+            a[s[i]]++;
+            s1 += s[i];
+        } else {
+            b[s[i]]++;
+            s2 += s[i];
+        }
     }
 
-    for (int i = 0; i <= n - m; ++i) {
-        bool ok = 0;
-        for (int j = 0; j < m; ++j) {
-            if (a[i + j] < B[j]) break;
-            else if (a[i + j] > B[j]) {
-                ok = 1;
-                break;
-            }
-        }
+    int ans = 0;
+    while ((s1.length() + 1) / 2 < a.size() || (s2.length() + 1) / 2 < b.size()) {
+        ans++;
         
-        if (ok) {
-            for (int j = 0; j < m; ++j) {
-                a[i + j] = B[j];
+        if (a.size() < b.size()) {
+            s1.clear();
+            a.clear();
+            f(i, 0, n) {
+                if (i % 2) {
+                    a[s[i]]++;
+                    s1 += s[i];
+                }
             }
-            //break;
+        } else if (a.size() > b.size()) {
+            s2.clear();
+            b.clear();
+            f(i, 0, n) {
+                if (i % 2 == 0) {
+                    b[s[i]]++;
+                    s2 += s[i];
+                }
+            }
+        } else {
+            break; // If both are balanced, exit loop
         }
     }
-
-    for (int i : a) cout << i << " ";
-    cout << endl;
+    
+    pr(ans);
 }
 
 int main() {
@@ -63,10 +74,10 @@ int main() {
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
 
-   ios_base::sync_with_stdio(false);
-   cin.tie(nullptr);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
-    int t = 1;
+    int t;
     cin >> t;
     while (t--) {
         AKG();
