@@ -20,25 +20,39 @@ using namespace std;
 #else
 #define dbg(x...)
 #endif
-const int N  = 2e5+10;
+
 void AKG() {
-    ll n,s=0;
-    cin>>n;
-    int a[N];
-    for(int i=0;i<n-2;i++)
-    {
-        a[i]=i;s^=i;
+    ll n, c, q;
+    cin >> n >> c >> q;
+    string s;
+    cin >> s;
+ 
+    vector<pair<ll, ll>> a(c), b(c);
+    vector<ll> start(c);
+    
+    ll len = n;
+    
+    for (ll i = 0; i < c; i++) {
+        ll l, r;
+        cin >> l >> r;
+        a[i] = {l, r};
+        b[i] = {len + 1, len + (r - l + 1)};
+        start[i] = b[i].first;
+        len = b[i].second;
     }
-    if(s==0)
-    {
-        a[0]=(1<<30)-1;
-        s=(1<<30)-1;
+ 
+    while (q--) {
+        ll x;
+        cin >> x;
+ 
+        while (x > n) {
+            int idx = upper_bound(start.begin(), start.end(), x) - start.begin() - 1;
+            if (idx < 0) break;
+            x = a[idx].first + (x - b[idx].first);
+        }
+ 
+        cout << s[x - 1] << endl;
     }
-    a[n-2]=s|(1<<30);
-    a[n-1]=(1<<30);
-    for(int i=0;i<n;i++)
-        cout<<a[i]<<" ";
-    cout<<endl;
 }
 
 int main() {
