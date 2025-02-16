@@ -13,69 +13,57 @@ using namespace std;
 #define vl vector<ll>
 #define vi vector<int>
 #define pb push_back
-#define pi pair<int, int>
+#define pi pair<ll, ll>
 
 #ifdef LOCAL
 #include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
 #else
 #define dbg(x...)
 #endif
+const int N  = 2e5+10;
 
-void AKG() {
-    string s;
-    cin >> s;
-    int n = s.length();
-    string s1, s2;
-    map<char, int> a, b;
-    
-    // Distribute characters into two groups
-    f(i, 0, n) {
-        if (i % 2) {
-            a[s[i]]++;
-            s1 += s[i];
-        } else {
-            b[s[i]]++;
-            s2 += s[i];
+void solveCase() {
+    int n;
+    cin >> n;
+    vi nums(n);
+    unordered_map<int, int> mp;
+
+    for (int i = 0; i < n; ++i) {
+        cin >> nums[i];
+        mp[nums[i]]++;
+    }
+    set<int> st;
+    for (auto &entry : mp) {
+        if (entry.second == 1) {
+            st.insert(entry.first);
         }
     }
 
-    int ans = 0;
-    while ((s1.length() + 1) / 2 < a.size() || (s2.length() + 1) / 2 < b.size()) {
-        ans++;
-        
-        if (a.size() < b.size()) {
-            s1.clear();
-            a.clear();
-            f(i, 0, n) {
-                if (i % 2) {
-                    a[s[i]]++;
-                    s1 += s[i];
-                }
-            }
-        } else if (a.size() > b.size()) {
-            s2.clear();
-            b.clear();
-            f(i, 0, n) {
-                if (i % 2 == 0) {
-                    b[s[i]]++;
-                    s2 += s[i];
-                }
-            }
+    int len = 0, segStart = -1, segEnd = -1;
+    int left = 0;
+    for (int right = 0; right < n; ++right) {
+        if (st.find(nums[right]) == st.end()) {
+            left = right + 1; 
         } else {
-            break; // If both are balanced, exit loop
+            int currentLength = right - left + 1;
+            if (currentLength > len) {
+                len = currentLength;
+                segStart = left;
+                segEnd = right;
+            }
         }
     }
-    
-    pr(ans);
+
+    if (len == 0) {
+        cout << "0\n";
+    } else {
+        cout << segStart + 1 << " " << segEnd + 1 << "\n";
+    }
 }
 
 int main() {
-#ifndef ONLINE_JUDGE
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-#endif
-
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int t;
     cin >> t;

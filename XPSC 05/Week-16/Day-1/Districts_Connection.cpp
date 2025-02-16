@@ -22,46 +22,26 @@ using namespace std;
 #endif
 const int N  = 2e5+10;
 void AKG() {
-    int n;
-    cin >> n;
-    vi a(n);
-    unordered_map<int, int> mp,mp1;
-    set<int>st;
-    f(i, 0, n) {
-        cin >> a[i];
-        mp[a[i]]++;
-        st.insert(a[i]);
-    }
-    if(st.size()==n){
-        pr("1 1");
-        return;
-    }else if(st.size()==1){
-        pr(0);
+    int n;cin>>n;
+    vl a(n);
+    f(i,0,n)cin>>a[i];
+    ll mn=*min_element(all(a));
+    ll mx=*max_element(all(a));
+    if(mn==mx){
+        yn(0);
         return;
     }
-    int max_itm = 0,mx=INT_MIN,maxx=INT_MIN;
-    for(auto i:mp){
-        if(i.second>maxx){
-            maxx=i.second;
-            max_itm=i.first;
+    yn(1);
+    int j=0;
+    f(i,1,n){
+        if(a[0]!=a[i]){
+            cout<<"1 "<<i+1<<endl;
+            j=i;
         }
     }
-    int l,r,i=0,j=0;
-    while(j<n){
-        if(mp[a[j]]==maxx){
-            i=j+1;
-        }else{
-            int x=j-i+1;
-            if(x>mx){
-                mx=x;
-                l=i+1;
-                r=j+1;
-
-            }
-        }
-        j++;
+    f(i,1,n){
+        if(a[0]==a[i])cout<<j+1<<" "<<i+1<<endl;
     }
-    cout<<i<<" "<<j<<endl;
 }
 
 int main() {
@@ -72,7 +52,7 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t=1;
+    int t;
     cin >> t;
     while (t--) {
         AKG();
