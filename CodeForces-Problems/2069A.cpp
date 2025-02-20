@@ -4,8 +4,7 @@ using namespace std;
 #ifndef ONLINE_JUDGE
 #define LOCAL
 #endif
-
-#define ll long long
+#define ll long long int
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 #define yn(f) cout << (f ? "YES\n" : "NO\n")
@@ -21,51 +20,34 @@ using namespace std;
 #else
 #define dbg(x...)
 #endif
-
+const int N  = 2e5+10;
 void AKG() {
-    int n;
-    cin >> n;
-    vi a(n);
-    ll mx_itm=INT_MIN, mx_idx=-1;
-    f(i, 0, n) {
-        cin >> a[i];
-        if(a[i]>mx_itm){
-            mx_itm=a[i];
-            mx_idx=i;
-        }
-    }
-    if(n==2){
-        pr(abs(a[0]-a[1]));
+    int n;cin>>n;
+    vi a(n-2);
+    f(i,0,n-2)cin>>a[i];
+    if(n==3){
+        yn(1);
         return;
     }
-    dbg(mx_itm);
-    if(mx_idx==0 || mx_idx==n-1){
-        pr(mx_itm);
-        return;
-    }
-    if(mx_idx==1){
-           int x=abs(a[0]-a[1]);
-           pr(x);
-           return;
-        }
-    if(mx_idx==n-2){
-            int x=abs(a[n-1]-a[n-2]);
-            pr(x);
+    // dbg(n-2,a);
+    f(i,0,a.size()-2){
+        if(a[i]==1 && a[i+1]==0 && a[i+2]==1){
+            yn(0);
             return;
         }
-   
-    pr(abs(mx_itm));
+    }
+    yn(1);
 }
 
 int main() {
-#ifdef LOCAL
+#ifndef ONLINE_JUDGE
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
-    int t;
+    int t=1;
     cin >> t;
     while (t--) {
         AKG();

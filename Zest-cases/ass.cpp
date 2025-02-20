@@ -1,84 +1,94 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios_base::sync_with_stdio(false);
+/*
+  Solves the "merge slimes of the same power p -> single slime of power p+1"
+  and returns the maximum possible power among all slimes after performing
+  merges as many times as you like, in any order.
+*/
+
+int main(){
+    ios::sync_with_stdio(false);
     cin.tie(nullptr);
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 
-    int T;
-    cin >> T;
-    while (T--) {
-        int N, M;
-        cin >> N >> M;
-        vector<int> A(N), B(M);
-        for (int &x : A) cin >> x;
-        for (int &x : B) cin >> x;
+    int T; 
+    cin >> T;  // Number of test cases
+    while(T--) {
+        int N; 
+        cin >> N;
+        
+        // Read powers
+        unordered_map<long long, long long> freq;
+        freq.reserve(N*2);
+        freq.max_load_factor(0.7f);
 
-        // Generate B_min
-        int min_val = B[0], min_idx = 0;
-        for (int i = 1; i < M; ++i) {
-            if (B[i] < min_val) {
-                min_val = B[i];
-                min_idx = i;
-            }
-        }
-        vector<int> B_min(M);
-        for (int i = 0; i < M; ++i) {
-            B_min[i] = B[(min_idx + i) % M];
+        long long x;
+        for(int i = 0; i < N; i++){
+            cin >> x;
+            freq[x]++;
         }
 
-        // Concatenate B_min and A to form S
-        vector<int> S = B_min;
-        S.insert(S.end(), A.begin(), A.end());
-        int lenS = S.size();
-        vector<int> Z(lenS, 0);
+        // Convert freq map to a vector of (power, count) and sort by power
+        vector<pair<long long, long long>> v;
+        v.reserve(freq.size());
+        for (auto &pr : freq) {
+            v.push_back({pr.first, pr.second});
+        }
+        sort(v.begin(), v.end());
 
-        // Compute Z-array
-        int l = 0, r = 0;
-        for (int i = 1; i < lenS; ++i) {
-            if (i > r) {
-                l = r = i;
-                while (r < lenS && S[r - l] == S[r]) ++r;
-                Z[i] = r - l;
-                --r;
-            } else {
-                int k = i - l;
-                if (Z[k] < r - i + 1) {
-                    Z[i] = Z[k];
-                } else {
-                    l = i;
-                    while (r < lenS && S[r - l] == S[r]) ++r;
-                    Z[i] = r - l;
-                    --r;
+        // We also keep a map from power -> index in v, so we can "carry" merges forward
+        // by incrementing the power
+        unordered_map<long long,int> indexOf;
+        indexOf.reserve(v.size()*2);
+        indexOf.max_load_factor(0.7f);
+        for (int i = 0; i < (int)v.size(); i++) {
+            indexOf[v[i].first] = i;
+        }
+
+        // Process from smallest to largest power
+        // For each power p, form merges and "carry" them to p+1, p+2, etc.
+        for (int i = 0; i < (int)v.size(); i++) {
+            long long p = v[i].first;
+            long long c = v[i].second;
+            
+            // Number of merges at power p
+            long long merges = c / 2;
+            if (merges > 0) {
+                // Keep exactly c%2 leftover at power p
+                v[i].second = c % 2;
+                
+                // We'll "carry" merges to higher powers
+                long long carry = merges;
+                long long nextP = p + 1;
+                while (carry > 0) {
+                    // If nextP isn't in indexOf yet, add a new entry
+                    if (!indexOf.count(nextP)) {
+                        indexOf[nextP] = (int)v.size();
+                        v.push_back({nextP, 0});
+                    }
+                    int j = indexOf[nextP];
+                    
+                    // Add carry to v[j].second
+                    v[j].second += carry;
+                    // Next merges at that power
+                    carry = v[j].second / 2;
+                    v[j].second %= 2;
+                    
+                    nextP++;
                 }
             }
         }
 
-        // Find the earliest position i to replace
-        int earliest = -1;
-        for (int i = 0; i <= N - M; ++i) {
-            int common = Z[M + i];
-            if (common == M) continue;
-            if (common < M && B_min[common] < A[i + common]) {
-                earliest = i;
-                break;
+        // Now find the largest power that has a nonzero count
+        long long answer = 0;
+        for (auto &pcount : v) {
+            if (pcount.second > 0) {
+                answer = max(answer, pcount.first);
             }
         }
 
-        // Replace from earliest onwards if found
-        if (earliest != -1) {
-            for (int k = earliest; k < N; ++k) {
-                A[k] = B_min[(k - earliest) % M];
-            }
-        }
-
-        // Output the result
-        for (int x : A) {
-            cout << x << ' ';
-        }
-        cout << '\n';
+        cout << answer << "\n";
     }
-
     return 0;
 }
