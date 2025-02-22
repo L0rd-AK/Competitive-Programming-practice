@@ -43,7 +43,7 @@ void AKG() {
    int n;cin>>n;
    f(i,0,n+1)a[i].clear();
    ans.assign(n+2,0);
-   f(i,0,n){
+   f(i,1,n){
     int x,y;cin>>x>>y;
     a[x].pb(y);
     a[y].pb(x);
