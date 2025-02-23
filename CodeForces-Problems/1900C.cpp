@@ -24,30 +24,46 @@ using namespace std;
 
 const int MOD = 998244353;
 const int N = 3e5+5;
+vi a[N];
+vl ans(N);
+string s;
+void dfs(int cur){
+	if(a[cur][0]!=0){
+        if(s[cur-1]!='L'){
+            ans[a[cur][0]]=ans[cur]+1;
+        }else{
+            ans[a[cur][0]]=ans[cur];
+        }
+        dfs(a[cur][0]);
+    }
+    if(a[cur][1]!=0){
+        if(s[cur-1]!='R'){
+            ans[a[cur][1]]=ans[cur]+1;
+        }else{
+            ans[a[cur][1]]=ans[cur];
+        }
+        dfs(a[cur][1]);
+    }
+}
 
 void AKG() {
-   int n,root;cin>>n;
-   vi g[n+1],a(n+1),b(n+1);
+   int n;cin>>n;
+   cin>>s;
+   f(i,0,n+1)a[i].clear();
+   ans.assign(n+2,0);
    f(i,1,n+1){
-       int x,y;cin>>x>>y;
-       if(x!=1)g[i].pb(x);
-       else root=i;
-       if(y==1){
-        b[x]++;
-        a[i]=1;
-       }
+    int x,y;cin>>x>>y;
+    a[i].pb(x);
+    a[i].pb(y);
    }
-   vi ans;
+   dfs(1);
+   ll cnt=INT_MAX;
    f(i,1,n+1){
-     if(root==i)continue;
-     if(g[i].size()==b[i] && a[i]==1){
-        ans.pb(i);
-     }
+    if(a[i][0]==0 && a[i][1]==0){
+        cnt=min(cnt,ans[i]);
+    }
    }
-   if(ans.size()==0)cout<<-1;
-   else{
-    for(auto i:ans)cout<<i<<" ";
-   }
+   pr(cnt);
 }
 
 int main() {
@@ -59,7 +75,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
