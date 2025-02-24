@@ -26,10 +26,9 @@ const int MOD = 998244353;
 const int N = 3e5+5;
 
 void AKG() {
-    int n=8;
-    n^=7;
-    n^=0;
-    pr(n);
+  int x,y;cin>>x>>y;
+  int n=max(x,y);
+  pr(n+1);
 }
 
 int main() {
@@ -41,7 +40,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }

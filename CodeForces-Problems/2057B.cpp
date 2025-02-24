@@ -26,10 +26,37 @@ const int MOD = 998244353;
 const int N = 3e5+5;
 
 void AKG() {
-    int n=8;
-    n^=7;
-    n^=0;
-    pr(n);
+    int n, k;
+    cin >> n >> k;
+    vi a(n);
+    map<int,int> mp;
+    f(i, 0, n) {
+        cin >> a[i];
+        mp[a[i]]++;
+    }
+    
+    int distinct = mp.size();
+    if(k == 0){
+        pr(distinct);
+        return;
+    }else if(n==k){
+        pr(1);
+        return;
+    }
+    vi freq;
+    for(auto &p: mp) {
+        freq.push_back(p.second);
+    }
+    sort(all(freq));
+    for(auto f: freq) {
+        if(f <= k) {
+            k -= f;
+            distinct--;
+        } else {
+            break;
+        }
+    }
+    pr(distinct);
 }
 
 int main() {
@@ -41,7 +68,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
