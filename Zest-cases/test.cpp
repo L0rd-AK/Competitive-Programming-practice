@@ -24,25 +24,25 @@ using namespace std;
 
 const int MOD = 998244353;
 const int N = 3e5+5;
+unordered_map<ll, ll> dp;
 
+ll zzz(ll n) {
+    if (n <= 3) {
+        return 1;
+    }
+    if (dp.find(n) != dp.end()) {
+        return dp[n];
+    }
+    ll ans = max(1LL, 2LL * zzz(n / 4));
+    dp[n] = ans;
+    return ans;
+}
 
 void AKG() {
-   int n;cin>>n;
-   vi a(n);
-   f(i,0,n) cin>>a[i];
-   int cnt=0;
-   for(int i=1;i<=n;){
-        int x=(1<<cnt);
-        vi ans;
-        while(i<=x && i<=n)ans.pb(a[i-1]),i++;
-        if(!is_sorted(all(ans))){
-            yn(0);
-            return;
-        }
-        cnt++;
-   }
-    yn(1);
+    ll n;cin>>n;
+    pr(zzz(n));  
 }
+
 
 int main() {
 #ifdef LOCAL

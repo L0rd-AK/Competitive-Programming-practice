@@ -22,39 +22,44 @@ using namespace std;
 #define dbg(x...)
 #endif
 
-void AKG() {
-    int n;
-    cin >> n;
-    vi a(n);
-    ll mx_itm=INT_MIN, mx_idx=-1;
-    f(i, 0, n) {
-        cin >> a[i];
-        if(a[i]>mx_itm){
-            mx_itm=a[i];
-            mx_idx=i;
+const int N = 3e5 + 5;
+
+void solve() {
+    int n, d;
+        cin >> n >> d;
+        vi ans;
+        ans.push_back(1);
+
+        if (n >= 3) {
+            ans.push_back(3);
+        } else if (n == 2 && d % 3 == 0) {
+            ans.push_back(3);
         }
-    }
-    if(n==2){
-        pr(abs(a[0]-a[1]));
-        return;
-    }
-    dbg(mx_itm);
-    if(mx_idx==0 || mx_idx==n-1){
-        pr(mx_itm);
-        return;
-    }
-    if(mx_idx==1){
-           int x=abs(a[0]-a[1]);
-           pr(x);
-           return;
+
+        if (d == 5) {
+            ans.push_back(5);
         }
-    if(mx_idx==n-2){
-            int x=abs(a[n-1]-a[n-2]);
-            pr(x);
-            return;
+
+        if (d == 7 || n >= 3) {
+            ans.push_back(7);
         }
-   
-    pr(abs(mx_itm));
+
+        if (d == 9) {
+            ans.push_back(9);
+        } else if (d == 3 || d == 6) {
+            if (n >= 3) {
+                ans.push_back(9);
+            }
+        } else {
+            if (n >= 6) {
+                ans.push_back(9);
+            }
+        }
+
+        sort(all(ans));
+        for (int i = 0; i < ans.size(); ++i) (i<ans.size()-1)?cout<<ans[i]<<" ":cout<<ans[i]<<endl;
+            
+        
 }
 
 int main() {
@@ -62,13 +67,13 @@ int main() {
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
     int t;
     cin >> t;
     while (t--) {
-        AKG();
+        solve();
     }
 
     return 0;
