@@ -26,26 +26,38 @@ const int MOD = 998244353;
 const int N = 3e5+5;
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    vi a(n);
-    f(i,0,n) cin>>a[i];
-    vi suf(n+1,0);
-    for(int i=n-1;i>=0;i--) suf[i]=suf[i+1]+(a[i]==a[n-1]);
-    if(a[0]==a[n-1]){
-        if(suf[0]%k==0 or suf[0]>=k){
-           yn(1);
-           return;
+    ll n,x, k;cin >> n >> x >> k;
+    string s;cin >> s;
+    
+    ll pos = x,fst_0 = -1;
+    for (int i = 1; i <= n; i++) {
+        pos += (s[i-1] == 'L' ? -1 : 1);
+        if (pos == 0) {
+            fst_0 = i;
+            break;
         }
     }
-    int cnt=0;
-    for(int i=0;i<=n-2;i++){
-        cnt+=(a[i]==a[0]);
-        if(cnt%k==0 and suf[i+1]>=k){
-           yn(1);
-           return;
+    if (fst_0 == -1 || fst_0 > k) {
+        pr(0);
+        return;
+    }
+    
+    ll tmp = 0, r0 = -1;
+    for (int i = 1; i <= n; i++) {
+        tmp += (s[i-1] == 'L' ? -1 : 1);
+        if (tmp == 0) {
+            r0 = i;
+            break;
         }
     }
-    yn(0);
+    if (r0 == -1) {
+        pr(1);
+        return;
+    }
+    
+    ll z = k - fst_0;
+    ll ans = z / r0;
+    pr(ans+1);
 }
 
 int main() {

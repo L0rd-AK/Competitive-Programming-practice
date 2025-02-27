@@ -4,11 +4,12 @@ using namespace std;
 #ifndef ONLINE_JUDGE
 #define LOCAL
 #endif
-#define ll long long int
+
+#define ll long long
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 #define yn(f) cout << (f ? "YES\n" : "NO\n")
-#define pt(x) cout << x << endl
+#define pr(x) cout << x << endl
 #define all(x) x.begin(), x.end()
 #define vl vector<ll>
 #define vi vector<int>
@@ -18,46 +19,61 @@ using namespace std;
 #ifdef LOCAL
 #include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
 #else
-#define dbg(x...) 
+#define dbg(x...)
 #endif
-// #define N 200005
 
-bool cmp(const pi &a, const pi &b){
-    return a.first > b.first;
-}
+const int MOD = 998244353;
+const int N = 3e5+5;
 
 void AKG() {
-    int n, m;
-    cin >> n >> m;
-    vector<pi> a(n);
-    ll total = 0; 
-    for (int i = 0; i < n; i++){
-        ll sum = 0,val_row = 0,sum2 = 0;
-        for (int j = 0; j < m; j++){
-            int x;cin >> x;
-            sum += x;
-            sum2 += x;
-            val_row += sum2;
+    ll n, x, k;
+    cin >> n >> x >> k;
+    string s;
+    cin >> s;
+    vector<ll> prefix(n + 1, 0LL);
+    for(int i = 1; i <= (int)n; i++) {
+        prefix[i] = prefix[i - 1] + (s[i - 1] == 'L' ? -1LL : 1LL);
+    }
+
+    ll fst_0 = -1;
+    for(int i = 1; i <= (int)n; i++) {
+        if(x + prefix[i] == 0) {
+            fst_0 = i;
+            break;
         }
-        dbg(sum,sum2,val_row);
-        a[i].first = sum;
-        a[i].second = val_row;
-        total += val_row;
-        dbg(total);
-    }
-    sort(all(a),cmp);
-
-    ll xtra = 0;
-    for (int i = 0; i < n; i++){
-        xtra += (ll)(n-1-i) * a[i].first;
     }
 
-    ll ans = total+(m * xtra);
-    pt(ans);
+    if(fst_0 == -1 || fst_0 > k) {
+        cout << 0 << "\n";
+        return;
+    }
+
+    ll resets   = 1;
+    ll timeUsed = fst_0;
+
+    ll t0 = -1;
+    for(int j = 1; j <= (int)n; j++) {
+        if(prefix[j] == 0) {
+            t0 = j;
+            break;
+        }
+    }
+
+    if(t0 == -1) {
+        cout << resets << "\n";
+        return;
+    }
+
+    ll remainingTime = k - timeUsed;
+    ll additionalCycles = remainingTime / t0;
+    resets += additionalCycles;
+
+    cout << resets << "\n";
 }
 
+
 int main() {
-#ifndef ONLINE_JUDGE
+#ifdef LOCAL
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
 
@@ -69,6 +85,6 @@ int main() {
     while (t--) {
         AKG();
     }
-    
+
     return 0;
 }
