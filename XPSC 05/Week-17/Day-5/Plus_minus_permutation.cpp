@@ -26,17 +26,17 @@ const int MOD = 998244353;
 const int N = 3e5+5;
 
 void AKG() {
-    ll n,k;cin>>n>>k;
-    if(n==1){
-        pr(1);pr(1);
-        return;
-    }
-    if(n==k||k==1){
-        pr(-1);
-        return;
-    }
-    pr(3);
-    cout<<1<<" "<<k-k%2<<" "<<k+1+k%2<<endl;
+    ll n,x,y;cin>>n>>x>>y;
+    ll lcm=(x*y)/__gcd(x,y);
+    ll z=n/lcm;
+    x=n/x;
+    y=n/y;
+    x-=z;
+    y-=z;
+    ll zz=(n-x);
+    ll sum1=((n*(n+1))/2)-((zz*(zz+1))/2);
+    ll sum2=(y*(y+1)/2);
+    pr(sum1-sum2);
 }
 
 int main() {
