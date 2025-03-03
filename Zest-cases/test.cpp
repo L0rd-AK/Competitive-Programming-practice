@@ -26,17 +26,14 @@ const int MOD = 998244353;
 const int N = 3e5+5;
 
 void AKG() {
-    ll n,k;cin>>n>>k;
-    if(n==1){
-        pr(1);pr(1);
-        return;
+    int n,x,i=-1,m=0;cin>>n>>x;
+    while(++i<n){
+        if(x!=(x|i))break;m|=i;
+        cout<<(m!=x&&i==n-1?x:i)<<" ";
     }
-    if(n==k||k==1){
-        pr(-1);
-        return;
-    }
-    pr(3);
-    cout<<1<<" "<<k-k%2<<" "<<k+1+k%2<<endl;
+    while(++i<n+1)cout<<x<<" ";
+    cout<<endl;
+
 }
 
 int main() {
