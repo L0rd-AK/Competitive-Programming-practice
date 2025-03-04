@@ -26,13 +26,20 @@ const int MOD = 998244353;
 const int N = 3e5+5;
 
 void AKG() {
-    int n,x,i=-1,m=0;cin>>n>>x;
-    while(++i<n){
-        if(x!=(x|i))break;m|=i;
-        cout<<(m!=x&&i==n-1?x:i)<<" ";
+    int n, m, b = 0;
+    cin >> n >> m;
+    vi a(n);
+    for (int i = 0; i < n; i++) {
+      cin >> a[i];
     }
-    while(++i<n+1)cout<<x<<" ";
-    cout<<endl;
+    
+    sort (all(a));
+    for (int i = 0; i < m; i++) {
+      if (a[i] < 0) {
+        b += abs(a[i]);
+      }
+    }
+    pr(b);
 
 }
 
@@ -45,7 +52,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
