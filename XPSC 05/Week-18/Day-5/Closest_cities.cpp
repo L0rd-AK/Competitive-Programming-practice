@@ -25,21 +25,20 @@ using namespace std;
 const int MOD = 998244353;
 const int N = 3e5+5;
 
+ll a[100005],b[100005],c[100005];
+
 void AKG() {
-  int n,d,k;cin>>n>>d>>k;
-	int a[n+2]={0};
-	for(int i=1;i<=k;i++){
-    int x,y;cin>>x>>y;
-	  a[max(1,x-d+1)]++;
-	  a[y+1]--;
-	}
-  int x=1,y=1;
-	for(int i=1;i<=n-d+1;i++){
-		a[i]+=a[i-1];
-		if(a[i]>a[x])x=i;
-		if(a[i]<a[y])y=i;
-	}
-	cout<<x<<" "<<y<<endl;
+  int n,m;cin>>n;
+  for(int i=1;i<=n;++i)cin>>a[i];
+  for(int i=1;i<n;++i)b[i+1]=(i==1||a[i]-a[i-1]>a[i+1]-a[i]?1:a[i+1]-a[i])+b[i];
+  for(int i=n;i>1;--i)c[i-1]=(i==n||a[i]-a[i-1]<a[i+1]-a[i]?1:a[i]-a[i-1])+c[i];
+  cin>>m;
+  int x,y;
+  while(m--){
+    cin>>x>>y;
+    if(y>x)pr(b[y]-b[x]);
+    else pr(c[y]-c[x]);
+  }
 }
 
 int main() {
