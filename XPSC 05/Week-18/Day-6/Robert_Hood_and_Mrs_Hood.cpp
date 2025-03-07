@@ -26,20 +26,20 @@ const int MOD = 998244353;
 const int N = 3e5+5;
 
 void AKG() {
-  int n,d,k;cin>>n>>d>>k;
-	int a[n+2]={0};
-	for(int i=1;i<=k;i++){
-    int x,y;cin>>x>>y;
-	  a[max(1,x-d+1)]++;
-	  a[y+1]--;
+    int n,k;
+    cin>>n>>k;
+    map<int,int> c;int x;
+	for(int i=1;i<=n;++i)cin>>x,++c[x];
+	int l=-1,r=-1,L=-1,R=-2;
+	for(auto &[s,t]:c){
+		if(t>=k){
+			if(r<s-1)l=r=s;
+			else r=s;
+			if(R-L+1<r-l+1)L=l,R=r;
+		}
 	}
-  int x=1,y=1;
-	for(int i=1;i<=n-d+1;i++){
-		a[i]+=a[i-1];
-		if(a[i]>a[x])x=i;
-		if(a[i]<a[y])y=i;
-	}
-	cout<<x<<" "<<y<<endl;
+	if(L==-1)cout<<-1<<'\n';
+	else cout<<L<<' '<<R<<'\n';
 }
 
 int main() {
