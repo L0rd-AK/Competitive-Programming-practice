@@ -23,28 +23,24 @@ using namespace std;
 #endif
 
 const int MOD = 998244353;
-const int N = 3e5 + 5;
-vi v[N];
-void AKG()
-{
-  int n;
-  cin >> n;
-  for (int i = 1; i <= n; i++)v[i].clear(), v[i].push_back(i);
-  for (int i = 1; i <= n; i++){
-    string s;
-    cin >> s;
-    for (int j = 0; j < n; j++)
-    {
-      if (s[j] == '1')
-        v[j + 1].push_back(i);
-    }
-  }
-  for (int i = 1; i <= n; i++){
-    cout << v[i].size();
-    for (int j : v[i])
-      cout << " " << j;
-    cout << endl;
-  }
+const int N = 1e5 + 5;
+int t,n,m,q,c[N],s[N],a[N],l[N],r[N];
+void AKG(){
+  cin>>n>>m;
+		for(int i=1; i<=m; i++) cin>>l[i]>>r[i];
+		cin>>q;
+		for(int i=1; i<=q; i++) cin>>a[i];
+		int L=1,R=q,mid;
+		while(L<=R){
+			int f=0;
+			mid=(L+R)/2;
+			for(int i=1; i<=n; i++) s[i]=0;
+			for(int i=1; i<=mid; i++) ++s[a[i]];
+			for(int i=1; i<=n; i++) s[i]+=s[i-1];
+			for(int i=1; i<=m; i++) if(2*(s[r[i]]-s[l[i]-1])>r[i]-l[i]+1) R=mid-1,f++;
+			if(!f) L=mid+1;
+		}
+		pr((L==q+1?-1:R+1));
 }
 
 int main()
