@@ -24,27 +24,39 @@ using namespace std;
 
 const int MOD = 998244353;
 const int N = 1e5 + 5;
-int t,n,m,q,c[N],s[N],a[N],l[N],r[N];
+
 void AKG(){
-  cin>>n>>m;
-		for(int i=1; i<=m; i++) cin>>l[i]>>r[i];
-		cin>>q;
-		for(int i=1; i<=q; i++) cin>>a[i];
-		int L=1,R=q,mid;
-		while(L<=R){
-			int f=0;
-			mid=(L+R)/2;
-			for(int i=1; i<=n; i++) s[i]=0;
-			for(int i=1; i<=mid; i++) ++s[a[i]];
-			for(int i=1; i<=n; i++) s[i]+=s[i-1];
-			for(int i=1; i<=m; i++) if(2*(s[r[i]]-s[l[i]-1])>r[i]-l[i]+1) R=mid-1,f++;
-			if(!f) L=mid+1;
+	int n, M;cin >> n >> M;
+
+	vi x(n), r(n);
+	f(i,0,n)cin >> x[i];
+	f(i,0,n)cin >> r[i];
+
+	int mn = INT_MAX, mx = INT_MIN;
+	f(i,0,n){
+		mn=min(mn,x[i]-r[i]);
+		mx=max(mx,x[i]+r[i]);
+	}
+
+	int ans = 0;
+	for(int j = mn; j <= mx; j++){
+		int cnt = -1;
+		f(i,0,n){
+			int dis = abs(j - x[i]);
+			if(dis <= r[i]){
+				int radius = (r[i] * r[i]);
+				int x_dis = dis * dis;
+				int y_dis = radius - x_dis;
+				int c = sqrt(y_dis);
+				if(c > cnt) cnt = c;
+			}
 		}
-		pr((L==q+1?-1:R+1));
+		if(cnt >= 0) ans += (2LL * cnt + 1LL);
+	}
+	pr(ans);
 }
 
-int main()
-{
+int main(){
 #ifdef LOCAL
   freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
@@ -54,8 +66,7 @@ int main()
 
   int t = 1;
   cin >> t;
-  while (t--)
-  {
+  while (t--){
     AKG();
   }
 

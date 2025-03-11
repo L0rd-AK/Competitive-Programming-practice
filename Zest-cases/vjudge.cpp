@@ -1,162 +1,77 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#ifndef ONLINE_JUDGE
+#define LOCAL
+#endif
+
+#define ll long long
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define endl "\n"
+#define yn(f) cout << (f ? "YES\n" : "NO\n")
+#define pr(x) cout << x << "\n"
+#define all(x) x.begin(), x.end()
+#define vl vector<ll>
+#define vi vector<int>
+#define pb push_back
+#define pi pair<ll, ll>
+
+#ifdef LOCAL
+#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
+#else
+#define dbg(x...)
+#endif
+
+const int MOD = 998244353;
+const int N = 1e5 + 5;
+
+void AKG(){
+	ll n, M;cin >> n >> M;
+
+	vector<ll> x(n), r(n);
+	f(i,0,n)cin >> x[i];
+	f(i,0,n)cin >> r[i];
+
+	ll mn = INT_MAX, mx = INT_MIN;
+	for(int i = 0; i < n; i++){
+		ll a  = x[i] - r[i];
+		ll b = x[i] + r[i];
+		if(a  < mn) mn = a;
+		if(b > mx) mx = b;
+	}
+
+	ll ans = 0;
+	for(ll X = mn; X <= mx; X++){
+		ll maxCross = -1;
+		for(int i = 0; i < n; i++){
+			ll distX = llabs(X - x[i]);
+			if(distX <= r[i]){
+				ll radius_sq = r[i] * r[i];
+				ll horizontal_sq = distX * distX;
+				ll vertical_sq = radius_sq - horizontal_sq;
+				ll cross = (ll) floorl( sqrtl((long double)vertical_sq) );
+				if(cross > maxCross) maxCross = cross;
+			}
+		}
+		if(maxCross >= 0) ans += (2LL * maxCross + 1LL);
+	}
+
+	pr(ans);
+}
+
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+#ifdef LOCAL
+  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+#endif
 
-    int n, a, b;
-    cin >> n >> a >> b;
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
 
-    if(n == 1) {
-        if(a == b && a > 0) {
-            cout << 1 << "\n";
-            cout << a << ":" << b << "\n";
-        }
-        else {
-            int draws = (a == b && a == 0) ? 1 : 0;
-            cout << draws << "\n";
-            cout << a << ":" << b << "\n";
-        }
-        return 0;
-    }
+  int t = 1;
+  cin >> t;
+  while (t--){
+    AKG();
+  }
 
-    int totalGoals = a + b;
-    int forcedDraws = 0;
-    if(totalGoals < n){
-        forcedDraws = n - totalGoals;
-    }
-
-    cout << forcedDraws << "\n";
-
-    vector<pair<int,int>> matches(n, {0,0});
-
-    for(int i = 0; i < forcedDraws; i++){
-        matches[i] = {0, 0};
-    }
-
-    int m = n - forcedDraws;
-
-    if(m == 0){
-        for(int i = 0; i < n; i++){
-            cout << matches[i].first << ":" << matches[i].second << "\n";
-        }
-        return 0;
-    }
-
-    bool usedA = false;
-    bool usedB = false;
-
-    int startIndex = forcedDraws;
-    for(int i = 0; i < m; i++){
-        int idx = startIndex + i;
-        if(!usedA && a > 0) {
-            matches[idx].first = 1;
-            a--;
-            usedA = true;
-        }
-        else if(!usedB && b > 0) {
-            matches[idx].second = 1;
-            b--;
-            usedB = true;
-        }
-        else {
-            if(a >= b && a > 0) {
-                matches[idx].first = 1; 
-                a--;
-            } else if(b > 0) {
-                matches[idx].second = 1;
-                b--;
-            }
-        }
-    }
-
-    auto tryAddA = [&](int i){
-        if(a == 0) return;
-        int x = matches[i].first;
-        int y = matches[i].second;
-        if(x > y) {
-            matches[i].first += a;
-            a = 0;
-        }
-        else if(x < y) {
-            int diff = y - x;
-            if(a > diff) {
-                matches[i].first += a;
-                a = 0;
-            }
-            else if(a == diff) {
-            }
-            else {
-                matches[i].first += a;
-                a = 0;
-            }
-        }
-        else {
-            if(a > 0) {
-                matches[i].first += a; 
-                a = 0;
-            }
-        }
-    };
-
-    auto tryAddB = [&](int i){
-        if(b == 0) return;
-        int x = matches[i].first;
-        int y = matches[i].second;
-        if(y > x) {
-            matches[i].second += b;
-            b = 0;
-        }
-        else if(y < x) {
-            int diff = x - y;
-            if(b > diff) {
-                matches[i].second += b;
-                b = 0;
-            }
-            else if(b == diff) {
-            }
-            else {
-                matches[i].second += b;
-                b = 0;
-            }
-        }
-        else {
-            if(b > 0) {
-                matches[i].second += b;
-                b = 0;
-            }
-        }
-    };
-
-    bool changed = true;
-    while((a > 0 || b > 0) && changed){
-        changed = false;
-        if(a > 0){
-            for(int i = startIndex; i < n; i++){
-                int oldA = a;
-                tryAddA(i);
-                if(a < oldA){
-                    changed = true;
-                    if(a == 0) break;
-                }
-            }
-        }
-        if(b > 0){
-            for(int i = startIndex; i < n; i++){
-                int oldB = b;
-                tryAddB(i);
-                if(b < oldB){
-                    changed = true;
-                    if(b == 0) break;
-                }
-            }
-        }
-    }
-
-    for(auto &pr : matches){
-        cout << pr.first << ":" << pr.second << "\n";
-    }
-
-    return 0;
+  return 0;
 }
