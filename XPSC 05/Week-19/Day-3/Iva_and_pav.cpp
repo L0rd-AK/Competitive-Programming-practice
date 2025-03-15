@@ -24,34 +24,22 @@ using namespace std;
 
 const int MOD = 998244353;
 const int N = 2e5 + 5;
-int s[N][32];
-int l,k;
-bool check(int mid){
-	int num=0;
-	for(int i=0;i<=31;i++)
-		if(s[mid+1][i]-s[l][i]==mid-l+1)  num|=1<<i;
-	return num>=k;
-}
+
 void AKG(){	
-	int n;cin>>n;
-	for(int i=1;i<=n;i++){
-		int x;cin>>x;
-		for(int j=0;j<=31;j++)  s[i][j]=s[i-1][j]+(x>>j&1);
+	string s, s1, a;
+	int n, count = 0;
+	map<string, int> m;
+	cin >> n>> s;
+	for (int i = 0; i < n - 1; i++) {
+		m[s.substr(i, 2)] ++;
 	}
-	int q;cin>>q;
-	while(q--){
-		cin>>l>>k;
-		l--;
-		int L=l,R=n-1;
-		while(L<=R){
-			int mid=L+(R-L)/2;
-			if(check(mid))  L=mid+1;
-			else  R=mid-1;
+	for (auto i : m) {
+		if (i.second > count) {
+			count = i.second;
+			a = i.first;
 		}
-		if(R<l)  cout<<-1<<" ";
-		else  cout<<R+1<<" ";
 	}
-	cout<<endl;
+	pr(a);
 }
 
 int main(){
@@ -63,7 +51,7 @@ int main(){
   cin.tie(0);
 
   int t = 1;
-  cin >> t;
+//   cin >> t;
   while (t--){
     AKG();
   }
