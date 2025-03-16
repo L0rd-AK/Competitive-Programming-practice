@@ -24,34 +24,35 @@ using namespace std;
 
 const int MOD = 998244353;
 const int N = 2e5 + 5;
-int s[N][32];
-int l,k;
-bool check(int mid){
-	int num=0;
-	for(int i=0;i<=31;i++)
-		if(s[mid+1][i]-s[l][i]==mid-l+1)  num|=1<<i;
-	return num>=k;
-}
+
+ll flor(ll x, ll k) {
+	if(k >= 63) return 0;
+	return x >> k;
+  }
+  
+  ll ceilll(ll x, ll k) {
+	if(k >= 63) return (x > 0 ? 1 : 0);
+	return (x + ((ll)1 << k) - 1) >> k;
+  }
+
 void AKG(){	
-	int n;cin>>n;
-	for(int i=1;i<=n;i++){
-		int x;cin>>x;
-		for(int j=0;j<=31;j++)  s[i][j]=s[i-1][j]+(x>>j&1);
-	}
-	int q;cin>>q;
-	while(q--){
-		cin>>l>>k;
-		l--;
-		int L=l,R=n-1;
-		while(L<=R){
-			int mid=L+(R-L)/2;
-			if(check(mid))  L=mid+1;
-			else  R=mid-1;
-		}
-		if(R<l)  cout<<-1<<" ";
-		else  cout<<R+1<<" ";
-	}
-	cout<<endl;
+	ll x, n, m;
+  cin >> x >> n >> m;
+  
+  ll zz;
+  if(n >= 63) zz = 0;
+  else {
+    ll tmp = x >> n;
+    zz = ceilll(tmp, m);
+  }
+  
+  ll tmp = flor(ceilll(x, m), n);
+  
+  ll mx = max(zz, tmp);
+  ll mn = min(zz, tmp);
+  
+  cout << mn<< " " << mx << "\n";
+	
 }
 
 int main(){

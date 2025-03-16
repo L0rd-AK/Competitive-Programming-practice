@@ -1,24 +1,46 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
+#define ll long long
 
-using ll = long long;
+ll safeFloorShift(ll x, ll k) {
+  if(k >= 63) return 0;
+  return x >> k;
+}
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+ll safeCeilShift(ll x, ll k) {
+  if(k >= 63) return (x > 0 ? 1 : 0);
+  return (x + ((ll)1 << k) - 1) >> k;
+}
+
+void solve(){
+  ll x, n, m;
+  cin >> x >> n >> m;
+  
+  ll optionA;
+  if(n >= 63) {
+    optionA = 0;
+  } else {
+    ll tmp = x >> n;
+    optionA = safeCeilShift(tmp, m);
+  }
+  
+  ll optionB = safeFloorShift(safeCeilShift(x, m), n);
+  
+  ll maximum = max(optionA, optionB);
+  ll minimum = min(optionA, optionB);
+  
+  cout << maximum << " " << minimum << "\n";
+}
+
+int main(){
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
   freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    
-    int T;
-    cin >> T;
-    while (T--) {
-        ll N;
-        cin >> N;
-        ll m = N / 2;
-        ll term1 = N * m * (m + 1) / 2;
-        ll term2 = -(m * (m + 1) * (2 * m + 1)) / 6;
-        ll term3 = m + 1;
-        ll sum = term1 + term2 + term3;
-        cout << sum << '\n';
-    }
-    return 0;
+
+  int t; 
+  cin >> t;
+  while(t--) {
+    solve();
+  }
+  return 0;
 }
