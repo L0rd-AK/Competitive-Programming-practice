@@ -25,49 +25,40 @@ using namespace std;
 const int MOD = 998244353;
 const int N = 2e5 + 5;
 
-ll flor(ll x, ll k) {
-	if(k >= 63) return 0;
-	return x >> k;
-  }
-  
-  ll ceilll(ll x, ll k) {
-	if(k >= 63) return (x > 0 ? 1 : 0);
-	return (x + ((ll)1 << k) - 1) >> k;
-  }
-
-void AKG(){	
-	ll x, n, m;
-  cin >> x >> n >> m;
-  
-  ll zz;
-  if(n >= 63) zz = 0;
-  else {
-    ll tmp = x >> n;
-    zz = ceilll(tmp, m);
-  }
-  
-  ll tmp = flor(ceilll(x, m), n);
-  
-  ll mx = max(zz, tmp);
-  ll mn = min(zz, tmp);
-  
-  cout << mn<< " " << mx << "\n";
-	
+void AKG(){
+    ll n,k;cin>>n>>k;
+    vl v(n);
+    f(i,0,n)cin>>v[i];
+    if(k==1){
+      ll mxval=v[0]+v[n-1];
+      for(ll i=1;i<n-1;i++){
+         mxval = max(mxval,v[i]+max(v[0],v[n-1]));
+      }
+      cout<<mxval<<endl;
+    }
+    else{
+     sort(v.rbegin(),v.rend());
+     ll sum=0;
+     for(ll i=0;i<=k;i++){
+        sum+=v[i];
+     }
+     pr(sum);
+    } 
 }
 
 int main(){
 #ifdef LOCAL
-  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
 
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
-  int t = 1;
-  cin >> t;
-  while (t--){
-    AKG();
-  }
+    int t = 1;
+    cin >> t;
+    while (t--){
+        AKG();
+    }
 
-  return 0;
+    return 0;
 }

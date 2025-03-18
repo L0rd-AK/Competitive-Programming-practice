@@ -1,93 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+#ifndef ONLINE_JUDGE
+#define LOCAL
+#endif
 #define ll long long
-#define INF INT_MAX
-
-class SegmentTree {
-private:
-  vector<int> tree;
-  int n;
-
-  void build(vector<int> &arr, int node, int start, int end) {
-    if (start == end) {
-      tree[node] = arr[start];
-    } else {
-      int mid = (start + end) / 2;
-      build(arr, 2 * node + 1, start, mid);
-      build(arr, 2 * node + 2, mid + 1, end);
-      tree[node] = min(tree[2 * node + 1], tree[2 * node + 2]);
+#define f(x1,y1,z1) for (int x1 = y1; x1 < z1; x1++)
+#define endl "\n"
+#define yn(f) cout << (f ? "YES\n" : "NO\n")
+#define pr(x) cout << x << "\n"
+#define all(x) x.begin(), x.end()
+#define vl vector<ll>
+#define vi vector<int>
+#define pb push_back
+#define pi pair<ll, ll>
+#ifdef LOCAL
+#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
+#else
+#define dbg(x...)
+#endif
+const int MOD = 998244353;
+const int N = 2e5 + 5;
+void AKG(){
+    
+}
+int main(){
+#ifdef LOCAL
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+#endif
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int t = 1;
+    cin >> t;
+    while(t--){
+        AKG();
     }
-  }
-
-  void update(int node, int start, int end, int idx, int value) {
-    if (start == end) {
-      tree[node] = value;
-    } else {
-      int mid = (start + end) / 2;
-      if (idx <= mid)
-        update(2 * node + 1, start, mid, idx, value);
-      else
-        update(2 * node + 2, mid + 1, end, idx, value);
-      tree[node] = min(tree[2 * node + 1], tree[2 * node + 2]);
-    }
-  }
-
-  int query(int node, int start, int end, int l, int r) {
-    if (r < start || end < l)
-      return INF;
-    if (l <= start && end <= r)
-      return tree[node];
-
-    int mid = (start + end) / 2;
-    int leftMin = query(2 * node + 1, start, mid, l, r);
-    int rightMin = query(2 * node + 2, mid + 1, end, l, r);
-    return min(leftMin, rightMin);
-  }
-
-public:
-  SegmentTree(vector<int> &arr) {
-    n = arr.size();
-    tree.resize(4 * n, INF);
-    build(arr, 0, 0, n - 1);
-  }
-
-  void update(int idx, int value) {
-    update(0, 0, n - 1, idx, value);
-  }
-
-  int query(int l, int r) {
-    return query(0, 0, n - 1, l, r);
-  }
-};
-
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
-  //freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-
-  int n, m;
-  cin >> n >> m;
-  vector<int> arr(n);
-
-  for (int i = 0; i < n; i++)
-    cin >> arr[i];
-
-  SegmentTree segTree(arr);
-
-  while (m--) {
-    int type;
-    cin >> type;
-    if (type == 1) {
-      int i, v;
-      cin >> i >> v;
-      segTree.update(i, v);
-    } else if (type == 2) {
-      int l, r;
-      cin >> l >> r;
-      cout << segTree.query(l, r - 1) << "\n";
-    }
-  }
-
-  return 0;
+    return 0;
 }
