@@ -24,21 +24,23 @@ using namespace std;
 
 const int MOD = 998244353;
 const int N = 2e5 + 5;
-ll n,m,l,ss,su,a1;
-const ll k=998244353,n2=(k+1)/2;
-string a;
+int i,j,k,n,m,t,sz[N+50],res;
 void AKG() {
-    cin>>n>>m;ss=1;
-    cin>>a;su=0;su+=a[0]-'0';
-    for(int i=1;i<=n-1;i++)ss=ss*2%k,su+=a[i]-'0';
-    su=su*2-n;
-    for(int i=1;i<=m;i++){
-        cin>>a1;
-        if(a[a1-1]=='0')a[a1-1]='1',su+=2;
-        else a[a1-1]='0',su-=2;
-        cout<<ss*((su*su+n-2+k)%k)%k*n2%k*n2%k*n2%k<<'\n';
+    cin>>n;
+    map<pair<int,int>,int > mp; res=0;
+    vector<pair<int,int> > q;
+    for(i=1;i<n;i++){
+        cin>>j>>k; sz[j]++; sz[k]++;
+        mp[{j,k}]=mp[{k,j}]=1;
     }
-
+    for(i=1;i<=n;i++)q.push_back({sz[i],i});
+    sort(q.rbegin(),q.rend());
+    if(n>=4)q.resize(4);
+    for(auto [a,b]:q)for(int d=1;d<=n;d++)if(b!=d){
+        res=max(res,a+sz[d]-1-!!mp.count({b,d}));
+    }
+    cout<<res<<'\n';
+    for(i=1;i<=n;i++)sz[i]=0;
 }
 
 int main() {
