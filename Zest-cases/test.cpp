@@ -22,35 +22,16 @@ using namespace std;
 #define dbg(x...)
 #endif
 
-const int MOD = 998244353;
-const int N = 2e5 + 5;
-
-vector<int> smallestPrimeFactor(int n) {
-    vector<int> spf(n + 1);
-    iota(spf.begin(), spf.end(), 0); // Initialize spf[i] = i
-    for (int i = 2; i * i <= n; ++i) {
-        if (spf[i] == i) { // i is prime
-            for (int j = i * i; j <= n; j += i) {
-                if (spf[j] == j) {
-                    spf[j] = i; // Mark smallest prime factor
-                }
-            }
-        }
-    }
-    return spf;
-}
+const int MOD = 1e9+7;
+const int N = 5e8+4;
 
 void AKG() {
-    int n;
-    cin >> n;
-    vector<int> spf = smallestPrimeFactor(n);
-    long long ans = 0;
-    for (int i = 2; i <= n; ++i) {
-        if (spf[i] == i) { // Check if i is prime
-            ans += n / i;
-        }
-    }
-    pr(ans);
+    ll ans=0, n;
+    string s;
+    cin>>n>>s;
+    s=" "+s;
+    for(int i = n;i>1;i--)ans=(ans+s[i]-'0')*N%MOD;
+    cout<<(n-1+ans)%MOD<<endl;
 }
 
 int main() {
