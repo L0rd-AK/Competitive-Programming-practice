@@ -25,26 +25,32 @@ using namespace std;
 const int MOD = 998244353;
 const int N = 2e5 + 5;
 
-bool zzz(int x){
-	for(int i=2;i*i<=x;i++)
-		if(x%i==0)return 0;
-	return 1;
+vector<int> smallestPrimeFactor(int n) {
+    vector<int> spf(n + 1);
+    iota(spf.begin(), spf.end(), 0); // Initialize spf[i] = i
+    for (int i = 2; i * i <= n; ++i) {
+        if (spf[i] == i) { // i is prime
+            for (int j = i * i; j <= n; j += i) {
+                if (spf[j] == j) {
+                    spf[j] = i; // Mark smallest prime factor
+                }
+            }
+        }
+    }
+    return spf;
 }
 
 void AKG() {
-	int n;
-	cin>>n;
-	vi a;
-	int s=n/2;
-	while(!zzz(s))s++;
-	a.push_back(s);
-	for(int i=1;s+i<=n||s-i>=1;i++){
-		if(s+i<=n)a.push_back(s+i);
-		if(s-i>=1)a.push_back(s-i);
-	}
-	for(int x:a)
-		cout<<x<<' ';
-	cout<<endl;
+    int n;
+    cin >> n;
+    vector<int> spf = smallestPrimeFactor(n);
+    long long ans = 0;
+    for (int i = 2; i <= n; ++i) {
+        if (spf[i] == i) { // Check if i is prime
+            ans += n / i;
+        }
+    }
+    pr(ans);
 }
 
 int main() {
