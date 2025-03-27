@@ -26,12 +26,8 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    ll ans=0, n;
-    string s;
-    cin>>n>>s;
-    s=" "+s;
-    for(int i = n;i>1;i--)ans=(ans+s[i]-'0')*N%MOD;
-    cout<<(n-1+ans)%MOD<<endl;
+    int n;cin>>n;
+    yn(n%2020<=n/2020);
 }
 
 int main() {
