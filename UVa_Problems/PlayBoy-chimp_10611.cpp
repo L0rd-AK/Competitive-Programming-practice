@@ -28,7 +28,7 @@ void PlayBoyChimp(vector<int> a,int lo,int hi,int key){
 
 int main() 
 {
-  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+  //freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
   cin>>n;
   vector<int> g;   
   int x,temp=-1;

@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+    //freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
     int t;
     cin>>t;
     while (t--)

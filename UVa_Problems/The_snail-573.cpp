@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    freopen("input.txt", "r", stdin);
+    //freopen("input.txt", "r", stdin);
     while (1)
     {
         double wallHeight,intialHeight,slid,ftig;

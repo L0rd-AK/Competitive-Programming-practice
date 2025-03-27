@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    freopen("input.txt", "r", stdin);
+    //freopen("input.txt", "r", stdin);
     string s;
     int flag=0;
     while (getline(cin,s))
@@ -21,6 +21,6 @@ int main()
     }
     
 
-    freopen("output.txt","w",stdout);
+    //freopen("output.txt","w",stdout);
     return 0;
 }

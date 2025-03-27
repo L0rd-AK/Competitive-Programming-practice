@@ -4,8 +4,8 @@ using namespace std;
 
 int main() 
 {
-  freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
-  freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
+  //freopen("D:\\VS-Code\\Competitive programming practice\\input.txt","r",stdin);
+  //freopen("D:\\VS-Code\\Competitive programming practice\\output.txt","w",stdout);
   int t,index=1;
   cin>>t;
   while(t--){
