@@ -26,8 +26,19 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int n;cin>>n;
-    yn(n%2020<=n/2020);
+    int n,t;cin>>n>>t;
+    vi a(n);
+    f(i,0,n-1) cin>>a[i];
+    int i = a[0];
+    while(1) {
+        if (i == t) {
+            yn(1);
+            return;
+        }
+        if(i>=n)break;
+        i+= a[i];
+    }
+    yn(0);
 }
 
 int main() {
@@ -39,7 +50,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
