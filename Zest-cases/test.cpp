@@ -26,18 +26,18 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int n,t;cin>>n>>t;
-    vi a(n);
-    f(i,0,n-1) cin>>a[i];
-    int i = a[0];
-    while(1) {
-        if (i == t) {
-            yn(1);
-            return;
-        }
-        if(i>=n)break;
-        i+= a[i];
-    }
+   int n, t; cin >> n >> t;
+   vi a(n+1);
+   for(int i = 1; i < n; i++) cin >> a[i];
+   for(int i = 1; i <= n; ){
+   	if(i == t){
+   		yn(1);
+   		return;
+   	}
+   	if(i >= n) break;
+   	i += a[i];
+   }
+   
     yn(0);
 }
 
