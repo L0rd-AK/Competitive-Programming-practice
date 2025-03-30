@@ -26,19 +26,29 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-   int n, t; cin >> n >> t;
-   vi a(n+1);
-   for(int i = 1; i < n; i++) cin >> a[i];
-   for(int i = 1; i <= n; ){
-   	if(i == t){
-   		yn(1);
-   		return;
-   	}
-   	if(i >= n) break;
-   	i += a[i];
-   }
-   
-    yn(0);
+    int n;cin>>n;
+    vi a,b;
+    f(i, 0, n){
+        int x;cin>>x;
+        if(x%2==0) a.pb(x);
+        else b.pb(x);
+    }
+    sort(all(a),greater<int>());
+    sort(all(b),greater<int>());
+    if(a.size()==0){
+        pr(b[0]);
+        return;
+    }
+    ll sum=0;
+    int sz=min(a.size(),b.size());
+    if(sz%2==0 && b.size()>sz)sum+=b[sz-1];
+    else sz--;
+    f(i, 0, sz){
+        sum+=a[i]+b[i];
+    }
+    if(a.size()==0)sum=b[0];
+    pr(sum);
+
 }
 
 int main() {
@@ -50,7 +60,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
