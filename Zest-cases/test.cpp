@@ -27,24 +27,15 @@ const int N = 5e8+4;
 
 void AKG() {
     int n;cin>>n;
-    int a[n+1],b[n+1];
-    for(int i=1;i<=n;i++)b[i]=0;
-    for(int i=1;i<=n;i++)cin>>a[i],b[a[i]]++;
-    int ans=0,l=0,r=0;
-    for(int i=1;i<=n;i++){
-        if(b[a[i]]==1){
-            int j=i;
-            while(j<n&&b[a[j+1]]==1)j++;
-            if(j-i+1>ans){
-                ans=j-i+1;
-                l=i;
-                r=j;
-            }
-            i=j;
-        }
+    ll a, s = 0, m = 0, k = 0;
+    for(int i=0;i<n;i++) {
+        cin>>a;
+        s+=a;
+        k+=a&1;
+        m=max(m,a);
     }
-    if(!ans)pr(0);
-    else cout<<l<<" "<<r<<endl;
+    if(k==0||k==n)pr(m);
+    else pr(s+1-k);
 }
 
 int main() {
