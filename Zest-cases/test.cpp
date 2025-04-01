@@ -26,15 +26,8 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    // vl a;
-    // int i=1;
-    // while(1){
-    //     if(a.size()==1501)break;
-    //     if(i%2==0 || i%3==0 || i%5==0)a.pb(i);
-    //     i++;
-    // }
-    cout<<"The 1500'th ugly number is 859963392.\n";
-    // pr(a[1500]);
+//    string s;cin>>s;
+printf("36.102143 -115.174494\n");
 }
 
 int main() {
