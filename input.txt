@@ -1,1 +1,2 @@
-Hello! Can you please tell me how many tests does this problem have?
+8
+87 87 87 88 41 38 41 38
