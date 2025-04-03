@@ -26,28 +26,10 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int n;cin>>n;
-    vi a(n);
-    map<int, int> m;
-    f(i, 0, n) {
-        cin >> a[i];
-        m[a[i]]++;
-    }
-    int idx=1;
-    for(auto i : m){
-        int cnt=1;
-        for(int j = 0; j < n; j++){
-            if(a[j] == i.first){
-                a[j] = idx;
-                cnt++;
-            }
-        }
-        idx+=cnt;
-    }
-    for(auto i : a){
-        cout<<i<<endl;
-    }
-    
+    string a,b;cin>>a>>b;
+    reverse(all(b));
+    int z=stoi(b)+stoi(a);
+    cout<<z<<endl;
 }
 
 int main() {
