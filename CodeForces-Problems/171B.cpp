@@ -26,8 +26,9 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    ll n;cin>>n;
-    pr(n*2);
+    ll n;
+	cin >> n;
+	cout <<1+12*(n*(n-1)/2)<<endl;
 }
 
 int main() {
@@ -39,7 +40,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--) {
         AKG();
     }
