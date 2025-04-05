@@ -14,6 +14,7 @@ void findTurnAroundTime(int bt[], int n, int wt[], int tat[]) {
     }
 }
 
+
 void findAvgTime(int bt[], int n) {
     int wt[n], tat[n];
     int total_wt = 0, total_tat = 0;
