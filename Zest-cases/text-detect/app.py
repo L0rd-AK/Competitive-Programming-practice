@@ -27,8 +27,7 @@ rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (18, 18))
 dilation = cv2.dilate(thresh1, rect_kernel, iterations = 1)
 
 # Finding contours
-contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, 
-                                                 cv2.CHAIN_APPROX_NONE)
+contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
 # Creating a copy of image
 im2 = img.copy()
