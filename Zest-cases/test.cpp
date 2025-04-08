@@ -25,11 +25,15 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 5e8+4;
 
+string s[] = {"Washington","Adams","Jefferson","Madison","Monroe","Adams","Jackson","Van Buren","Harrison","Tyler",
+    "Polk","Taylor","Fillmore","Pierce","Buchanan","Lincoln","Johnson","Grant","Hayes","Garfield","Arthur",
+    "Cleveland","Harrison","Cleveland","McKinley","Roosevelt","Taft","Wilson","Harding","Coolidge","Hoover","Roosevelt",
+    "Truman","Eisenhower","Kennedy","Johnson","Nixon","Ford","Carter","Reagan","Bush","Clinton","Bush","Obama"};
+
 void AKG() {
     int n;
     cin >> n;
-    if (n == 5) cout << 1;
-    else cout << n % 3 + 1;
+    cout << s[n - 1];
 }
 
 int main() {
