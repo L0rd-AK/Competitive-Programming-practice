@@ -26,19 +26,7 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int a0, a1, a2, a3, a4;
-    cin >> a0 >> a1 >> a2 >> a3 >> a4;
-    a2 /= 2;
-    a3 /= 7;
-    a4 /= 4;
-    vi v;
-    v.push_back(a0);
-    v.push_back(a1);
-    v.push_back(a2);
-    v.push_back(a3);
-    v.push_back(a4);
-    sort (all(v));
-    cout << v[0];
+    cout << "safety\n";
 }
 
 int main() {
