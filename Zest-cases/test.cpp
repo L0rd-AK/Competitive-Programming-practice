@@ -27,13 +27,17 @@ const int N = 5e8+4;
 
 void AKG() {
     int n,k;cin>>n>>k;
+    if(n==1 && k==1){
+        cout<<"NO\n";
+        return;
+    }
     int c=0;
     for(int i=2;i*i<=n;i++){
         if(n%i==0){
             c++;
         }
     }
-    yn(c==0 && k==1);
+    yn(n*k==2 || c==0 && k==1);
 }
 
 int main() {
