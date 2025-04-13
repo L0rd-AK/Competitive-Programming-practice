@@ -25,19 +25,42 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 5e8+4;
 
-void AKG() {
-    int n,k;cin>>n>>k;
-    if(n==1 && k==1){
-        cout<<"NO\n";
-        return;
-    }
-    int c=0;
-    for(int i=2;i*i<=n;i++){
-        if(n%i==0){
-            c++;
+vector<pair<char, int>> func(const string &x) {
+    vector<pair<char, int>> res;
+    if(x.empty()) return res;
+    int cnt = 1, n = x.size();
+    for (int i = 1; i < n; i++) {
+        if(x[i] == x[i-1])
+            cnt++;
+        else {
+            res.push_back({x[i-1], cnt});
+            cnt = 1;
         }
     }
-    yn(n*k==2 || c==0 && k==1);
+    res.push_back({x.back(), cnt});
+    return res;
+}
+void AKG() {
+    string a, b;
+    cin >> a >> b;
+    if(b.size() < a.size() || b.size() > 2 * a.size()){
+        yn(0);
+        return;
+    }
+    vector<pair<char,int>> v = func(a);
+    vector<pair<char,int>> w = func(b);
+    if(v.size() != w.size()){
+        yn(0);
+        return;
+    }
+    bool ok = true;
+    for(int i = 0; i < v.size(); i++){
+        if(v[i].first != w[i].first || w[i].second < v[i].second || w[i].second > 2 * v[i].second){
+            ok = false;
+            break;
+        }
+    }
+    yn(ok);
 }
 
 int main() {
@@ -49,7 +72,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t; 
+    cin >> t;
     while (t--) {
         AKG();
     }
