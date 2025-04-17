@@ -1,0 +1,7 @@
+mytype a;
+a = 10;
+mytype b;
+b = a + 5 * 2;
+show(a);
+show(b);
+(a + b) / 3;
