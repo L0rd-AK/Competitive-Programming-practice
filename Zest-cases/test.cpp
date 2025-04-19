@@ -26,7 +26,12 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    cout<<"security";
+    int x, y, a;
+    std::cin >> x >> y >> a;
+    a = a % (x + y);
+    a -= x;
+    if (a < 0)cout << "NO\n";
+    else cout << "YES\n";
 }
 
 int main() {
@@ -38,7 +43,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    // cin >> t; 
+    cin >> t; 
     while (t--) {
         AKG();
     }
