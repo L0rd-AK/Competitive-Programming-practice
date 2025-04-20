@@ -26,12 +26,22 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int x, y, a;
-    std::cin >> x >> y >> a;
-    a = a % (x + y);
-    a -= x;
-    if (a < 0)cout << "NO\n";
-    else cout << "YES\n";
+    int n;cin >> n;
+    string s;cin >> s;
+    int l = 1, r = n;
+    vi ans(n);
+    for (int i = n - 1; i >= 0; --i) {
+        if (s[i - 1] == '<') {
+            ans[i] = l++;
+        } else {
+            ans[i] = r--;
+        }
+    }
+    ans[0] = l--;
+    f(i,0,n) {
+        cout << ans[i] << " ";
+    }
+    cout << endl;
 }
 
 int main() {
