@@ -26,8 +26,25 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int n;cin>>n;
-    yn(n==15 || n==20 || n==21);
+    int n,m;cin>>n>>m;
+    char a[n][m];
+    f(i,0,n) {
+        f(j,0,m) {
+            cin>>a[i][j];
+        }
+    }
+    bool ok=1;
+    for(int i=n-1;i>0;i--) {
+        for(int j=m-1;j>0;j--) {
+            if(a[i][j]=='1') {
+                if(a[i][j-1]=='0' && a[i-1][j]=='0') {
+                    ok=0;
+                    break;
+                }
+            }
+        }
+    }
+    yn(ok);
 }
 
 int main() {
@@ -39,7 +56,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    //cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
