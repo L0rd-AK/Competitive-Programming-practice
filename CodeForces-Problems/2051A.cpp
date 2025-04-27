@@ -26,53 +26,18 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int a,b,c,n;cin>>n>>a>>b>>c;
-    int sum=a+b+c;
+    int n;cin>>n;
+    vector<int> a(n), b(n);
+    f(i, 0, n) cin >> a[i];
+    f(i, 0, n) cin >> b[i];
     int ans=0;
-    if(sum==n){
-        pr(3);
-        return;
-    }
-    if(sum>n){
-        n-=a;ans++;
-        if(n<=0){
-            pr(ans);
-            return;
-        }
-        n-=b;ans++;
-        if(n<=0){
-            pr(ans);
-            return;
-        }
-        n-=c;ans++;
-        if(n<=0){
-            pr(ans);
-            return;
+    f(i,0,n-1){
+        if(a[i] > b[i+1]){
+            ans+=a[i]-b[i+1];
         }
     }
-    if(sum<n){
-        ans+=(n/sum)*3;
-        int rem=n%sum;
-        if(rem==0){
-            pr(ans);
-            return;
-        }
-        rem-=a;ans++;
-        if(rem<=0){
-            pr(ans);
-            return;
-        }
-        rem-=b;ans++;
-        if(rem<=0){
-            pr(ans);
-            return;
-        }
-        rem-=c;ans++;
-        if(rem<=0){
-            pr(ans);
-            return;
-        }
-    }
+    ans+=a[n-1];
+    pr(ans);
 }
 
 int main() {
