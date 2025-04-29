@@ -24,29 +24,8 @@ using namespace std;
 
 const int MOD = 1e9+7;
 const int N = 1e6+5;
-
 void AKG() {
-    ll n;cin>>n;
-    if(n==1) {
-        cout<<-1<<endl;
-        return;
-    }
-    if(n==2){
-        cout<<2<<" "<<1<<endl;
-        return;
-    }
-    ll z=n*(n+1)/2;
-    ll s=sqrt(z);
-    if(s*s==z) {
-        cout<<-1<<endl;
-        return;
-    }
-    ll x=0;
-    for(ll i=1; i<=n;i++){
-    if((ll)sqrt(x+i)*(ll)sqrt(x+i)!=x+i){x+=i;cout<<i<<" ";}
-    else {cout<<i+1<<" "<<i<<" ";x+=i+1;x+=i;i++; }
-    }
-    cout<<endl;
+    
 }
 
 int main() {
@@ -58,7 +37,7 @@ int main() {
     cin.tie(0);
     
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         AKG();
     }
