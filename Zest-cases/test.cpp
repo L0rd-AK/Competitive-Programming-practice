@@ -25,7 +25,18 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
-    
+    int n,m,k;cin>>n>>m>>k;
+    vi a(n+1,0), b(m);
+    f(i,0,m)cin>>b[i];
+    f(i,0,k) {
+        int x;cin>>x;
+        a[x]++;
+    }
+    for(int i:b){
+        if(k<n-1)cout<<0;
+        else if(k==n)cout<<1;
+        else cout<<!a[i];
+    }cout<<endl;
 }
 
 int main() {
@@ -37,7 +48,7 @@ int main() {
     cin.tie(0);
     
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         AKG();
     }
