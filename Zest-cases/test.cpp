@@ -25,19 +25,17 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
-    ll n;cin>>n;
-    if(n%2==0){
-        cout<<-1<<endl;
-        return;
-    }
-    if(n==3){
-        cout<<3<<" "<<2<<" "<<1<<endl;
-        return;
-    }
-    cout<<n<<" "<<1<<" ";
-    f(i,2,n)cout<<i<<" ";
-    cout<<endl;
-
+    string s1, s2;
+    cin>>s1>>s2;
+    int a=0,b=0;
+	for(int i=0;i<s1.size();i+=2){
+		if(s1[i]==s2[i]) continue;
+        if((s1[i]=='('&&s2[i]=='8')||(s1[i]=='8'&&s2[i]=='[')||(s1[i]=='['&&s2[i]=='(')) a++;
+	    else b++;
+	}
+	if(a>b)pr("TEAM 1 WINS");
+	else if(a<b) pr("TEAM 2 WINS");
+	else pr("TIE");
 }
 
 int main() {
@@ -49,7 +47,7 @@ int main() {
     cin.tie(0);
     
     int t = 1;
-    cin >> t;
+    // cin >> t; 
     while (t--) {
         AKG();
     }
