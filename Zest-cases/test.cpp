@@ -25,12 +25,7 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
-    int n;cin>>n;
-    cout<<"1 ";
-    for(int i=1;i<n-1;i++){
-        cout<<i<<" ";
-    }
-    cout<<1<<endl;
+    cout<<0<<endl;
 }
 
 int main() {
@@ -42,7 +37,7 @@ int main() {
     cin.tie(0);
     
     int t = 1;
-    cin >> t; 
+    // cin >> t; 
     while (t--) {
         AKG();
     }
