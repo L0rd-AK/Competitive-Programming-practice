@@ -25,7 +25,15 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
-    cout<<0<<endl;
+    int n;cin>>n;
+    vi t(n);
+	f(i,0,n)cin>>t[i];
+	for(int i=n; i>0; i/=2)
+		for(int j=0; j<n; j+=i)
+			if (is_sorted(t.begin()+j,t.begin()+j+i)) {
+				cout<<i;
+				return;
+			}
 }
 
 int main() {
