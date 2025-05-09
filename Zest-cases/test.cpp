@@ -26,14 +26,21 @@ const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
     int n;cin>>n;
-    vi t(n);
-	f(i,0,n)cin>>t[i];
-	for(int i=n; i>0; i/=2)
-		for(int j=0; j<n; j+=i)
-			if (is_sorted(t.begin()+j,t.begin()+j+i)) {
-				cout<<i;
-				return;
-			}
+    vi a(n);
+    int one=0;
+    int ans = INT_MIN,cnt = 0;
+    f(i, 0, n) {
+        int x; cin >> x;
+        if (x == 0)cnt++;
+        else{
+            one++;
+            cnt--;
+        }
+        ans = max(ans, cnt);
+        if(cnt < 0) cnt = 0;
+
+    }
+    pr(ans+one);
 }
 
 int main() {
