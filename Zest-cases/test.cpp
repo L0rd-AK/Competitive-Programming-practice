@@ -25,14 +25,26 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
-    int a, b, c, d;
-    cin>>a>>b>>c>>d;
-    
-    if(a==c || b==d)
-    cout<<a+abs(b-d)<<" "<<b+abs(a-c)<<" "<<c+abs(b-d)<<" "<<d+abs(a-c);
-    else if(a+b==c+d || a-b==c-d)
-    cout<<a<<" "<<d<<" "<<c<<" "<<b;
-    else cout<<-1;
+    int n;cin>>n;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    int m;cin>>m;
+    vi b(m);
+    f(i,0,m)cin>>b[i];
+    sort(all(a));
+    sort(all(b));
+    int ans=0;
+    f(i,0,n){
+        f(j,0,m){
+            if(a[i]-b[j] <= 1 && a[i]-b[j] >= -1){
+                dbg(a[i], b[j]);
+                b[j] = -101;
+                ans++;
+                break;
+            }
+        }
+    }
+    pr(ans);
 }
 
 int main() {
