@@ -25,19 +25,7 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
-    ll n,x,y;cin>>n>>x>>y;
-    vi a(n);
-    ll sum=0;
-    f(i,0,n)cin>>a[i],sum+=a[i];
-    sort(all(a));
-    ll ans = 0;
-    f(i,0,n) {
-        int l=lower_bound(all(a),sum-a[i]-y)-a.begin();
-		int r=upper_bound(all(a),sum-a[i]-x)-a.begin()-1;
-        l = max(l, i+1);
-        ans += max(0, r-l+1);
-    }
-    pr(ans);
+    pr("No");
 }
 
 int main() {
@@ -49,7 +37,7 @@ int main() {
     cin.tie(0);
     
     int t = 1;
-    cin >> t; 
+    // cin >> t; 
     while (t--) {
         AKG();
     }
