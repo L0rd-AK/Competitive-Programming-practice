@@ -1,29 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-
-    int t;cin>>t;
-    while(t--){
-        string p, s;
-        cin >> p >> s;
-        int i = 0, j = 0;
-        bool ok=0;
-        while(i < p.size() && j < s.size()){
-            if(p[i] != s[j]){
-                cout << "NO\n";
-                ok=1;
-                break;
-            }
-            char c = p[i];
-            i++;
-            j++;
-            if(j < s.size() && s[j] == c)
-                j++;
-        }
-        if(!ok)cout << (i == p.size() && j == s.size() ? "YES\n" : "NO\n");
+int n, k, a[100005];
+main()
+{
+    cin >> n;
+    while (cin >> n >> k)
+    {
+        int64_t b = 0;
+        for (int i = 0; i < n; i++)
+            cin >> a[i], b += a[i];
+        sort(a, a + n--), 
+        cout << ((max(a[n] - 1, a[n - 1]) - a[0] > k) ? "Jerry" : (b & 1) ? "Tom"
+                                                                                            : "Jerry")
+                               << '\n';
     }
-    return 0;
 }
