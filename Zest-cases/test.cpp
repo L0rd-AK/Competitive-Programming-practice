@@ -26,13 +26,9 @@ const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
     int n;cin>>n;
-    f(i,2,n){
-        if(n%i==0){
-            cout<<i<<n/i<<endl;
-            return;
-        }
-    }
-    
+    ll sum=0;
+    for(int i=n,j=1;i>=1;i--,j++)sum+=abs(i-j);
+    cout<<(sum/2)+1<<endl;
 }
 
 int main() {
@@ -44,7 +40,7 @@ int main() {
     cin.tie(0);
     
     int t = 1;
-    // cin >> t; 
+    cin >> t; 
     while (t--) {
         AKG();
     }
