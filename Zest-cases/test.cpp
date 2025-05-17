@@ -26,9 +26,25 @@ const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
     int n;cin>>n;
-    ll sum=0;
-    for(int i=n,j=1;i>=1;i--,j++)sum+=abs(i-j);
-    cout<<(sum/2)+1<<endl;
+    vl a(n),b(n);
+    f(i, 0, n) cin >> a[i];
+    b=a;
+    reverse(all(a));
+    vl p(n),mx(n);
+    mx[0]=b[0];
+    f(i, 1, n) {
+        mx[i]=max(mx[i-1],b[i]);
+    }
+    p[0]=a[0];
+    f(i,1,n) p[i]=p[i-1]+a[i];
+    
+    cout << mx[n-1] << " ";
+    f(k,1,n){
+        int x=n-k-1;
+        int y=k-1;
+        cout<<mx[x]+p[y]<<" ";
+    }cout<<endl;
+
 }
 
 int main() {
