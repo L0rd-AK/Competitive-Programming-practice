@@ -1,2 +1,11 @@
-10 5
-1 2 3 1 2 2 3 1 4 5
+10
+is
+it
+stated
+submit
+ac
+accepted
+wa
+wronganswer
+tle
+timelimitexceeded
