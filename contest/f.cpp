@@ -8,7 +8,7 @@ using namespace std;
 #define ll long long
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) cout << (f ? "1\n" : "0\n")
+#define yn(f) cout << (f ? "YES\n" : "NO\n")
 #define pr(x) cout << x << "\n"
 #define all(x) x.begin(), x.end()
 #define vl vector<ll>
@@ -23,56 +23,24 @@ using namespace std;
 #endif
 
 const int MOD = 1e9+7;
-const int N = 5e8+4;
-
+const int N = 1e6+5;
 void AKG() {
-    int n, k;
-    cin >> n >> k;
-    vi a(n), b(n);
-    f(i, 0, n) cin >> a[i];
-    f(i, 0, n) cin >> b[i];
-    
-    int misB = 0;
-    bool first = true;
-    
-    set<int> s;
-    f(i, 0, n) {
-        if (b[i] != -1) s.insert(a[i]+b[i]);
-        else misB++;
+    int n;cin>>n;
+    set<int> st;
+    f(i, 0, n){
+        int x;cin>>x;
+        st.insert(x);
     }
-    
-    if (misB == n) {
-        int mx_a = *max_element(all(a));
-        int mn = INT_MAX;
-        for (int num : a) {
-            mn = min(mn, num+k);
-        }
-        dbg(mn);
-        if (mx_a > mn) {
-            pr(0);
-            return;
-        } 
-        cout << max(0, mn-mx_a+1) << endl;
-        return;
-    }
-    
-    if (s.size() != 1) {
-        pr(0);
-        return;
-    }
-    
-    int sum = *s.begin();
-    bool ok = true;
-    f(i, 0, n) {
-        if (b[i] == -1) {
-            int x = sum - a[i];
-            if (x < 0 || x > k) {
-                ok = false;
-                break;
-            }
+    vi a(st.begin(),st.end());
+    int ans = 0;
+    int prev = -2; 
+    for (int x : a) {
+        if (x >= prev + 2) {
+            ans++;
+            prev = x;
         }
     }
-    yn(ok);
+    pr(ans);
 }
 
 int main() {
@@ -82,9 +50,9 @@ int main() {
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-
+    
     int t = 1;
-    cin >> t;
+    cin >> t; 
     while (t--) {
         AKG();
     }

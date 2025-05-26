@@ -23,48 +23,27 @@ using namespace std;
 #endif
 
 const int MOD = 1e9+7;
-const int N = 5e8+4;
-
+const int N = 1e6+5;
 void AKG() {
-   int n,k;cin>>n>>k;
-   vi a(n),b(n);
-    f(i,0,n) cin>>a[i];
-    f(i,0,n) cin>>b[i];
-    int sum=0,b_minus=0;
-    set<int> s;
+    int n,k;cin>>n>>k;
+    string s;
+    cin >> s;
+    int a=0,b=0;
     f(i,0,n) {
-        if(b[i]!=-1) {
-            sum=a[i]+b[i];
-            s.insert(sum);
-        } 
-        if(b[i]==-1) {
-            b_minus++;
-        }
+        if (s[i] == '1') a++;
+        else b++;
     }
-    if(b_minus==n) {
-        pr(n+(k/n));
+    int mx = min(a, b);
+    if(a<n/2-k || b<n/2-k) {
+        yn(0);
         return;
     }
-    // dbg(s);
-    if(s.size()!=1) {
-        cout<<0<<endl;
-        return;
-    } 
-    int ans=0;
-    f(i,0,n) {
-        if(b[i]==-1) {
-            int x=sum-a[i];
-            if(x<=k && x>=0)ans++;
-            else {
-                cout<<0<<endl;
-                return;
-            }
-        } 
-    }
-    // cout<<ans<<" ";
-    pr(ans/2);
-
-    
+    a-=(n/2-k);
+    b-=(n/2-k);
+    int mn= (a/2) + (b/2);
+    //dbg(a, b, mx, mn);
+    if (mn == k) yn(1);
+    else yn(0);
 }
 
 int main() {
@@ -74,9 +53,9 @@ int main() {
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-
+    
     int t = 1;
-    cin >> t;
+    cin >> t; 
     while (t--) {
         AKG();
     }
