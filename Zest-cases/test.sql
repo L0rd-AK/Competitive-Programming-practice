@@ -81,7 +81,7 @@ SELECT
 FROM rangers r
 LEFT JOIN sightings s ON r.ranger_id = s.ranger_id
 GROUP BY r.ranger_id, r.name
-ORDER BY total_sightings DESC;
+ORDER BY ranger_name DESC;
 
 -- Problem 5
 SELECT *
@@ -109,13 +109,23 @@ SET conservation_status = 'Historic'
 WHERE EXTRACT(YEAR FROM discovery_date) < 1800;
 
 -- Problem 8
+-- Create a function to determine time of day
+CREATE OR REPLACE FUNCTION get_time_of_day(ts TIMESTAMP)
+RETURNS VARCHAR AS $$
+BEGIN
+    IF EXTRACT(HOUR FROM ts) < 12 THEN
+        RETURN 'Morning';
+    ELSIF EXTRACT(HOUR FROM ts) BETWEEN 12 AND 17 THEN
+        RETURN 'Afternoon';
+    ELSE
+        RETURN 'Evening';
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
 SELECT 
     s.sighting_time,
-    CASE 
-        WHEN EXTRACT(HOUR FROM s.sighting_time) < 12 THEN 'Morning'
-        WHEN EXTRACT(HOUR FROM s.sighting_time) BETWEEN 12 AND 17 THEN 'Afternoon'
-        ELSE 'Evening'
-    END as time_of_day,
+    get_time_of_day(s.sighting_time) as time_of_day,
     sp.common_name as species,
     r.name as ranger_name,
     s.location
