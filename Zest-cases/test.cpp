@@ -25,8 +25,14 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
-    int n;cin>>n;
-    (n%2 == 0? cout << "0\n" : cout << "1\n"); 
+    int a,b;cin>>a>>b;
+    int ans = a;
+    while(a>=b){
+        ans += a/b;
+        a = a/b + a%b;
+        dbg(a, ans);
+    }
+    cout << ans << endl;
 }
 
 int main() {
