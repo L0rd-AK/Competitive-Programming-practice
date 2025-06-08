@@ -25,14 +25,17 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e6+5;
 void AKG() {
-    int n;cin>>n;
-    string s;cin>>s;
-    int c = 0;
-    f(i,0,n){
-        if (s[i] == '(')c++;
-        else if (c > 0)c--;
+    string a;
+    for (int i = 0; i < 6; i++){
+        cout << i << endl;
+        cin >> a;
+        if (a[0] == 'w' || a[0] == 'a' || a[2] == ' ')
+        {
+            cout << "grumpy";
+            return;
+        }
     }
-    pr(c);
+    cout << "normal";
 }
 
 int main() {
@@ -44,7 +47,7 @@ int main() {
     cin.tie(0);
     
     int t = 1;
-    cin >> t; 
+    // cin >> t; 
     while (t--) {
         AKG();
     }
