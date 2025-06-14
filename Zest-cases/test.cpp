@@ -26,23 +26,10 @@ const int MOD = 1e9+7;
 const int N = 1e6+5;
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    int l=0,r=n-1;
-    f(i,0,n){
-        if(a[i]==1){
-            l=i;
-            break;
-        }
-    }
-    for(int i=n-1;i>=0;i--){
-        if(a[i]==1){
-            r=i+1;
-            break;
-        }
-    }
-    yn(r-l<=k);
+    int n;cin>>n;
+    cout<<"1 ";
+    for(int i=n;i>=2;i--)cout<<i<<" ";
+    cout<<endl;
 }
 
 int main() {
