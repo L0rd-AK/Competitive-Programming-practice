@@ -26,10 +26,35 @@ const int MOD = 1e9+7;
 const int N = 1e6+5;
 
 void AKG() {
-    int n;cin>>n;
-    cout<<"1 ";
-    for(int i=n;i>=2;i--)cout<<i<<" ";
-    cout<<endl;
+    string s;
+    cin >> s;
+    int n = s.length();
+    vi a(n, 0), b(n, 0);
+
+    for (int i = 1; i < n; i++) {
+        if (s[i] == s[i - 1]) {
+            a[i] = 1;
+        }
+    }
+
+    b[0] = a[0];
+    for (int i = 1; i < n; i++) {
+        b[i] = b[i - 1] + a[i];
+    }
+
+    dbg(a, b);
+
+    int q;
+    cin >> q;
+    while (q--) {
+        int x, y;
+        cin >> x >> y;
+        x--; y--;  
+        if (x == 0)
+            pr(b[y]);
+        else
+            pr(b[y] - b[x]);
+    }
 }
 
 int main() {
@@ -39,9 +64,9 @@ int main() {
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    
+
     int t = 1;
-    cin >> t; 
+    // cin >> t;
     while (t--) {
         AKG();
     }
