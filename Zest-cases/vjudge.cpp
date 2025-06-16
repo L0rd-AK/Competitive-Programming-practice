@@ -1,17 +1,29 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 int main()
 {
-    string a;
-    for (int i = 0; i < 6; i++)
+    long long a, n, sum, b, c;
+    cin >> a;
+    while (a--)
     {
-        cout << i << endl;
-        cin >> a;
-        if (a[0] == 'w' || a[0] == 'a' || a[2] == ' ')
+        cin >> n;
+        sum = 0;
+        cin >> b;
+        n--;
+        while (n--)
         {
-            cout << "grumpy";
-            return 0;
+            cin >> c;
+            if (b * c > 0)
+            {
+                if (c > b)
+                    b = c;
+            }
+            else
+            {
+                sum += b;
+                b = c;
+            }
         }
+        cout << sum + b << endl;
     }
-    cout << "normal";
 }
