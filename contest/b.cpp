@@ -22,28 +22,18 @@ using namespace std;
 #define dbg(x...)
 #endif
 
-const int MOD = 1e9+7;
-const int N = 1e6+5;
 void AKG() {
-    int n,k;cin>>n>>k;
-    string s;
-    cin >> s;
-    int a=0,b=0;
-    f(i,0,n) {
-        if (s[i] == '1') a++;
-        else b++;
+    int n;string s;
+    cin>>n>>s;
+    vi freq(26,0);
+    for(char c:s)freq[c-'a']++;
+    f(i,1,n-1){
+        if(freq[s[i]-'a']>=2){
+            yn(1);
+            return;
+        }
     }
-    int mx = min(a, b);
-    if(a<n/2-k || b<n/2-k) {
-        yn(0);
-        return;
-    }
-    a-=(n/2-k);
-    b-=(n/2-k);
-    int mn= (a/2) + (b/2);
-    //dbg(a, b, mx, mn);
-    if (mn == k) yn(1);
-    else yn(0);
+    yn(0);
 }
 
 int main() {
@@ -53,9 +43,9 @@ int main() {
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    
+
     int t = 1;
-    cin >> t; 
+    cin >> t;
     while (t--) {
         AKG();
     }
