@@ -23,12 +23,24 @@ using namespace std;
 #endif
 
 void AKG() {
-    ll n,k;cin>>n>>k;
-    vl a(n+1);
-    f(i,1,1+n)cin>>a[i];
-    a[0]=1;
-    sort(all(a));
-    cout<<(a[k]==a[k+1]?-1:a[k]);
+    int n,m;cin>>n>>m;
+    char a[n][m];
+    f(i,0,n){
+        f(j,0,m){
+            cin>>a[i][j];
+            if(a[i][j]=='.'){
+                if(i%2==0&&j%2==0)a[i][j]='B';
+                else if(i%2==1&&j%2==1)a[i][j]='B';
+                else a[i][j]='W';
+            }
+        }
+    }
+    f(i,0,n){
+        f(j,0,m){
+            cout<<a[i][j];
+        }cout<<endl;
+    }
+    
 }
 
 int main() {
