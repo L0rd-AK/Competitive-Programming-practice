@@ -8,48 +8,52 @@ using namespace std;
 #define ll long long
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) cout << (f ? "YES\n" : "NO\n")
 #define pr(x) cout << x << "\n"
-#define all(x) x.begin(), x.end()
 #define vl vector<ll>
-#define vi vector<int>
-#define pb push_back
-#define pi pair<ll, ll>
 
-#ifdef LOCAL
-#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
-#else
-#define dbg(x...)
-#endif
-bool cmp(pair<ll, ll>& a,pair<ll, ll>& b){
-    return a.first+a.second<b.first+b.second;
-}
 void AKG() {
-    int n;cin>>n;
-    vl a(n),b(n);
-    f(i,0,n)cin>>a[i];
-    f(i,0,n)cin>>b[i];
-    ll sum=0,mx=INT_MIN;
-    f(i,0,n){
-        sum+=max(a[i],b[i]);
-        mx=max(mx,min(a[i],b[i]));
+    int n, k;
+    cin >> n >> k;
+    vl a(n);
+    ll sum = 0;
+    f(i, 0, n) {
+        cin >> a[i];
+        sum += a[i];
     }
-    pr(sum+mx);
+    if (sum % k != 0) {
+        pr(n);
+        return;
+    }
+    int ans1 = 0, ans2 = 0;
+    int l = 0;
+    while (l < n) {
+        if ((sum - a[l]) % k != 0) {
+            ans1 = n - l - 1;
+            break;
+        }
+        l++;
+    }
+    int r = n - 1;
+    while (r >= 0) {
+        if ((sum - a[r]) % k != 0) {
+            ans2 = r;
+            break;
+        }
+        r--;
+    }
+    int ans = max(ans1, ans2);
+    if (ans == 0) pr(-1);
+    else pr(ans);
 }
 
 int main() {
 #ifdef LOCAL
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 #endif
-
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-
-    int t = 1;
+    int t;
     cin >> t;
-    while (t--) {
-        AKG();
-    }
-
+    while (t--) AKG();
     return 0;
 }
