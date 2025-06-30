@@ -27,17 +27,7 @@ const int N = 5e8+4;
 
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    if(n<k){
-        pr(n);
-        return;
-    }
-    int ans=n;
-    while(n>=k){
-        ans+=(n/k);
-        n=(n/k)+(n%k);
-    }
-    pr(ans);
+    
 }
 
 int main() {
