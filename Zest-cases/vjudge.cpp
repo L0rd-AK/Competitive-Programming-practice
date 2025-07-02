@@ -24,6 +24,6 @@ int main()
                 i++;
         }
     }
-    pr(ans);
+    cout << ans << endl;
     return 0;
 }
