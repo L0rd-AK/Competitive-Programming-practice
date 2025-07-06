@@ -8,7 +8,7 @@ using namespace std;
 #define ll long long
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) cout << (f ? "YES\n" : "NO\n")
+#define yn(f) cout << (f ? "Bob\n" : "Alice\n")
 #define pr(x) cout << x << "\n"
 #define all(x) x.begin(), x.end()
 #define vl vector<ll>
@@ -26,14 +26,10 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int n, j, k, mx = 0;
-    cin >> n >> j >> k;
-    vi a(n+1);
-    for(int i=1; i<=n; i++){
-        cin >> a[i];
-        mx = max(mx, a[i]);
-    }
-    yn(k > 1 || a[j] == mx);
+    int n;cin>>n;
+    vi a(4);
+    f(i,0,n)a[i%4]++;
+    yn(a[0]==a[3]&&a[1]==a[2]);
 }
 
 int main() {
