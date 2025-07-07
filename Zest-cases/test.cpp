@@ -26,14 +26,13 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int n, j, k, mx = 0;
-    cin >> n >> j >> k;
-    vi a(n+1);
-    for(int i=1; i<=n; i++){
-        cin >> a[i];
-        mx = max(mx, a[i]);
+    int n;cin>>n;
+    pr(2*n-1);
+    for(int i=0;i<n;i++){
+        cout<<i+1<<" "<<1<<" "<<i+1<<endl;
+        if(i<n-1)
+        cout<<i+1<<" "<<i+2<<" "<<n<<endl;
     }
-    yn(k > 1 || a[j] == mx);
 }
 
 int main() {
