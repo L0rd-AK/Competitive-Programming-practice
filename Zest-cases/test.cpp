@@ -26,12 +26,18 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    int x,y,a,b;cin>>x>>y>>a>>b;
+    ll x,y,a,b;cin>>x>>y>>a>>b;
+    if(x==0&&y==0){
+        pr(0);
+        return;
+    }
     if(2*a<=b){
         pr((x+y)*a);
     }else{
-        int x=min(a,b);
-        int ans=x*b;
+        ll mn=min(x,y),mx=max(x,y);
+        ll ans=mn*b;
+        ans+=(mx-mn)*a;
+        pr(ans);
 
     }
 }
