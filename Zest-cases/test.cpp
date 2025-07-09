@@ -27,11 +27,13 @@ const int N = 5e8+4;
 
 void AKG() {
     ll n;cin>>n;
+    vl a(n);
+    f(i,0,n)cin>>a[i];
+     sort(a.rbegin(), a.rend());
     ll ans=0;
     f(i,0,n){
-        ll x;cin>>x;
-        if(i%2==0 && x%2==0)ans+=x;
-        else if(x%2==1) ans-=x;
+        if(i%2==0){if(a[i]%2==0)ans+=a[i];}
+        else if(a[i]%2==1) ans-=a[i];
     }
     if(ans==0)pr("Tie");
     else if(ans>0)pr("Alice");
