@@ -26,20 +26,16 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    ll x,y,a,b;cin>>x>>y>>a>>b;
-    if(x==0&&y==0){
-        pr(0);
-        return;
+    ll n;cin>>n;
+    ll ans=0;
+    f(i,0,n){
+        ll x;cin>>x;
+        if(i%2==0 && x%2==0)ans+=x;
+        else if(x%2==1) ans-=x;
     }
-    if(2*a<=b){
-        pr((x+y)*a);
-    }else{
-        ll mn=min(x,y),mx=max(x,y);
-        ll ans=mn*b;
-        ans+=(mx-mn)*a;
-        pr(ans);
-
-    }
+    if(ans==0)pr("Tie");
+    else if(ans>0)pr("Alice");
+    else pr("Bob");
 }
 
 int main() {
