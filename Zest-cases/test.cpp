@@ -26,26 +26,20 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    ll n;cin>>n;
+    ll n;cin >> n;
     vl a(n);
-    int mn=INT_MAX,mx=INT_MIN,mn_idx=0,mx_idx=0;
+    f(i, 0, n) cin >> a[i];
+    ll mn = a[0], mx = a[n-1];
+    string ans(n,'0');
     f(i,0,n){
-        cin>>a[i];
-        if(a[i]<mx){
-            mx=a[i];
-            mx_idx=i;
-        }
-        if(a[i]>mn){
-            mn=a[i];
-            mn_idx=i;
-        }
+        mn=min(a[i],mn);
+        if(mn==a[i])ans[i]='1';
     }
-    f(i,0,n){
-        if(i==mn_idx||i==mx_idx)cout<<1;
-        else if(i>mn_idx&&i<mx_idx||i>mx_idx&&i<mn_idx)cout<<0;
-        else cout<<1;
+    for(int i=n-1;i>=0;i--){
+        mx=max(mx,a[i]);
+        if(mx==a[i])ans[i]='1';
     }
-    cout<<endl;
+    pr(ans);
 }
 
 int main() {
