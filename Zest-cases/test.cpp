@@ -28,16 +28,24 @@ const int N = 5e8+4;
 void AKG() {
     ll n;cin>>n;
     vl a(n);
-    f(i,0,n)cin>>a[i];
-     sort(a.rbegin(), a.rend());
-    ll ans=0;
+    int mn=INT_MAX,mx=INT_MIN,mn_idx=0,mx_idx=0;
     f(i,0,n){
-        if(i%2==0){if(a[i]%2==0)ans+=a[i];}
-        else if(a[i]%2==1) ans-=a[i];
+        cin>>a[i];
+        if(a[i]<mx){
+            mx=a[i];
+            mx_idx=i;
+        }
+        if(a[i]>mn){
+            mn=a[i];
+            mn_idx=i;
+        }
     }
-    if(ans==0)pr("Tie");
-    else if(ans>0)pr("Alice");
-    else pr("Bob");
+    f(i,0,n){
+        if(i==mn_idx||i==mx_idx)cout<<1;
+        else if(i>mn_idx&&i<mx_idx||i>mx_idx&&i<mn_idx)cout<<0;
+        else cout<<1;
+    }
+    cout<<endl;
 }
 
 int main() {
