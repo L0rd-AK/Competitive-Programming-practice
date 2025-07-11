@@ -27,17 +27,21 @@ const int N = 5e8+4;
 
 void AKG() {
     ll n;cin >> n;
-    vl a(n);
+    vl a(n),pre(n);
     f(i, 0, n) cin >> a[i];
-    ll mn = a[0], mx = a[n-1];
-    string ans(n,'0');
-    f(i,0,n){
-        mn=min(a[i],mn);
-        if(mn==a[i])ans[i]='1';
-    }
-    for(int i=n-1;i>=0;i--){
-        mx=max(mx,a[i]);
-        if(mx==a[i])ans[i]='1';
+    pre[0]=a[0];
+    f(i,1,n)pre[i]=a[i]+pre[i-1];
+    string s;cin>>s;
+    ll ans=0;
+    int l=0,r=n-1;
+    while(l<r){
+        if(l<r && s[l]=='L'){
+            if(s[r]=='R'){
+                if(l==0)ans+=pre[r];
+                else ans+=pre[r]-pre[l-1];
+                l++;r--;
+            }else r--;
+        }else l++;
     }
     pr(ans);
 }
