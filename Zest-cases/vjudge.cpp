@@ -1,29 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    int n, m;
-    cin >> n >> m;
-    vector<string> s(n);
-    for (auto &u : s)
-        cin >> u;
-    int ans = 0;
-    int i = 0, j = 0;
-    while (i < n && j < m)
-    {
-        if (s[i][j] == '*')
-            ans++;
-        if (i + 1 < n && s[i + 1][j] == '*')
-            i++;
-        else
-        {
-            if (j + 1 < m)
-                j++;
-            else
-                i++;
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+
+    int T; cin >> T;
+    while (T--) {
+        int n, q; cin >> n >> q;
+        string a, b; cin >> a >> b;
+
+        vector<array<int,26>> pa(n+1), pb(n+1);
+        for (int i = 1; i <= n; ++i) {
+            pa[i] = pa[i-1];
+            pb[i] = pb[i-1];
+            ++pa[i][a[i-1]-'a'];
+            ++pb[i][b[i-1]-'a'];
+        }
+
+        while (q--) {
+            int l, r; cin >> l >> r;
+            int ans = 0;
+            for (int c = 0; c < 26; ++c) {
+                int ca = pa[r][c] - pa[l-1][c];
+                int cb = pb[r][c] - pb[l-1][c];
+                ans += abs(ca - cb);
+            }
+            cout << ans << '\n';
         }
     }
-    cout << ans << endl;
     return 0;
 }
