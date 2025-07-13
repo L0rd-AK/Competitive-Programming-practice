@@ -36,6 +36,7 @@ void AKG() {
     if(a[0]==a[1]&&a[0]==1)yn(0);
     else if(a[0]==a[1]){
         f(i,1,n){
+            dbg(a[i]%a[i-1],a[i],a[i-1]);
             if((a[i]%a[i-1])!=0&&(a[i]%a[i-1])<a[0]){yn(1);return;}
         }
         yn(0);
