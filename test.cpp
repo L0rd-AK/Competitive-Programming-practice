@@ -26,24 +26,11 @@ const int MOD = 1e9+7;
 const int N = 5e8+4;
 
 void AKG() {
-    ll n,q;cin>>n>>q;
-    string a,b;cin>>a>>b;
-    vector<vi> mp(n+1,vi(26,0));
-    f(i,0,n){
-        mp[i+1]=mp[i];
-        mp[i+1][a[i]-'a']++;
-        mp[i+1][b[i]-'a']--;
+    int n;cin>>n;
+    int od=0,ev=0;
+    f(i,1,n+1){
+
     }
-    while(q--){
-        int x,y;cin>>x>>y;
-        x--;
-        int ans=0;
-        f(i,0,26){
-            ans+=max(0,mp[y][i]-mp[x][i]);
-        }
-        pr(ans);
-    }
-    
 }
 
 int main() {
