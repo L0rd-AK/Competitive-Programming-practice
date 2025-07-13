@@ -31,3 +31,32 @@ public:
         return {0,0};
     }
 };
+
+class Solution {
+public:
+    int binarysearch(const vector<int>& numbers, int val) {
+        int l = 0, r = numbers.size() - 1;
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            if (numbers[mid] == val) 
+                return mid;
+            else if (numbers[mid] < val) 
+                l = mid + 1;
+            else 
+                r = mid - 1;
+        }
+        return -1;
+    }
+
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int n = numbers.size();
+        for (int i = 0; i < n; ++i) {
+            int complement = target - numbers[i];
+            int j = binarysearch(numbers, complement);
+            if (j != -1 && j != i) {
+                return { min(i, j) + 1, max(i, j) + 1 };
+            }
+        }
+        return {};
+    }
+};
