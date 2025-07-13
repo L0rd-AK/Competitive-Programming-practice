@@ -27,12 +27,9 @@ const int N = 5e8+4;
 
 void AKG() {
     int n;cin>>n;
-    int od=0,ev=0;
-    f(i,1,n+1){
-        if(n%i==0 && i%2==0)ev++;
-        if(n%i==0 && i%2==1)od++;
-    }
-    cout<<od<<" "<<ev<<endl;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    
 }
 
 int main() {
