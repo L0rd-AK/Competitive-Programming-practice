@@ -24,12 +24,21 @@ using namespace std;
 
 const int MOD = 1e9+7;
 const int N = 5e8+4;
-
+bool cmp(int a,int b,int c,int d){
+    return a%b<c%d;
+}
 void AKG() {
     int n;cin>>n;
     vi a(n);
     f(i,0,n)cin>>a[i];
-    
+    sort(all(a),cmp);
+    if(a[0]==a[1]&&a[0]==1)yn(0);
+    else if(a[0]==a[1]){
+        f(i,1,n){
+            if(a[i]%a[i-1]!=0&&a[i]%a[i-1]<a[0]){yn(1);return;}
+        }
+        yn(0);
+    }else yn(1);
 }
 
 int main() {
