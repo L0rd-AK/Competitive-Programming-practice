@@ -1,58 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    // freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+struct Node {
+    int val;      // value
+    int idx;      // original position 0..n-1
+    char tag;     // 'a', 'b', or 'c'
+};
 
-    int t;
-    cin >> t;
+void solve() {
+    int n; cin >> n;
+    vector<Node> v;
+    v.reserve(3 * n);
 
-    while (t--) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        int count1 = 0;
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-        }
+    for (int i = 0, x; i < n; ++i) { cin >> x; v.push_back({x, i, 'a'}); }
+    for (int i = 0, x; i < n; ++i) { cin >> x; v.push_back({x, i, 'b'}); }
+    for (int i = 0, x; i < n; ++i) { cin >> x; v.push_back({x, i, 'c'}); }
 
-        for (int x : a) {
-            if (x == 1) {
-                count1++;
-            }
-        }
+    sort(v.begin(), v.end(), [](const Node& p, const Node& q) {
+        return p.val > q.val;
+    });
 
-        if (count1) {
-            if (count1 == 1) {
-                cout << "YES\n";
-            } else {
-                cout << "NO\n";
-            }
-        } else {
-            int m = *min_element(a.begin(), a.end());
-            bool foundNonDiv = false;
-            int freq = 0;
-            for (int x : a) {
-                if (x % m != 0) {
-                    foundNonDiv = true;
-                }
-                if (x == m) {
-                    freq++;
-                }
-            }
-            if (foundNonDiv) {
-                cout << "YES\n";
-            } else {
-                if (freq == 1) {
-                    cout << "YES\n";
-                } else {
-                    cout << "NO\n";
-                }
-            }
+    long long ans = 0;
+    unordered_set<int> usedIdx;
+    unordered_map<char, int> best;           // tag -> value
+
+    for (const auto& node : v) {
+        if (!best.count(node.tag) && !usedIdx.count(node.idx)) {
+            best[node.tag] = node.val;
+            usedIdx.insert(node.idx);
+            if (best.size() == 3) break;
         }
     }
 
+    if (best.size() == 3)
+        ans = 1LL * best['a'] + best['b'] + best['c'];
+
+    cout << ans << '\n';
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+
+    int T = 1;
+    cin >> T;
+    while (T--) solve();
     return 0;
 }
