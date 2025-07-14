@@ -1,29 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    // freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 
-    int t; 
+    int t;
     cin >> t;
-    while(t--){
+
+    while (t--) {
         int n;
         cin >> n;
-        vector<long long> a(n);
-        for(auto &x : a) 
-            cin >> x;
+        vector<int> a(n);
+        int count1 = 0;
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
 
-        // 1) find the minimum
-        long long mn = *min_element(a.begin(), a.end());
-        // 2) count how many times it appears
-        int cnt = count(a.begin(), a.end(), mn);
+        for (int x : a) {
+            if (x == 1) {
+                count1++;
+            }
+        }
 
-        // If it appears exactly once → you can place it first,
-        // and every other element > mn, so mn mod anything = mn ≠ 0.
-        // Otherwise, you'll eventually do mn mod mn = 0.
-        cout << (cnt == 1 ? "YES\n" : "NO\n");
+        if (count1) {
+            if (count1 == 1) {
+                cout << "YES\n";
+            } else {
+                cout << "NO\n";
+            }
+        } else {
+            int m = *min_element(a.begin(), a.end());
+            bool foundNonDiv = false;
+            int freq = 0;
+            for (int x : a) {
+                if (x % m != 0) {
+                    foundNonDiv = true;
+                }
+                if (x == m) {
+                    freq++;
+                }
+            }
+            if (foundNonDiv) {
+                cout << "YES\n";
+            } else {
+                if (freq == 1) {
+                    cout << "YES\n";
+                } else {
+                    cout << "NO\n";
+                }
+            }
+        }
     }
+
     return 0;
 }

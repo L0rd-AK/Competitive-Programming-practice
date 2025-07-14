@@ -29,14 +29,27 @@ bool cmp(int a,int b){
 }
 void AKG() {
     int n;cin>>n;
-    map<int,int> mp;
-    int gc=0;
-    f(i,0,n){
+    vector<pi> arr;
+    f(i,0,3*n){
         int x;cin>>x;
-        gc=__gcd(gc,x);
-        mp[x]++;
+        arr.push_back({x,i%n});
     }
-    yn(mp[gc]<=1);
+    
+    sort(all(arr),greater<pi>());
+    int a=-1,b=-1,c=-1;
+    ll ans=0;
+    f(i,0,3*n){
+        if(a!=-1&&b!=-1&&c!=-1)break;
+        int j=i%n;
+        if(j!=a&&j!=b&&j!=c){
+            ans+=arr[i].first;
+            if(a==-1)a=arr[i].second;
+            else if(b==-1)b=arr[i].second;
+            else if(c==-1)c=arr[i].second;
+        }
+    }
+    pr(ans);
+
 }
 
 int main() {
