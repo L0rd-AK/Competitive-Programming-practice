@@ -23,24 +23,25 @@ using namespace std;
 #endif
 
 const int MOD = 1e9+7;
-const int N = 100010;
-ll ans[8],a[3][N];
+const int N = 1e5+7;
+
 
 void AKG() {
-memset(ans,0,sizeof ans);
-        int n;cin>>n;
-        for(int i=0;i<3;i++)
-           for(int j=1;j<=n;j++)cin>>a[i][j];
-        for(int i=1;i<=n;i++){
-            for(int j=7;j>0;j--){
-                for(int k=0;k<3;k++){
-                    if((j>>k)&1)ans[j]=max(ans[j],ans[j-(1<<k)]+a[k][i]);
-                }
-            }
-
+    int n,k;cin>>n>>k;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    ll ans;
+    f(i,0,n){
+        f(j,i+1,n){
+            if(abs(a[i]-a[j])%k!=0)ans++;
         }
-    pr(ans[7]);
-
+    }
+    if(ans>0){
+        yn(1);
+        pr(ans);
+    }else{
+        yn(0);
+    }
 }
 
 int main() {
