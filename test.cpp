@@ -30,7 +30,7 @@ void AKG() {
     int n,k;cin>>n>>k;
     vi a(n);
     f(i,0,n)cin>>a[i];
-    ll ans;
+    ll ans=0;
     f(i,0,n){
         f(j,i+1,n){
             if(abs(a[i]-a[j])%k!=0)ans++;
