@@ -30,15 +30,25 @@ void AKG() {
     int n,k;cin>>n>>k;
     vi a(n);
     f(i,0,n)cin>>a[i];
-    ll ans=0;
+    bool ok=0;
+    int idx=0;
     f(i,0,n){
-        f(j,i+1,n){
-            if(abs(a[i]-a[j])%k!=0)ans++;
+        int ans=0;
+        f(j,0,n){
+            if(i!=j&&abs(a[i]-a[j])%k!=0){
+                ans++;
+                //dbg(i,j);
+            }
+        }
+        if(ans==n-1){
+            ok=1;
+            idx=i;
         }
     }
-    if(ans>0){
+    
+    if(ok){
         yn(1);
-        pr(ans);
+        pr(idx);
     }else{
         yn(0);
     }
