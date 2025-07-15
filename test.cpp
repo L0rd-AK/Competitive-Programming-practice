@@ -48,7 +48,7 @@ void AKG() {
     
     if(ok){
         yn(1);
-        pr(idx);
+        pr(idx+1);
     }else{
         yn(0);
     }
