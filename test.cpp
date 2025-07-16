@@ -27,31 +27,19 @@ const int N = 1e5+7;
 
 
 void AKG() {
-    int n,k;cin>>n>>k;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    bool ok=0;
-    int idx=0;
-    f(i,0,n){
-        int ans=0;
-        f(j,0,n){
-            if(i!=j&&abs(a[i]-a[j])%k!=0){
-                ans++;
-                //dbg(i,j);
-            }
+    int n, a, x, r, u, v;
+        cin >> n >> x;
+        u = -2, a = 1, r = x;
+        n--;
+        while (n--){
+            cin >> x;
+            if (x > r)v = 1;
+            else if (x < r)v = -1;
+            else continue;
+            if (u != v)a++;
+            u = v, r = x;
         }
-        if(ans==n-1){
-            ok=1;
-            idx=i;
-        }
-    }
-    
-    if(ok){
-        yn(1);
-        pr(idx+1);
-    }else{
-        yn(0);
-    }
+        cout << a << endl;
 }
 
 int main() {
