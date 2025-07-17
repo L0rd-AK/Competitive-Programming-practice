@@ -26,20 +26,13 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 
-void AKG() {
-    int n, a, x, r, u, v;
-        cin >> n >> x;
-        u = -2, a = 1, r = x;
-        n--;
-        while (n--){
-            cin >> x;
-            if (x > r)v = 1;
-            else if (x < r)v = -1;
-            else continue;
-            if (u != v)a++;
-            u = v, r = x;
-        }
-        cout << a << endl;
+void AKG(){
+    string s;cin>>s;
+    char c='9';
+    for(char i:s){
+        if(i<c)c=i;
+    }
+    pr(c);
 }
 
 int main() {
