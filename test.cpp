@@ -27,12 +27,7 @@ const int N = 1e5+7;
 
 
 void AKG(){
-    string s;cin>>s;
-    char c='9';
-    for(char i:s){
-        if(i<c)c=i;
-    }
-    pr(c);
+    
 }
 
 int main() {
