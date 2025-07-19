@@ -30,7 +30,19 @@ void AKG(){
     int n,k;cin>>n>>k;
     vi a(n);
     f(i,0,n)cin>>a[i];
+    reverse(all(a));
+    int ans=0,c=0;
+    f(i,0,n){
+        if(a[i]==0){
+            c++;
+        }else{
+            if(c>=k)ans+=(c/k);
+            c=0;
+        }
+    }
+    if(c>k)ans+=(c/k);
     
+    pr(ans);
 }
 
 int main() {
