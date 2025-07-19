@@ -33,14 +33,17 @@ void AKG(){
     reverse(all(a));
     int ans=0,c=0;
     f(i,0,n){
-        if(a[i]==0){
+        if(a[i]==0&&c<=k){
             c++;
+        }else if(a[i]==0&&c>k){
+            i++;
         }else{
-            if(c>=k)ans+=(c/k);
-            c=0;
+            // if(c>=k)ans+=(c/k);
+            // c=0;
+            ans++;
         }
     }
-    if(c>k)ans+=(c/k);
+    //if(c>=k)ans+=(c/k);
     
     pr(ans);
 }
