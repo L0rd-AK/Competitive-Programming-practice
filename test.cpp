@@ -27,6 +27,9 @@ const int N = 1e5+7;
 
 
 void AKG(){
+    int n,k;cin>>n>>k;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
     
 }
 
