@@ -31,7 +31,7 @@ void AKG(){
     ll ans=0;
     f(i,0,n){
         ll di,dj,x,y;cin>>di>>dj>>x>>y;
-        if(x+y==s)ans++;
+        if(x+y==s&&di!=dj || x==y&&di==dj)ans++;
     }
     pr(ans);
 }
