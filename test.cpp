@@ -27,10 +27,10 @@ const int N = 1e5+7;
 
 
 void AKG(){
-    int n,s;cin>>n>>s;
-    int ans=0;
+    ll n,s;cin>>n>>s;
+    ll ans=0;
     f(i,0,n){
-        int di,dj,x,y;cin>>di>>dj>>x>>y;
+        ll di,dj,x,y;cin>>di>>dj>>x>>y;
         if(x+y==s)ans++;
     }
     pr(ans);
