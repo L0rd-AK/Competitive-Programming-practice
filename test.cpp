@@ -27,18 +27,13 @@ const int N = 1e5+7;
 
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    f(i,1,n){
-        if(a[i]<a[i-1]){
-            yn(1);
-            pr(2);
-            cout<<a[i-1]<<" "<<a[i]<<endl;
-            return;
-        }
+    int n,s;cin>>n>>s;
+    int ans=0;
+    f(i,0,n){
+        int di,dj,x,y;cin>>di>>dj>>x>>y;
+        if(x+y==s)ans++;
     }
-    yn(0);
+    pr(ans);
 }
 
 int main() {
