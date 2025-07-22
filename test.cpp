@@ -27,25 +27,14 @@ const int N = 1e5+7;
 
 
 void AKG(){
-    string s;cin>>s;
-    int n = s.size();
-    if(n<=2) {
-        cout << s << endl;
-        return;
-    }
-    f(i,0,n-2){
-        if(s[i]=='F' && s[i+1]=='F' && s[i+2]=='T') {
-            sort(all(s));
-            reverse(all(s));
-            break;
-        }
-        if(s[i]=='N' && s[i+1]=='T' && s[i+2]=='T') {
-            sort(all(s));
-            reverse(all(s));
-            break;
-        }
-    }
-    pr(s);
+    ll a,b,k;cin>>a>>b>>k;
+
+    ll g = __gcd(a, b);
+    ll dx=a/g;
+    ll dy=b/g;
+
+    if (dx<=k&&dy<=k)pr(1);
+    else pr(2);
 }
 
 int main() {
