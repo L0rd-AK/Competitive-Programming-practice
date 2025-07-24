@@ -27,20 +27,25 @@ const int N = 1e5+7;
 
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    f(i,0,n-1){
-        if(a[i]<40){
-            yn(0);
-            return;
-        }else a[i+1]+=a[i]-40;
-    }
-    if(a[n-1]<40){
-        yn(0);
-        return;
-    }
-    yn(1);
+  int n;cin>>n;
+  int arr[n];
+  int m=0,k=0;
+  f(i,0,n)cin>>arr[i];
+  f(i,1,n){
+      if(arr[i]<arr[i-1]){
+          m=i-1;
+          break;
+      }
+  }
+  for(int i=n-1;i>0;i--){
+      if(arr[i]<arr[i-1]){
+          k=i;
+          break;
+      }
+  }
+  reverse(arr+m,arr+k+1);
+  if(is_sorted(arr,arr+n)){cout<<"yes\n"; cout<<m+1<<" "<<k+1;}
+  else cout<<"no\n";
 }
 
 int main() {
