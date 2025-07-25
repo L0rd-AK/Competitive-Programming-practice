@@ -27,25 +27,32 @@ const int N = 1e5+7;
 
 
 void AKG(){
-  int n;cin>>n;
-  int arr[n];
-  int m=0,k=0;
-  f(i,0,n)cin>>arr[i];
-  f(i,1,n){
-      if(arr[i]<arr[i-1]){
-          m=i-1;
-          break;
-      }
-  }
-  for(int i=n-1;i>0;i--){
-      if(arr[i]<arr[i-1]){
-          k=i;
-          break;
-      }
-  }
-  reverse(arr+m,arr+k+1);
-  if(is_sorted(arr,arr+n)){cout<<"yes\n"; cout<<m+1<<" "<<k+1;}
-  else cout<<"no\n";
+int n;
+    cin>>n;
+    vl a(n);
+    ll total_sum=0;
+    for(int i=0;i<n;++i) {
+        cin>>a[i];
+        total_sum+=a[i];
+    }
+    if(total_sum%3!=0) {
+        pr(0);
+        return;
+    }
+    ll part_sum=total_sum/3;
+    ll current_sum=0;
+    ll ways=0;
+    ll count_first_part=0;
+    for(int i=0;i<n-1;++i) {
+        current_sum+=a[i];
+        if(current_sum==2*part_sum) {
+            ways+=count_first_part;
+        }
+        if(current_sum==part_sum) {
+            count_first_part++;
+        }
+    }
+    pr(ways);
 }
 
 int main() {
@@ -57,7 +64,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while (t--)AKG();
     return 0;
 }

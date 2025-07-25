@@ -1,46 +1,32 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
-using ll = long long;
-
-// List of primes < 10
-vector<int> primes = {2, 3, 5, 7};
-
-// Inclusion-Exclusion count of numbers ≤ n divisible by any of {2,3,5,7}
-ll count_bad(ll n) {
-    int sz = primes.size();
-    ll cnt = 0;
-    for (int mask = 1; mask < (1 << sz); ++mask) {
-        ll lcm = 1;
-        int bits = 0;
-        for (int i = 0; i < sz; ++i) {
-            if (mask & (1 << i)) {
-                lcm = lcm * primes[i] / __gcd(lcm, (ll)primes[i]);
-                bits++;
-            }
-        }
-        if (lcm > n) continue;
-        ll term = n / lcm;
-        if (bits % 2 == 1) cnt += term;
-        else cnt -= term;
-    }
-    return cnt;
-}
-
-ll count_good(ll n) {
-    return n - count_bad(n);
-}
-
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-    int t;
-    cin >> t;
-    while (t--) {
-        ll l, r;
-        cin >> l >> r;
-        cout << count_good(r) - count_good(l - 1) << "\n";
+    int n;
+    cin>>n;
+    vector<long long> a(n);
+    long long total_sum=0;
+    for(int i=0;i<n;++i) {
+        cin>>a[i];
+        total_sum+=a[i];
     }
-
+    if(total_sum%3!=0) {
+        cout<<0<<endl;
+        return 0;
+    }
+    long long part_sum=total_sum/3;
+    long long current_sum=0;
+    long long ways=0;
+    long long count_first_part=0;
+    for(int i=0;i<n-1;++i) {
+        current_sum+=a[i];
+        if(current_sum==2*part_sum) {
+            ways+=count_first_part;
+        }
+        if(current_sum==part_sum) {
+            count_first_part++;
+        }
+    }
+    cout<<ways<<endl;
     return 0;
 }
