@@ -27,32 +27,21 @@ const int N = 1e5+7;
 
 
 void AKG(){
-int n;
-    cin>>n;
-    vl a(n);
-    ll total_sum=0;
-    for(int i=0;i<n;++i) {
-        cin>>a[i];
-        total_sum+=a[i];
-    }
-    if(total_sum%3!=0) {
-        pr(0);
-        return;
-    }
-    ll part_sum=total_sum/3;
-    ll current_sum=0;
-    ll ways=0;
-    ll count_first_part=0;
-    for(int i=0;i<n-1;++i) {
-        current_sum+=a[i];
-        if(current_sum==2*part_sum) {
-            ways+=count_first_part;
+    int n,k;cin>>n>>k;
+    vi a(n+1);
+    for(int i=1;i<=n;i++) cin>>a[i];
+    int x=a[k];
+    sort(all(a));
+    for(int i=1,t=0;i<=n;i++){
+        if(a[i]<=x) continue;
+        int y=x;
+        t+=a[i]-x;
+        if(t>y){
+            pr("NO");
+            return;
         }
-        if(current_sum==part_sum) {
-            count_first_part++;
-        }
-    }
-    pr(ways);
+        x=a[i];
+    }pr("YES");
 }
 
 int main() {
@@ -64,7 +53,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
