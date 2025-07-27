@@ -27,21 +27,12 @@ const int N = 1e5+7;
 
 
 void AKG(){
-    int n,k;cin>>n>>k;
-    vi a(n+1);
-    for(int i=1;i<=n;i++) cin>>a[i];
-    int x=a[k];
-    sort(all(a));
-    for(int i=1,t=0;i<=n;i++){
-        if(a[i]<=x) continue;
-        int y=x;
-        t+=a[i]-x;
-        if(t>y){
-            pr("NO");
-            return;
-        }
-        x=a[i];
-    }pr("YES");
+    int n,m,p,q;cin>>n>>m>>p>>q;
+    if(n%p==0 && (n/p)*q!=m){
+        yn(0);
+        return;
+    }
+    yn(1);
 }
 
 int main() {
