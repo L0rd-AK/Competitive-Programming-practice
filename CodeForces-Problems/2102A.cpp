@@ -47,5 +47,4 @@ int main() {
     cin >> t; 
     while (t--)AKG();
     return 0;
-    
 }
