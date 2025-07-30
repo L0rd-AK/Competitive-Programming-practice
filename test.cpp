@@ -26,16 +26,18 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    ll n, c, cnt = 0, m = 1;
-    cin >> n >> c;
-    vl a(n);
-    f(i,0,n)cin >> a[i];
-    sort(a.rbegin(), a.rend());
-    for (auto to : a){
-        if (to * m <= c)m *= 2;
-        else cnt++;
+    int n,k;cin >> n>>k;
+    vector<array<int,3>> a(n);
+ 
+    for(auto &[l,r,h]: a)cin >> l>> r>> h;
+
+    sort(a.begin(),a.end());
+    int ans = k;
+ 
+    for(auto [l,r,h]: a){
+        if(ans>=l) ans = max(ans,h);
     }
-    pr(cnt);
+    pr(ans);
 }
 
 int main() {
