@@ -26,18 +26,33 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    int n,k;cin >> n>>k;
-    vector<array<int,3>> a(n);
- 
-    for(auto &[l,r,h]: a)cin >> l>> r>> h;
+    int n, m;
+    cin >> n >> m;
+    string x, s; cin >> x >> s;
 
-    sort(a.begin(),a.end());
-    int ans = k;
- 
-    for(auto [l,r,h]: a){
-        if(ans>=l) ans = max(ans,h);
+    if (x.find(s) != string::npos) {
+        pr(0);
+        return;
     }
-    pr(ans);
+
+    int cnt = 1;
+ 
+    x = x + x;
+
+    while (x.size() <= 2 * m) {
+        if (x.find(s) != string::npos) {
+            pr(cnt);
+            return;
+        }
+        cnt++;
+        x = x + x;
+    }
+
+    if (x.find(s) != string::npos) {
+        pr(cnt);
+        return;
+    }
+    pr(-1);
 }
 
 int main() {
