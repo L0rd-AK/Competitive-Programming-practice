@@ -24,9 +24,10 @@ using namespace std;
 
 const int MOD = 1e9+7;
 const int N = 1e5+7;
-
+int a[]={1,0,0,0,1,0,1,0,2,1,1,2,0,1,0,0};
 void AKG(){
-    for(cin>>n,r=!n;n;n>>=4)r+=a[n&15];
+    int n,r=!n;
+    for(cin>>n;n;n>>=4)r+=a[n&15];
     cout<<r;
 }
 
@@ -39,7 +40,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while (t--)AKG();
     return 0;
 }
