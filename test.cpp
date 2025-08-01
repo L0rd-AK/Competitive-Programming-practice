@@ -26,33 +26,8 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    int n, m;
-    cin >> n >> m;
-    string x, s; cin >> x >> s;
-
-    if (x.find(s) != string::npos) {
-        pr(0);
-        return;
-    }
-
-    int cnt = 1;
- 
-    x = x + x;
-
-    while (x.size() <= 2 * m) {
-        if (x.find(s) != string::npos) {
-            pr(cnt);
-            return;
-        }
-        cnt++;
-        x = x + x;
-    }
-
-    if (x.find(s) != string::npos) {
-        pr(cnt);
-        return;
-    }
-    pr(-1);
+    for(cin>>n,r=!n;n;n>>=4)r+=a[n&15];
+    cout<<r;
 }
 
 int main() {
