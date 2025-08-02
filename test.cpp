@@ -24,13 +24,10 @@ using namespace std;
 
 const int MOD = 1e9+7;
 const int N = 1e5+7;
-int a[]={1,0,0,0,1,0,1,0,2,1,1,2,0,1,0,0};
+
 void AKG(){
-    int n;
-    cin >> n;
-    int r = !n;
-    for(;n;n>>=4)r+=a[n&15];
-    cout<<r;
+    int x; cin>>x;
+    cout<<2-x*x<<endl;
 }
 
 int main() {
