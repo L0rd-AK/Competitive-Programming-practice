@@ -1,27 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 int main()
 {
     int t;
     cin >> t;
     while (t--)
     {
-        int n, c, cnt = 0, m = 1;
-        cin >> n >> c;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++)
+        int n, s = 0;
+        cin >> n;
+        vector<int> v(n);
+        for (int i = 0; i < n; ++i)
         {
-            cin >> a[i];
+            cin >> v[i];
+            s += (v[i] ? v[i] : 1);
         }
-        sort(a.rbegin(), a.rend());
-        for (auto to : a)
-        {
-            if (to * m <= c)
-                m *= 2;
-            else
-                cnt++;
-        }
-        cout << cnt << '\n';
+        cout << s << "\n";
     }
+    return 0;
 }
