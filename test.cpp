@@ -26,8 +26,15 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    int x; cin>>x;
-    cout<<2-x*x<<endl;
+    int n;cin>>n;
+    vi a(n);
+    ll ans=0;
+    f(i,0,n){
+        cin>>a[i];
+        if(a[i]) ans+=a[i];
+        else ans++;
+    }
+    pr(ans);
 }
 
 int main() {
@@ -39,7 +46,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
