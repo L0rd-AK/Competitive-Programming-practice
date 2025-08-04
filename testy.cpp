@@ -2,19 +2,11 @@
 using namespace std;
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    long long T, n, k, x;
+    cin >> T;
+    while (T--)
     {
-        int n, s = 0;
-        cin >> n;
-        vector<int> v(n);
-        for (int i = 0; i < n; ++i)
-        {
-            cin >> v[i];
-            s += (v[i] ? v[i] : 1);
-        }
-        cout << s << "\n";
+        cin >> n >> k >> x;
+        cout << ((k * (k + 1) / 2 > x || (n - k + 1 + n) * k / 2 < x) ? "NO\n" : "YES\n");
     }
-    return 0;
 }
