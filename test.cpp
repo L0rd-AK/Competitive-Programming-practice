@@ -26,15 +26,8 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    ll ans=0;
-    f(i,0,n){
-        cin>>a[i];
-        if(a[i]) ans+=a[i];
-        else ans++;
-    }
-    pr(ans);
+    ll n,k,x;cin>>n>>k>>x;
+    cout<<((k*(k+1)/2>x||(n-k+1+n)*k/2<x)?"NO\n":"YES\n");
 }
 
 int main() {
