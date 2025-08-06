@@ -16,3 +16,20 @@ class Solution {
             return num;
         }
     };
+
+
+class Solution {
+public:
+    int addDigits(int num) {
+        long long sum=0;
+        while(1){
+            while(num){
+                sum+=num%10;
+                num/=10;
+            }
+            if(sum<=9)return sum;
+            num=sum;
+            sum=0;
+        }
+    }
+};
