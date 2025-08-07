@@ -26,14 +26,12 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    int n;cin>>n;
-	long double a,cnt=0,mx=0;
-	for(int i=1; i<=n; i++){
-		cin>>a;
-		cnt+=a;
-		mx=max(mx,cnt/i);
-	}
-	cout<<mx;
+    int a,b,x,y;cin>>a>>b>>x>>y;
+	int ans;
+	if(a/2>b/2)ans=-1;
+	else if(a>b)ans=y;
+	else ans=(b/2-a/2)*x+(b-a-b/2+a/2)*min(x,y);
+	pr(ans);
 }
 
 int main() {
@@ -45,7 +43,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
