@@ -14,3 +14,15 @@ class Solution {
             return "";
         }
     };
+
+    class Solution {
+public:
+    string firstPalindrome(vector<string>& words) {
+        for(string s:words){
+            string rs = s;
+            reverse(rs.begin(), rs.end());
+            if(s==rs)return s;
+        }
+        return "";
+    }
+};
