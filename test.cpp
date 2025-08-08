@@ -26,12 +26,9 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    int a,b,x,y;cin>>a>>b>>x>>y;
-	int ans;
-	if(a/2>b/2)ans=-1;
-	else if(a>b)ans=y;
-	else ans=(b/2-a/2)*x+(b-a-b/2+a/2)*min(x,y);
-	pr(ans);
+    int n,a[]={10,10,8,9,8,7,7,7,7,0,9,6,8};
+    cin>>n;
+    cout<<a[n];
 }
 
 int main() {
