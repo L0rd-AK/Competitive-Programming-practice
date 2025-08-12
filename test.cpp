@@ -26,17 +26,7 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    int a[21][21], t = 0, m = 0, i, j, k, l;
-    char c;
-    for (i = 0; i < 21; i++)
-        for (j = 0; j < 21; j++)
-            a[i][j] = (cin >> c, c - 48);
-    for (i = 0; i < 18; i++)
-        for (j = 0; j < 18; j++, m = max(m, t), t = 0)
-            for (k = 0; k < 4; k++)
-                for (l = 0; l < 4; l++)
-                    t += a[i + k][j + l];
-    cout << m;
+    
 }
 
 int main() {
