@@ -26,6 +26,7 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
+    int n;cin>>n;
     
 }
 
