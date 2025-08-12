@@ -27,7 +27,14 @@ const int N = 1e5+7;
 
 void AKG(){
     int n;cin>>n;
-    
+    vi a(n), b(n);
+    f(i,0,n)cin>>a[i];
+    f(i,0,n)cin>>b[i];
+    ll ans=1;
+    f(i,0,n) {
+        if(a[i]>b[i])ans+=a[i]-b[i];
+    }
+    pr(ans);
 }
 
 int main() {
@@ -39,7 +46,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
