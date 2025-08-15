@@ -26,7 +26,10 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 int n[32] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5};
 void AKG(){
-  
+        int ans = 1;
+        while (n[i - 1]--)
+            scanf("%d", &x), ans *= x;
+        printf("%d\n", ans);
 }
 
 int main() {
