@@ -24,15 +24,16 @@ using namespace std;
 
 const int MOD = 1e9+7;
 const int N = 1e5+7;
-int arr[32] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5};
+int ans,arr[32] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5};
 void AKG(){
-        int ans = 1,n;cin>>n;
+        int n;cin>>n;
         f(i,0,n){
+            ans=1;
             while (arr[i - 1]--){
                 int x;cin>>x;ans *= x;
             }
+            pr(ans);
         }
-        pr(ans);
 }
 
 int main() {
@@ -44,7 +45,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    //cin >> t; 
     while (t--)AKG();
     return 0;
 }
