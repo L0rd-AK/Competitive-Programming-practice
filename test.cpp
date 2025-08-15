@@ -26,18 +26,7 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 
 void AKG(){
-    int n;cin>>n;
-    if(n==2)cout<<"-1 2\n";
-    else if(n%2==0){
-        f(i,0,n-1){
-            cout << (i % 2 == 0 ? -1 : 3) << ' ';
-        }cout <<"2 "<< endl;
-    }
-    else if(n%2==1){
-        f(i,0,n){
-            cout << (i % 2 == 0 ? -1 : 3) << ' ';
-        }cout << endl;
-    }
+  
 }
 
 int main() {
