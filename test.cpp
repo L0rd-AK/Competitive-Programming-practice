@@ -29,7 +29,7 @@ void AKG(){
         int n;cin>>n;
         f(i,0,n){
             ans=1;
-            while (arr[i - 1]--){
+            while (arr[i]--){
                 int x;cin>>x;ans *= x;
             }
             pr(ans);
