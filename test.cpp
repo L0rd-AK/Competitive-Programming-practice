@@ -25,21 +25,27 @@ using namespace std;
 const int MOD = 1e9+7;
 const int N = 1e5+7;
 void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    ll sum=0;
-    f(i,0,n)cin>>a[i],sum+=a[i];
-    if(sum%2==1){
-        cout<<"0\n";
-        return;
+    long long total = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        total += a[i];
     }
-    ll target = sum / 2, pref = 0;
-    ll ans = 0;
-    for (int i = 0; i < n - 1; ++i) {
-        pref += a[i];
-        if (pref == target) ++ans;
+
+    if (total % 2 != 0) {
+        cout << 0 << "\n";
+        return 0;
     }
-    pr(ans);
+
+    long long target = total / 2;
+    long long prefix = 0, ans = 0;
+
+    // Only cut before the last element (to keep both parts non-empty)
+    for (int i = 0; i < n - 1; i++) {
+        prefix += a[i];
+        if (prefix == target) ans++;
+    }
+
+    cout << ans << "\n";
 }
 
 int main() {
