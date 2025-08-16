@@ -39,7 +39,7 @@ void AKG(){
         pref += a[i];
         if (pref == target) ++ans;
     }
-    cout << ans << '\n';
+    pr(ans);
 }
 
 int main() {
