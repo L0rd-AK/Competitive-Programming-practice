@@ -27,7 +27,7 @@ const int N = 1e5+7;
 void AKG(){
     int n;cin>>n;
     vi a(n);
-    ll sum=0,ans=0;
+    ll sum=0;
     f(i,0,n)cin>>a[i],sum+=a[i];
     if(sum%2==1){
         cout<<"0\n";
