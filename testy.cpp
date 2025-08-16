@@ -1,13 +1,25 @@
-#include "cstdio"
-int t, ans, x, n[32] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5};
-main()
-{
-    scanf("%d", &t);
-    for (int i = 1; i <= t; i++)
-    {
-        ans = 1;
-        while (n[i - 1]--)
-            scanf("%d", &x), ans *= x;
-        printf("%d\n", ans);
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false); cin.tie(nullptr);
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
+
+    int n; 
+    if(!(cin >> n)) return 0;
+    vector<long long> a(n);
+    long long sum = 0;
+    for (auto &x : a) cin >> x, sum += x;
+
+    if (sum & 1LL) { cout << 0 << '\n'; return 0; }
+
+    long long target = sum / 2, pref = 0;
+    long long ans = 0;
+    // split must be between [0 .. n-2] so both parts are non-empty
+    for (int i = 0; i < n - 1; ++i) {
+        pref += a[i];
+        if (pref == target) ++ans;
     }
+    cout << ans << '\n';
+    return 0;
 }
