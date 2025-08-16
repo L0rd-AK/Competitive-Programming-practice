@@ -24,16 +24,27 @@ using namespace std;
 
 const int MOD = 1e9+7;
 const int N = 1e5+7;
-int ans,arr[32] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5};
 void AKG(){
-        int n;cin>>n;
-        f(i,0,n){
-            ans=1;
-            while (arr[i]--){
-                int x;cin>>x;ans *= x;
-            }
-            pr(ans);
-        }
+    int n;cin>>n;
+    vi a(n);
+    ll sum=0,ans=0;
+    f(i,0,n)cin>>a[i],sum+=a[i];
+    if(sum%2==1){
+        cout<<"0\n";
+        return;
+    }
+    sort(all(a));
+    ll prefix_sum = 0;
+    int i = 0,j=0;
+    while (i < n) {
+        prefix_sum += a[i];
+        if (prefix_sum == sum / 2) {
+            ans++;
+        }while(prefix_sum > sum / 2 && j < i) {
+            prefix_sum -= a[j++];
+        }i++;
+    }
+    pr(ans);
 }
 
 int main() {
