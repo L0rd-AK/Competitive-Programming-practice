@@ -33,18 +33,13 @@ void AKG(){
         cout<<"0\n";
         return;
     }
-    sort(all(a));
-    ll prefix_sum = 0;
-    int i = 0,j=0;
-    while (i < n) {
-        prefix_sum += a[i];
-        if (prefix_sum == sum / 2) {
-            ans++;
-        }while(prefix_sum > sum / 2 && j < i) {
-            prefix_sum -= a[j++];
-        }i++;
+    ll target = sum / 2, pref = 0;
+    ll ans = 0;
+    for (int i = 0; i < n - 1; ++i) {
+        pref += a[i];
+        if (pref == target) ++ans;
     }
-    pr(ans);
+    cout << ans << '\n';
 }
 
 int main() {
