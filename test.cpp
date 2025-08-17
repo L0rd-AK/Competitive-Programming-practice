@@ -26,27 +26,14 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 void AKG(){
     int n;cin>>n;
-    vi a(n);
-    ll total = 0;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-        total += a[i];
-    }
-
-    if (total % 2 != 0) {
-        pr(0);
-        return;
-    }
-
-    ll target = total / 2;
-    ll prefix = 0, ans = 0;
-
-    for (int i = 0; i < n - 1; i++) {
-        prefix += a[i];
-        if (prefix == target) ans++;
-    }
-
-    pr(ans);
+    vi a(n+1);
+	f(i,1,n+1)cin>>a[i];
+    dbg(a);
+	for(int i=1;i<=n/2;i++){
+		if(a[i]<a[n-i+1])(i&1)?cout<<"LR":cout<<"RL";
+		else (i&1)?cout<<"RL":cout<<"LR";
+    }if(n&1)cout<<"L";
+    cout<<endl;
 }
 
 int main() {
@@ -58,7 +45,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    //cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
