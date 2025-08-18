@@ -26,14 +26,24 @@ const int MOD = 1e9+7;
 const int N = 1e5+7;
 void AKG(){
     int n;cin>>n;
-    vi a(n+1);
-	f(i,1,n+1)cin>>a[i];
-    dbg(a);
-	for(int i=1;i<=n/2;i++){
-		if(a[i]<a[n-i+1])(i&1)?cout<<"LR":cout<<"RL";
-		else (i&1)?cout<<"RL":cout<<"LR";
-    }if(n&1)cout<<"L";
-    cout<<endl;
+    string s;cin>>s;
+    int dot=0,hsh=0;
+    f(i, 0, n) {
+        if (s[i] == '.') {
+            dot++;
+        }else hsh++;
+    }
+    if(n<=2){
+        pr(dot);
+        return;
+    }
+    f(i, 0, n-2) {
+       if(s[i]=='.'&&s[i+1]=='.'&&s[i+2]=='.') {
+            pr(2);
+            return;
+        }
+    }
+    pr(dot);
 }
 
 int main() {
