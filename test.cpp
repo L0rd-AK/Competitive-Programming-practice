@@ -24,26 +24,30 @@ using namespace std;
 
 const int MOD = 1e9+7;
 const int N = 1e5+7;
+char period[2000]={"HHeLiBeBCNOFNeNaMgAlSiPSClArKCaScTiVCrMnFeCoNiCuZnGaGeAsSeBrKrRbSrYZrNbMoTcRuRhPdAgCdInSnSbTeIXeCsBaLaCePrNdPmSmEuGdTbDyHoErTmYbLuHfTaWReOsIrPtAuHgTlPbBiPoAtRnFrRaAcThPaUNpPuAmCmBkCfEsFmMdNoLrRfDbSgBhHsMtDsRgCnNhFlMcLvTsOg"};
+bool found=0;
+string s;
+int n;
+void dfs(int depth)
+{
+	if(depth==n)
+	{found=1;return;}
+	for(int i=0;period[i];i++)
+	{
+		if(islower(period[i+1]))
+		{
+			if(depth<n-1 and toupper(period[i+1])==s[depth+1] and period[i]==s[depth])
+			dfs(depth+2);
+		}
+		else if(period[i]==s[depth])dfs(depth+1);
+	}
+}
 void AKG(){
-    int n;cin>>n;
-    string s;cin>>s;
-    int dot=0,hsh=0;
-    f(i, 0, n) {
-        if (s[i] == '.') {
-            dot++;
-        }else hsh++;
-    }
-    if(n<=2){
-        pr(dot);
-        return;
-    }
-    f(i, 0, n-2) {
-       if(s[i]=='.'&&s[i+1]=='.'&&s[i+2]=='.') {
-            pr(2);
-            return;
-        }
-    }
-    pr(dot);
+    cin>>s;
+	n=s.length();
+	dfs(0);
+	if(found)cout<<"YES\n";
+	else cout<<"NO\n";
 }
 
 int main() {
@@ -55,7 +59,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while (t--)AKG();
     return 0;
 }
