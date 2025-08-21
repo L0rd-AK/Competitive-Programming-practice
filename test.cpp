@@ -24,30 +24,19 @@ using namespace std;
 
 const int MOD = 1e9+7;
 const int N = 1e5+7;
-char period[2000]={"HHeLiBeBCNOFNeNaMgAlSiPSClArKCaScTiVCrMnFeCoNiCuZnGaGeAsSeBrKrRbSrYZrNbMoTcRuRhPdAgCdInSnSbTeIXeCsBaLaCePrNdPmSmEuGdTbDyHoErTmYbLuHfTaWReOsIrPtAuHgTlPbBiPoAtRnFrRaAcThPaUNpPuAmCmBkCfEsFmMdNoLrRfDbSgBhHsMtDsRgCnNhFlMcLvTsOg"};
-bool found=0;
-string s;
-int n;
-void dfs(int depth)
-{
-	if(depth==n)
-	{found=1;return;}
-	for(int i=0;period[i];i++)
-	{
-		if(islower(period[i+1]))
-		{
-			if(depth<n-1 and toupper(period[i+1])==s[depth+1] and period[i]==s[depth])
-			dfs(depth+2);
-		}
-		else if(period[i]==s[depth])dfs(depth+1);
-	}
-}
+
+
 void AKG(){
-    cin>>s;
-	n=s.length();
-	dfs(0);
-	if(found)cout<<"YES\n";
-	else cout<<"NO\n";
+    int n;cin>>n;
+	string a;cin>>a;
+    int m;cin>>m;
+	string b;cin>>b;
+	string s;cin>>s;
+	vector<char> ans;
+	for(char c:s){
+		if(c=='V')
+	}
+
 }
 
 int main() {
