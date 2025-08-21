@@ -32,7 +32,7 @@ void AKG(){
     int m;cin>>m;
 	string b;cin>>b;
 	string s;cin>>s;
-	vector<char> ans;
+	string sa,sb;
 	for(char c:s){
 		if(c=='V')
 	}
