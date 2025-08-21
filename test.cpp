@@ -33,8 +33,10 @@ void AKG(){
 	string b;cin>>b;
 	string s;cin>>s;
 	string sa,sb;
+	int i=0;
 	for(char c:s){
-		if(c=='V')
+		if(c=='V')sa+=b[i++];
+		else sb+=b[i++];
 	}
 
 }
