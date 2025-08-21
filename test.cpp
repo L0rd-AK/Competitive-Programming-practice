@@ -38,7 +38,8 @@ void AKG(){
 		if(c=='V')sa+=b[i++];
 		else sb+=b[i++];
 	}
-
+	reverse(all(sa));
+    cout<<sa<<a<<sb<<endl;
 }
 
 int main() {
@@ -50,7 +51,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
