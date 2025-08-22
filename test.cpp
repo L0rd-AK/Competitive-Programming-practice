@@ -27,6 +27,7 @@ const int N = 1e5+7;
 
 
 void AKG(){
+    int x,k;cin>>x>>k;
     
 }
 
