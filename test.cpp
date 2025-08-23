@@ -27,14 +27,14 @@ ll N = 1e18;
 
 
 void AKG(){
-    int n;cin>>n;
+    ll n;cin>>n;
     vl a;
-    int cnt=0;
-    for(int i=10;i<=N;i*=10){
+    ll cnt=0;
+    for(ll i=10;i<=N;i*=10){
         if(n%(i+1)==0)a.pb(n/(i+1)),cnt++;
     }
     pr(cnt);
-    for(int i=cnt;i>=0;i--){
+    for(ll i=cnt;i>=0;i--){
         cout<<a[i]<<" ";
     }
     if(cnt)cout<<endl;
