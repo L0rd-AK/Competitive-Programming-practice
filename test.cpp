@@ -23,13 +23,21 @@ using namespace std;
 #endif
 
 const int MOD = 1e9+7;
-const int N = 1e5+7;
+ll N = 1e18;
 
 
 void AKG(){
-    int x,k;cin>>x>>k;
-    if(x%k==0)cout<<"2\n"<<x-1<<" "<<1<<endl;
-    else cout<<"1\n"<<x<<endl;
+    int n;cin>>n;
+    vl a;
+    int cnt=0;
+    for(int i=10;i<=N;i*=10){
+        if(n%(i+1)==0)a.pb(n/(i+1)),cnt++;
+    }
+    pr(cnt);
+    for(int i=cnt;i>=0;i--){
+        cout<<a[i]<<" ";
+    }
+    if(cnt)cout<<endl;
 }
 
 int main() {
