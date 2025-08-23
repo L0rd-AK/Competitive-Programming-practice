@@ -26,19 +26,23 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 
-void AKG(){
-    ll n;cin>>n;
+void AKG() {
+    ll n;
+    cin >> n;
     vl a;
-    ll cnt=0;
-    for(ll i=10;i<=N;i*=10){
-        if(n%(i+1)==0)a.pb(n/(i+1)),cnt++;
+    for (ll i = 10; i <= N; i *= 10) {
+        if (n % (i + 1) == 0) {
+            a.pb(n / (i + 1));
+        }
     }
-    pr(cnt);
-    for(ll i=cnt;i>=0;i--){
-        cout<<a[i]<<" ";
+    pr(a.size());
+    reverse(all(a));
+    for (ll val : a) {
+        cout << val << " ";
     }
-    if(cnt)cout<<endl;
+    if (!a.empty()) cout << endl;
 }
+
 
 int main() {
 #ifdef LOCAL
