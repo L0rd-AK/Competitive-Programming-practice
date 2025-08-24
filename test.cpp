@@ -27,20 +27,21 @@ ll N = 1e18;
 
 
 void AKG() {
-    ll n;
-    cin >> n;
-    vl a;
-    for (ll i = 10; i <= N; i *= 10) {
-        if (n % (i + 1) == 0) {
-            a.pb(n / (i + 1));
-        }
-    }
-    pr(a.size());
-    reverse(all(a));
-    for (ll val : a) {
-        cout << val << " ";
-    }
-    if (!a.empty()) cout << endl;
+    int n;cin>>n;
+    int a[n+1];
+	for(int i=1;i<=n;i++) cin>>a[i];
+	sort(a+1,a+n+1);
+	int l=n;
+	while(a[n]==a[l]) l--;
+	if(!l){
+	    pr(-1);
+		return;
+	}
+	cout<<l<<' '<<n-l<<endl;
+	for(int i=1;i<=l;i++) cout<<a[i]<<' ';
+	cout<<endl;
+	for(int i=l+1;i<=n;i++) cout<<a[i]<<' ';
+	cout<<endl;
 }
 
 
