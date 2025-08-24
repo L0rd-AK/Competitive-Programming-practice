@@ -27,21 +27,7 @@ ll N = 1e18;
 
 
 void AKG() {
-    int n;cin>>n;
-    int a[n+1];
-	for(int i=1;i<=n;i++) cin>>a[i];
-	sort(a+1,a+n+1);
-	int l=n;
-	while(a[n]==a[l]) l--;
-	if(!l){
-	    pr(-1);
-		return;
-	}
-	cout<<l<<' '<<n-l<<endl;
-	for(int i=1;i<=l;i++) cout<<a[i]<<' ';
-	cout<<endl;
-	for(int i=l+1;i<=n;i++) cout<<a[i]<<' ';
-	cout<<endl;
+  
 }
 
 
