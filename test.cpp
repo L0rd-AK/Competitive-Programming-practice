@@ -27,7 +27,17 @@ ll N = 1e18;
 
 
 void AKG() {
-  
+  int n;cin>>n;
+  set<int> st;
+  f(i,0,n){
+    int x;cin>>x;
+    if(st.count(x)){
+        yn(1);
+        return;
+    }
+    st.insert(x);
+  }
+  yn(0);
 }
 
 
