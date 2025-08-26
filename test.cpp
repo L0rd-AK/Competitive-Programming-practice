@@ -29,13 +29,15 @@ ll N = 1e18;
 void AKG() {
   int n;cin>>n;
   set<int> st;
+  bool ok=0;
+  vi a(n);
+  f(i,0,n)cin>>a[i];
   f(i,0,n){
-    int x;cin>>x;
-    if(st.count(x)){
+    if(st.count(a[i])){
         yn(1);
         return;
     }
-    st.insert(x);
+    st.insert(a[i]);
   }
   yn(0);
 }
