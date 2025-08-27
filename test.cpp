@@ -27,19 +27,15 @@ ll N = 1e18;
 
 
 void AKG() {
-  int n;cin>>n;
-  set<int> st;
-  bool ok=0;
-  vi a(n);
-  f(i,0,n)cin>>a[i];
-  f(i,0,n){
-    if(st.count(a[i])){
-        yn(1);
-        return;
+ int n, m = 0, k, i = 1, c, a[2002];
+    for(cin>>n;i<=n;)cin>>a[i++];
+    for(i=1;i<=n;){
+        k=a[i++],c=0;
+        while(k>0)
+            k=a[k],c++;
+        m=c>m?c:m;
     }
-    st.insert(a[i]);
-  }
-  yn(0);
+    pr(m+1);
 }
 
 
@@ -52,7 +48,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while (t--)AKG();
     return 0;
 }
