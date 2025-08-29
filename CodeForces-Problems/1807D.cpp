@@ -1,0 +1,2 @@
+#include<bits/stdc++.h>
+using namespace std;int main(){long long t,n,q,l,r,k;cin>>t;while(t--){cin>>n>>q;long long a[n+1]={0};for(int i=1;i<=n;i++)cin>>a[i];for(int i=1;i<=n;i++)a[i]+=a[i-1];while(q--){cin>>l>>r>>k;if((((r-l+1)*k)+a[l-1]+(a[n]-a[r]))&1)cout<<"YES\n";else cout<<"NO\n";}}}
