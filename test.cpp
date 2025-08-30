@@ -28,7 +28,14 @@ ll N = 1e18;
 
 void AKG() {
     int n;cin>>n;
-    
+    vl a(n);
+    f(i,0,n)cin>>a[i];
+    sort(all(a),greater<int>());
+    ll ans=0;
+    for(int i=0;i<n;i+=2){
+        ans+=a[i];
+    }
+    pr(ans);
 }
 
 
