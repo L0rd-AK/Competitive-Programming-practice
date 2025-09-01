@@ -28,8 +28,8 @@ ll N = 1e18;
 
 void AKG() {
     int n,a,b;cin>>n>>a>>b;
-    if(b>=a)yn(n%b==0);
-    else yn(n%b==0&&n%a==0);
+    if(b>=a)yn(n%2==b%2);
+    else yn((n%2==b%2)&&(n%2==a%2));
 }
 
 
