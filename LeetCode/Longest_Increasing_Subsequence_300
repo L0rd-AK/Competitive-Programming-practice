@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> lastVal = {nums[0]};
+
+        for (int num : nums) {
+            if (num > lastVal.back()) {
+                lastVal.push_back(num);
+                continue;
+            }
+
+            int l = 0, r = lastVal.size() - 1;
+
+            while (l < r) {
+                int mid = (l + r) / 2;
+
+                if (lastVal[mid] < num) {
+                    l = mid + 1;
+                } else {
+                    r = mid;
+                }
+            }
+
+            lastVal[l] = num;
+        }
+
+        return lastVal.size();
+    }
+};
