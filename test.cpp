@@ -27,10 +27,9 @@ ll N = 1e18;
 
 
 void AKG() {
-    vi a{1200, 1400, 1600, 1900, 2100, 2300, 2400, 2600, 3000};
-    int n;
-    cin >> n;
-    pr(*upper_bound(a.begin(), a.end(), n));
+    int n,a,b;cin>>n>>a>>b;
+    if(b>=a)yn(n%b==0);
+    else yn(n%b==0&&n%a==0);
 }
 
 
@@ -43,7 +42,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
