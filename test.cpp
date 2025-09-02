@@ -32,7 +32,12 @@ void AKG() {
     stack<char> st;
     st.push(s[0]);
     f(i,1,n){
-        
+        char c;
+        if(!st.empty())c=st.top();
+        if(!st.empty()&&c!=s[i]){
+            ans++;
+            st.pop();
+        }else st.push(s[i]);
     }
     yn(ans%2==1);
 }
