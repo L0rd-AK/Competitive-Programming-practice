@@ -27,19 +27,26 @@ ll N = 1e18;
 
 
 void AKG() {
-    string s;cin>>s;
-    int n=s.length(),ans=0;
-    stack<char> st;
-    st.push(s[0]);
-    f(i,1,n){
-        char c;
-        if(!st.empty())c=st.top();
-        if(!st.empty()&&c!=s[i]){
-            ans++;
-            st.pop();
-        }else st.push(s[i]);
-    }
-    yn(ans%2==1);
+    int n;
+        cin >> n;
+        vl b(n);
+        for (int i = 0; i < n; i++) cin >> b[i];
+
+        vl a;
+        a.push_back(b[0]);
+
+        for (int i = 1; i < n; i++) {
+            if (b[i-1] <= b[i]) {
+                a.push_back(b[i]);
+            } else {
+                a.push_back(b[i]);
+                a.push_back(b[i]);
+            }
+        }
+
+        cout << (int)a.size() << "\n";
+        for (auto x : a) cout << x << " ";
+        cout << "\n";
 }
 
 
