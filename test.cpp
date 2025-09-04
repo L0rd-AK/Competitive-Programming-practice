@@ -31,7 +31,7 @@ void AKG(){
     vl a(n);
     f(i,0,n)cin>>a[i];
     f(i,0,n){
-        cout<<a[i]+k*(a[i]%k)<<" ";
+        cout<<a[i]+k*(a[i]%(k+1))<<" ";
     }cout<<endl;
 
 }
