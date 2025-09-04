@@ -26,27 +26,14 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 
-void AKG() {
-    int n;
-        cin >> n;
-        vl b(n);
-        for (int i = 0; i < n; i++) cin >> b[i];
+void AKG(){
+    ll n,k;cin>>n>>k;
+    vl a(n);
+    f(i,0,n)cin>>a[i];
+    f(i,0,n){
+        cout<<a[i]+k*(a[i]%k)<<" ";
+    }cout<<endl;
 
-        vl a;
-        a.push_back(b[0]);
-
-        for (int i = 1; i < n; i++) {
-            if (b[i-1] <= b[i]) {
-                a.push_back(b[i]);
-            } else {
-                a.push_back(b[i]);
-                a.push_back(b[i]);
-            }
-        }
-
-        cout << (int)a.size() << "\n";
-        for (auto x : a) cout << x << " ";
-        cout << "\n";
 }
 
 
