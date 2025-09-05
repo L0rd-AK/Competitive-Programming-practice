@@ -27,13 +27,13 @@ ll N = 1e18;
 
 
 void AKG(){
-    ll n,k;cin>>n>>k;
-    vl a(n);
-    f(i,0,n)cin>>a[i];
-    f(i,0,n){
-        cout<<a[i]+k*(a[i]%(k+1))<<" ";
-    }cout<<endl;
-
+    ll n; cin>>n;
+	ll ans=0,exp=0,pow=1;
+	while(n>0){
+		ans+=(n%3)*(pow*3+pow/3*exp);
+		n/=3; exp++; pow*=3;
+	}
+	pr(ans);
 }
 
 
