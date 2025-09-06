@@ -16,3 +16,13 @@ public:
         return abs(x-z)==abs(y-z)?0:2-(abs(x-z)<abs(y-z));
     }
 };
+
+// class Solution:
+//     def findClosest(self, x, y, z):
+//         d1 = abs(x - z)
+//         d2 = abs(y - z)
+//         if d1 < d2:
+//             return 1
+//         if d2 < d1:
+//             return 2
+//         return 0
