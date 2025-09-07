@@ -33,10 +33,9 @@ void AKG(){
             return;
         }
         if(((a + b)%2) == 0){
-            pr(a+b);
+            pr( a * (b >> 1) + 2 );
             return;
         }
-
         if((b%2) == 1){
             pr(-1);
             return;
@@ -45,13 +44,13 @@ void AKG(){
         ll temp = b;
         while((temp%2) == 0){
             tb++;
-            temp >>= 1;
+            temp >>=1;
         }
-        if(tb == 1){
+        if(tb ==1){
             pr(-1);
             return;
         }
-        ll k=1LL<<(tb-1);
+        ll k = b >> 1;
         ll ans=a*k+(b/k);
         pr(ans);
 
