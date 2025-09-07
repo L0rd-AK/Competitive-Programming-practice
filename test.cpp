@@ -27,33 +27,38 @@ ll N = 1e18;
 
 
 void AKG(){
-        ll a,b;cin>>a>>b;
-        if(a%2==1&&b%2==1){
-            pr(a*b+1);
-            return;
-        }
-        if(((a + b)%2) == 0){
-            pr( a * (b >> 1) + 2 );
-            return;
-        }
-        if((b%2) == 1){
+        ll n;cin>>n;
+        vl b(n);
+        f(i,0,n)cin>>b[i];
+        vl cnt(n+1,0);
+        f(i,0,n)cnt[b[i]]++;
+        bool possible=true;
+        f(ff,1,n+1)if(cnt[ff]%ff!=0)possible=false;
+        if(!possible){
             pr(-1);
             return;
         }
-        ll tb = 0;
-        ll temp = b;
-        while((temp%2) == 0){
-            tb++;
-            temp >>=1;
+        vector<vi>pos(n+1);
+        f(i,0,n)pos[b[i]].pb(i);
+        vl a(n);
+        ll val=1;
+        f(ff,1,n+1){
+            if(pos[ff].empty())continue;
+            ll sz=pos[ff].size();
+            ll num=sz/ff;
+            f(g,0,num){
+                f(k,0,ff){
+                    ll idx=pos[ff][g*ff+k];
+                    a[idx]=val;
+                }
+                val++;
+            }
         }
-        if(tb ==1){
-            pr(-1);
-            return;
+        f(i,0,n){
+            cout<<a[i];
+            if(i<n-1)cout<<" ";
+            else cout<<"\n";
         }
-        ll k = b >> 1;
-        ll ans=a*k+(b/k);
-        pr(ans);
-
 }
 
 
