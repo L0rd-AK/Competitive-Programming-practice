@@ -27,11 +27,10 @@ ll N = 1e18;
 
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    f(i,0,n)cout<<abs(1+n-a[i])<<" ";
-    cout<<endl;
+    ll n,k; cin>>n>>k;
+    ll ans=k;
+    while(n--)ans*=2;
+	pr(ans);
 }
 
 
