@@ -29,8 +29,9 @@ ll N = 1e18;
 void AKG(){
     int n;cin>>n;
     vi a(n);
+    int se=0;
     f(i,0,n)cin>>a[i];
-    pr(min(a[0]*2,a[0]+a[1]));
+    
 }
 
 
