@@ -35,7 +35,7 @@ void AKG(){
         if(a[i]==-1)se++;
         if(a[i]==0)z++;
     }
-    yn(se==0&&z==0);
+    yn(se&&z==0);
     
 }
 
