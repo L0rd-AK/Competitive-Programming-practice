@@ -27,17 +27,10 @@ ll N = 1e18;
 
 
 void AKG(){
-    int n;cin>>n;
-    set<int>s;
-    bool u=true;
-    while(n--){
-        int x;cin>>x;
-        if(x==0)
-        u=false;
-        else if(x!=-1)
-        s.insert(x);
-    }
-    yn(!u||s.size()>1);
+    int a,b;cin>>a>>b;
+    if(a==b)pr(0);
+    else if(a==1||b==1)pr(1);
+    else pr(2);
 }
 
 
