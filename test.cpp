@@ -27,11 +27,7 @@ ll N = 1e18;
 
 
 void AKG(){
-    int a,b;cin>>a>>b;
-    if(a==b)pr(0);
-    else if(a==1||b==1)pr(1);
-    else if(a%b==0||b%a==0)pr(1);
-    else pr(2);
+    
 }
 
 
