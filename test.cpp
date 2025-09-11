@@ -27,7 +27,12 @@ ll N = 1e18;
 
 
 void AKG(){
-    
+    int n,m;cin>>n>>m;
+    vl a(n);
+    f(i,0,n)cin>>a[i];
+    sort(all(a),greater<int>());
+    ll ans=0;
+    f(i,0,min(n,m))
 }
 
 
