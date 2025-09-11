@@ -38,7 +38,6 @@ void AKG(){
     pr(ans);
 }
 
-
 int main() {
 #ifdef LOCAL
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
