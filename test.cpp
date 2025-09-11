@@ -32,7 +32,9 @@ void AKG(){
     f(i,0,n)cin>>a[i];
     sort(all(a),greater<int>());
     ll ans=0;
-    f(i,0,min(n,m))
+    f(i,0,min(n,m)){
+        
+    }
 }
 
 
