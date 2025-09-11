@@ -33,8 +33,9 @@ void AKG(){
     sort(all(a),greater<int>());
     ll ans=0;
     f(i,0,min(n,m)){
-        
+       ans+=a[i]*(m-i); 
     }
+    pr(ans);
 }
 
 
