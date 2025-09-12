@@ -27,15 +27,9 @@ ll N = 1e18;
 
 
 void AKG(){
-    int n,m;cin>>n>>m;
-    vl a(n);
-    f(i,0,n)cin>>a[i];
-    sort(all(a),greater<int>());
-    ll ans=0;
-    f(i,0,min(n,m)){
-       ans+=a[i]*(m-i); 
-    }
-    pr(ans);
+    string s;cin>>s;
+    int x;cin>>x;
+    yn(s[1]=='B'&&x<2000||s[1]=='R'&&x<2800||s[1]=='G'&&x>1199);
 }
 
 int main() {
@@ -47,7 +41,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while (t--)AKG();
     return 0;
 }
