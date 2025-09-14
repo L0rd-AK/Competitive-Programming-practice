@@ -27,7 +27,7 @@ ll N = 1e18;
 
 void AKG(){
     int x,n;cin>>x>>n;
-    
+    (n%2==0?pr(0):pr(x));
 }
 
 int main() {
