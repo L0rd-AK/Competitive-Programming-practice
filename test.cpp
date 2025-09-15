@@ -26,11 +26,11 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll n,m,x,y;cin>>n>>m>>x>>y;
-    ll tmp=n+m;
-    ll ans=tmp;
+    int n,m,x,y;cin>>n>>m>>x>>y;
+    int tmp=n+m;
+    int ans=tmp;
     while(tmp--){
-        ll x;cin>>x;
+        int x;cin>>x;
     }
     pr(ans);
 }
