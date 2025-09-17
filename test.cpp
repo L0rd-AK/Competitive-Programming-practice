@@ -26,13 +26,22 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,m,x,y;cin>>n>>m>>x>>y;
-    int tmp=n+m;
-    int ans=tmp;
-    while(tmp--){
-        int x;cin>>x;
+    ll n,k,s=0,e=0,cnt=0,b=1;
+    cin>>n>>k;
+    vl a(n);
+    unordered_map<ll,ll> m,m2;
+    for(auto &v:a){
+      cin>>v;
+      m[v]++;
     }
-    pr(ans);
+    while(e<n){
+      m2[a[e]]++;
+      if((m[a[e]]%k)!=0) b=0;
+      while(m2[a[e]]>m[a[e]]/k)
+        m2[a[s++]]--;
+      cnt+=((e++)-s+1);
+    }
+    cout<<cnt*b<<endl;
 }
 
 int main() {
