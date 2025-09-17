@@ -41,7 +41,7 @@ void AKG(){
         m2[a[s++]]--;
       cnt+=((e++)-s+1);
     }
-    cout<<cnt*b<<endl;
+
 }
 
 int main() {
