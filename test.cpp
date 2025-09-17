@@ -27,7 +27,6 @@ ll N = 1e18;
 
 void AKG(){
     
-
 }
 
 int main() {
