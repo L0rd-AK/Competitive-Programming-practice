@@ -26,8 +26,8 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,k;cin>>n>>k;
-    yn(n%2==k%2);
+    ll n,k;cin>>n>>k;
+    yn(n%2==k%2 && k*k<=n);
 }
 
 int main() {
