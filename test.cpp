@@ -35,6 +35,7 @@ void AKG(){
             return;
         }
     }
+    yn(1);
 }
 
 int main() {
