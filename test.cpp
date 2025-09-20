@@ -32,7 +32,7 @@ void AKG(){
     f(i,1,n-1){
         if(a[i]<a[i-1]&&a[i]<a[i+1]){
             yn(0);
-            
+            return;
         }
     }
 }
