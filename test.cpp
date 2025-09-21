@@ -26,16 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    f(i,1,n-1){
-        if(a[i]<a[i-1]&&a[i]<a[i+1]){
-            yn(0);
-            return;
-        }
-    }
-    yn(1);
+    
 }
 
 int main() {
