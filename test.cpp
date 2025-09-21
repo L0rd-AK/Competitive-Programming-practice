@@ -32,7 +32,8 @@ void AKG(){
     {
     int a,b;
     cin>>a>>b;
-    if(a%2!=(b+in)%2){--m;in=in^1;}
+    if(a%2!=(b+in)%2){
+        --m;in=in^1;}
     }
     cout<<m<<endl;
 }
