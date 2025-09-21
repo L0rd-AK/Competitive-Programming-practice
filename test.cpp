@@ -28,8 +28,7 @@ ll N = 1e18;
 void AKG(){
     int n,m,in=0;
     cin>>n>>m;
-    for(int i=0;i<n;++i)
-    {
+    for(int i=0;i<n;++i){
         int a,b;
         cin>>a>>b;
         if(a%2!=(b+in)%2){
@@ -37,7 +36,7 @@ void AKG(){
             in=in^1;
         }
     }
-    cout<<m<<endl;
+    pr(m);
 }
 
 int main() {
