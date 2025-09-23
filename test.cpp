@@ -26,7 +26,34 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    
+    int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        // Since a is non-decreasing and values are in [1..n], we can count directly.
+        vector<int> cnt(n + 1, 0);
+        for (int x : a) {
+            cnt[x]++;
+        }
+        vector<int> freqs;
+        for (int v = 1; v <= n; v++) {
+            if (cnt[v] > 0) {
+                freqs.push_back(cnt[v]);
+            }
+        }
+        int ans = 0;
+        for (int k = 1; k <= n; k++) {
+            int c = 0;
+            for (int f : freqs) {
+                if (f >= k) {
+                    c++;
+                }
+            }
+            ans = max(ans, c * k);
+        }
+        cout << ans << "\n";
 }
 
 int main() {
