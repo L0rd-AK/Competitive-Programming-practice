@@ -32,7 +32,6 @@ void AKG(){
         for (int i = 0; i < n; i++) {
             cin >> a[i];
         }
-        // Since a is non-decreasing and values are in [1..n], we can count directly.
         vector<int> cnt(n + 1, 0);
         for (int x : a) {
             cnt[x]++;
