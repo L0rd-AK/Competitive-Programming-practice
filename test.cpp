@@ -28,15 +28,15 @@ ll N = 1e18;
 void AKG(){
     int n;
         cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
+        vi a(n);
+        f(i,0,n){
             cin >> a[i];
         }
-        vector<int> cnt(n + 1, 0);
+        vi cnt(n + 1, 0);
         for (int x : a) {
             cnt[x]++;
         }
-        vector<int> freqs;
+        vi freqs;
         for (int v = 1; v <= n; v++) {
             if (cnt[v] > 0) {
                 freqs.push_back(cnt[v]);
@@ -52,7 +52,7 @@ void AKG(){
             }
             ans = max(ans, c * k);
         }
-        cout << ans << "\n";
+        pr(ans);
 }
 
 int main() {
