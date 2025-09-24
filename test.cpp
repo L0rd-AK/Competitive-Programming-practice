@@ -25,22 +25,26 @@ using namespace std;
 const int MOD = 1e9+7;
 ll N = 1e18;
 
-void AKG(){
-    ll n;cin>>n;
-    vi a(2*n+1,-1);
-    
-    f(i,1,2*n+1){
-        int x;cin>>x;
-        a[x]=i;
+void AKG() {
+    ll n;
+    cin >> n;
+    vi a(2 * n + 1, -1);
+
+    f(i, 1, n + 1) {
+        int x;
+        cin >> x;
+        a[x] = i; 
     }
-    int ans=0;
-    f(i,1,2*n+1){
-        for(int j=1;i*j<=2*n;j++){
-            if(a[i]==-1||a[j]==-1)continue;
-            if(i==j)continue;
-            if(i+j==a[i]*a[j])ans++;
+
+    int ans = 0;
+    for (int i = 1; i <= 2 * n; i++) {
+        if (a[i] == -1) continue;
+        for (int j = i + 1; j <= 2 * n; j++) {
+            if (a[j] == -1) continue;
+            if (i + j == a[i] * a[j]) ans++;
         }
     }
+
     pr(ans);
 }
 
