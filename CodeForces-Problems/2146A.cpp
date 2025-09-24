@@ -26,8 +26,32 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll n;cin>>n;
-    vi a(2*n);
+        int n;cin >> n;
+        vi a(n);
+        f(i,0,n){
+            cin >> a[i];
+        }
+        vi cnt(n + 1, 0);
+        for (int x : a) {
+            cnt[x]++;
+        }
+        vi freqs;
+        for (int v = 1; v <= n; v++) {
+            if (cnt[v] > 0) {
+                freqs.push_back(cnt[v]);
+            }
+        }
+        int ans = 0;
+        for (int k = 1; k <= n; k++) {
+            int c = 0;
+            for (int f : freqs) {
+                if (f >= k) {
+                    c++;
+                }
+            }
+            ans = max(ans, c * k);
+        }
+        pr(ans);
 }
 
 int main() {
