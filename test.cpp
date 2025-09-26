@@ -27,10 +27,14 @@ ll N = 1e18;
 
 void AKG(){
    int n;cin>>n;
-   int ans=0;
+   int ans=0,od=0;
    while(n--){
         int x;cin>>x;
+        if(x==0)ans++;
+        if(x==-1)od++;
    }
+   if(od==0||od%2==0)pr(ans);
+   else pr(ans+2);
 }
 
 int main() {
