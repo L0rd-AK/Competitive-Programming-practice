@@ -28,7 +28,10 @@ ll N = 1e18;
 void AKG(){
    int n;cin>>n;
    vi a(n);
-   f(i,0,n)cin>>a[i];
+   ll sum=0;
+   f(i,0,n)cin>>a[i],sum+=a[i];
+   if(sum%3)pr("0 0");
+   else cout<<1<<" "<<n-1<<endl;
 }
 
 int main() {
