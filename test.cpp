@@ -26,15 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-   int n;cin>>n;
-   vi a(n);
-   f(i,0,n)cin>>a[i];
-   sort(all(a));
-   int ans=INT_MIN;
-   for(int i=0;i<n-1;i+=2){
-     ans=max(ans,abs(a[i]-a[i+1]));
-   }
-   pr(ans);
+   
 }
 
 int main() {
