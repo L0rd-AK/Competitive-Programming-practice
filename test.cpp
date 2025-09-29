@@ -26,7 +26,16 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-   
+    int n, k;
+    cin >> n >> k;
+    vi a(n), c(n + 1);
+    for (auto &x : a)
+        cin >> x, ++c[x];
+    int m = 0;
+    for (int i = 0; i < k; i++)
+        if (!c[i])
+            ++m;
+    pr(max(m, c[k]));
 }
 
 int main() {
