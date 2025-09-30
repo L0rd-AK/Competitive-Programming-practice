@@ -35,13 +35,13 @@ void AKG(){
     }
     int l=0,r=s.length()-1;
     while(l<=r){
-        if(s[l]=='1' && i>1)l++;
-        else if(s[l]=='2' && ii>1)l++;
-        else if(s[l]=='3' && iii>1)l++;
+        if(s[l]=='1' && i>1)i--,l++;
+        else if(s[l]=='2' && ii>1)ii--,l++;
+        else if(s[l]=='3' && iii>1)iii--,l++;
 
-        if(s[r]=='1' && i>1)r--;
-        else if(s[r]=='2' && ii>1)r--;
-        else if(s[r]=='3' && iii>1)r--;
+        if(s[r]=='1' && i>1)i--,r--;
+        else if(s[r]=='2' && ii>1)ii--,r--;
+        else if(s[r]=='3' && iii>1)iii--,r--;
     }
     pr(r-l+1);
 }
