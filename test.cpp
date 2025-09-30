@@ -51,7 +51,7 @@ void AKG(){
     }
     int x=r - l + 1;
     if(x<3)pr(0);
-    else cout << max(0,x) << '\n';
+    else pr(x);
 }
 
 int main() {
