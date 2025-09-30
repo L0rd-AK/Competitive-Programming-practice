@@ -29,7 +29,7 @@ void AKG(){
     string s; 
     cin >> s;
     int cnt[4] = {0,0,0,0};
-    for(char c : s) if(c >= '1' && c <= '3') cnt[c - '0']++;
+    for(char c : s)cnt[c - '0']++;
 
     int l = 0, r = (int)s.length() - 1;
     while (l <= r) {
