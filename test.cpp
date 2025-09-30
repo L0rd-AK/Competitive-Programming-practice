@@ -26,16 +26,24 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n, k;
-    cin >> n >> k;
-    vi a(n), c(n + 1);
-    for (auto &x : a)
-        cin >> x, ++c[x];
-    int m = 0;
-    for (int i = 0; i < k; i++)
-        if (!c[i])
-            ++m;
-    pr(max(m, c[k]));
+    string s;cin>>s;
+    int i=0,ii=0,iii=0;
+    for(char c:s){
+        if(c=='1')i++;
+        if(c=='2')ii++;
+        if(c=='3')iii++;
+    }
+    int l=0,r=s.length()-1;
+    while(l<=r){
+        if(s[l]=='1' && i>1)l++;
+        else if(s[l]=='2' && ii>1)l++;
+        else if(s[l]=='3' && iii>1)l++;
+
+        if(s[r]=='1' && i>1)r--;
+        else if(s[r]=='2' && ii>1)r--;
+        else if(s[r]=='3' && iii>1)r--;
+    }
+    pr(r-l+1);
 }
 
 int main() {
