@@ -42,8 +42,8 @@ void AKG(){
         if (!moved) break;
     }
     int x=r - l + 1;
-    if(x<3)pr(0);
-    else cout << max(0,x) << '\n';
+    // if(x<3)pr(0);
+    // else cout << max(0,x) << '\n';
 }
 
 int main() {
