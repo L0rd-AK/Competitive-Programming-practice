@@ -26,24 +26,32 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    string s;cin>>s;
-    int i=0,ii=0,iii=0;
-    for(char c:s){
-        if(c=='1')i++;
-        if(c=='2')ii++;
-        if(c=='3')iii++;
-    }
-    int l=0,r=s.length()-1;
-    while(l<=r){
-        if(s[l]=='1' && i>1)i--,l++;
-        else if(s[l]=='2' && ii>1)ii--,l++;
-        else if(s[l]=='3' && iii>1)iii--,l++;
+    string s; 
+    cin >> s;
+    int cnt[4] = {0,0,0,0};
+    for(char c : s) if(c >= '1' && c <= '3') cnt[c - '0']++;
 
-        if(s[r]=='1' && i>1)i--,r--;
-        else if(s[r]=='2' && ii>1)ii--,r--;
-        else if(s[r]=='3' && iii>1)iii--,r--;
+    int l = 0, r = (int)s.length() - 1;
+    while (l <= r) {
+        bool moved = false;
+
+        if (l <= r) {
+            if (s[l] == '1' && cnt[1] > 1) { cnt[1]--; l++; moved = true; }
+            else if (s[l] == '2' && cnt[2] > 1) { cnt[2]--; l++; moved = true; }
+            else if (s[l] == '3' && cnt[3] > 1) { cnt[3]--; l++; moved = true; }
+        }
+
+        if (l <= r) {
+            if (s[r] == '1' && cnt[1] > 1) { cnt[1]--; r--; moved = true; }
+            else if (s[r] == '2' && cnt[2] > 1) { cnt[2]--; r--; moved = true; }
+            else if (s[r] == '3' && cnt[3] > 1) { cnt[3]--; r--; moved = true; }
+        }
+
+        if (!moved) break;
     }
-    pr(r-l+1);
+    int x=r - l + 1;
+    if(x<3)pr(0);
+    else cout << max(0,x) << '\n';
 }
 
 int main() {
