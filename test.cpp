@@ -26,24 +26,10 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    string s;cin >> s;
-    int n = (int)s.size();
-    vi cnt(4, 0);
-    int l = 0;
-    int ans = INT_MAX;
+    ll a,b;cin>>a>>b;
+    if(a<b)pr(2);
+    else if()
 
-    for (int r = 0; r < n; ++r) {
-        ++cnt[s[r] - '0'];
-
-        while (cnt[1] > 0 && cnt[2] > 0 && cnt[3] > 0 && l <= r) {
-            ans = min(ans, r - l + 1);
-            --cnt[s[l] - '0'];
-            ++l;
-        }
-    }
-
-    if (ans == INT_MAX) cout << 0 << '\n';
-    else cout << ans << '\n';
 }
 
 int main() {
