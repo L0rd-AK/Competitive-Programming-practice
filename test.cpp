@@ -27,9 +27,9 @@ ll N = 1e18;
 
 void AKG(){
     ll a,b;cin>>a>>b;
-    if(a<b)pr(2);
-    else if()
-
+    if(a==b || a==b+1 || b==1)cout<<-1<<endl;
+	else if(a<b)cout<<2<<endl;
+	else cout<<3<<endl;
 }
 
 int main() {
