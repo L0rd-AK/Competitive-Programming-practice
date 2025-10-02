@@ -30,10 +30,10 @@ void AKG(){
     string s;cin>>s;
     int j = 0, res = 0;
     for(int i = 0; i < s.size(); i++)
-            if(s[i] == '0') j++;
-        for(int i = 0; i < j; i++)
-            if(s[i] == '1') res++;
-        cout << res << "\n";
+        if(s[i] == '0') j++;
+    for(int i = 0; i < j; i++)
+        if(s[i] == '1') res++;
+    pr(res);
 }
 
 int main() {
