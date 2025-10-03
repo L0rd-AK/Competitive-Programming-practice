@@ -27,7 +27,7 @@ ll N = 1e18;
 
 void AKG(){
     int a,b,c,d;cin>>a>>b>>c>>d;
-    yn((abs(a-b)>3||abs(c-d)>3));
+    yn((a%b==3||b%a==3||c%d==3||d%c==3));
 }
 
 int main() {
