@@ -26,8 +26,8 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int a,b,c,d;cin>>a,b,c,d;
-    yn(abs(a-b)>3||abs(c-d)>3);
+    int a,b,c,d;cin>>a>>b>>c>>d;
+    yn((abs(a-b)>3||abs(c-d)>3));
 }
 
 int main() {
