@@ -15,7 +15,7 @@ using namespace std;
 #endif
 
 void AKG(){
-    s
+    
 }
 
 int main() {
