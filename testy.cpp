@@ -15,8 +15,7 @@ using namespace std;
 #endif
 
 void AKG(){
-    int n;cin>>n;
-    pr(3-n%3);
+    
 }
 
 int main() {
