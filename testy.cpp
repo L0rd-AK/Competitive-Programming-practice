@@ -16,6 +16,7 @@ using namespace std;
 
 void AKG(){
     int n;cin>>n;
+    
 }
 
 int main() {
