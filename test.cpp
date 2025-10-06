@@ -27,6 +27,10 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
+    if(n%3==0){
+        pr(0);
+        return;
+    }
     pr(3-n%3);
 }
 
