@@ -28,13 +28,12 @@ ll N = 1e18;
 void AKG(){
     int n;cin >> n;
     vi a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-        }
-        unordered_set<int> uniq(a.begin(), a.end());
-        int D = uniq.size();
-        int x= 2 * D - 1;
-        cout << x << "\n";
+    f(i,0,n) cin >> a[i];
+        
+    unordered_set<int> uniq(a.begin(), a.end());
+    int d = uniq.size();
+    int x= 2 * d - 1;
+    pr(x);
 }
 
 int main() {
