@@ -27,7 +27,7 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin >> n;
-    vector<int> a(n);
+    vi a(n);
         for (int i = 0; i < n; i++) {
             cin >> a[i];
         }
