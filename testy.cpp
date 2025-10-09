@@ -1,15 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int minOperations(const vector<int>& arr) {
-    unordered_set<int> uniq(arr.begin(), arr.end());
-    int D = uniq.size();
-    return 2 * D - 1;
-}
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
 
     int t;
     cin >> t;
@@ -20,7 +15,10 @@ int main() {
         for (int i = 0; i < n; i++) {
             cin >> a[i];
         }
-        cout << minOperations(a) << "\n";
+        unordered_set<int> uniq(a.begin(), a.end());
+        int D = uniq.size();
+        int x= 2 * D - 1;
+        cout << x << "\n";
     }
     return 0;
 }
