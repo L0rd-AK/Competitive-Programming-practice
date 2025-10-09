@@ -1,33 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifndef ONLINE_JUDGE
-#define LOCAL
-#endif
-
-#define ll long long
-#define endl "\n"
-
-#ifdef LOCAL
-#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
-#else
-#define dbg(x...)
-#endif
-
-void AKG(){
-    
+int minOperations(const vector<int>& arr) {
+    unordered_set<int> uniq(arr.begin(), arr.end());
+    int D = uniq.size();
+    return 2 * D - 1;
 }
 
 int main() {
-#ifdef LOCAL
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-#endif
-
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
+    int t;
     cin >> t;
-    while (t--) AKG();
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        cout << minOperations(a) << "\n";
+    }
     return 0;
 }
