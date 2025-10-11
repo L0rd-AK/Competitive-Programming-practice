@@ -27,7 +27,8 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    
+    set<int> st;
+    f(i,0,n)
 }
 
 int main() {
