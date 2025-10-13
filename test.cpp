@@ -27,9 +27,8 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    int l=n/2;
-    int w=(n/2)+(n%2);
-    
+    pr(2*n-1);
+
 }
 
 int main() {
