@@ -25,6 +25,7 @@ using namespace std;
 const int MOD = 1e9+7;
 ll N = 1e18;
 
+string a = "1001010111001010";
 void AKG(){
     int x;
     cin >> x;
