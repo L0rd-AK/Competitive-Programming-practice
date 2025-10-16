@@ -26,18 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll n,q;cin >> n >> q;
-    //ll a[n+1],b[n+1];
-    for (int i = 1; i <= n; ++i){
-          ll x;cin >> x;
-          a[i] = max(a[i - 1], x), b[i] = b[i - 1] + x;
-    }
-            
-    while (q--){
-        ll x;cin >> x;
-        cout << b[upper_bound(a + 1, a + n + 1, x) - a - 1] << ' ';
-    }
-    cout << '\n';
+    
 }
 
 int main() {
