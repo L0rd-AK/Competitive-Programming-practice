@@ -16,12 +16,6 @@ using namespace std;
 #define pb push_back
 #define pi pair<ll, ll>
 
-#ifdef LOCAL
-#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
-#else
-#define dbg(x...)
-#endif
-
 const int MOD = 1e9+7;
 ll N = 1e18;
 
@@ -36,9 +30,7 @@ void AKG(){
 }
 
 int main() {
-#ifdef LOCAL
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-#endif
+
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
