@@ -28,7 +28,7 @@ ll N = 1e18;
 void AKG(){
     int n;cin>>n;
     string s;cin>>s;
-    vi a(n);
+    vi a;
     f(i,0,n)if(s[i]=='1')a.pb(i+1);
     pr(a.size());
     for(int i:a)cout<<i<<" ";
