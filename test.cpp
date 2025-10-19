@@ -31,7 +31,8 @@ void AKG(){
     vi a(n);
     f(i,0,n)if(s[i]=='1')a.pb(i+1);
     pr(a.size());
-    
+    for(int i:a)cout<<i<<" ";
+    cout<<endl;
 }
 
 int main() {
