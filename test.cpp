@@ -29,7 +29,9 @@ void AKG(){
     int n;cin>>n;
     string s;cin>>s;
     vi a(n);
-    f(i,0,n)cin
+    f(i,0,n)if(s[i]=='1')a.pb(i+1);
+    pr(a.size());
+    
 }
 
 int main() {
