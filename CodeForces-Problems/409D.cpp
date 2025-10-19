@@ -25,14 +25,11 @@ using namespace std;
 const int MOD = 1e9+7;
 ll N = 1e18;
 
+string a = "1001010111001010";
 void AKG(){
-    int n;cin>>n;
-    int mx=INT_MIN;
-    while(n--){
-        int x;cin>>x;
-        mx=max(mx,x);
-    }
-    pr(mx);
+    int x;
+    cin >> x;
+    cout << a[x - 1];
 }
 
 int main() {
@@ -44,7 +41,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while (t--)AKG();
     return 0;
 }

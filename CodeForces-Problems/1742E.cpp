@@ -16,29 +16,28 @@ using namespace std;
 #define pb push_back
 #define pi pair<ll, ll>
 
-#ifdef LOCAL
-#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
-#else
-#define dbg(x...)
-#endif
+ll a[200005];
+ll b[200005];
 
 const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    int mx=INT_MIN;
-    while(n--){
-        int x;cin>>x;
-        mx=max(mx,x);
+    ll n,q;cin >> n >> q;
+    //ll a[n+1],b[n+1];
+    for (int i = 1; i <= n; ++i){
+          ll x;cin >> x;
+          a[i] = max(a[i - 1], x), b[i] = b[i - 1] + x;
     }
-    pr(mx);
+            
+    while (q--){
+        ll x;cin >> x;
+        cout << b[upper_bound(a + 1, a + n + 1, x) - a - 1] << ' ';
+    }
+    cout << '\n';
 }
 
 int main() {
-#ifdef LOCAL
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-#endif
 
     ios_base::sync_with_stdio(0);
     cin.tie(0);
