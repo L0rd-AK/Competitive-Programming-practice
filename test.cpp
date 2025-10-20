@@ -38,6 +38,13 @@ void AKG(){
         if(s[i]=='a'&&s[i]==s[i=1])conti_a++;
         if(s[i]=='b'&&s[i]==s[i=1])conti_b++;
     }
+    if(conti_a+1==tot_a||conti_b+1==tot_b){
+        pr(0);
+        return;
+    }
+    if((tot_a-conti_a)<(tot_b-conti_b)){
+        pr()
+    }
     pr(min());
 }
 
