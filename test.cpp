@@ -29,7 +29,10 @@ void AKG(){
     int n;cin>>n;
     string s;cin>>s;
     int tot_a=0,tot_b=0;
-    f(i,0,n)if(s[i]=='a')
+    f(i,0,n){
+        if(s[i]=='a')tot_a++;
+        if(s[i]=='b')tot_b++;
+    }
 }
 
 int main() {
