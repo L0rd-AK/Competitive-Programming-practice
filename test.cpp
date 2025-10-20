@@ -43,9 +43,8 @@ void AKG(){
         return;
     }
     if((tot_a-conti_a)<(tot_b-conti_b)){
-        pr()
-    }
-    pr(min());
+        pr(tot_a-conti_a-1);
+    }else pr(tot_b-conti_b-1);
 }
 
 int main() {
