@@ -25,26 +25,25 @@ using namespace std;
 const int MOD = 1e9+7;
 ll N = 1e18;
 
+
+ll cost(const string &s, char ch){
+    vl pos;
+    int n = (int)s.size();
+    for(int i=0;i<n;i++) if(s[i]==ch) pos.push_back(i);
+    int k = (int)pos.size();
+    if(k <= 1) return 0;
+    vl adj(k);
+    for(int i=0;i<k;i++) adj[i] = pos[i] - i;
+    ll med = adj[k/2];
+    ll res = 0;
+    for(ll x : adj) res += (x > med ? x - med : med - x);
+    return res;
+}
+
 void AKG(){
     int n;cin>>n;
     string s;cin>>s;
-    int tot_a=0,tot_b=0;
-    f(i,0,n){
-        if(s[i]=='a')tot_a++;
-        if(s[i]=='b')tot_b++;
-    }
-    int conti_a=0,conti_b=0;
-    f(i,0,n-1){
-        if(s[i]=='a'&&s[i]==s[i=1])conti_a++;
-        if(s[i]=='b'&&s[i]==s[i=1])conti_b++;
-    }
-    if(conti_a+1==tot_a||conti_b+1==tot_b){
-        pr(0);
-        return;
-    }
-    if((tot_a-conti_a)<(tot_b-conti_b)){
-        pr(tot_a-conti_a-1);
-    }else pr(tot_b-conti_b-1);
+    pr(min(cost(s,'a'), cost(s,'b')));
 }
 
 int main() {
