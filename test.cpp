@@ -33,6 +33,12 @@ void AKG(){
         if(s[i]=='a')tot_a++;
         if(s[i]=='b')tot_b++;
     }
+    int conti_a=0,conti_b=0;
+    f(i,0,n-1){
+        if(s[i]=='a'&&s[i]==s[i=1])conti_a++;
+        if(s[i]=='b'&&s[i]==s[i=1])conti_b++;
+    }
+    pr(min());
 }
 
 int main() {
