@@ -26,9 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    string s;cin>>s;
-    pr(min(cost(s,'a'), cost(s,'b')));
+
 }
 
 int main() {
