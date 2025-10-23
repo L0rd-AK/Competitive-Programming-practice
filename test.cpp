@@ -30,12 +30,12 @@ void AKG(){
     vi a(n);
     f(i,0,n)cin>>a[i];
     int cnt=0,ans=INT_MAX;
-    f(i,1,n){
+    f(i,0,n){
         if(a[0]==a[i])cnt++;
         else ans=min(ans,cnt),cnt=0;
     }
     ans=min(ans,cnt);
-    if(cnt==n)pr(-1);
+    if(ans==n)pr(-1);
     else pr(ans);
 }
 
