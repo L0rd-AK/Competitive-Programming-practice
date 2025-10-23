@@ -28,6 +28,11 @@ ll N = 1e18;
 void AKG(){
     int n;cin>>n;
     vi a(n);
+    f(i,0,n)cin>>a[i];
+    int a,b,c;
+    f(i,0,n){
+        if(a[0]!=a[n-1-i])
+    }
 }
 
 int main() {
@@ -39,7 +44,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
