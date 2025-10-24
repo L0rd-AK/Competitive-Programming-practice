@@ -32,7 +32,7 @@ void AKG(){
     int ans = count(all(s),'0');
     if(ans==0)pr("DRAW");
     else if(ans==1)yn(1);
-    yn(ans%2==0);
+    else yn(ans%2==0);
 }
 
 int main() {
