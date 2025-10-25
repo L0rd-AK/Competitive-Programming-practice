@@ -27,12 +27,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    string s;cin>>s;
-    int ans = count(all(s),'0');
-    if(ans==0)pr("DRAW");
-    else if(ans==1)yn(1);
-    else yn(ans%2==0);
+    
 }
 
 int main() {
