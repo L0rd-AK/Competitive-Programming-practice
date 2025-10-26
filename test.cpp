@@ -31,13 +31,13 @@ void AKG(){
     vi v;
     int m,p,r,sum=0;
     while(n!=0){
-    int x = n/3;
-    sum=sum+x;
-    int y=n-(2*x);
-    if (y<=2) break;
-    else n=y;
+        int x = n/3;
+        sum=sum+x;
+        int y=n-(2*x);
+        if (y<=2) break;
+        else n=y;
     }
-    cout<<sum<<endl;
+    pr(sum);
 }
 
 int main() {
