@@ -28,8 +28,9 @@ ll N = 1e18;
 
 void AKG(){
    ll n,k;cin>>n>>k;
+   ll mn=INT_MAX,mx=INT_MIN;
    while(k--){
-        ll mn=INT_MAX,mx=INT_MIN;
+        mn=INT_MAX,mx=INT_MIN;
         ll tmp=n;
         while(tmp){
             ll x=tmp%10;
