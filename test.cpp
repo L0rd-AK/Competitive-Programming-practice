@@ -27,17 +27,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    vi v;
-    int m,p,r,sum=0;
-    while(n!=0){
-        int x = n/3;
-        sum=sum+x;
-        int y=n-(2*x);
-        if (y<=2) break;
-        else n=y;
-    }
-    pr(sum);
+   ll n,k;cin>>n>>k;
 }
 
 int main() {
