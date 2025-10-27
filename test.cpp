@@ -27,20 +27,21 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-   ll n,k;cin>>n>>k;
-   ll mn=INT_MAX,mx=INT_MIN;
-   while(k--){
-        mn=INT_MAX,mx=INT_MIN;
+    ll n,k; cin>>n>>k;
+    ll mn=INT_MAX, mx=INT_MIN;
+    while(--k){                  
+        mn=INT_MAX; mx=INT_MIN;
         ll tmp=n;
         while(tmp){
-            ll x=tmp%10;
-            mn=min(mn,x);
-            mx=max(mx,x);
-            tmp/=10;
+            ll x = tmp%10;
+            mn = min(mn, x);
+            mx = max(mx, x);
+            tmp /= 10;
         }
-        if(mn==0)break;
-   }
-   pr(n+(mn*mx));
+        if(mn==0) break;          
+        n += mn*mx;             
+    }
+    pr(n);                       
 }
 
 int main() {
