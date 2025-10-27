@@ -32,9 +32,14 @@ void AKG(){
         ll mn=INT_MAX,mx=INT_MIN;
         ll tmp=n;
         while(tmp){
-            
+            ll x=tmp%10;
+            mn=min(mn,x);
+            mx=max(mx,x);
+            tmp/=10;
         }
+        if(mn==0)break;
    }
+   pr(n+(mn*mx));
 }
 
 int main() {
