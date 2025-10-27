@@ -30,6 +30,10 @@ void AKG(){
    ll n,k;cin>>n>>k;
    while(k--){
         ll mn=INT_MAX,mx=INT_MIN;
+        ll tmp=n;
+        while(tmp){
+            
+        }
    }
 }
 
