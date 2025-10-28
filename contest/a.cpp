@@ -28,7 +28,21 @@ ll N = 1e18;
 
 void AKG(){
    int n;cin>>n;
-   vi
+   vi a(n);
+   bool tx=0,ty=0;
+   f(i,0,n){
+        cin>>a[i];
+        (a[i]%2==1?ty=1:ty=ty);
+        (a[i]%2==0?tx=1:tx=tx);
+   }
+   if(tx&&ty){
+        sort(all(a));
+        for(int i:a)cout<<a[i]<<" ";
+        cout<<endl;
+   }else{
+        for(int i:a)cout<<a[i]<<" ";
+        cout<<endl;
+   }
 }
 
 int main() {
