@@ -9,7 +9,7 @@ using namespace std;
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
 // #define yn(f) cout << (f ? "YES\n" : "NO\n")
-#define yn(f) cout << (f ? "BOB\n" : "ALICE\n")
+#define yn(f) cout << (f ? "YES\n" : "NO\n")
 #define pr(x) cout << x << "\n"
 #define all(x) x.begin(), x.end()
 #define vl vector<ll>
@@ -27,7 +27,11 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-                      
+    int n;cin>>n;
+    string a,b;cin>>a>>b;
+    sort(all(a)); 
+    sort(all(b)); 
+    yn(a==b);
 }
 
 int main() {
