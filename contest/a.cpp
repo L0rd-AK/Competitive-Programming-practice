@@ -27,7 +27,17 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 const ll primes[] = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53};
 void AKG(){
-   
+    int n;cin>>n;
+    ll z = 0;
+    for (int i=0;i<n;++i){
+        ll x;cin>>x;
+        z = __gcd(z, x);
+    }
+    ll ans = -1;
+    for (ll p:primes) {
+        if(z%p!=0ULL){ans=p;break;}
+    }
+    pr(ans);
 }
 
 int main() {
