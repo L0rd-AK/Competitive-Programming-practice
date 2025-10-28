@@ -1,54 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifndef ONLINE_JUDGE
-#define LOCAL
-#endif
-
-#define ll long long
-#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
-#define endl "\n"
-#define yn(f) cout << (f ? "YES\n" : "NO\n")
-#define pr(x) cout << x << "\n"
-#define all(x) x.begin(), x.end()
-#define vl vector<ll>
-#define vi vector<int>
-#define pb push_back
-#define pi pair<ll, ll>
-
-#ifdef LOCAL
-#include "D:\\VS-Code\\Competitive programming practice\\Zest-cases\\dbg.h"
-#else
-#define dbg(x...)
-#endif
-
-void AKG() {
-    int n;string s;
-    cin>>n>>s;
-    vi freq(26,0);
-    for(char c:s)freq[c-'a']++;
-    f(i,1,n-1){
-        if(freq[s[i]-'a']>=2){
-            yn(1);
-            return;
-        }
-    }
-    yn(0);
-}
-
 int main() {
-#ifdef LOCAL
-    freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
-#endif
-
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-
-    int t = 1;
-    cin >> t;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int t;
+    if (!(cin >> t)) return 0;
+    const long long primes[] = {
+        2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53
+    };
     while (t--) {
-        AKG();
+        int n;
+        cin >> n;
+        unsigned long long G = 0;
+        for (int i = 0; i < n; ++i) {
+            unsigned long long x;
+            cin >> x;
+            G = __gcd(G, x);
+        }
+        long long ans = -1;
+        for (long long p : primes) {
+            if (G % p != 0ULL) { ans = p; break; }
+        }
+        cout << ans << "\n";
     }
-
     return 0;
 }
