@@ -27,11 +27,8 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    string a,b;cin>>a>>b;
-    sort(all(a)); 
-    sort(all(b)); 
-    yn(a==b);
+   int n;cin>>n;
+   vi
 }
 
 int main() {
