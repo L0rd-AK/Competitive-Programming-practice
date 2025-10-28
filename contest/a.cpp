@@ -37,10 +37,10 @@ void AKG(){
    }
    if(tx&&ty){
         sort(all(a));
-        for(int i:a)cout<<a[i]<<" ";
+        for(int i:a)cout<<i<<" ";
         cout<<endl;
    }else{
-        for(int i:a)cout<<a[i]<<" ";
+        for(int i:a)cout<<i<<" ";
         cout<<endl;
    }
 }
