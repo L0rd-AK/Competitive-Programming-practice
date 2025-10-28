@@ -8,7 +8,8 @@ using namespace std;
 #define ll long long
 #define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
 #define endl "\n"
-#define yn(f) cout << (f ? "YES\n" : "NO\n")
+// #define yn(f) cout << (f ? "YES\n" : "NO\n")
+#define yn(f) cout << (f ? "BOB\n" : "ALICE\n")
 #define pr(x) cout << x << "\n"
 #define all(x) x.begin(), x.end()
 #define vl vector<ll>
@@ -22,20 +23,11 @@ using namespace std;
 #define dbg(x...)
 #endif
 
-void AKG() {
-    int n,s;cin>>n>>s;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    if(s<a[0]){
-        pr((a[0]-s)+(a[n-1]-a[0]));
-    }else if(s>a[n-1]){
-        pr((s-a[n-1])+(a[n-1]-a[0]));
-    }else{
-        int x=abs(s-a[0]);
-        int y=abs(s-a[n-1]);
-        if(x>y)pr(y*2+x);
-        else pr(x*2+y);
-    }
+const int MOD = 1e9+7;
+ll N = 1e18;
+
+void AKG(){
+                      
 }
 
 int main() {
@@ -46,11 +38,8 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
-    cin >> t;
-    while (t--) {
-        AKG();
-    }
-
+    int t=1;
+    cin >> t; 
+    while (t--)AKG();
     return 0;
 }
