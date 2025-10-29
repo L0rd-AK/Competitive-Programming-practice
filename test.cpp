@@ -27,7 +27,21 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-                         
+    int ff, i, tt;
+    cin >> ff >> i >> tt;
+ 
+    vector<string> A(ff);
+    f(i,0,ff)cin >> A[i];
+    int ans = 0;
+    f(j,0,i) {
+        int cnt = 0;
+        f(t,0,ff) {
+            cnt += A[t][j] == 'Y';
+        }
+        if (cnt >= tt)
+            ans++;
+    }
+    cout << ans;                    
 }
 
 int main() {
@@ -39,7 +53,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while (t--)AKG();
     return 0;
 }
