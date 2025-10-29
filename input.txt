@@ -1,5 +1,1 @@
-4 4 1
-NNNY
-NNYN
-NYNN
-YNNN
+1
