@@ -31,8 +31,11 @@ void AKG(){
    string s;cin>>s; 
    int x=-69,ans=0;
    f(i,0,n){
-     
+     if(s[i]=='0')continue;
+     if(i-x>=k-1)ans++;
+     x=i;
    }                
+   pr(ans);
 }
 
 int main() {
