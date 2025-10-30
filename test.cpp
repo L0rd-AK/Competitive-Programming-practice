@@ -32,7 +32,7 @@ void AKG(){
    int x=-69,ans=0;
    f(i,0,n){
      if(s[i]=='0')continue;
-     if(i-x>=k-1)ans++;
+     if(i-x>k-1)ans++;
      x=i;
    }                
    pr(ans);
@@ -47,7 +47,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
