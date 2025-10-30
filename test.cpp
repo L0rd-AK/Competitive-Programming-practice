@@ -26,16 +26,6 @@ using namespace std;
 const int MOD = 1e9+7;
 ll N = 1e18;
 
-void pow(int x,int n){
-	int f=1;
-	while(n){
-		if(n&1)f=(f*x)%10;
-		x=(x*x)%10;
-		n/=2;
-	}
-	cout<<f;
-}
-
 void AKG(){
     int n;cin>>n;
 	pow(1378,n);                   
