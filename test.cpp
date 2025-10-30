@@ -28,7 +28,11 @@ ll N = 1e18;
 
 void AKG(){
    int n,k;cin>>n>>k;
-   string s;cin>>s;                 
+   string s;cin>>s; 
+   int x=-69,ans=0;
+   f(i,0,n){
+     
+   }                
 }
 
 int main() {
