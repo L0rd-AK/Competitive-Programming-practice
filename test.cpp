@@ -28,30 +28,19 @@ ll N = 1e18;
 void AKG(){
   int n,k;cin>>n>>k;
   string s;cin>>s;
-  int min_top = 0, max_top = 0;
-  int min_bot = 0, max_bot = 0;
   
+  int c1 = 0, c2 = 0, c3 = 0;
   f(i,0,k){
-    if(s[i]=='0'){
-      min_top++;
-      max_top++;
-    }else if(s[i]=='1'){
-      min_bot++;
-      max_bot++;
-    }else{ 
-      max_top++;
-      max_bot++;
-    }
+    if(s[i] == '0') c1++;
+    else if(s[i] == '1') c2++;
+    else c3++;
   }
   
-  string ans="";
-  f(i,0,n){
-    bool definitely_removed = (i < min_top) || (i >= n - min_bot);
-    bool definitely_safe = (i >= max_top) && (i < n - max_bot);
-    
-    if(definitely_removed){
+  string ans = "";
+  f(i,1,n+1){
+    if(c1 >= i || c2 >= (n - i + 1) || k == n){
       ans += '-';
-    }else if(definitely_safe){
+    }else if((c1 + c3) < i && (c2 + c3) < (n - i + 1)){
       ans += '+';
     }else{
       ans += '?';
