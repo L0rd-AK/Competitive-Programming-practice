@@ -38,7 +38,10 @@ void AKG(){
     }else if(s[i]=='1'){
       ans[r]='-'; r++;
     }else{
-      if(i==r)ans[i]='-';
+      if(i==r){ans[i]='-';break;}
+      else{
+        
+      }
     }
   }
   pr(ans);
