@@ -40,7 +40,8 @@ void AKG(){
     }else{
       if(i==r){ans[i]='-';break;}
       else{
-        
+        ans[l]='?',ans[r]='?';
+        l++,r--;
       }
     }
   }
