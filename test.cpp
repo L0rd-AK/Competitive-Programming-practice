@@ -27,15 +27,18 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-   int n,k;cin>>n>>k;
-   string s;cin>>s; 
-   int x=-69,ans=0;
-   f(i,0,n){
-     if(s[i]=='0')continue;
-     if(i-x>k-1)ans++;
-     x=i;
-   }                
-   pr(ans);
+  int n,k;cin>>n>>k;
+  string s;cin>>s;
+  string ans="";
+  f(i,0,n)ans+='+';
+  int l=0,r=n-1;
+  f(i,0,k){
+    if(s[i]=='0'){
+      ans[l]='-';l++;
+    }else if(s[i]=='1'){
+
+    }
+  }
 }
 
 int main() {
