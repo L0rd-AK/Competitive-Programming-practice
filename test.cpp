@@ -36,7 +36,9 @@ void AKG(){
     if(s[i]=='0'){
       ans[l]='-';l++;
     }else if(s[i]=='1'){
-
+      ans[r]='-'; r++;
+    }else{
+      if(i==r)ans[i]='-';
     }
   }
 }
