@@ -41,6 +41,7 @@ void AKG(){
       if(i==r)ans[i]='-';
     }
   }
+  pr(ans);
 }
 
 int main() {
