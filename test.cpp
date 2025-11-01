@@ -29,7 +29,10 @@ void AKG(){
   int n;cin>>n;
   vi a(n);
   f(i,0,n)cin>>a[i];
-  yn(a[0]<=a[1]&&a[n-2]<=a[n-1]);
+  f(i,1,n-1){
+    if(a[i]>a[i-1]&&a[i]>a[i+1])swap(a[i],a[i+1]);
+  }
+  yn(is_sorted(all(a)));
 }
 
 int main() {
