@@ -29,7 +29,7 @@ void AKG(){
   int n;cin>>n;
   vi a(n);
   f(i,0,n)cin>>a[i];
-  if(a[0]<=a[1]&&)
+  yn(a[0]<=a[1]&&a[n-2]<=a[n-1]);
 }
 
 int main() {
