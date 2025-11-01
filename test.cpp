@@ -26,28 +26,10 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n,k;cin>>n>>k;
-  string s;cin>>s;
+  int n;cin>>n;
+  vi a(n);
+  f(i,0,n)cin>>a[i];
   
-  int c1 = 0, c2 = 0, c3 = 0;
-  f(i,0,k){
-    if(s[i] == '0') c1++;
-    else if(s[i] == '1') c2++;
-    else c3++;
-  }
-  
-  string ans = "";
-  f(i,1,n+1){
-    if(c1 >= i || c2 >= (n - i + 1) || k == n){
-      ans += '-';
-    }else if((c1 + c3) < i && (c2 + c3) < (n - i + 1)){
-      ans += '+';
-    }else{
-      ans += '?';
-    }
-  }
-  
-  pr(ans);
 }
 
 int main() {
