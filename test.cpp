@@ -30,7 +30,9 @@ void AKG(){
   vi a(n);
   f(i,0,n)cin>>a[i];
   sort(all(a));
-  
+  f(i,0,n){
+    
+  }
 }
 
 int main() {
