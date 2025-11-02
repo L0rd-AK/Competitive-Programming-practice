@@ -32,7 +32,7 @@ void AKG(){
     int x;cin>>x;
     st.insert(x);
   }
-  
+   vi a(all(st));
   f(i,0,n){
     if(i!=a[i]){
       pr(i);
