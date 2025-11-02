@@ -31,8 +31,12 @@ void AKG(){
   f(i,0,n)cin>>a[i];
   sort(all(a));
   f(i,0,n){
-    
+    if(i!=a[i]){
+      pr(i);
+      return;
+    }
   }
+  pr(a[n-1]+1);
 }
 
 int main() {
