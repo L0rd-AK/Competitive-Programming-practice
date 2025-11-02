@@ -27,9 +27,12 @@ ll N = 1e18;
 
 void AKG(){
   int n;cin>>n;
-  vi a(n);
-  f(i,0,n)cin>>a[i];
-  sort(all(a));
+  set<int> st;
+  f(i,0,n){
+    int x;cin>>x;
+    st.insert(x);
+  }
+  
   f(i,0,n){
     if(i!=a[i]){
       pr(i);
