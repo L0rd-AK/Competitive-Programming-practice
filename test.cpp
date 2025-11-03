@@ -26,7 +26,8 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  
+  ll n;cin>>n;
+  pr(n*2LL);
 }
 
 int main() {
