@@ -26,20 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;cin>>n;
-  set<int> st;
-  f(i,0,n){
-    int x;cin>>x;
-    st.insert(x);
-  }
-   vi a(all(st));
-  f(i,0,n){
-    if(i!=a[i]){
-      pr(i);
-      return;
-    }
-  }
-  pr(a[n-1]+1);
+  
 }
 
 int main() {
