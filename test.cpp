@@ -26,8 +26,41 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;cin>>n;
-  yn(360 % (180-n) == 0);
+ll n,q;cin>>n>>q;
+         ll mx=600;
+         string s;cin>>s;
+         int f=0;
+         for(int i=0;i<n;i++){
+              if(s[i]=='B'){
+                  f=1;
+              }
+         }
+         
+         ll brr[q+10];
+         for(int i=1;i<=q;i++)
+         {
+             cin>>brr[i];
+         }
+         for(int i=1;i<=q;i++){
+              ll a=brr[i],sum=0;
+              if(f==0){
+                  pr(a);
+                  continue;
+              }
+              for(int j=1;j<=mx;j++)
+              {
+                    if(s[j%n]=='A'){
+                        a--;
+                        sum++;
+                    }
+                    else{
+                        a=a/2;
+                        sum++;
+                    }
+                    if(a<=0)break;
+              }
+              pr(sum);
+         }
 }
 
 int main() {
