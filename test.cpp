@@ -45,8 +45,7 @@ ll n,q;cin>>n>>q;
                   pr(a);
                   continue;
               }
-              for(int j=1;j<=mx;j++)
-              {
+              f(j,1,mx+1){
                     if(s[j%n]=='A'){
                         a--;
                         sum++;
