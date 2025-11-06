@@ -26,38 +26,38 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-ll n,q;cin>>n>>q;
-         ll mx=600;
-         string s;cin>>s;
-         int f=0;
-         f(i,0,n){
-              if(s[i]=='B'){
-                  f=1;
-              }
-         }
+    ll n,q;cin>>n>>q;
+    ll mx=600;
+    string s;cin>>s;
+    int f=0;
+    f(i,0,n){
+        if(s[i]=='B'){
+            f=1;
+        }
+    }
          
-         ll brr[q+10];
-         f(i,1,q+1)cin>>brr[i];
+    ll brr[q+10];
+    f(i,1,q+1)cin>>brr[i];
          
-         f(i,1,q+1){
-              ll a=brr[i],sum=0;
-              if(f==0){
-                  pr(a);
-                  continue;
+    f(i,1,q+1){
+        ll a=brr[i],sum=0;
+        if(f==0){
+            pr(a);
+            continue;
+        }
+        f(j,1,mx+1){
+              if(s[(j-1)%n]=='A'){
+                  a--;
+                  sum++;
               }
-              f(j,1,mx+1){
-                    if(s[j%n]=='A'){
-                        a--;
-                        sum++;
-                    }
-                    else{
-                        a=a/2;
-                        sum++;
-                    }
-                    if(a<=0)break;
+              else{
+                  a=a/2;
+                  sum++;
               }
-              pr(sum);
-         }
+              if(a<=0)break;
+        }
+        pr(sum);
+    }
 }
 
 int main() {
