@@ -30,18 +30,16 @@ ll n,q;cin>>n>>q;
          ll mx=600;
          string s;cin>>s;
          int f=0;
-         for(int i=0;i<n;i++){
+         f(i,0,n){
               if(s[i]=='B'){
                   f=1;
               }
          }
          
          ll brr[q+10];
-         for(int i=1;i<=q;i++)
-         {
-             cin>>brr[i];
-         }
-         for(int i=1;i<=q;i++){
+         f(i,1,q+1)cin>>brr[i];
+         
+         f(i,1,q+1){
               ll a=brr[i],sum=0;
               if(f==0){
                   pr(a);
