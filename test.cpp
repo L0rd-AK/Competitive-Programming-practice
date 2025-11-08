@@ -27,8 +27,15 @@ ll N = 1e18;
 
 void AKG(){
     int n,m;cin>>n>>m;
+    map<string, string> mp;
     while(m--){
-        
+        string a,b;cin>>a>>b;
+        mp[a]=b;
+        mp[b]=a;
+    }
+    while(n--){
+        string a;cin>>a;
+        i
     }
 }
 
