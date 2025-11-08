@@ -27,6 +27,9 @@ ll N = 1e18;
 
 void AKG(){
     int n,m;cin>>n>>m;
+    while(m--){
+        
+    }
 }
 
 int main() {
