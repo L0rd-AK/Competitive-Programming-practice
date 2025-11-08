@@ -35,7 +35,7 @@ void AKG(){
     }
     while(n--){
         string a;cin>>a;
-        i
+        (a.length()<mp[a].length()?cout<<a<<" ":cout<<mp[a]<<" ");
     }
 }
 
