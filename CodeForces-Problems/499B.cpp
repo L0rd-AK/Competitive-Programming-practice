@@ -26,18 +26,17 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    string s;cin>>s;
-    map<char,int> a,b;
-    int i=0;
-    for(;i<n;i++){
-        if(a[s[i]])break;
-        else a[s[i]]++;
+    int n,m;cin>>n>>m;
+    map<string, string> mp;
+    while(m--){
+        string a,b;cin>>a>>b;
+        mp[a]=b;
+        mp[b]=a;
     }
-    for(;i<n;i++){
-        b[s[i]]++;
+    while(n--){
+        string a;cin>>a;
+        (a.length()<=mp[a].length()?cout<<a<<" ":cout<<mp[a]<<" ");
     }
-    pr(a.size()+b.size());
 }
 
 int main() {

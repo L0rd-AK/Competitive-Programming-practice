@@ -1,5 +1,11 @@
-4 3
-codeforces codesecrof
-contest round
-letter message
-codeforces contest letter contest
+5
+2
+aa
+7
+abcabcd
+5
+aaaaa
+10
+paiumoment
+4
+aazz
