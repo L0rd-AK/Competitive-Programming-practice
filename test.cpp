@@ -28,7 +28,7 @@ ll N = 1e18;
 void AKG(){
     int n,x;cin>>n;
     vi a(n);
-    int mn=INT_MAX,mx=INT_MAX;
+    int mn=INT_MAX,mx=INT_MIN;
     f(i,0,n){
         int z;cin>>z;
         if(z<mn)mn=z;
