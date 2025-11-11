@@ -26,11 +26,10 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,x;cin>>n;
-    vi a(n);
-    int mn=INT_MAX,mx=INT_MIN;
+    ll n,x;cin>>n;
+    ll mn=INT_MAX,mx=INT_MIN;
     f(i,0,n){
-        int z;cin>>z;
+        ll z;cin>>z;
         if(z<mn)mn=z;
         if(z>mx)mx=z;
     }
