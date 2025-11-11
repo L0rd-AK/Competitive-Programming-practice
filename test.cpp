@@ -26,33 +26,16 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n; cin >> n;
-    string s; cin >> s;
-
-    vi pre(n + 1, 0);
-    int mask = 0;
-    pre[0] = 0;
-
-    f(i, 0, n) {
-        mask |= (1 << (s[i] - 'a'));
-        pre[i + 1] = __builtin_popcount(mask);
+    int n,x;cin>>n;
+    vi a(n);
+    int mn=INT_MAX,mx=INT_MAX;
+    f(i,0,n){
+        int z;cin>>z;
+        if(z<mn)mn=z;
+        if(z>mx)mx=z;
     }
+    cin>>x;
 
-    vi suff(n + 1, 0);
-    mask = 0;
-    suff[n] = 0;
-
-    for (int i = n - 1; i >= 0; i--) {
-        mask |= (1 << (s[i] - 'a'));
-        suff[i] = __builtin_popcount(mask);
-    }
-
-    int mx = 0;
-    f(i, 1, n) {
-        mx = max(mx, pre[i] + suff[i]);
-    }
-
-    pr(mx);
 }
 
 int main() {
