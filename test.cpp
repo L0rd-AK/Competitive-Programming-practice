@@ -35,6 +35,7 @@ void AKG(){
         if(z>mx)mx=z;
     }
     cin>>x;
+    yn(x>=mn&&x<=mx);
 
 }
 
