@@ -29,6 +29,15 @@ void AKG(){
     int n;cin>>n;
     vi a(n);
     f(i,0,n)cin>>a[i];
+    sort(all(a));
+    bool flg=1;
+    for(int i=2;i+1<=n;i+=2){
+        if(a[i]!=a[i+1]){
+            flg=false;
+            break;
+        }
+    }
+    yn(flg);
 }
 
 int main() {
