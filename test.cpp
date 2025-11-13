@@ -26,18 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n+1);
-    f(i,1,n+1)cin>>a[i];
-    sort(all(a));
-    bool flg=1;
-    for(int i=2;i+1<=n;i+=2){
-        if(a[i]!=a[i+1]){
-            flg=false;
-            break;
-        }
-    }
-    yn(flg);
+    
 }
 
 int main() {
