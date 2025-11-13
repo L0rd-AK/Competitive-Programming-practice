@@ -26,7 +26,8 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    
+    int n,a,b;cin>>n>>a>>b;
+    pr(n-a);
 }
 
 int main() {
@@ -38,7 +39,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while (t--)AKG();
     return 0;
 }
