@@ -27,6 +27,22 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
+    int ans=0;
+    f(i,0,n){
+        int x;cin>>x;
+        ans+=x;
+    }
+    int tmp=ans;
+    f(i,0,n-1){
+        int x;cin>>x;
+        tmp-=x;
+    }
+    int tmp2=ans-tmp;
+    f(i,0,n-2){
+        int x;cin>>x;
+        tmp2-=x;
+    }
+    cout<<tmp<<" "<<tmp2<<endl;
 }
 
 int main() {
@@ -38,7 +54,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while(t--)AKG();
     return 0;
 }
