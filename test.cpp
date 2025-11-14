@@ -42,7 +42,7 @@ void AKG(){
         int x;cin>>x;
         tmp2-=x;
     }
-    cout<<tmp<<" "<<tmp2<<endl;
+    cout<<tmp<<"\n"<<tmp2<<endl;
 }
 
 int main() {
