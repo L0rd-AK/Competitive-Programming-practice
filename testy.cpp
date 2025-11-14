@@ -1,48 +1,45 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int main()
-{
-    ios::sync_with_stdio(false);
+
+#define ll long long
+#define f(x1, y1, z1) for (int x1 = y1; x1 < z1; x1++)
+#define endl "\n"
+#define yn(f) cout << (f ? "YES\n" : "NO\n")
+#define pr(x) cout << x << "\n"
+#define all(x) x.begin(), x.end()
+#define vl vector<ll>
+#define vi vector<int>
+#define pb push_back
+#define pi pair<ll, ll>
+
+const int MOD = 1e9+7;
+ll N = 1e18;
+
+void AKG(){
+    string s;cin >> s;
+    int i = 0,str_sz = 0, str_len = 0,n=s.length();
+    bool flg = false;
+        while(i < n) {
+            if(s[i] == '\\' && i + 1 < n && s[i + 1] == '0') {
+                str_sz++;
+                if(!flg)flg = true;
+                i+= 2;
+            } else {
+                str_sz++;
+                if(!flg)str_len++;
+                i++;
+            }
+        }
+    cout<<++str_sz<<" "<<str_len<<endl;
+}
+
+int main() {
+
+    ios_base::sync_with_stdio(0);
     cin.tie(0);
-    ll tt;
-    cin>>tt;
-    while(tt--)
-    {
-         ll n,q;cin>>n>>q;
-         ll mx=600;
-         string s;cin>>s;
-         int f=0;
-         for(int i=0;i<n;i++){
-              if(s[i]=='B'){
-                  f=1;
-              }
-         }
-         
-         ll brr[q+10];
-         for(int i=1;i<=q;i++)
-         {
-             cin>>brr[i];
-         }
-         for(int i=1;i<=q;i++){
-              ll a=brr[i],sum=0;
-              if(f==0){
-                  pr(a);
-                  continue;
-              }
-              for(int j=1;j<=mx;j++)
-              {
-                    if(s[j%n]=='A'){
-                        a--;
-                        sum++;
-                    }
-                    else{
-                        a=a/2;
-                        sum++;
-                    }
-                    if(a<=0)break;
-              }
-              pr(sum);
-         }
-    }
+
+    int t=1;
+    cin >> t; 
+    while (t--)AKG();
     return 0;
 }

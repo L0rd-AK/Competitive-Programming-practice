@@ -26,8 +26,16 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,a,b;cin>>n>>a>>b;
-    pr(n-max(a+1,n-b)+1);
+    int n;cin>>n;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    vector<pair<bool,bool>> v;
+    priority_queue<int, vector<int>, greater<int>> minPQ;
+    minPQ.push(a[0]);
+    v[0].first=true;
+    f(i,1,n){
+        if(a[i]>minPQ.top())v[i].first=true;
+    }
 }
 
 int main() {
@@ -39,7 +47,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while (t--)AKG();
     return 0;
 }
