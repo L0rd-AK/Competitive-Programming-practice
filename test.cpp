@@ -34,7 +34,7 @@ void AKG(){
     maxPQ.push(a[0]);
     v[0].first=true;
     f(i,1,n){
-        if(a[i]>maxPQ.top())
+        if(a[i]>maxPQ.top())v[i].first=true;
     }
     priority_queue<int, vector<int>, greater<int>> minPQ;
     minPQ.push(a[n-1]);
@@ -42,6 +42,7 @@ void AKG(){
     for(int i=n-2;i>=0;i--){
         if(a[i]<minPQ.top())v[i].second=true;
     }
+    cout<<"Humanity is doomed!\n";
 }
 
 int main() {
@@ -54,6 +55,6 @@ int main() {
 
     int t=1;
     cin >> t; 
-    while (t--)AKG();
+    while(t--)AKG();
     return 0;
 }
