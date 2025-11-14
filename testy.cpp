@@ -25,26 +25,6 @@ using namespace std;
 const int MOD = 1e9+7;
 ll N = 1e18;
 
-void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    vector<pair<bool,bool>> v;
-    priority_queue<int> maxPQ;
-    maxPQ.push(a[0]);
-    v[0].first=true;
-    f(i,1,n){
-        if(a[i]>maxPQ.top())v[i].first=true;
-    }
-    priority_queue<int, vector<int>, greater<int>> minPQ;
-    minPQ.push(a[n-1]);
-    v[n-1].second=true;
-    for(int i=n-2;i>=0;i--){
-        if(a[i]<minPQ.top())v[i].second=true;
-    }
-    cout<<"Humanity is doomed!\n";
-}
-
 int main() {
 #ifdef LOCAL
     freopen("D:\\VS-Code\\Competitive programming practice\\input.txt", "r", stdin);
@@ -53,36 +33,36 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t=1;
+    int t;
     cin >> t; 
-    f(j,1,t+1){
-        int n;cin>>n;
+    f(j, 0, t) {
+        int n; cin >> n;
         vi a(n);
-        f(i,0,n)cin>>a[i];
-        vector<pair<bool,bool>> v;
+        f(i, 0, n) cin >> a[i];
+        vector<pair<bool, bool>> v(n);
         priority_queue<int> maxPQ;
         maxPQ.push(a[0]);
-        v[0].first=true;
-        f(i,1,n){
-            if(a[i]>maxPQ.top())v[i].first=true;
+        v[0].first = true;
+        f(i, 1, n) {
+            if (a[i] > maxPQ.top()) v[i].first = true;
+            maxPQ.push(a[i]);
         }
         priority_queue<int, vector<int>, greater<int>> minPQ;
-        minPQ.push(a[n-1]);
-        v[n-1].second=true;
-        for(int i=n-2;i>=0;i--){
-            if(a[i]<minPQ.top())v[i].second=true;
+        minPQ.push(a[n - 1]);
+        v[n - 1].second = true;
+        for (int i = n - 2; i >= 0; i--) {
+            if (a[i] < minPQ.top()) v[i].second = true;
+            minPQ.push(a[i]);
         }
-        int idx=1;bool flg=0;
-        for(auto vp:v){
-            if(vp.first==1&&vp.second==1){
-                 cout<<"Case "<<j<<": "<<idx<<endl;
-                flg=1;break;
+        int idx = 1; bool flg = 0;
+        f(k, 0, n) {
+            if (v[k].first && v[k].second) {
+                cout << "Case " << (j + 1) << ": " << idx << endl;
+                flg = 1; break;
             }
-            
             idx++;
         }
-        if(flg)continue;
-        cout<<"Case "<<j<<": "<<"Humanity is doomed!\n";
+        if (!flg) cout << "Case " << (j + 1) << ": " << "Humanity is doomed!" << endl;
     }
     return 0;
 }
