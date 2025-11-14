@@ -27,22 +27,6 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    vector<pair<bool,bool>> v;
-    priority_queue<int> maxPQ;
-    maxPQ.push(a[0]);
-    v[0].first=true;
-    f(i,1,n){
-        if(a[i]>maxPQ.top())v[i].first=true;
-    }
-    priority_queue<int, vector<int>, greater<int>> minPQ;
-    minPQ.push(a[n-1]);
-    v[n-1].second=true;
-    for(int i=n-2;i>=0;i--){
-        if(a[i]<minPQ.top())v[i].second=true;
-    }
-    cout<<"Humanity is doomed!\n";
 }
 
 int main() {
