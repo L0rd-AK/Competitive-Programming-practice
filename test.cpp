@@ -30,11 +30,12 @@ void AKG(){
     vi a(n);
     f(i,0,n)cin>>a[i];
     vector<pair<bool,bool>> v;
+    
     priority_queue<int, vector<int>, greater<int>> minPQ;
-    minPQ.push(a[0]);
-    v[0].first=true;
+    minPQ.push(a[n-1]);
+    v[n-1].second=true;
     f(i,1,n){
-        if(a[i]>minPQ.top())v[i].first=true;
+        if(a[i]<minPQ.top())v[i].second=true;
     }
 }
 
