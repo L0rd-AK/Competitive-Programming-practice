@@ -26,32 +26,14 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-        vi v;
-        int cmp=n;
-        for(int i=2;i*i<=cmp;++i){
-            while(cmp%i==0){
-                v.push_back(i);
-                cmp/=i;
-            }
-        }
-        if(cmp>1)v.push_back(cmp);
-        int len=v.size();
-        ll a=v[0],b=1,c=1;
-        int i=1;
-        for(i;i<len;++i){
-            if(b<=a)b*=v[i];
-            else
-                break;
-        }
-        for(i;i<len;++i){
-            c*=v[i];
-        }
-        if(a*b*c==n && a!=b && a!=c && b!=c &&a>1 && b>1&&c>1){
-            yn(1);
-            cout<<a<<" "<<b<<" "<<c<<"\n";
-        }
-        else yn(0);
+    int r,x,d,n;cin>>r>>x>>d>>n;
+    string s;cin>>s;
+    int ans=0;
+    f(i,0,n){
+        if(s[i]=='1')r-=d,ans++;
+        else if(r<x)r-=d,ans++;
+    }
+    pr(ans);
 }
 
 int main() {
