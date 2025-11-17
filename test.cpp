@@ -26,14 +26,8 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int r,x,d,n;cin>>r>>x>>d>>n;
-    string s;cin>>s;
-    int ans=0;
-    f(i,0,n){
-        if(s[i]=='1')r-=d,ans++;
-        else if(r<x)r-=d,ans++;
-    }
-    pr(ans);
+    ll n,k;cin>>n>>k;
+    yn(!(n&1&&k%2==0));
 }
 
 int main() {
