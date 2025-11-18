@@ -26,8 +26,19 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll n,k;cin>>n>>k;
-    yn(!(n&1&&k%2==0));
+        int n, a, b;cin>>n>>a>>b;
+        ll times = n/b;
+        ll rem = n%b ;
+        string s = "";
+        char c  = 'a';
+        f(i,0,b){
+            s += c ;
+            c++ ;
+        }
+       f(i,0,times)cout<<s;
+      
+      f(i,0,rem) cout<<s[i] ;
+      cout<<endl;
 }
 
 int main() {
