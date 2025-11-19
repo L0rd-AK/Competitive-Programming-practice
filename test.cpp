@@ -28,16 +28,25 @@ ll N = 1e18;
 void AKG(){
     int n;cin>>n;
     string s;cin>>s;
-    int ans=INT_MIN,c=0;
+    int ans1=INT_MIN,ans2=INT_MIN,c=0;
     f(i,0,n){
         if(s[i]=='<')c++;
         else{
-            ans=max(ans,c);
+            ans1=max(ans1,c);
             c=0;
         }
     }
-    ans=max(ans,c);
-    pr(ans);
+    ans1=max(ans1,c);
+    c=0;
+    f(i,0,n){
+        if(s[i]=='>')c++;
+        else{
+            ans2=max(ans2,c);
+            c=0;
+        }
+    }
+    ans2=max(ans2,c);
+    pr(max(ans1,ans2)+1);
 }
 
 int main() {
