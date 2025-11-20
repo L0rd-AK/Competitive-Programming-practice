@@ -26,27 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    string s;cin>>s;
-    int ans1=INT_MIN,ans2=INT_MIN,c=0;
-    f(i,0,n){
-        if(s[i]=='<')c++;
-        else{
-            ans1=max(ans1,c);
-            c=0;
-        }
-    }
-    ans1=max(ans1,c);
-    c=0;
-    f(i,0,n){
-        if(s[i]=='>')c++;
-        else{
-            ans2=max(ans2,c);
-            c=0;
-        }
-    }
-    ans2=max(ans2,c);
-    pr(max(ans1,ans2)+1);
+    
 }
 
 int main() {
