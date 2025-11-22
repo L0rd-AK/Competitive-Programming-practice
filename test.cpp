@@ -28,7 +28,11 @@ ll N = 1e18;
 void AKG(){
     int n;cin>>n;
     int ans=INT_MAX;
-    
+    while(n--){
+        int x;cin>>x;
+        ans=min(ans,abs(0-x));
+    }
+    pr(ans);
 }
 
 int main() {
