@@ -27,8 +27,8 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    if(n%2==1)pr(0);
-    else pr((n/4)+1);
+    int ans=INT_MAX;
+    
 }
 
 int main() {
