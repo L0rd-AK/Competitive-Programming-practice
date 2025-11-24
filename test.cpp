@@ -26,13 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    int x=(1<<30)-1;
-    while(n--){
-        int a;
-        cin>>a,x&=a;
-    }
-    pr(x);
+  
 }
 
 int main() {
