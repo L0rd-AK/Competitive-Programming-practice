@@ -33,7 +33,6 @@ void AKG(){
 		if(m<=q)ans++;
 		else ans=0;
 		if(ans>=k)re=re+(ans-k+1);
-		
 	}
 	pr(re);
 }
