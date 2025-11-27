@@ -29,7 +29,7 @@ void AKG(){
     ll re=0,ans=0;
 	ll n,k,q;cin>>n>>k>>q;
 	for(int i=1;i<=n;i++){
-		int m;cin>>m;
+		ll m;cin>>m;
 		if(m<=q)ans++;
 		else ans=0;
 		if(ans>=k)re=re+(ans-k+1);
