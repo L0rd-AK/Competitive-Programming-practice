@@ -26,15 +26,13 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll re=0,ans=0;
-	ll n,k,q;cin>>n>>k>>q;
-	for(int i=1;i<=n;i++){
-		ll m;cin>>m;
-		if(m<=q)ans++;
-		else ans=0;
-		if(ans>=k)re=re+(ans-k+1);
-	}
-	pr(re);
+    int n;cin>>n;
+    ll sum=0;
+    while(n--){
+        int x;cin>>x;
+        sum+=x;
+    }
+    pr(-sum);
 }
 
 int main() {
