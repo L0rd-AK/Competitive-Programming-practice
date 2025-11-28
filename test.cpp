@@ -28,7 +28,7 @@ ll N = 1e18;
 void AKG(){
     int n;cin>>n;
     ll sum=0;
-    while(n--){
+    f(i,0,n){
         int x;cin>>x;
         sum+=x;
         dbg(sum);
