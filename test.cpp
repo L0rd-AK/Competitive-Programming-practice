@@ -31,6 +31,7 @@ void AKG(){
     while(n--){
         int x;cin>>x;
         sum+=x;
+        dbg(sum);
     }
     pr(-sum);
 }
