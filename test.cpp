@@ -26,8 +26,8 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    cin>>n;
-		for(int i=1;i<=n;i++) cin>>a[i];
+    int n;cin>>n;
+	for(int i=1;i<=n;i++) cin>>a[i];
 		if(a[1]==-1){
 			if(a[n]==-1) a[1]=a[n]=0;
 			else a[1]=a[n];
