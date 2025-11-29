@@ -27,6 +27,7 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
+    vi a(n+1);
 	for(int i=1;i<=n;i++) cin>>a[i];
 		if(a[1]==-1){
 			if(a[n]==-1) a[1]=a[n]=0;
