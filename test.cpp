@@ -26,14 +26,15 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    ll sum=0;
-    f(i,1,n){
-        int x;cin>>x;
-        sum+=x;
-        dbg(sum);
-    }
-    pr(-sum);
+    cin>>n;
+		for(int i=1;i<=n;i++) cin>>a[i];
+		if(a[1]==-1){
+			if(a[n]==-1) a[1]=a[n]=0;
+			else a[1]=a[n];
+		}else if(a[n]==-1) a[n]=a[1];
+		cout<<abs(a[n]-a[1])<<"\n";
+		for(int i=1;i<=n;i++) cout<<max(a[i],0)<<" ";
+		cout<<endl;
 }
 
 int main() {
