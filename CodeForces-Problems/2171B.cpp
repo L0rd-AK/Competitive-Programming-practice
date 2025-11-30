@@ -27,12 +27,18 @@ ll N = 1e18;
 
 void AKG(){
     ll n;cin >> n;
-    if(n==1){
-        cout<<1<<"\n";
+    ll ans;
+    if (n == 1) {
+        ans = 1;
+    } else if (n == 2) {
+        ans = 9;                       // only small special case
+    } else if (n == 3 || n == 4) {
+        ans = 4*n*n - n - 4;           // bottom row, column n-1
     } else {
-        ll ans =2*n*n+2*n-3; 
-        pr(ans);
+        ans = 5*n*n - 5*n - 5;         // interior cell (n-1, n-1)
     }
+
+    cout << ans << '\n';
 }
 
 int main() {
