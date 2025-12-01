@@ -26,13 +26,11 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll n;cin >> n;
-    ll ans;
-    if(n==1)ans = 1;
-    else if(n==2)ans = 9;                       
-    else if (n == 3 || n == 4)ans = 4*n*n - n - 4;
-    else ans = 5*n*n - 5*n - 5;         
-    pr(ans);
+    int n;cin>>n;
+    string s;cin>>s;
+    map<char,int> mp;
+    f(i,0,n)mp[s[i]]++;
+    pr(n-mp[s[n-1]]);
 }
 
 int main() {
