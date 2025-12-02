@@ -27,7 +27,10 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    
+    int r,y;cin>>y>>r;
+    int ans=r;
+    int tmp=(n-r)-(y/2);
+    pr(ans+max(tmp,0));
 }
 
 int main() {
