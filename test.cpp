@@ -27,10 +27,7 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    string s;cin>>s;
-    map<char,int> mp;
-    f(i,0,n)mp[s[i]]++;
-    pr(n-mp[s[n-1]]);
+    
 }
 
 int main() {
