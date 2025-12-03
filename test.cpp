@@ -27,7 +27,7 @@ ll N = 1e18;
 
 void AKG(){
     ll a,b;cin>>a>>b;
-    if(b==1)yn(0);
+    if(b==1){yn(0);return;}
 	else if(b==2){
 		yn(1);
 		cout<<a<<" "<<a*3<<" "<<a*4<<"\n";
