@@ -26,10 +26,9 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    int r,y;cin>>y>>r;
-    
-    pr(min(n,r+y/2));
+    ll a,b;cin>>a>>b;
+    yn(1);
+    cout<<a<<" "<<a*b<<" "<<(2*a*b)<<endl;
 }
 
 int main() {
