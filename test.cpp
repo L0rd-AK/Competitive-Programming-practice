@@ -26,15 +26,16 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll a,b;cin>>a>>b;
-    if(b==1){yn(0);return;}
-	else if(b==2){
-		yn(1);
-		cout<<a<<" "<<a*3<<" "<<a*4<<"\n";
-        return;
-	}
-	yn(1);
-	cout<<a<<" "<<a*(b-1)<<" "<<a*b<<"\n";
+    int n,k,x;cin>>n>>k>>x;
+    if(k>2&&x!=1){
+        yn(1);
+        cout<<"1\n"<<n<<endl;
+    }
+    else if(k==2&&x==1&&n%2==0){
+        yn(1);
+        
+    }
+    else yn(0);
 }
 
 int main() {
