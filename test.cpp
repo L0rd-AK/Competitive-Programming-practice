@@ -33,7 +33,7 @@ void AKG(){
     }
     else if(k==2&&x==1&&n%2==0){
         yn(1);
-        
+        cout<<"2\n"<<n/2<<endl;
     }
     else yn(0);
 }
