@@ -26,20 +26,19 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,k,x; cin>>n>>k>>x;
-	if(x!=1){
-		yn(1);
-		cout<<n<<'\n';
-		for(int i=1;i<=n;i++) cout<<1<<" ";
-		cout << '\n';
-	}
-	else if((n%2 && k==2) || k==1) cout<<"NO\n";
-	else{
-		yn(1);
-		cout<<n/2<<'\n';
-		for(int i=1;i<n/2;i++) cout<<2<<" ";
-		cout<<2+(n%2)<<'\n';
-	}
+	ll n;cin>>n;
+    vl a(n+1);
+    for (ll i= 0,x; i < n; i++) {
+        cin >> x;
+        a[x]++;
+    }
+    ll ans = 0;
+    for (ll i= 0; i <= n; i++) {
+        if (!a[i]) continue;
+        if (a[i] > i) ans += a[i]-i;
+        else if (a[i]<i) ans += a[i];
+    }
+    cout << ans << "\n";
 }
 
 int main() {
