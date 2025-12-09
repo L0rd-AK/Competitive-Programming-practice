@@ -28,7 +28,7 @@ ll N = 1e18;
 void AKG(){
 	int n,r=1;
     cin>>n;
-	if(n==1){pr(0),return;}
+	if(n==1){pr(0);return;}
 	while((r<<1|1)<n)r=r<<1|1;
 	pr(r);
 }
