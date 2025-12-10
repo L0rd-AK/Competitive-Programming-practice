@@ -26,11 +26,23 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-	int n,r=1;
-    cin>>n;
-	if(n==1){pr(0);return;}
-	while((r<<1|1)<n)r=r<<1|1;
-	pr(r);
+	int n;cin >> n;
+    int a[n];
+    f(i,0,n)cin>>a[i];
+    bool can = true;
+    for (int i = 2; i < n; i += 2) {
+        if ((a[i] & 1) ^ (a[0] & 1)) {
+            can = false;
+            break;
+        }
+    }
+    for (int i = 3; i < n; i += 2) {
+        if ((a[i] & 1) ^ (a[1] & 1)) {
+            can = false;
+            break;
+        }
+    }
+    yn(can);
 }
 
 int main() {
