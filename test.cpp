@@ -26,7 +26,21 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-	
+	int n;cin >> n;
+    int p = 0, q = 0;
+    int x;
+    for(int i = 1; i <= n; i ++ ){
+        cin >> x;
+        if(x == -1) p ++ ;
+        else q ++ ;
+    }
+    int op = 0;
+    while(q < p || p % 2 == 1){
+        q ++ ;
+        p -- ;
+        op ++ ;
+    }
+    pr(op);
 }
 
 int main() {
