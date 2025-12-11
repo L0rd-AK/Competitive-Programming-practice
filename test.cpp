@@ -34,13 +34,13 @@ void AKG(){
         if(x == -1) p ++ ;
         else q ++ ;
     }
-    int op = 0;
+    int ans = 0;
     while(q < p || p % 2 == 1){
         q ++ ;
         p -- ;
-        op ++ ;
+        ans ++ ;
     }
-    pr(op);
+    pr(ans);
 }
 
 int main() {
