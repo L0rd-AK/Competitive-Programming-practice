@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Halftone Flower Stamps</title>
+  <style>
+    :root{
+      --pageA:#f7e6d8;
+      --pageB:#f1d7c3;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      display:grid;
+      place-items:center;
+      padding:42px 18px;
+      background:
+        radial-gradient(1200px 700px at 20% 15%, rgba(255,255,255,.75), transparent 60%),
+        radial-gradient(1000px 600px at 80% 40%, rgba(255,255,255,.35), transparent 62%),
+        linear-gradient(135deg, var(--pageA), var(--pageB));
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+
+    .sheet{
+      width:min(1120px, 100%);
+      padding:18px;
+      border-radius:22px;
+      background: rgba(255,255,255,.16);
+      box-shadow:
+        0 30px 60px rgba(0,0,0,.10),
+        inset 0 1px 0 rgba(255,255,255,.55);
+      backdrop-filter: blur(1.5px);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap:44px 56px;
+      justify-items:center;
+      padding:22px 24px;
+    }
+
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, minmax(220px, 1fr)); gap:36px; }
+    }
+    @media (max-width: 560px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* =============================
+       STAMP (perforation + paper)
+       ============================= */
+    .stamp{
+      --w: 270px;
+      --h: 340px;
+
+      /* perforation controls */
+      --hole: 7.5px;         /* radius */
+      --step: 20px;          /* spacing */
+
+      /* paper */
+      --paper1:#fbfbfa;
+      --paper2:#efefec;
+
+      /* inside palette */
+      --ink: rgba(20,18,16,.35);
+      --bg: #b7d2c6;         /* default */
+      --dots: rgba(255,245,235,.70);
+
+      width: var(--w);
+      height: var(--h);
+      border-radius: 22px;
+      position: relative;
+      isolation:isolate;
+
+      background:
+        radial-gradient(900px 320px at 25% 10%, rgba(255,255,255,.7), transparent 62%),
+        linear-gradient(145deg, var(--paper1), var(--paper2));
+      box-shadow:
+        0 26px 60px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.70),
+        inset 0 -1px 0 rgba(0,0,0,.06);
+      transform: translateZ(0);
+    }
+
+    /* “real” perforation cutout with CSS mask-image */
+    .stamp{
+      -webkit-mask:
+        radial-gradient(circle var(--hole), transparent 97%, #000 100%)
+          calc(var(--hole) * -1.35) calc(var(--hole) * -1.35) / var(--step) var(--step) round,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: source-in;
+              mask:
+        radial-gradient(circle var(--hole), transparent 97%, #000 100%)
+          calc(var(--hole) * -1.35) calc(var(--hole) * -1.35) / var(--step) var(--step) round,
+        linear-gradient(#000 0 0);
+      mask-composite: intersect;
+    }
+
+    /* subtle paper grain */
+    .stamp::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,.020) 0 1px, transparent 1px 4px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.015) 0 1px, transparent 1px 5px);
+      opacity:.38;
+      mix-blend-mode:multiply;
+      pointer-events:none;
+      z-index:5;
+    }
+
+    /* =============================
+       INNER PANEL (frame + dots)
+       ============================= */
+    .panel{
+      position:absolute;
+      inset: 16px;
+      border-radius: 18px;
+      overflow:hidden;
+      z-index:1;
+
+      background:
+        radial-gradient(900px 340px at 30% 12%, rgba(255,255,255,.55), transparent 58%),
+        linear-gradient(180deg,
+          color-mix(in oklab, var(--bg), white 12%),
+          color-mix(in oklab, var(--bg), black 3%)
+        );
+      box-shadow:
+        inset 0 0 0 3px rgba(255,255,255,.80),
+        inset 0 0 0 9px rgba(255,255,255,.20);
+    }
+
+    /* halftone dot layer */
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 50% 50%, var(--dots) 0 46%, rgba(0,0,0,0) 48%) 0 0 / 18px 18px repeat;
+      opacity: .95;
+      mix-blend-mode: screen; /* makes dots look like “ink on paper” */
+      z-index:2;
+      pointer-events:none;
+      transform: translateZ(0);
+    }
+
+    /* tiny vignette to add print depth */
+    .panel::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(150px 180px at 50% 18%, rgba(255,255,255,.28), transparent 60%),
+        radial-gradient(260px 260px at 50% 80%, rgba(0,0,0,.10), transparent 62%);
+      opacity:.80;
+      mix-blend-mode:multiply;
+      z-index:3;
+      pointer-events:none;
+    }
+
+    /* =============================
+       ART
+       ============================= */
+    .art{
+      position:absolute;
+      inset:0;
+      z-index:1; /* under dots, but dots use screen so art still visible */
+    }
+    .art svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+
+    /* bottom-right tiny number like the reference */
+    .no{
+      position:absolute;
+      right: 10px;
+      bottom: 8px;
+      z-index:6;
+      font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color: rgba(20,18,16,.35);
+      text-shadow: 0 1px 0 rgba(255,255,255,.7);
+      user-select:none;
+    }
+
+    /* theme presets */
+    .t-mint  { --bg:#b7d2c6; --dots: rgba(255,246,236,.72); }
+    .t-pink  { --bg:#e6b7c4; --dots: rgba(255,245,238,.68); }
+    .t-mint2 { --bg:#bcd6cf; --dots: rgba(255,248,238,.70); }
+    .t-dark  { --bg:#2e4f4f; --dots: rgba(255,246,236,.82); }
+    .t-aqua  { --bg:#c5d8d2; --dots: rgba(255,246,236,.70); }
+    .t-rose  { --bg:#e1a6b0; --dots: rgba(255,245,238,.68); }
+
+    /* nicer scaling on small screens */
+    @media (max-width: 560px){
+      .stamp{ --w: 86vw; --h: calc(86vw * 1.26); }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="sheet">
+    <div class="grid">
+
+      <!-- 1 -->
+      <figure class="stamp t-mint">
+        <div class="panel"></div>
+        <div class="art">
+          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 1" role="img">
+            <defs>
+              <linearGradient id="stem1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#86b89c"/>
+                <stop offset="1" stop-color="#2f6a4a"/>
+              </linearGradient>
+              <radialGradient id="petal1" cx=".45" cy=".35" r="1">
+                <stop offset="0" stop-color="#fff8fb"/>
+                <stop offset="1" stop-color="#f0e9ee"/>
+              </radialGradient>
+              <radialGradient id="leaf1" cx=".35" cy=".4" r="1">
+                <stop offset="0" stop-color="#bfe3cb"/>
+                <stop offset="1" stop-color="#79b995"/>
+              </radialGradient>
+            </defs>
+
+            <!-- stem -->
+            <path d="M136 286 C148 250 140 218 146 186 C152 150 142 120 146 92"
+                  fill="none" stroke="url(#stem1)" stroke-width="5.5" stroke-linecap="round"/>
+
+            <!-- leaves -->
+            <path d="M122 212 C90 206 88 178 108 166 C132 152 152 176 140 196 C134 206 129 212 122 212 Z"
+                  fill="url(#leaf1)" opacity=".90"/>
+            <path d="M156 234 C192 230 196 198 174 186 C152 175 134 198 144 214 C148 222 151 233 156 234 Z"
+                  fill="url(#leaf1)" opacity=".85"/>
+
+            <!-- flower (minimal, soft) -->
+            <g transform="translate(146 92)">
+              <path d="M0 22 C-22 0 -44 14 -30 34 C-18 50 -6 46 0 38 C6 46 18 50 30 34 C44 14 22 0 0 22 Z"
+                    fill="url(#petal1)" opacity=".92"/>
+              <circle cx="0" cy="34" r="5.5" fill="#f3d071" opacity=".9"/>
+            </g>
+          </svg>
+        </div>
+        <span class="no">1</span>
+      </figure>
+
+      <!-- 2 -->
+      <figure class="stamp t-pink">
+        <div class="panel"></div>
+        <div class="art">
+          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 2" role="img">
+            <defs>
+              <linearGradient id="stem2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#86b89c"/>
+                <stop offset="1" stop-color="#2f6a4a"/>
+              </linearGradient>
+              <radialGradient id="bud2" cx=".45" cy=".30" r="1">
+                <stop offset="0" stop-color="#ffe3ee"/>
+                <stop offset=".6" stop-color="#f1b2c7"/>
+                <stop offset="1" stop-color="#d98aa7"/>
+              </radialGradient>
+              <radialGradient id="leaf2" cx=".35" cy=".4" r="1">
+                <stop offset="0" stop-color="#cfead7"/>
+                <stop offset="1" stop-color="#85c0a0"/>
+              </radialGradient>
+            </defs>
+
+            <path d="M140 294 C156 258 146 224 154 190 C162 154 152 120 156 94"
+                  fill="none" stroke="url(#stem2)" stroke-width="5.5" stroke-linecap="round"/>
+
+            <path d="M132 220 C100 212 98 182 120 168 C144 152 162 180 150 200 C144 210 140 220 132 220 Z"
+                  fill="url(#leaf2)" opacity=".90"/>
+            <path d="M164 244 C200 238 202 206 178 192 C156 180 140 206 150 220 C154 228 160 242 164 244 Z"
+                  fill="url(#leaf2)" opacity=".85"/>
+
+            <g transform="translate(156 88) rotate(-8)">
+              <path d="M0 62 C-16 52 -18 30 -8 16 C-2 8 6 8 8 16 C18 30 16 52 0 62 Z"
+                    fill="url(#bud2)" opacity=".95"/>
+              <path d="M-2 66 C-16 64 -20 74 -10 78 C-2 80 0 76 2 78 C16 74 12 64 -2 66 Z"
+                    fill="#89bfa0" opacity=".85"/>
+            </g>
+          </svg>
+        </div>
+        <span class="no">2</span>
+      </figure>
+
+      <!-- 3 -->
+      <figure class="stamp t-mint2">
+        <div class="panel"></div>
+        <div class="art">
+          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 3" role="img">
+            <defs>
+              <linearGradient id="stem3" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#86b89c"/>
+                <stop offset="1" stop-color="#2f6a4a"/>
+              </linearGradient>
+              <radialGradient id="petal3" cx=".45" cy=".30" r="1">
+                <stop offset="0" stop-color="#ffe9f1"/>
+                <stop offset="1" stop-color="#f3c1d2"/>
+              </radialGradient>
+            </defs>
+
+            <path d="M150 288 C162 248 154 214 160 184 C166 152 158 120 162 92"
+                  fill="none" stroke="url(#stem3)" stroke-width="5.5" stroke-linecap="round"/>
+
+            <g transform="translate(166 98)">
+              <path d="M0 16 C-18 0 -36 12 -26 28 C-18 42 -6 40 0 32 C6 40 18 42 26 28 C36 12 18 0 0 16 Z"
+                    fill="url(#petal3)" opacity=".90"/>
+              <circle cx="0" cy="30" r="4.8" fill="#f1d27d" opacity=".9"/>
+            </g>
+          </svg>
+        </div>
+        <span class="no">1</span>
+      </figure>
+
+      <!-- 4 -->
+      <figure class="stamp t-dark">
+        <div class="panel"></div>
+        <div class="art">
+          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 4" role="img">
+            <defs>
+              <linearGradient id="stem4" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9ad0b0"/>
+                <stop offset="1" stop-color="#2f6a4a"/>
+              </linearGradient>
+              <radialGradient id="petal4" cx=".45" cy=".30" r="1">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset="1" stop-color="#f0ecef"/>
+              </radialGradient>
+              <radialGradient id="leaf4" cx=".35" cy=".4" r="1">
+                <stop offset="0" stop-color="#cfead7"/>
+                <stop offset="1" stop-color="#7fbda0"/>
+              </radialGradient>
+            </defs>
+
+            <path d="M138 296 C152 262 142 230 150 198 C158 164 150 134 154 102"
+                  fill="none" stroke="url(#stem4)" stroke-width="5.5" stroke-linecap="round"/>
+
+            <path d="M154 230 C190 224 194 194 170 178 C148 164 132 194 144 212 C148 220 150 229 154 230 Z"
+                  fill="url(#leaf4)" opacity=".85"/>
+
+            <g transform="translate(140 110)">
+              <path d="M0 18 C-24 -2 -48 14 -34 38 C-20 58 -6 54 0 44 C6 54 20 58 34 38 C48 14 24 -2 0 18 Z"
+                    fill="url(#petal4)" opacity=".92"/>
+              <circle cx="0" cy="42" r="6" fill="#ffe19b" opacity=".9"/>
+            </g>
+          </svg>
+        </div>
+        <span class="no">1</span>
+      </figure>
+
+      <!-- 5 -->
+      <figure class="stamp t-aqua">
+        <div class="panel"></div>
+        <div class="art">
+          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 5" role="img">
+            <defs>
+              <linearGradient id="stem5" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#86b89c"/>
+                <stop offset="1" stop-color="#2f6a4a"/>
+              </linearGradient>
+              <radialGradient id="pod5" cx=".45" cy=".30" r="1">
+                <stop offset="0" stop-color="#def2e8"/>
+                <stop offset=".6" stop-color="#a5cfbb"/>
+                <stop offset="1" stop-color="#6aa78b"/>
+              </radialGradient>
+            </defs>
+
+            <path d="M148 292 C162 256 152 224 160 192 C168 156 156 128 160 98"
+                  fill="none" stroke="url(#stem5)" stroke-width="5.5" stroke-linecap="round"/>
+
+            <g transform="translate(160 92)">
+              <path d="M0 72 C-18 60 -22 34 -10 18 C-2 8 6 8 10 18 C22 34 18 60 0 72 Z"
+                    fill="url(#pod5)" opacity=".95"/>
+              <circle cx="-4" cy="42" r="2.1" fill="rgba(40,60,48,.35)"/>
+              <circle cx="4" cy="48" r="2.0" fill="rgba(40,60,48,.32)"/>
+              <circle cx="0" cy="56" r="1.9" fill="rgba(40,60,48,.30)"/>
+            </g>
+          </svg>
+        </div>
+        <span class="no">2</span>
+      </figure>
+
+      <!-- 6 -->
+      <figure class="stamp t-rose">
+        <div class="panel"></div>
+        <div class="art">
+          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 6" role="img">
+            <defs>
+              <linearGradient id="stem6" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#86b89c"/>
+                <stop offset="1" stop-color="#2f6a4a"/>
+              </linearGradient>
+              <radialGradient id="petal6" cx=".45" cy=".30" r="1">
+                <stop offset="0" stop-color="#ffe7f0"/>
+                <stop offset="1" stop-color="#f2b3c6"/>
+              </radialGradient>
+              <radialGradient id="leaf6" cx=".35" cy=".4" r="1">
+                <stop offset="0" stop-color="#d4efdc"/>
+                <stop offset="1" stop-color="#85c0a0"/>
+              </radialGradient>
+            </defs>
+
+            <path d="M146 296 C162 258 152 222 160 190 C168 154 158 120 162 94"
+                  fill="none" stroke="url(#stem6)" stroke-width="5.5" stroke-linecap="round"/>
+
+            <path d="M150 232 C186 226 192 194 170 178 C148 164 132 196 144 214 C148 222 149 231 150 232 Z"
+                  fill="url(#leaf6)" opacity=".85"/>
+
+            <g transform="translate(162 120)">
+              <path d="M0 18 C-26 -4 -52 16 -36 42 C-22 66 -6 60 0 48 C6 60 22 66 36 42 C52 16 26 -4 0 18 Z"
+                    fill="url(#petal6)" opacity=".92"/>
+              <circle cx="0" cy="46" r="6" fill="#ffe19b" opacity=".9"/>
+            </g>
+          </svg>
+        </div>
+        <span class="no">3</span>
+      </figure>
+
+    </div>
+  </section>
+</body>
+</html>
