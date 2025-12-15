@@ -1,17 +1,25 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 int main()
 {
-    long long a, b, n, x, t, i;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
     cin >> t;
     while (t--)
     {
-        cin >> a >> b >> n;
-        for (i = 0; i < n; i++)
+        int n;
+        cin >> n;
+        bitset<1005> b;
+        while (n--)
         {
+            int x;
             cin >> x;
-            b += min(x, a - 1);
+            b.set(x);
         }
-        cout << b << endl;
+        int c = b.count();
+        while (!b.test(c))
+            b.set(c++);
+        cout << c << "\n";
     }
 }
