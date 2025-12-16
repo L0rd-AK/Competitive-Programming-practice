@@ -26,10 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-	int n; cin >> n;
-    set<int> s;
-	for(int i=1; i<=n; i++) {int a; cin >> a; s.insert(a);}
-	pr(*s.lower_bound(s.size()));
+
 }
 
 int main() {
