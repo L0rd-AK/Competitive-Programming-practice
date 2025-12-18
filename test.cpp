@@ -26,24 +26,16 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin >> n;
- 
-    if (n > 45) {
-        cout << -1 << '\n';
-        return;
+    int n,a;cin>>n>>a;
+    vi ar(n);
+    f(i,0,n)cin>>ar[i];
+    int c1=0,c2=0;
+    f(i,0,n){
+        if(ar[i]<=a)c1++;
+        if(ar[i]>=a)c2++;
     }
- 
-    string ans;
-    int now = 9;
- 
-    while (n > 0) {
-        ans += to_string(min(now, n));
-        n -= min(now, n);
-        now -= 1;
-    }
- 
-    reverse(ans.begin(), ans.end());
-    pr(ans);
+    if(c1<c2)pr(a+1);
+    else pr(a-1);
 }
 
 int main() {
