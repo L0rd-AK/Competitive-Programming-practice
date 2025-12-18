@@ -29,6 +29,7 @@ void AKG(){
     int n,a;cin>>n>>a;
     vi ar(n);
     f(i,0,n)cin>>ar[i];
+    sort(all(ar));
     int c1=0,c2=0;
     f(i,0,n){
         if(ar[i]<=a)c1++;
