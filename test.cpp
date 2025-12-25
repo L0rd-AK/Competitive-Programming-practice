@@ -26,11 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll l, a, b;cin >> l >> a >> b;
-    ll g = __gcd(l, b);
-    ll r = (l - 1 - a) / g;
-    ll ans = a + r * g;
-    pr(ans);
+    
 }
 
 int main() {
