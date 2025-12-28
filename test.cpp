@@ -36,6 +36,9 @@ void AKG(){
             ans=max(c,ans);
         }
     }
+    ans=max(c,ans);
+    if(ans>=k)pr(0);
+    else pr(k-ans);
 }
 
 int main() {
