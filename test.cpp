@@ -26,16 +26,9 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    string x;
-    int n,k;cin>>n>>k>>x;
-	int	ans=1e9;
-		for(int l=0,r=0,tmp=0;r<n;r++){
-			tmp+=(x[r]=='W');
-			if(r-l>k-1)tmp-=(x[l++]=='W');
-			if(r-l==k-1)ans=min(ans,tmp);
-			
-		}
-		pr(ans);
+    int n;cin>>n;
+    string s;cin>>s;
+    cout << ( (s.find("2026")+1) || !(s.find("2025")+1) ? 0 : 1 ) << endl;
 }
 
 int main() {
