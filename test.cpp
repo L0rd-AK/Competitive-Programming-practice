@@ -27,9 +27,10 @@ ll N = 1e18;
 
 void AKG(){
  int n;cin>>n;
- 
+ string ans="";
  while(n--){
-
+    string s;cin>>s;
+    
  }
 }
 
