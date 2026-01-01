@@ -26,9 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    string s;cin>>s;
-    cout << ( (s.find("2026")+1) || !(s.find("2025")+1) ? 0 : 1 ) << endl;
+ 
 }
 
 int main() {
