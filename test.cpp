@@ -27,11 +27,12 @@ ll N = 1e18;
 
 void AKG(){
  int n;cin>>n;
- string ans="";
+ string ans;
  while(n--){
     string s;cin>>s;
-    
+    ans=min(ans+s,s+ans);
  }
+ pr(ans);
 }
 
 int main() {
