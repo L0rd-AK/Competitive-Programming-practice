@@ -27,8 +27,9 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    string s;cin>>s;
-    
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    yn(a[0]==a[n-1]&&a[0]==0);
 }
 
 int main() {
