@@ -27,6 +27,8 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
+    string s;cin>>s;
+    
 }
 
 int main() {
