@@ -26,19 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,k;cin>>n>>k;
-    string s;cin>>s;
-    int ans=-1,c=0;
-    if(s[0]=='B')c++;
-    f(i,0,n-1){
-        if(s[i]=='B'&&s[i+1]=='B')c++;
-        else{
-            ans=max(c,ans);
-        }
-    }
-    ans=max(c,ans);
-    if(ans>=k)pr(0);
-    else pr(k-ans);
+    int n;cin>>n;
 }
 
 int main() {
