@@ -26,13 +26,10 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
- int n;cin>>n;
- string ans;
- while(n--){
-    string s;cin>>s;
-    ans=min(ans+s,s+ans);
- }
- pr(ans);
+  int n;cin>>n;
+  if(n<4)pr(n);
+  else if(n%2==0)pr(0);
+  else pr(1);
 }
 
 int main() {
