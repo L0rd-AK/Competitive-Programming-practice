@@ -26,9 +26,9 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int m,k,s;cin>>s>>k>>m;
-  if (s <= k) cout << max(0, s - m % k) << '\n';
-  else cout << (((m % (2 * k)) < k) ? s - m % k : k - m % k) << '\n';
+    int n;cin>>n;
+    f(i,1,n+1)cout<<i*i<<" ";
+    cout<<endl;
 }
 
 int main() {
