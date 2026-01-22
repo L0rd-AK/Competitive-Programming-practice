@@ -27,8 +27,12 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    f(i,1,n+1)cout<<i*i<<" ";
-    cout<<endl;
+    int ans=INT_MIN;
+    f(i,0,n){
+        int x;cin>>x;
+        x=max(x,ans);
+    }
+    pr(ans*n);
 }
 
 int main() {
