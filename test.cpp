@@ -30,7 +30,7 @@ void AKG(){
     int ans=INT_MIN;
     f(i,0,n){
         int x;cin>>x;
-        x=max(x,ans);
+        ans=max(x,ans);
     }
     pr(ans*n);
 }
