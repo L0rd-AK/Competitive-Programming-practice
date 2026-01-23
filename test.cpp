@@ -27,12 +27,19 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    int ans=INT_MIN;
+    set<int> st;
     f(i,0,n){
         int x;cin>>x;
-        ans=max(x,ans);
+        st.insert(x);
     }
-    pr(ans*n);
+    vi a(all(st));
+    int c=0,ans=INT_MIN;
+    f(i,1,st.size()){
+        if(a[i]-a[i-1]==1)c++;
+        else c=1;
+        ans=max(ans,c);
+    }
+    pr(ans);
 }
 
 int main() {
