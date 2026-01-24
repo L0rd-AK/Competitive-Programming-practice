@@ -26,17 +26,9 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,s,c=1,ans=1,arr[3001];
-	cin>>n;
-	for(s=1;s<=n;s++)cin>>arr[s];
-	sort(arr+1,arr+1+n);
-	for(s=2;s<=n;s++){
-		if(arr[s]-arr[s-1]==1)c++;
-		else if(arr[s]-arr[s-1]==0)c=c;
-		else c=1;
-		ans=max(ans,c);
-	}
-	cout<<ans<<'\n';
+    int a,b;cin>>a>>b;
+	f(i,1,min(a,b)+1)ans*=i;
+	pr(ans);
 }
 
 int main() {
