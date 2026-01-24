@@ -27,6 +27,7 @@ ll N = 1e18;
 
 void AKG(){
     int a,b;cin>>a>>b;
+	int ans=1;
 	f(i,1,min(a,b)+1)ans*=i;
 	pr(ans);
 }
