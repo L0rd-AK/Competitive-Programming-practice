@@ -29,14 +29,10 @@ void AKG(){
     int n;cin>>n;
     vi a(n);
     f(i,0,n)cin>>a[i];
-    int od=0,ev=0;
+    int c=0;
     f(i,0,n){
-        if(a[i]%2==0)ev++;
-        else od++;
+        c+=
     }
-    if(n%2==0 && ev==od)yn(1);
-    else if(od-ev==1)yn(1);
-    else yn(0);
 }
 
 int main() {
