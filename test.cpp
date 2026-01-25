@@ -30,9 +30,8 @@ void AKG(){
     vi a(n);
     f(i,0,n)cin>>a[i];
     int c=0;
-    f(i,0,n){
-        c+=
-    }
+    f(i,0,n)c+=(a[i] % 2 != (i + 1) % 2);
+    yn(c==0||c==n);
 }
 
 int main() {
