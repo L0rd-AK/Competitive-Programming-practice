@@ -27,6 +27,12 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    f(i,0,n){
+        if((i%2)!=(a[i]%2)){yn(0);return;}
+    }
+    yn(1);
 }
 
 int main() {
