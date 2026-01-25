@@ -29,10 +29,14 @@ void AKG(){
     int n;cin>>n;
     vi a(n);
     f(i,0,n)cin>>a[i];
+    int od=0,ev=0;
     f(i,0,n){
-        if((i%2)!=(a[i]%2)){yn(0);return;}
+        if(a[i]%2==0)ev++;
+        else od++;
     }
-    yn(1);
+    if(n%2==0 && ev==od)yn(1);
+    else if(od-ev==1)yn(1);
+    else yn(0);
 }
 
 int main() {
@@ -44,7 +48,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    // cin >> t; 
+    cin >> t; 
     while(t--)AKG();
     return 0;
 }
