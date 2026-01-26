@@ -34,7 +34,7 @@ void AKG(){
     }
     if(ans==s)yn(1);
     else if(ans>s)yn(0);
-    else if(s-ans%k==0)yn(1);
+    else if((s-ans)%k==0)yn(1);
 }
 
 int main() {
