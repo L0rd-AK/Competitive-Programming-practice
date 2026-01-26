@@ -26,12 +26,15 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    int c=0;
-    f(i,0,n)c+=(a[i] % 2 != (i + 1) % 2);
-    yn(c==0||c==n);
+    int n,s,k;cin>>n>>s>>k;
+    int ans=0;
+    while(n--){
+        int x;cin>>x;
+        ans+=x;
+    }
+    if(ans==s)yn(1);
+    else if(ans>s)yn(0);
+    else if(s-ans%k==0)yn(1);
 }
 
 int main() {
