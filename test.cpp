@@ -36,7 +36,9 @@ void AKG(){
             idx=i;
         }
     }
-    
+    for(int i=idx;i>=0;i--)cout<<a[i]<<" ";
+    for(int i=idx;i<n;i++)cout<<a[i]<<" ";
+    cout<<endl;
 }
 
 int main() {
