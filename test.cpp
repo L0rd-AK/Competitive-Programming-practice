@@ -26,16 +26,17 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,s,k;cin>>n>>s>>k;
-    int ans=0;
-    while(n--){
-        int x;cin>>x;
-        ans+=x;
+    int n;cin>>n;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    int mx=INT_MIN,idx=0;
+    f(i,0,n){
+        if(a[i]>mx){
+            mx=a[i];
+            idx=i;
+        }
     }
-    if(ans==s)yn(1);
-    else if(ans>s)yn(0);
-    else if((s-ans)%k==0)yn(1);
-    else yn(0);
+    
 }
 
 int main() {
