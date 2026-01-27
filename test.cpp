@@ -37,7 +37,7 @@ void AKG(){
         }
     }
     if(idx==0)for(int i=idx;i<n;i++)cout<<a[i]<<" ";
-    else if(idx==n)for(int i=idx;i>=0;i--)cout<<a[i]<<" ";
+    else if(idx==n-1)for(int i=idx;i>=0;i--)cout<<a[i]<<" ";
     else{
         for(int i=idx;i>=0;i--)cout<<a[i]<<" ";
         for(int i=idx;i<n;i++)cout<<a[i]<<" ";
