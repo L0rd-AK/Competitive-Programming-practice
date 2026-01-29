@@ -26,23 +26,38 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    int mx=INT_MIN,idx=0;
-    f(i,0,n){
-        if(a[i]>mx){
-            mx=a[i];
-            idx=i;
+    int n;cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    vector<int> b = a;
+    sort(all(b));
+    int left=0, right=n-1;
+    for (int i = 0; i < n; i++){
+        if (a[i] != b[i])
+        {
+            left=i;
+            break;
         }
     }
-    if(idx==0)for(int i=idx;i<n;i++)cout<<a[i]<<" ";
-    else if(idx==n-1)for(int i=idx;i>=0;i--)cout<<a[i]<<" ";
-    else{
-        for(int i=idx;i>=0;i--)cout<<a[i]<<" ";
-        for(int i=idx;i<n;i++)cout<<a[i]<<" ";
+    for (int i = n-1; i >=0; i--){
+        if (a[i]==b[left])
+        {
+            right=i;
+            break;
+        }
     }
-    cout<<endl;
+    for (int i = 0; i < left; i++){
+        cout << a[i] << " ";
+    }
+    for (int i = right; i >= left; i--){
+        cout << a[i] << " ";
+    }
+    for (int i = right+1; i < n; i++){
+        cout << a[i] << " ";
+    }
+    cout << "\n";
 }
 
 int main() {
