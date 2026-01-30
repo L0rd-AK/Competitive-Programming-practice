@@ -27,37 +27,25 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin >> n;
-    vi a(n);
-    f(i,0,n)cin >> a[i];
-    
-    vi b = a;
-    sort(all(b),greater<int>());
-    int idx=0,mx=INT_MIN,mx_idx=0;
-    f(i,0,n){
-        if (a[i]>mx){
-            mx=a[i];
-            mx_idx=i;
+    vi p(n + 1), pos(n + 1);
+    for (int i = 1; i <= n; i++) {
+        cin >> p[i];
+        pos[p[i]] = i;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        int need = n - i + 1;
+        if (p[i] != need) {
+            int r = pos[need];
+            reverse(p.begin() + i, p.begin() + r + 1);
+            break; 
         }
     }
-    f(i,0,n){
-        if (a[i] != b[i]){
-            idx=i;
-            break;
-        }
+
+    for (int i = 1; i <= n; i++) {
+        cout << p[i] << " ";
     }
-    if(idx==0){
-        if(mx_idx==n-1)for(int i=n-1;i>=0;i--)cout<<a[i]<<" ";
-        else{
-            for(int i=mx_idx;i>=0;i--)cout<<a[i]<<" ";
-            f(i,mx_idx+1,n)cout<<a[i]<<" ";
-        }
-    }
-    else if(idx==n-1)for(int i=n-1;i>=0;i--)cout<<a[i]<<" ";
-    else{
-        f(i,0,idx)cout<<a[i]<<" ";
-        for(int i=n-1;i>=idx;i--)cout<<a[i]<<" ";
-    }
-    cout<<endl;
+    cout << "\n";
 }
 
 int main() {
