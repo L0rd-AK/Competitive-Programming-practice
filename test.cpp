@@ -46,7 +46,11 @@ void AKG(){
         }
     }
     if(idx==0){
-
+        if(mx_idx==n-1)for(int i=n-1;i>=0;i--)cout<<a[i]<<" ";
+        else{
+            for(int i=mx_idx;i>=0;i--)cout<<a[i]<<" ";
+            f(i,mx_idx+1,n)cout<<a[i]<<" ";
+        }
     }
     else if(idx==n-1)for(int i=n-1;i>=0;i--)cout<<a[i]<<" ";
     else{
