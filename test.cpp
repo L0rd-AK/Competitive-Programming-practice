@@ -32,14 +32,22 @@ void AKG(){
     
     vi b = a;
     sort(all(b),greater<int>());
-    int idx=0;
+    int idx=0,mx=INT_MIN,mx_idx=0;
+    f(i,0,n){
+        if (a[i]>mx){
+            mx=a[i];
+            mx_idx=i;
+        }
+    }
     f(i,0,n){
         if (a[i] != b[i]){
             idx=i;
             break;
         }
     }
-    if(idx==0)f(i,0,n)cout<<a[i]<<" ";
+    if(idx==0){
+
+    }
     else if(idx==n-1)for(int i=n-1;i>=0;i--)cout<<a[i]<<" ";
     else{
         f(i,0,idx)cout<<a[i]<<" ";
