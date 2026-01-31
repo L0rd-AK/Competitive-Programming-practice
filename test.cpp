@@ -27,25 +27,17 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin >> n;
-    vi p(n + 1), pos(n + 1);
-    for (int i = 1; i <= n; i++) {
-        cin >> p[i];
-        pos[p[i]] = i;
+    vi a(n);
+    int l=1;
+    int r=n;
+    for(int i=n-1;i>=0;i-=2){
+        a[i]=r--;
+        if(i-1>=0)
+        a[i-1]=l++;
     }
+    f(i,0,n)cout<<a[i]<<" ";
+    cout<<endl;
 
-    for (int i = 1; i <= n; i++) {
-        int need = n - i + 1;
-        if (p[i] != need) {
-            int r = pos[need];
-            reverse(p.begin() + i, p.begin() + r + 1);
-            break; 
-        }
-    }
-
-    for (int i = 1; i <= n; i++) {
-        cout << p[i] << " ";
-    }
-    cout << "\n";
 }
 
 int main() {
