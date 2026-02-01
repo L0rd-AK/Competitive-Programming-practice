@@ -30,8 +30,10 @@ void AKG(){
     vi a(n);
     f(i,0,n)cin>>a[i];
     int ans=0;
-    f()
-
+    f(i,0,n-1){
+        ans+=(!((a[i]^a[i+1])&1));
+    }
+    pr(ans);
 }
 
 int main() {
