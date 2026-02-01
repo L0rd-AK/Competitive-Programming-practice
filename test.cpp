@@ -26,17 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin >> n;
-    vi a(n);
-    int l=1;
-    int r=n;
-    for(int i=n-1;i>=0;i-=2){
-        a[i]=r--;
-        if(i-1>=0)
-        a[i-1]=l++;
-    }
-    f(i,0,n)cout<<a[i]<<" ";
-    cout<<endl;
+    
 
 }
 
