@@ -28,12 +28,11 @@ ll N = 1e18;
 void AKG(){
     int n, q, l, r, m=0, sum=0;
 	cin>>n>>q;
-	vi a(n), b(n), c[n+1];
+	vi a(n), b(n), c(n+1);
 	c[n]=0;
-	for (int i=0; i<n; i++) cin>>a[i];
-	for (int i=0; i<n; i++) { cin>>b[i]; if (b[i]>a[i]) { a[i]=b[i]; } }
-	for (int i=n-1; i>=0; i--)
-	{
+	f(i,0,n)cin>>a[i];
+	f(i,0,n){ cin>>b[i]; if (b[i]>a[i]) { a[i]=b[i]; } }
+	for (int i=n-1; i>=0; i--){
 		m= max(m, a[i]);
 		a[i]=m;
 		sum += m;
