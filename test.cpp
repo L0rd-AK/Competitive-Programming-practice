@@ -40,8 +40,8 @@ void AKG(){
 	}
 	for (int i=0; i<q; i++){
 		cin>>l>>r;
-		cout<<c[l-1]-c[r]<<endl;
-	}
+		cout<<c[l-1]-c[r]<<" ";
+	}cout<<endl;
 }
 
 int main() {
