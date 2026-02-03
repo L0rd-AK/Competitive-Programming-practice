@@ -28,7 +28,9 @@ ll N = 1e18;
 void AKG(){
     ll a,b,c,x,y;cin>>a>>b>>c>>x>>y;
 	if(a>=x&&b>=y)yn(1);
-	else if(((x-a)+(y-b))<=c)yn(1);
+	else if(x>a&&y>b&&((x-a)+(y-b))<=c)yn(1);
+	else if(x>a&&y<b&&((x-a))<=c)yn(1);
+	else if(x<a&&y>b&&((y-b))<=c)yn(1);
 	else yn(0);
 }
 
