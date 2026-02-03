@@ -28,7 +28,8 @@ ll N = 1e18;
 void AKG(){
     int a,b,c,x,y;cin>>a>>b>>c>>x>>y;
 	if(a>=x&&b>=y)yn(1);
-	else if()
+	else if()yn(1);
+	else yn(0);
 }
 
 int main() {
