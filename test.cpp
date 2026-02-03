@@ -26,22 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n, q, l, r, m=0, sum=0;
-	cin>>n>>q;
-	vi a(n), b(n), c(n+1);
-	c[n]=0;
-	f(i,0,n)cin>>a[i];
-	f(i,0,n){ cin>>b[i]; if (b[i]>a[i]) { a[i]=b[i]; } }
-	for (int i=n-1; i>=0; i--){
-		m= max(m, a[i]);
-		a[i]=m;
-		sum += m;
-		c[i] = sum;
-	}
-	for (int i=0; i<q; i++){
-		cin>>l>>r;
-		cout<<c[l-1]-c[r]<<" ";
-	}cout<<endl;
+    
 }
 
 int main() {
