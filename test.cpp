@@ -31,7 +31,9 @@ void AKG(){
     f(i,0,n)cin>>a[i];
     ll sum=0;
     f(i,1,n)sum+=abs(a[i]-a[i-1]);
+    dbg(sum);
     ll ans=min(sum-abs(a[0]-a[1]),sum-abs(a[n]-a[n-1]));
+    dbg(sum);
     f(i,1,n-1){
         ans=min(ans,ans-abs(a[i]-a[i-1])-abs(a[i]-a[i+1])+abs(a[i+1]-a[i-1]));
     }
