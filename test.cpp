@@ -27,8 +27,11 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    vi a(n);
+    vl a(n);
     f(i,0,n)cin>>a[i];
+    ll sum=0;
+    f(i,1,n)sum+=abs(a[i]-a[i-1]);
+    ll ans=min(sum-abs(a[0]-a[1]),sum-abs(a[n]-a[n-1]));
     
 }
 
