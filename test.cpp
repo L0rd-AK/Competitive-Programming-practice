@@ -32,7 +32,10 @@ void AKG(){
     ll sum=0;
     f(i,1,n)sum+=abs(a[i]-a[i-1]);
     ll ans=min(sum-abs(a[0]-a[1]),sum-abs(a[n]-a[n-1]));
-    f(i,)
+    f(i,1,n-1){
+        ans=min(ans,ans-abs(a[i]-a[i-1])-abs(a[i]-a[i+1])+abs(a[i+1]-a[i-1]));
+    }
+    pr(ans);
 }
 
 int main() {
