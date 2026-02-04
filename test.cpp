@@ -35,7 +35,7 @@ void AKG(){
     ll ans=min(sum-abs(a[0]-a[1]),sum-abs(a[n-1]-a[n-2]));
     dbg(sum);
     f(i,1,n-1){
-        ans=min(ans,ans-abs(a[i]-a[i-1])-abs(a[i]-a[i+1])+abs(a[i+1]-a[i-1]));
+        ans=min(ans,sum-abs(a[i]-a[i-1])-abs(a[i]-a[i+1])+abs(a[i+1]-a[i-1]));
     }
     pr(ans);
 }
