@@ -26,10 +26,10 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    ll a,b,c,x,y;cin>>a>>b>>c>>x>>y;
-	if(a>=x&&b>=y)yn(1);
-	else if(x>a&&y>b&&((max(0LL,x-a))+(max(0LL,y-b)))<=c)yn(1);
-	else yn(0);
+    int n;cin>>n;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    
 }
 
 int main() {
