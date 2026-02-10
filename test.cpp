@@ -26,7 +26,13 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    
+    int p=0,q=0;
+	int n,h,l;cin>>n>>h>>l;
+	while(n--){
+		int a;cin>>a;
+		p+=a<=min(h,l),q+=a<=max(h,l);
+	}
+	pr(min(q>>1,p));
 }
 
 int main() {
