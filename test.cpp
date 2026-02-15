@@ -26,8 +26,21 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n,x;cin>>n>>x;
-    pr(n-(n/x));
+    int n;cin>>n;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    int ans=0;
+    for(int i=n-2;i>=0;i--){
+        while(a[i]>=a[i+1] && a[i]>0){
+            a[i]/=2;
+            ans++;
+        }
+        if(a[i]==a[i+1]){
+            pr(-1);
+            return;
+        }
+    }
+    pr(ans);
 }
 
 int main() {
