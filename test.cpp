@@ -27,20 +27,12 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    int ans=0;
-    for(int i=n-2;i>=0;i--){
-        while(a[i]>=a[i+1] && a[i]>0){
-            a[i]/=2;
-            ans++;
-        }
-        if(a[i]==a[i+1]){
-            pr(-1);
-            return;
-        }
+    bool ok=0;
+    while(n--){
+        int x;cin>>x;
+        if(x==67)ok=1;
     }
-    pr(ans);
+    yn(ok);
 }
 
 int main() {
