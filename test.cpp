@@ -27,12 +27,12 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    bool ok=0;
-    while(n--){
-        int x;cin>>x;
-        if(x==67)ok=1;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    f(i,0,n/2){
+        if(i!=(a[i]-1))swap(a[i],a[a[i]-1]);
     }
-    yn(ok);
+    yn(is_sorted(all(a)));
 }
 
 int main() {
