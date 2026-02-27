@@ -30,7 +30,7 @@ void AKG(){
     vi a(n);
     f(i,0,n)cin>>a[i];
     f(i,0,n/2){
-        if(i!=(a[i]-1))swap(a[i],a[a[i]-1]);
+        if(i!=(a[i]-1))swap(a[i],a[2*a[i]-1]);
     }
     yn(is_sorted(all(a)));
 }
