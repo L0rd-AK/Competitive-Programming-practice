@@ -30,8 +30,9 @@ void AKG(){
     vi a(n+1);
     f(i,1,n+1)cin>>a[i];
     f(i,1,(n/2)+1){
-        if(i!=a[i])swap(a[i],a[a[2*i]]);
+        if(i!=a[i])swap(a[i],a[2*i]);
     }
+    dbg(a);
     yn(is_sorted(all(a)));
 }
 
