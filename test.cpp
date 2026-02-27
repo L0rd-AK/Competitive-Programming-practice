@@ -29,8 +29,12 @@ void AKG(){
     int n;cin>>n;
     vi a(n+1);
     f(i,1,n+1)cin>>a[i];
-    f(i,1,(n/2)+1){
-        if(i!=a[i])swap(a[i],a[2*i]);
+   for(int i=1;i<=n;i+=2){
+      for(int j=i;j<=n;j*=2){
+        for(int k=i*2;k<=n;k*=2){
+          if(a[k/2]>a[k])swap(a[k/2],a[k]);
+        }
+      }
     }
     dbg(a);
     yn(is_sorted(all(a)));
