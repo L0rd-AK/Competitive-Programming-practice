@@ -27,10 +27,10 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    vi a(n);
-    f(i,0,n)cin>>a[i];
-    f(i,0,n/2){
-        if(i!=(a[i]-1))swap(a[i],a[a[2*i]-1]);
+    vi a(n+1);
+    f(i,1,n+1)cin>>a[i];
+    f(i,1,(n/2)+1){
+        if(i!=a[i])swap(a[i],a[a[2*i]]);
     }
     yn(is_sorted(all(a)));
 }
