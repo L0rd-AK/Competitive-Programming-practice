@@ -26,18 +26,12 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
-    vi a(n+1);
-    f(i,1,n+1)cin>>a[i];
-   for(int i=1;i<=n;i+=2){
-      for(int j=i;j<=n;j*=2){
-        for(int k=i*2;k<=n;k*=2){
-          if(a[k/2]>a[k])swap(a[k/2],a[k]);
-        }
-      }
-    }
-    dbg(a);
-    yn(is_sorted(all(a)));
+  int n;cin>>n;
+  vi a(n);
+  int mx=0,ans=0;
+  f(i,0,n){cin>>a[i];mx=max(mx,a[i]);}
+  f(i,0,n)ans+=(mx==a[i]);
+  pr(ans);
 }
 
 int main() {
