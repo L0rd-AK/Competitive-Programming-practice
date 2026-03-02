@@ -28,10 +28,9 @@ ll N = 1e18;
 void AKG(){
   int n;cin>>n;
   vi a(n);
-  int mx=0,ans=0;
-  f(i,0,n){cin>>a[i];mx=max(mx,a[i]);}
-  f(i,0,n)ans+=(mx==a[i]);
-  pr(ans);
+  f(i,0,n)cin>>a[i];
+  if(is_sorted(all(a)))pr(n);
+  else pr(1);
 }
 
 int main() {
