@@ -26,11 +26,9 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;cin>>n;
-  vi a(n);
-  f(i,0,n)cin>>a[i];
-  if(is_sorted(all(a)))pr(n);
-  else pr(1);
+  int n,m,d;cin>>n>>m>>d;
+  int x=(d+1)/m;
+  pr((n+x-1)/x);
 }
 
 int main() {
