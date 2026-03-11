@@ -29,7 +29,14 @@ void AKG(){
   int n;cin>>n;
   vi a(n);
   f(i,0,n)cin>>a[i];
-  
+  f(i,0,n){
+    if(a[i]==n){
+        swap(a[i],a[0]);
+        break;
+    }
+  }
+  for(int i:a)cout<<i<<" ";
+  cout<<endl;
 }
 
 int main() {
