@@ -26,9 +26,10 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n,m,d;cin>>n>>m>>d;
-  int x=1+d/m;
-  pr((n+x-1)/x);
+  int n;cin>>n;
+  vi a(n);
+  f(i,0,n)cin>>a[i];
+  
 }
 
 int main() {
