@@ -32,7 +32,7 @@ void AKG(){
   st.push(s[0]);
   f(i,1,n){
     char c=st.top();
-    if(c==s[i])st.pop();
+    if(c==s[i]&& !st.empty())st.pop();
     else st.push(s[i]);
   }
   yn(st.size()==0);
