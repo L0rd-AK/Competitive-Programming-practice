@@ -28,7 +28,14 @@ ll N = 1e18;
 void AKG(){
   int n;cin>>n;
   string s;cin>>s;
-  
+  stack<char> st;
+  st.push(s[0]);
+  f(i,1,n){
+    char c=st.top();
+    if(c==s[i])st.pop();
+    else st.push(s[i]);
+  }
+  yn(st.size()==0);
 }
 
 int main() {
