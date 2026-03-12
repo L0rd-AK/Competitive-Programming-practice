@@ -26,15 +26,17 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n; cin >> n;
-  string s; cin >> s;
-  int m = min(n, (int)s.size());
+  int n;cin>>n;
+  string s;cin>>s;
   stack<char> st;
-  for (int i = 0; i < m; ++i) {
-    if (!st.empty() && st.top() == s[i]) st.pop();
+  st.push(s[0]);
+  f(i,1,n){
+    char c;
+    if(!st.empty())c=st.top();
+    if(!st.empty()&&c==s[i])st.pop();
     else st.push(s[i]);
   }
-  yn(st.empty());
+  yn(st.size()==0);
 }
 
 int main() {
@@ -45,8 +47,8 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int t = 1;
-    cin >> t;
-    while (t--) AKG();
+    int t=1;
+    cin >> t; 
+    while(t--)AKG();
     return 0;
 }
