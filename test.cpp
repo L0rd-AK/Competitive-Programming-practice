@@ -26,17 +26,27 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;cin>>n;
-  string s;cin>>s;
-  stack<char> st;
-  st.push(s[0]);
-  f(i,1,n){
-    char c;
-    if(!st.empty())c=st.top();
-    if(!st.empty()&&c==s[i])st.pop();
-    else st.push(s[i]);
+  int n;
+  ll b, d;
+  cin>>n>>b>>d;
+
+  ll waste = 0;
+  int emptyCount = 0;
+
+  for (int i = 0; i < n; i++) {
+    ll a;cin >> a;
+
+    if (a > b) continue;      
+
+    waste += a;
+
+        if (waste > d) {         
+            emptyCount++;
+            waste = 0;
+        }
   }
-  yn(st.size()==0);
+
+  cout << emptyCount << "\n";
 }
 
 int main() {
@@ -48,7 +58,7 @@ int main() {
     cin.tie(0);
 
     int t=1;
-    cin >> t; 
+    // cin >> t; 
     while(t--)AKG();
     return 0;
 }
