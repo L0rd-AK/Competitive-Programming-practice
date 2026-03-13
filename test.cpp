@@ -30,23 +30,23 @@ void AKG(){
   ll b, d;
   cin>>n>>b>>d;
 
-  ll waste = 0;
-  int emptyCount = 0;
+  ll mx = 0;
+  int ans = 0;
 
   for (int i = 0; i < n; i++) {
     ll a;cin >> a;
 
     if (a > b) continue;      
 
-    waste += a;
+    mx += a;
 
-        if (waste > d) {         
-            emptyCount++;
-            waste = 0;
-        }
+    if (mx > d) {         
+        ans++;
+        mx = 0;
+    }
   }
 
-  cout << emptyCount << "\n";
+  pr(ans);
 }
 
 int main() {
