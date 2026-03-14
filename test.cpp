@@ -26,27 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;
-  ll b, d;
-  cin>>n>>b>>d;
-
-  ll mx = 0;
-  int ans = 0;
-
-  for (int i = 0; i < n; i++) {
-    ll a;cin >> a;
-
-    if (a > b) continue;      
-
-    mx += a;
-
-    if (mx > d) {         
-        ans++;
-        mx = 0;
-    }
-  }
-
-  pr(ans);
+  
 }
 
 int main() {
