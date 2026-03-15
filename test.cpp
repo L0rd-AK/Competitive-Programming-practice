@@ -27,14 +27,25 @@ ll N = 1e18;
 
 void AKG(){
   int n;cin>>n;
-  vi a(n);
-  f(i,0,n)cin>>a[i];
-  sort(all(a));
-  int ans=0;
-  f(i,0,n/2){
-    ans+=a[n-1-i]-a[i];
+  map<int,int> mp;
+  f(i,0,n){
+	f(j,0,n){
+		int x;cin>>x;
+		mp[x]++;
+	}
   }
-  pr(ans);
+  if(n == 1){
+      yn(0);
+      return;
+  }
+ 
+    for(auto [x,y] : mp){
+        if(y > n*(n-1)){
+            yn(0);
+            return;
+        }
+    }
+  yn(1);
 }
 
 int main() {
