@@ -26,26 +26,14 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;cin>>n;
-  map<int,int> mp;
-  f(i,0,n){
-	f(j,0,n){
-		int x;cin>>x;
-		mp[x]++;
-	}
+  int n,x;cin>>n>>x;
+  ll a=0,b=0;;
+  while(n--){
+    int z;cin>>z;
+    a+=z;b+=(z+x-1)/x;
   }
-  if(n == 1){
-      yn(0);
-      return;
-  }
- 
-    for(auto [x,y] : mp){
-        if(y > n*(n-1)){
-            yn(0);
-            return;
-        }
-    }
-  yn(1);
+  cout<<(a+x-1)/x<<" "<<b<<endl;
+  
 }
 
 int main() {
