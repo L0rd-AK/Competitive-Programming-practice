@@ -29,7 +29,7 @@ void AKG(){
   int n; cin >> n;
   int ans = 0;
 
-  f(i, n, n + 200){
+  f(i, n, n + 84){
     int sum = 0;
     int temp = i; // preserve i
 
