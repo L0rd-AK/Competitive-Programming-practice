@@ -31,14 +31,13 @@ void AKG(){
 
   f(i, n, n + 84){
     int sum = 0;
-    int temp = i; // preserve i
+    int temp = i; 
 
     while(temp != 0){
       sum += temp % 10;
       temp /= 10;
     }
-
-    if(i - sum == n) ans++; // correct condition
+    if(i - sum == n) ans++; 
   }
 
   pr(ans);
