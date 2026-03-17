@@ -27,7 +27,10 @@ ll N = 1e18;
 
 void AKG(){
   int n;cin>>n;
-  if(n<)
+  int ans=0;
+  f(i,n,n+84){
+    
+  }
   
 }
 
