@@ -29,9 +29,14 @@ void AKG(){
   int n;cin>>n;
   int ans=0;
   f(i,n,n+84){
-    
+    int sum=0;
+    while(i!=0){
+      sum+=i%10;
+      i/=10;
+    }
+    (sum==n?ans++:ans=ans);
   }
-  
+  pr(ans);
 }
 
 int main() {
