@@ -26,16 +26,21 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;cin>>n;
-  int ans=0;
-  f(i,n,n+84){
-    int sum=0;
-    while(i!=0){
-      sum+=i%10;
-      i/=10;
+  int n; cin >> n;
+  int ans = 0;
+
+  f(i, n, n + 200){
+    int sum = 0;
+    int temp = i; // preserve i
+
+    while(temp != 0){
+      sum += temp % 10;
+      temp /= 10;
     }
-    (sum==n?ans++:ans=ans);
+
+    if(i - sum == n) ans++; // correct condition
   }
+
   pr(ans);
 }
 
