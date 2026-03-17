@@ -26,13 +26,8 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n,x;cin>>n>>x;
-  ll a=0,b=0;;
-  while(n--){
-    int z;cin>>z;
-    a+=z;b+=(z+x-1)/x;
-  }
-  cout<<(a+x-1)/x<<" "<<b<<endl;
+  int n;cin>>n;
+  if(n<)
   
 }
 
