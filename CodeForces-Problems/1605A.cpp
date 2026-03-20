@@ -26,14 +26,10 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;cin>>n;
   string s;cin>>s;
-  int ans=1;
-  f(i,1,n){
-    if(s[i]=='R')ans++;
-    else break;
-  }
-  pr(ans);
+  int n=s.length();
+  s[n-1]=s[0];
+  pr(s);
 }
 
 int main() {
