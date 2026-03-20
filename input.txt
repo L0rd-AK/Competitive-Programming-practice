@@ -1,5 +1,7 @@
+3
 4
-b
-aabbbabaa
-abbb
-abbaab
+RLRL
+6
+RRRRRL
+9
+RRLRRRRRL
