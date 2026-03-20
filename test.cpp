@@ -29,6 +29,7 @@ void AKG(){
   int n;cin>>n;
   string s;cin>>s;
   int ans=1;
+  if(s[0]=='R')ans++;
   f(i,1,n){
     if(s[i]=='R')ans++;
     else break;
