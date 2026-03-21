@@ -26,10 +26,9 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n;
-    std::cin >> n;
-    std::string s;
-    std::cin >> s;
+  int n;cin >> n;
+    string s;
+    cin >> s;
     s = '1' + s + '1';
     int ans = 0;
     for (int i = 1, l = 0; i <= n; ++i) {
@@ -45,7 +44,7 @@ void AKG(){
             ++ans;
         }
     }
-    std::cout << ans << '\n';
+  pr(ans);
 }
 
 int main() {
