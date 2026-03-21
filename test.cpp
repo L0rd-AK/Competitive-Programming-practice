@@ -31,7 +31,7 @@ void AKG(){
     cin >> s;
     s = '1' + s + '1';
     int ans = 0;
-    for (int i = 1, l = 0; i <= n; ++i) {
+    for (int i = 1, l = 0; i <= n; ++i){
         if (s[i] == '0') {
             if (s[i-1] == '1') {
                 l = i;
