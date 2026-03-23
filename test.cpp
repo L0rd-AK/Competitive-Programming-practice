@@ -27,6 +27,9 @@ ll N = 1e18;
 
 void AKG(){
   int n,c,k;cin>>n>>c>>k;
+  vi a(n);
+  f(i,0,n)cin>>a[i];
+  sort(all(a));
 }
 
 int main() {
