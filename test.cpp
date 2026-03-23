@@ -26,13 +26,18 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-  int n,c,k;cin>>n>>c>>k;
-  vi a(n);
+  ll n,c,k;cin>>n>>c>>k;
+  vl a(n);
   f(i,0,n)cin>>a[i];
   sort(all(a));
   f(i,0,n){
-    
+    if(a[i]<=c)c+=a[i];
+    else if(c+k>=a[i]){
+        c+=a[i];
+        k=k-abs(c-a[i]);
+    }else break;
   }
+  pr(c);
 }
 
 int main() {
