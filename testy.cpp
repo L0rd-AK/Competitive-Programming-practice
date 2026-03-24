@@ -26,22 +26,7 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG() {
-    ll n, c, k;
-    cin >> n >> c >> k;
-    vl a(n);
-    f(i, 0, n) cin >> a[i];
-
-    sort(all(a));
-
-    f(i, 0, n) {
-        if (a[i] > c) break;
-
-        ll use = min(k, c - a[i]);
-        c += a[i] + use;
-        k -= use;
-    }
-
-    pr(c);
+    
 }
 
 int main() {
