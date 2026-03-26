@@ -31,7 +31,7 @@ void AKG() {
     f(i,0,n)cin>>a[i];
     int ans=0,x=a[0];
     f(i,1,n){
-        if(x<=a[i])ans++;
+        if(x<=a[i]){ans++;x=a[i];}
     }
     pr(ans+1);
 }
