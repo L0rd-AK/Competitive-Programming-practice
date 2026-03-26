@@ -26,7 +26,14 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG() {
-    
+    int n;cin>>n;
+    vi a(n);
+    f(i,0,n)cin>>a[i];
+    int ans=0,x=a[0];
+    f(i,1,n){
+        if(x>=a[i])ans++;
+    }
+    pr(ans+1);
 }
 
 int main() {
