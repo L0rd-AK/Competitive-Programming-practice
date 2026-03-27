@@ -27,7 +27,26 @@ ll N = 1e18;
 
 void AKG(){
   int a,b;cin>>a>>b;
-  
+  int x=min(a,b),y=max(a,b);
+  int ans=0;
+  ll z=1;
+
+  int p=0,q=0;
+
+  while(true){
+     int np = q + z;
+     int nq = p;
+
+     if(np <= y && nq <= x){
+        ans++;
+        z *= 2;
+        p = np;
+        q = nq;
+     }
+     else break;
+  }
+
+  pr(ans);
 }
 
 int main() {
