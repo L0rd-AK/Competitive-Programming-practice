@@ -1,429 +1,518 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Halftone Flower Stamps</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloom for You</title>
   <style>
     :root{
-      --pageA:#f7e6d8;
-      --pageB:#f1d7c3;
+      --bg1:#09050b;
+      --bg2:#1b0d18;
+      --bg3:#2b1020;
+      --rose:#f2a7b5;
+      --rose2:#d86c87;
+      --rose3:#a43e61;
+      --gold:#f2c87c;
+      --leaf:#5aa06f;
+      --leaf2:#356347;
+      --stem:#274f3a;
+      --text:#ffeef3;
+      --soft:rgba(255,255,255,.12);
+      --glow:rgba(216,108,135,.35);
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
     body{
-      margin:0;
-      display:grid;
-      place-items:center;
-      padding:42px 18px;
-      background:
-        radial-gradient(1200px 700px at 20% 15%, rgba(255,255,255,.75), transparent 60%),
-        radial-gradient(1000px 600px at 80% 40%, rgba(255,255,255,.35), transparent 62%),
-        linear-gradient(135deg, var(--pageA), var(--pageB));
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    }
-
-    .sheet{
-      width:min(1120px, 100%);
-      padding:18px;
-      border-radius:22px;
-      background: rgba(255,255,255,.16);
-      box-shadow:
-        0 30px 60px rgba(0,0,0,.10),
-        inset 0 1px 0 rgba(255,255,255,.55);
-      backdrop-filter: blur(1.5px);
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
-      gap:44px 56px;
-      justify-items:center;
-      padding:22px 24px;
-    }
-
-    @media (max-width: 980px){
-      .grid{ grid-template-columns: repeat(2, minmax(220px, 1fr)); gap:36px; }
-    }
-    @media (max-width: 560px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-
-    /* =============================
-       STAMP (perforation + paper)
-       ============================= */
-    .stamp{
-      --w: 270px;
-      --h: 340px;
-
-      /* perforation controls */
-      --hole: 7.5px;         /* radius */
-      --step: 20px;          /* spacing */
-
-      /* paper */
-      --paper1:#fbfbfa;
-      --paper2:#efefec;
-
-      /* inside palette */
-      --ink: rgba(20,18,16,.35);
-      --bg: #b7d2c6;         /* default */
-      --dots: rgba(255,245,235,.70);
-
-      width: var(--w);
-      height: var(--h);
-      border-radius: 22px;
-      position: relative;
-      isolation:isolate;
-
-      background:
-        radial-gradient(900px 320px at 25% 10%, rgba(255,255,255,.7), transparent 62%),
-        linear-gradient(145deg, var(--paper1), var(--paper2));
-      box-shadow:
-        0 26px 60px rgba(0,0,0,.18),
-        inset 0 1px 0 rgba(255,255,255,.70),
-        inset 0 -1px 0 rgba(0,0,0,.06);
-      transform: translateZ(0);
-    }
-
-    /* “real” perforation cutout with CSS mask-image */
-    .stamp{
-      -webkit-mask:
-        radial-gradient(circle var(--hole), transparent 97%, #000 100%)
-          calc(var(--hole) * -1.35) calc(var(--hole) * -1.35) / var(--step) var(--step) round,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: source-in;
-              mask:
-        radial-gradient(circle var(--hole), transparent 97%, #000 100%)
-          calc(var(--hole) * -1.35) calc(var(--hole) * -1.35) / var(--step) var(--step) round,
-        linear-gradient(#000 0 0);
-      mask-composite: intersect;
-    }
-
-    /* subtle paper grain */
-    .stamp::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      background:
-        repeating-linear-gradient(0deg, rgba(0,0,0,.020) 0 1px, transparent 1px 4px),
-        repeating-linear-gradient(90deg, rgba(0,0,0,.015) 0 1px, transparent 1px 5px);
-      opacity:.38;
-      mix-blend-mode:multiply;
-      pointer-events:none;
-      z-index:5;
-    }
-
-    /* =============================
-       INNER PANEL (frame + dots)
-       ============================= */
-    .panel{
-      position:absolute;
-      inset: 16px;
-      border-radius: 18px;
       overflow:hidden;
-      z-index:1;
-
       background:
-        radial-gradient(900px 340px at 30% 12%, rgba(255,255,255,.55), transparent 58%),
-        linear-gradient(180deg,
-          color-mix(in oklab, var(--bg), white 12%),
-          color-mix(in oklab, var(--bg), black 3%)
-        );
-      box-shadow:
-        inset 0 0 0 3px rgba(255,255,255,.80),
-        inset 0 0 0 9px rgba(255,255,255,.20);
+        radial-gradient(circle at 50% 30%, rgba(242,168,190,.18), transparent 24%),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.07), transparent 18%),
+        radial-gradient(circle at 80% 80%, rgba(242,200,124,.08), transparent 22%),
+        linear-gradient(160deg, var(--bg3), var(--bg2) 40%, var(--bg1) 100%);
+      color:var(--text);
+      font-family: Georgia, "Times New Roman", serif;
     }
 
-    /* halftone dot layer */
-    .panel::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(circle at 50% 50%, var(--dots) 0 46%, rgba(0,0,0,0) 48%) 0 0 / 18px 18px repeat;
-      opacity: .95;
-      mix-blend-mode: screen; /* makes dots look like “ink on paper” */
-      z-index:2;
-      pointer-events:none;
-      transform: translateZ(0);
-    }
-
-    /* tiny vignette to add print depth */
-    .panel::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(150px 180px at 50% 18%, rgba(255,255,255,.28), transparent 60%),
-        radial-gradient(260px 260px at 50% 80%, rgba(0,0,0,.10), transparent 62%);
-      opacity:.80;
-      mix-blend-mode:multiply;
-      z-index:3;
-      pointer-events:none;
-    }
-
-    /* =============================
-       ART
-       ============================= */
-    .art{
-      position:absolute;
-      inset:0;
-      z-index:1; /* under dots, but dots use screen so art still visible */
-    }
-    .art svg{
+    .scene{
+      position:relative;
       width:100%;
       height:100%;
-      display:block;
+      display:grid;
+      place-items:center;
+      isolation:isolate;
     }
 
-    /* bottom-right tiny number like the reference */
-    .no{
+    .aurora{
       position:absolute;
-      right: 10px;
-      bottom: 8px;
-      z-index:6;
-      font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      color: rgba(20,18,16,.35);
-      text-shadow: 0 1px 0 rgba(255,255,255,.7);
-      user-select:none;
+      inset:-20%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(243,166,192,.13), transparent 22%),
+        radial-gradient(circle at 70% 20%, rgba(255,214,143,.10), transparent 18%),
+        radial-gradient(circle at 60% 75%, rgba(89,160,111,.12), transparent 20%),
+        radial-gradient(circle at 35% 80%, rgba(255,255,255,.06), transparent 18%);
+      filter: blur(40px);
+      animation: drift 18s ease-in-out infinite alternate;
+      z-index:-3;
+    }
+    @keyframes drift{
+      from{transform:translate3d(-1.5%, -1%, 0) scale(1)}
+      to{transform:translate3d(1.5%, 1%, 0) scale(1.06)}
     }
 
-    /* theme presets */
-    .t-mint  { --bg:#b7d2c6; --dots: rgba(255,246,236,.72); }
-    .t-pink  { --bg:#e6b7c4; --dots: rgba(255,245,238,.68); }
-    .t-mint2 { --bg:#bcd6cf; --dots: rgba(255,248,238,.70); }
-    .t-dark  { --bg:#2e4f4f; --dots: rgba(255,246,236,.82); }
-    .t-aqua  { --bg:#c5d8d2; --dots: rgba(255,246,236,.70); }
-    .t-rose  { --bg:#e1a6b0; --dots: rgba(255,245,238,.68); }
+    .stars, .sparkles{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+    }
 
-    /* nicer scaling on small screens */
-    @media (max-width: 560px){
-      .stamp{ --w: 86vw; --h: calc(86vw * 1.26); }
+    .star{
+      position:absolute;
+      width:2px;height:2px;border-radius:50%;
+      background:rgba(255,245,248,.85);
+      box-shadow:0 0 8px rgba(255,245,248,.55);
+      animation: twinkle var(--d) ease-in-out infinite;
+      opacity:.5;
+    }
+    @keyframes twinkle{
+      0%,100%{transform:scale(.7);opacity:.25}
+      50%{transform:scale(1.6);opacity:1}
+    }
+
+    .flower-wrap{
+      position:relative;
+      width:min(84vw, 520px);
+      height:min(86vh, 720px);
+      display:grid;
+      place-items:end center;
+      transform: translateY(2vh);
+      filter: drop-shadow(0 25px 60px rgba(0,0,0,.45));
+    }
+
+    .halo{
+      position:absolute;
+      bottom:28%;
+      width:min(50vw, 320px);
+      aspect-ratio:1;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(242,168,190,.20) 0%, rgba(242,168,190,.08) 26%, transparent 68%);
+      filter: blur(4px);
+      animation: pulse 4s ease-in-out infinite;
+      z-index:0;
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1);opacity:.9}
+      50%{transform:scale(1.12);opacity:.62}
+    }
+
+    .stem{
+      position:absolute;
+      bottom:7%;
+      width:10px;
+      height:34%;
+      border-radius:999px;
+      background:linear-gradient(to top, var(--stem), #4f8a61 55%, #6eb17f 100%);
+      transform-origin:bottom center;
+      animation: growStem 1.4s cubic-bezier(.2,1,.2,1) both;
+      z-index:1;
+    }
+    @keyframes growStem{
+      from{transform:scaleY(0)}
+      to{transform:scaleY(1)}
+    }
+
+    .leaf{
+      position:absolute;
+      width:clamp(60px, 12vw, 110px);
+      height:clamp(28px, 5vw, 52px);
+      bottom:18%;
+      background:linear-gradient(135deg, var(--leaf), var(--leaf2));
+      border-radius:50% 0 50% 0;
+      box-shadow:inset 0 8px 18px rgba(255,255,255,.08);
+      opacity:0;
+      animation: leafIn 1.2s .9s ease-out forwards;
+      z-index:1;
+    }
+    .leaf::after{
+      content:"";
+      position:absolute;
+      inset:12% 14%;
+      border-radius:inherit;
+      background:linear-gradient(135deg, rgba(255,255,255,.10), transparent 60%);
+      transform:rotate(-6deg);
+    }
+    .leaf.left{
+      left:calc(50% - 14px);
+      transform-origin:right center;
+      transform:rotate(-32deg) scaleX(0);
+    }
+    .leaf.right{
+      left:calc(50% - 2px);
+      transform-origin:left center;
+      transform:rotate(32deg) scaleX(0) scaleX(-1);
+    }
+    @keyframes leafIn{
+      to{opacity:1; transform:rotate(var(--rot)) scaleX(1)}
+    }
+    .leaf.left{ --rot:-32deg; }
+    .leaf.right{ --rot:32deg; }
+
+    .bloom{
+      position:absolute;
+      bottom:26%;
+      width:min(58vw, 270px);
+      aspect-ratio:1;
+      display:grid;
+      place-items:center;
+      transform-origin:center;
+      animation: bloomIn 1.8s cubic-bezier(.18,1.25,.22,1) both;
+      z-index:3;
+    }
+    @keyframes bloomIn{
+      from{transform:scale(.15) rotate(-22deg); opacity:0}
+      to{transform:scale(1) rotate(0deg); opacity:1}
+    }
+
+    .petal-ring{
+      position:absolute;
+      inset:0;
+      animation: slowSpin 22s linear infinite;
+    }
+    @keyframes slowSpin{ to{ transform:rotate(360deg); } }
+
+    .petal{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:clamp(44px, 9vw, 74px);
+      height:clamp(92px, 16vw, 140px);
+      margin-left:calc(-1 * clamp(22px, 4.5vw, 37px));
+      margin-top:calc(-1 * clamp(88px, 15vw, 130px));
+      border-radius:50% 50% 40% 40% / 70% 70% 35% 35%;
+      transform-origin:bottom center;
+      background:
+        radial-gradient(ellipse at 38% 22%, rgba(255,255,255,.78) 0%, rgba(255,255,255,.18) 14%, transparent 28%),
+        linear-gradient(180deg, #ffe6ec 0%, #f5bcc8 30%, var(--rose) 62%, var(--rose2) 84%, var(--rose3) 100%);
+      box-shadow:
+        inset 0 10px 20px rgba(255,255,255,.22),
+        inset 0 -10px 20px rgba(120,20,48,.12),
+        0 8px 18px rgba(0,0,0,.14);
+      filter:saturate(1.05);
+      animation: breathe 4.8s ease-in-out infinite;
+    }
+    @keyframes breathe{
+      0%,100%{transform:rotate(var(--r)) translateY(-38px) scale(1)}
+      50%{transform:rotate(var(--r)) translateY(-38px) scale(1.04)}
+    }
+    .petal::before{
+      content:"";
+      position:absolute;
+      inset:8% 16% 14%;
+      border-radius:inherit;
+      background:linear-gradient(180deg, rgba(255,255,255,.25), transparent 55%);
+      transform:skewY(-4deg);
+      opacity:.95;
+    }
+
+    .petal.inner{
+      width:clamp(34px, 6.5vw, 56px);
+      height:clamp(74px, 12vw, 110px);
+      margin-left:calc(-1 * clamp(17px, 3.25vw, 28px));
+      margin-top:calc(-1 * clamp(70px, 11vw, 100px));
+      opacity:.96;
+      filter:brightness(.98);
+    }
+
+    .center{
+      position:relative;
+      width:clamp(38px, 7vw, 64px);
+      height:clamp(38px, 7vw, 64px);
+      border-radius:50%;
+      z-index:10;
+      background:
+        radial-gradient(circle at 35% 30%, #fff7ad 0%, var(--gold) 40%, #b16a25 78%, #7d3f14 100%);
+      box-shadow:
+        0 0 0 5px rgba(242,200,124,.18),
+        0 0 30px rgba(242,200,124,.45);
+      animation: centerPulse 2.8s ease-in-out infinite;
+    }
+    @keyframes centerPulse{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.12)}
+    }
+    .center::before,
+    .center::after{
+      content:"";
+      position:absolute;
+      inset:14%;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,.9) 0 8%, transparent 9%),
+        radial-gradient(circle at 65% 55%, rgba(255,255,255,.7) 0 5%, transparent 6%),
+        radial-gradient(circle at 42% 72%, rgba(255,255,255,.5) 0 4%, transparent 5%);
+      opacity:.55;
+    }
+    .center::after{
+      inset:22%;
+      opacity:.28;
+      filter:blur(1px);
+    }
+
+    .petal.r1{ --r:0deg; }
+    .petal.r2{ --r:30deg; }
+    .petal.r3{ --r:60deg; }
+    .petal.r4{ --r:90deg; }
+    .petal.r5{ --r:120deg; }
+    .petal.r6{ --r:150deg; }
+    .petal.r7{ --r:180deg; }
+    .petal.r8{ --r:210deg; }
+    .petal.r9{ --r:240deg; }
+    .petal.r10{ --r:270deg; }
+    .petal.r11{ --r:300deg; }
+    .petal.r12{ --r:330deg; }
+
+    .petal.i1{ --r:15deg; }
+    .petal.i2{ --r:45deg; }
+    .petal.i3{ --r:75deg; }
+    .petal.i4{ --r:105deg; }
+    .petal.i5{ --r:135deg; }
+    .petal.i6{ --r:165deg; }
+    .petal.i7{ --r:195deg; }
+    .petal.i8{ --r:225deg; }
+    .petal.i9{ --r:255deg; }
+    .petal.i10{ --r:285deg; }
+    .petal.i11{ --r:315deg; }
+    .petal.i12{ --r:345deg; }
+
+    .butterfly{
+      position:absolute;
+      top:14%;
+      left:12%;
+      width:52px;
+      height:32px;
+      opacity:.85;
+      transform-origin:center;
+      animation: flutter 7s ease-in-out infinite;
+      filter:drop-shadow(0 0 8px rgba(255,255,255,.16));
+    }
+    .butterfly::before,
+    .butterfly::after{
+      content:"";
+      position:absolute;
+      width:24px;
+      height:26px;
+      top:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(242,168,190,.18));
+      border-radius:70% 30% 60% 40% / 60% 40% 60% 40%;
+      border:1px solid rgba(255,255,255,.16);
+      animation: wing 0.28s ease-in-out infinite alternate;
+    }
+    .butterfly::before{ left:4px; transform:rotate(-18deg); transform-origin:right bottom; }
+    .butterfly::after{ right:4px; transform:rotate(18deg) scaleX(-1); transform-origin:left bottom; }
+    .butterfly span{
+      position:absolute;
+      left:50%;
+      top:9px;
+      width:2px;height:16px;
+      background:rgba(255,255,255,.55);
+      border-radius:999px;
+      transform:translateX(-50%);
+    }
+    @keyframes wing{
+      from{transform:rotate(-24deg) translateY(0)}
+      to{transform:rotate(24deg) translateY(-1px)}
+    }
+    @keyframes flutter{
+      0%,100%{transform:translate(0,0) rotate(-6deg)}
+      25%{transform:translate(18vw, 4vh) rotate(8deg)}
+      50%{transform:translate(42vw, -1vh) rotate(-10deg)}
+      75%{transform:translate(24vw, 7vh) rotate(6deg)}
+    }
+
+    .note{
+      position:absolute;
+      bottom:4.5%;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(86vw, 560px);
+      padding:18px 22px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      backdrop-filter: blur(8px);
+      box-shadow:0 18px 50px rgba(0,0,0,.28);
+      animation: noteIn 1.2s 1.35s both;
+    }
+    @keyframes noteIn{
+      from{opacity:0; transform:translateX(-50%) translateY(18px)}
+      to{opacity:1; transform:translateX(-50%) translateY(0)}
+    }
+    .note h1{
+      font-size:clamp(1.8rem, 4vw, 3.4rem);
+      font-weight:400;
+      letter-spacing:.02em;
+      line-height:1.05;
+      text-shadow:0 8px 30px rgba(0,0,0,.3);
+    }
+    .note p{
+      margin-top:10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:clamp(.72rem, 1.9vw, .88rem);
+      letter-spacing:.34em;
+      text-transform:uppercase;
+      color:rgba(255,238,243,.82);
+    }
+    .divider{
+      width:92px;
+      height:1px;
+      margin:12px auto 0;
+      background:linear-gradient(90deg, transparent, rgba(242,200,124,.95), transparent);
+      opacity:.75;
+    }
+
+    .heart{
+      display:inline-block;
+      color:#ff8fb2;
+      animation: heartBeat 1.3s ease-in-out infinite;
+      filter:drop-shadow(0 0 10px rgba(255,143,178,.35));
+    }
+    @keyframes heartBeat{
+      0%,100%{transform:scale(1)}
+      20%{transform:scale(1.15)}
+      40%{transform:scale(.98)}
+      60%{transform:scale(1.2)}
+      80%{transform:scale(1.02)}
+    }
+
+    .hint{
+      margin-top:8px;
+      font-size:.74rem;
+      opacity:.78;
+      letter-spacing:.16em;
+    }
+
+    @media (max-width: 520px){
+      .butterfly{display:none}
+      .note{padding:16px 16px 14px}
     }
   </style>
 </head>
-
 <body>
-  <section class="sheet">
-    <div class="grid">
+  <div class="scene">
+    <div class="aurora"></div>
+    <div class="stars" id="stars"></div>
+    <div class="sparkles" id="sparkles"></div>
 
-      <!-- 1 -->
-      <figure class="stamp t-mint">
-        <div class="panel"></div>
-        <div class="art">
-          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 1" role="img">
-            <defs>
-              <linearGradient id="stem1" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#86b89c"/>
-                <stop offset="1" stop-color="#2f6a4a"/>
-              </linearGradient>
-              <radialGradient id="petal1" cx=".45" cy=".35" r="1">
-                <stop offset="0" stop-color="#fff8fb"/>
-                <stop offset="1" stop-color="#f0e9ee"/>
-              </radialGradient>
-              <radialGradient id="leaf1" cx=".35" cy=".4" r="1">
-                <stop offset="0" stop-color="#bfe3cb"/>
-                <stop offset="1" stop-color="#79b995"/>
-              </radialGradient>
-            </defs>
+    <div class="flower-wrap">
+      <div class="halo"></div>
 
-            <!-- stem -->
-            <path d="M136 286 C148 250 140 218 146 186 C152 150 142 120 146 92"
-                  fill="none" stroke="url(#stem1)" stroke-width="5.5" stroke-linecap="round"/>
+      <div class="butterfly"><span></span></div>
 
-            <!-- leaves -->
-            <path d="M122 212 C90 206 88 178 108 166 C132 152 152 176 140 196 C134 206 129 212 122 212 Z"
-                  fill="url(#leaf1)" opacity=".90"/>
-            <path d="M156 234 C192 230 196 198 174 186 C152 175 134 198 144 214 C148 222 151 233 156 234 Z"
-                  fill="url(#leaf1)" opacity=".85"/>
+      <div class="bloom" aria-label="romantic flower">
+        <div class="petal-ring">
+          <div class="petal r1"></div>
+          <div class="petal r2"></div>
+          <div class="petal r3"></div>
+          <div class="petal r4"></div>
+          <div class="petal r5"></div>
+          <div class="petal r6"></div>
+          <div class="petal r7"></div>
+          <div class="petal r8"></div>
+          <div class="petal r9"></div>
+          <div class="petal r10"></div>
+          <div class="petal r11"></div>
+          <div class="petal r12"></div>
 
-            <!-- flower (minimal, soft) -->
-            <g transform="translate(146 92)">
-              <path d="M0 22 C-22 0 -44 14 -30 34 C-18 50 -6 46 0 38 C6 46 18 50 30 34 C44 14 22 0 0 22 Z"
-                    fill="url(#petal1)" opacity=".92"/>
-              <circle cx="0" cy="34" r="5.5" fill="#f3d071" opacity=".9"/>
-            </g>
-          </svg>
+          <div class="petal inner i1"></div>
+          <div class="petal inner i2"></div>
+          <div class="petal inner i3"></div>
+          <div class="petal inner i4"></div>
+          <div class="petal inner i5"></div>
+          <div class="petal inner i6"></div>
+          <div class="petal inner i7"></div>
+          <div class="petal inner i8"></div>
+          <div class="petal inner i9"></div>
+          <div class="petal inner i10"></div>
+          <div class="petal inner i11"></div>
+          <div class="petal inner i12"></div>
         </div>
-        <span class="no">1</span>
-      </figure>
+        <div class="center"></div>
+      </div>
 
-      <!-- 2 -->
-      <figure class="stamp t-pink">
-        <div class="panel"></div>
-        <div class="art">
-          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 2" role="img">
-            <defs>
-              <linearGradient id="stem2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#86b89c"/>
-                <stop offset="1" stop-color="#2f6a4a"/>
-              </linearGradient>
-              <radialGradient id="bud2" cx=".45" cy=".30" r="1">
-                <stop offset="0" stop-color="#ffe3ee"/>
-                <stop offset=".6" stop-color="#f1b2c7"/>
-                <stop offset="1" stop-color="#d98aa7"/>
-              </radialGradient>
-              <radialGradient id="leaf2" cx=".35" cy=".4" r="1">
-                <stop offset="0" stop-color="#cfead7"/>
-                <stop offset="1" stop-color="#85c0a0"/>
-              </radialGradient>
-            </defs>
-
-            <path d="M140 294 C156 258 146 224 154 190 C162 154 152 120 156 94"
-                  fill="none" stroke="url(#stem2)" stroke-width="5.5" stroke-linecap="round"/>
-
-            <path d="M132 220 C100 212 98 182 120 168 C144 152 162 180 150 200 C144 210 140 220 132 220 Z"
-                  fill="url(#leaf2)" opacity=".90"/>
-            <path d="M164 244 C200 238 202 206 178 192 C156 180 140 206 150 220 C154 228 160 242 164 244 Z"
-                  fill="url(#leaf2)" opacity=".85"/>
-
-            <g transform="translate(156 88) rotate(-8)">
-              <path d="M0 62 C-16 52 -18 30 -8 16 C-2 8 6 8 8 16 C18 30 16 52 0 62 Z"
-                    fill="url(#bud2)" opacity=".95"/>
-              <path d="M-2 66 C-16 64 -20 74 -10 78 C-2 80 0 76 2 78 C16 74 12 64 -2 66 Z"
-                    fill="#89bfa0" opacity=".85"/>
-            </g>
-          </svg>
-        </div>
-        <span class="no">2</span>
-      </figure>
-
-      <!-- 3 -->
-      <figure class="stamp t-mint2">
-        <div class="panel"></div>
-        <div class="art">
-          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 3" role="img">
-            <defs>
-              <linearGradient id="stem3" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#86b89c"/>
-                <stop offset="1" stop-color="#2f6a4a"/>
-              </linearGradient>
-              <radialGradient id="petal3" cx=".45" cy=".30" r="1">
-                <stop offset="0" stop-color="#ffe9f1"/>
-                <stop offset="1" stop-color="#f3c1d2"/>
-              </radialGradient>
-            </defs>
-
-            <path d="M150 288 C162 248 154 214 160 184 C166 152 158 120 162 92"
-                  fill="none" stroke="url(#stem3)" stroke-width="5.5" stroke-linecap="round"/>
-
-            <g transform="translate(166 98)">
-              <path d="M0 16 C-18 0 -36 12 -26 28 C-18 42 -6 40 0 32 C6 40 18 42 26 28 C36 12 18 0 0 16 Z"
-                    fill="url(#petal3)" opacity=".90"/>
-              <circle cx="0" cy="30" r="4.8" fill="#f1d27d" opacity=".9"/>
-            </g>
-          </svg>
-        </div>
-        <span class="no">1</span>
-      </figure>
-
-      <!-- 4 -->
-      <figure class="stamp t-dark">
-        <div class="panel"></div>
-        <div class="art">
-          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 4" role="img">
-            <defs>
-              <linearGradient id="stem4" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#9ad0b0"/>
-                <stop offset="1" stop-color="#2f6a4a"/>
-              </linearGradient>
-              <radialGradient id="petal4" cx=".45" cy=".30" r="1">
-                <stop offset="0" stop-color="#ffffff"/>
-                <stop offset="1" stop-color="#f0ecef"/>
-              </radialGradient>
-              <radialGradient id="leaf4" cx=".35" cy=".4" r="1">
-                <stop offset="0" stop-color="#cfead7"/>
-                <stop offset="1" stop-color="#7fbda0"/>
-              </radialGradient>
-            </defs>
-
-            <path d="M138 296 C152 262 142 230 150 198 C158 164 150 134 154 102"
-                  fill="none" stroke="url(#stem4)" stroke-width="5.5" stroke-linecap="round"/>
-
-            <path d="M154 230 C190 224 194 194 170 178 C148 164 132 194 144 212 C148 220 150 229 154 230 Z"
-                  fill="url(#leaf4)" opacity=".85"/>
-
-            <g transform="translate(140 110)">
-              <path d="M0 18 C-24 -2 -48 14 -34 38 C-20 58 -6 54 0 44 C6 54 20 58 34 38 C48 14 24 -2 0 18 Z"
-                    fill="url(#petal4)" opacity=".92"/>
-              <circle cx="0" cy="42" r="6" fill="#ffe19b" opacity=".9"/>
-            </g>
-          </svg>
-        </div>
-        <span class="no">1</span>
-      </figure>
-
-      <!-- 5 -->
-      <figure class="stamp t-aqua">
-        <div class="panel"></div>
-        <div class="art">
-          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 5" role="img">
-            <defs>
-              <linearGradient id="stem5" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#86b89c"/>
-                <stop offset="1" stop-color="#2f6a4a"/>
-              </linearGradient>
-              <radialGradient id="pod5" cx=".45" cy=".30" r="1">
-                <stop offset="0" stop-color="#def2e8"/>
-                <stop offset=".6" stop-color="#a5cfbb"/>
-                <stop offset="1" stop-color="#6aa78b"/>
-              </radialGradient>
-            </defs>
-
-            <path d="M148 292 C162 256 152 224 160 192 C168 156 156 128 160 98"
-                  fill="none" stroke="url(#stem5)" stroke-width="5.5" stroke-linecap="round"/>
-
-            <g transform="translate(160 92)">
-              <path d="M0 72 C-18 60 -22 34 -10 18 C-2 8 6 8 10 18 C22 34 18 60 0 72 Z"
-                    fill="url(#pod5)" opacity=".95"/>
-              <circle cx="-4" cy="42" r="2.1" fill="rgba(40,60,48,.35)"/>
-              <circle cx="4" cy="48" r="2.0" fill="rgba(40,60,48,.32)"/>
-              <circle cx="0" cy="56" r="1.9" fill="rgba(40,60,48,.30)"/>
-            </g>
-          </svg>
-        </div>
-        <span class="no">2</span>
-      </figure>
-
-      <!-- 6 -->
-      <figure class="stamp t-rose">
-        <div class="panel"></div>
-        <div class="art">
-          <svg viewBox="0 0 270 340" aria-label="Flower stamp art 6" role="img">
-            <defs>
-              <linearGradient id="stem6" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#86b89c"/>
-                <stop offset="1" stop-color="#2f6a4a"/>
-              </linearGradient>
-              <radialGradient id="petal6" cx=".45" cy=".30" r="1">
-                <stop offset="0" stop-color="#ffe7f0"/>
-                <stop offset="1" stop-color="#f2b3c6"/>
-              </radialGradient>
-              <radialGradient id="leaf6" cx=".35" cy=".4" r="1">
-                <stop offset="0" stop-color="#d4efdc"/>
-                <stop offset="1" stop-color="#85c0a0"/>
-              </radialGradient>
-            </defs>
-
-            <path d="M146 296 C162 258 152 222 160 190 C168 154 158 120 162 94"
-                  fill="none" stroke="url(#stem6)" stroke-width="5.5" stroke-linecap="round"/>
-
-            <path d="M150 232 C186 226 192 194 170 178 C148 164 132 196 144 214 C148 222 149 231 150 232 Z"
-                  fill="url(#leaf6)" opacity=".85"/>
-
-            <g transform="translate(162 120)">
-              <path d="M0 18 C-26 -4 -52 16 -36 42 C-22 66 -6 60 0 48 C6 60 22 66 36 42 C52 16 26 -4 0 18 Z"
-                    fill="url(#petal6)" opacity=".92"/>
-              <circle cx="0" cy="46" r="6" fill="#ffe19b" opacity=".9"/>
-            </g>
-          </svg>
-        </div>
-        <span class="no">3</span>
-      </figure>
-
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
     </div>
-  </section>
+
+    <div class="note">
+      <h1>For you,<br>always <span class="heart">♥</span></h1>
+      <div class="divider"></div>
+      <p>made with quiet love and a little magic</p>
+      <div class="hint">move your mouse for a soft glow</div>
+    </div>
+  </div>
+
+  <script>
+    const stars = document.getElementById('stars');
+    const sparkles = document.getElementById('sparkles');
+
+    function makeStarField(count = 80) {
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        s.style.left = `${Math.random() * 100}%`;
+        s.style.top = `${Math.random() * 100}%`;
+        s.style.setProperty('--d', `${1.8 + Math.random() * 4.8}s`);
+        s.style.animationDelay = `${Math.random() * 4}s`;
+        s.style.transform = `scale(${0.6 + Math.random() * 1.4})`;
+        s.style.opacity = `${0.18 + Math.random() * 0.75}`;
+        stars.appendChild(s);
+      }
+    }
+
+    function burstSparkles() {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight * 0.42;
+      const n = 18;
+
+      for (let i = 0; i < n; i++) {
+        const p = document.createElement('div');
+        p.className = 'star';
+        const angle = (Math.PI * 2 * i) / n + (Math.random() * 0.35);
+        const dist = 50 + Math.random() * 120;
+        const x = cx + Math.cos(angle) * dist;
+        const y = cy + Math.sin(angle) * dist;
+
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        p.style.width = `${2 + Math.random() * 3}px`;
+        p.style.height = p.style.width;
+        p.style.borderRadius = '50%';
+        p.style.background = Math.random() > 0.5 ? 'rgba(255,235,245,.95)' : 'rgba(242,200,124,.95)';
+        p.style.boxShadow = '0 0 12px rgba(255,255,255,.45)';
+        p.style.setProperty('--d', `${1.2 + Math.random() * 1.8}s`);
+        p.style.animation = 'twinkle 1.4s ease-in-out infinite';
+        p.style.opacity = '1';
+
+        sparkles.appendChild(p);
+        setTimeout(() => p.remove(), 3800);
+      }
+    }
+
+    const root = document.documentElement;
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 16;
+      const y = (e.clientY / window.innerHeight - 0.5) * 16;
+      root.style.setProperty('--mx', `${x}px`);
+      root.style.setProperty('--my', `${y}px`);
+      document.querySelector('.flower-wrap').style.transform = `translate(${x * .08}px, ${y * .08}px) translateY(2vh)`;
+    });
+
+    makeStarField(96);
+    burstSparkles();
+    setInterval(burstSparkles, 5200);
+  </script>
 </body>
 </html>
