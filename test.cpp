@@ -30,10 +30,13 @@ void AKG(){
   vi a(n);
   f(i,0,n)cin>>a[i];
   f(i,0,n){
+    int x=0,b=0;
     f(j,i+1,n){
-        if()
+        if(a[i]<a[j])x++;
+        if(a[i]>a[j])b++;
     }
-  }
+    cout<<(x>b?x:b)<<" ";
+  }cout<<endl;
 }
 
 int main() {
