@@ -29,7 +29,11 @@ void AKG(){
   int n;cin>>n;
   vi a(n);
   f(i,0,n)cin>>a[i];
-  
+  f(i,0,n){
+    f(j,i+1,n){
+        if()
+    }
+  }
 }
 
 int main() {
