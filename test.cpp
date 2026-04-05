@@ -27,7 +27,8 @@ ll N = 1e18;
 
 void AKG(){
     int n;cin>>n;
-    pr(++n);
+    if(n==67||n==-67)pr(n);
+    else pr(++n);
 }
 
 int main() {
