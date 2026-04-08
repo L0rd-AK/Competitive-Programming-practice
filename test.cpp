@@ -26,7 +26,14 @@ const int MOD = 1e9+7;
 ll N = 1e18;
 
 void AKG(){
-    int n;cin>>n;
+    int n=7;
+    ll sum=0,mx=INT_MIN;
+    while(n--){
+        ll x;cin>>x;
+        sum+=x;
+        mx=max(mx,x);
+    }
+    pr(mx-sum);
 }
 
 int main() {
