@@ -33,7 +33,7 @@ void AKG(){
         sum+=x;
         mx=max(mx,x);
     }
-    pr(mx-sum);
+    pr(2*mx-sum);
 }
 
 int main() {
