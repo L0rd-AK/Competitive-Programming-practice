@@ -32,7 +32,7 @@ void AKG(){
         int x;cin>>x;
         sum+=x;
     }
-    yn((n*k)%2==0&&sum%2==1);
+    yn((n*k)%2==0||sum%2==1);
 }
 
 int main() {
