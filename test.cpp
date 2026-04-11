@@ -27,6 +27,12 @@ ll N = 1e18;
 
 void AKG(){
     int n,k;cin>>n>>k;
+    int sum=0;
+    f(i,0,n){
+        int x;cin>>x;
+        sum+=x;
+    }
+    yn((n*k)%2==0&&sum%2==1);
 }
 
 int main() {
