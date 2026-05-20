@@ -2,7 +2,7 @@
 
 A comprehensive collection of competitive programming solutions and practice problems from various platforms and contests.
 
-## 📊 Repository Overview
+## 📊 Repository Overview -
 
 This repository contains solutions to competitive programming problems from multiple platforms, organized by difficulty and topic. It serves as a personal learning journey and reference for algorithmic problem-solving techniques.
 
